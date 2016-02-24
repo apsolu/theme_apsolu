@@ -1,0 +1,170 @@
+/* Custom CSS
+-------------------------*/
+div.logo {
+    background: url([[setting:logo]]) no-repeat 0 0;
+    display: block;
+    float: left;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.dir-rtl div.logo {
+    background: url([[setting:logo]]) no-repeat 100% 0;
+    display: block;
+    float: right;
+}
+
+/* Custom CSS Settings
+-------------------------*/
+[[setting:customcss]]
+
+/* Custom Apsolu
+-------------------------*/
+
+body {
+    padding-top: 50px !important;
+}
+
+/* tableau de bord */
+#page-my-index .block_course_overview .content .title{
+    font-size: 1em;
+    line-height: 1em;
+}
+
+#page-my-index .block_calendar_upcoming .event .icon{
+    float: left;
+}
+
+#page-my-index .block_calendar_upcoming .course{
+    display: none;
+    float: left;
+    padding-right: .5em;
+}
+
+#page-my-index .block_calendar_upcoming .course:after{
+    content: ' : ';
+}
+
+#page-my-index .block_calendar_upcoming .date{
+    float: right;
+}
+
+#page-my-index .block_calendar_upcoming .date strong br {
+    display: none;
+}
+
+#page-my-index .block_calendar_upcoming .footer{
+    display: none;
+}
+
+#page-my-index .block_navigation{
+    display: none;
+}
+
+
+/* Page d'accueil. */
+#page-site-index .frontpage-category-names .content{
+    -moz-column-count: 2;
+}
+
+#page-site-index .numberofcourse{
+    display: none;
+}
+
+.course_category_tree .category > .info > .categoryname{
+    background-image: none;
+}
+
+.navbar.navbar-default.navbar-fixed-top .usermenu a {
+    display: block;
+}
+
+/* BEGIN GJ CUSTOM */
+.nav > li > a.Connexion {
+    padding: 15px;
+}
+nav.navbar-fixed-top + * {
+    margin-top: 52px;
+}
+a {
+    color: #008A0C;
+}
+.navbar-custom {
+    background-color: #434241;
+    border-color: #6F787B;
+}
+.navbar-custom a {
+    color: #F39C12;
+}
+.navbar-custom .nav .open > a, .navbar-custom .nav .open > a:hover, .navbar-custom .nav .open > a:focus,
+.navbar-custom .nav > li > a:hover, .navbar-custom .nav > li > a:focus {
+    background-color: #008A0C;
+    color: #FFFFFF;
+}
+.navbar-custom .dropdown-menu {
+    background-color: #434241;
+}
+.navbar-custom .dropdown-menu .divider {
+    background-color: #6F787B;
+}
+.navbar-custom .dropdown-menu > li > a {
+    color: #F39C12;
+}
+.navbar-custom .dropdown-menu > li > a:hover, .navbar-custom .dropdown-menu > li > a:focus {
+    background-color: #008A0C;
+    color: #FFFFFF;
+}
+.navbar-custom .navbar-header.pull-left > img {
+    height: 40px;
+    margin-top: 5px;
+}
+
+#page-footer {
+    background-color: #6f787b;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    color: #FFF;
+}
+
+#page-footer .logos{
+    align-items: center;
+    display: flex;
+}
+
+#page-footer .logos .logour1 img {
+    width: 60%;
+}
+
+#page-footer .logos .logour2 img {
+    width: 30%;
+}
+
+#page-footer a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.block_course_overview .coursebox {
+    margin: 0;
+    padding: 0;
+}
+
+.block_course_overview h2 {
+    font-size: 1.1em;
+}
+
+body {
+    margin-top: 3.6em;
+}
+
+.block_course_overview .coursebox:nth-child(n+2){
+    border-top: .1em solid black;
+}
+
+.block_course_overview .coursebox{
+    padding: 1em 0;
+}
