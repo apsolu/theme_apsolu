@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2015051100;
+$plugin->version   = 2016020200;
 $plugin->requires  = 2015050500;
 $plugin->component = 'theme_apsolu';
 $plugin->dependencies = array(
-    'theme_clean'  => 2015051100,
+    'theme_bootstrap' => 2016042200,
 );
