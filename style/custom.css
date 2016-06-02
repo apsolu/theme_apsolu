@@ -168,6 +168,11 @@ body, #page-site-index {
     min-height: 120%;
 }
 
+#page-user-policy #resourceobject{
+    border: none;
+    height: 95em;
+}
+
 .block_course_overview .coursebox:nth-child(n+2){
     border-top: .1em solid black;
 }
