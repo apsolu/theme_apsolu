@@ -162,10 +162,10 @@ a {
     font-size: 1.1em;
 }
 
-body {
-    padding-top: 3.6em !important;
-    padding-bottom: 8em !important;
-    min-height: 100%;
+body, #page-site-index {
+    padding-top: 3.6em;
+    padding-bottom: 8em;
+    min-height: 120%;
 }
 
 .block_course_overview .coursebox:nth-child(n+2){
