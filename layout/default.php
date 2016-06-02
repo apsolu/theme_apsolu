@@ -92,29 +92,23 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->blocks('side-post', $regions['post']);
         }?>
     </div>
-
-    <footer id="page-footer" class="row">
-        <div class="col-md-4 logos">
-            <a class="col-xs-6 text-center logour1" href="https://www.univ-rennes1.fr">
-                <img src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" />
-            </a>
-            <a class="col-xs-6 text-center logour2" href="https://www.univ-rennes2.fr">
-                <img src="<?php echo $OUTPUT->pix_url('logo_ur2_white', 'theme_apsolu');?>" alt="Université Rennes 2" />
-            </a>
-        </div>
-        <div class="col-md-4">
-            <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
-            <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-            <?php
-            echo $OUTPUT->login_info();
-            echo $OUTPUT->home_link();
-            echo $OUTPUT->standard_footer_html();
-            ?>
-        </div>
-        <div class="col-md-4">
-            <?php echo $OUTPUT->standard_end_of_body_html() ?>
-        </div>
-    </footer>
 </div>
+
+<footer id="page-footer" class="row">
+    <div class="col-md-4 page-footer-flex-center">
+        <a class="col-xs-6 text-center logour1" href="https://www.univ-rennes1.fr">
+            <img src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" />
+        </a>
+        <a class="col-xs-6 text-center logour2" href="https://www.univ-rennes2.fr">
+            <img src="<?php echo $OUTPUT->pix_url('logo_ur2_white', 'theme_apsolu');?>" alt="Université Rennes 2" />
+        </a>
+    </div>
+    <div class="col-md-4 page-footer-flex-center">
+    </div>
+    <div class="col-md-4 page-footer-flex-bottom">
+        <?php echo $OUTPUT->standard_end_of_body_html() ?>
+    </div>
+</footer>
+
 </body>
 </html>

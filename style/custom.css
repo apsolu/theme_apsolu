@@ -23,10 +23,6 @@ div.logo {
 /* Custom Apsolu
 -------------------------*/
 
-body {
-    padding-top: 50px !important;
-}
-
 /* tableau de bord */
 #page-my-index .block_course_overview .content .title{
     font-size: 1em;
@@ -123,23 +119,32 @@ a {
 
 #page-footer {
     background-color: #6f787b;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    margin: 0;
+    bottom: 0;
     color: #FFF;
+    display: flex;
+    left: 0;
+    margin: 0;
+    max-height: 8em;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
 }
 
-#page-footer .logos{
+.page-footer-flex-center{
     align-items: center;
     display: flex;
+    justify-content: center;
 }
 
-#page-footer .logos .logour1 img {
+.page-footer-flex-bottom{
+    align-self: flex-end;
+}
+
+.page-footer-flex-center .logour1 img {
     width: 60%;
 }
 
-#page-footer .logos .logour2 img {
+.page-footer-flex-center .logour2 img {
     width: 30%;
 }
 
@@ -158,7 +163,9 @@ a {
 }
 
 body {
-    margin-top: 3.6em;
+    padding-top: 3.6em !important;
+    padding-bottom: 8em !important;
+    min-height: 100%;
 }
 
 .block_course_overview .coursebox:nth-child(n+2){
