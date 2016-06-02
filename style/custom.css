@@ -170,7 +170,7 @@ body, #page-site-index {
 
 #page-user-policy #resourceobject{
     border: none;
-    height: 95em;
+    height: 95em !important;
 }
 
 .block_course_overview .coursebox:nth-child(n+2){
