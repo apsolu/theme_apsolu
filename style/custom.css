@@ -168,3 +168,12 @@ body {
 .block_course_overview .coursebox{
     padding: 1em 0;
 }
+
+#uhb-server{
+    background-color: #6f787b;
+    color: #FFFFFF;
+    font-size: .75em;
+    margin: 0;
+    padding: 0 1em 0 0;
+    text-align: right;
+}

@@ -93,7 +93,7 @@ echo $OUTPUT->doctype() ?>
         }?>
     </div>
 
-    <footer id="page-footer">
+    <footer id="page-footer" class="row">
         <div class="col-md-4 logos">
             <a class="col-xs-6 text-center logour1" href="https://www.univ-rennes1.fr">
                 <img src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" />
@@ -111,10 +111,10 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->standard_footer_html();
             ?>
         </div>
+        <div class="col-md-4">
+            <?php echo $OUTPUT->standard_end_of_body_html() ?>
+        </div>
     </footer>
-
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
-
 </div>
 </body>
 </html>
