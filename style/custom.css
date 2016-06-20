@@ -170,7 +170,11 @@ body, #page-site-index {
 
 #page-user-policy #resourceobject{
     border: none;
-    height: 95em !important;
+    height: 55em !important;
+}
+
+#page-user-policy #region-main h2 {
+    display: none;
 }
 
 .block_course_overview .coursebox:nth-child(n+2){
