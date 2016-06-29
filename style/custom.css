@@ -219,6 +219,7 @@ nav.navbar-fixed-top + * {
     color: #dddddd;
 }
 
+.breadcrumb a,
 .breadcrumb a span {
     color: #F39C12;
 }
