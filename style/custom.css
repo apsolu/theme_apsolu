@@ -193,3 +193,32 @@ body, #page-site-index {
     padding: 0 1em 0 0;
     text-align: right;
 }
+
+.panel-default, .block, .forumpost {
+    border-color: #434241;
+}
+
+.courses .panel-default {
+    border-color: #dddddd;
+}
+
+.box.message table td.heading, .box.message .messagearea .messagerecent .singlemessage .otheruser, .block .header, #dockeditempanel .dockeditempanel_hd {
+    background-color: #434241;
+    color: #F39C12;
+}
+
+nav.navbar-fixed-top + * {
+    margin-top: 0;
+}
+
+.breadcrumb {
+    background-color: #434241;
+}
+
+.breadcrumb span {
+    color: #dddddd;
+}
+
+.breadcrumb a span {
+    color: #F39C12;
+}
