@@ -97,7 +97,7 @@ echo $OUTPUT->doctype() ?>
 <footer id="page-footer" class="row">
     <div class="col-md-8 page-footer-flex-center">
         <a class="col-xs-2 text-center logosiuaps" href="http://www.siuaps.univ-rennes1.fr">
-            <img src="<?php echo $OUTPUT->pix_url('logo_siuaps_white', 'theme_apsolu');?>" alt="S.I.U.A.P.S. de Rennes" width="82px" height="82px" />
+            <img src="<?php echo $OUTPUT->pix_url('logo_siuaps_white_with_text', 'theme_apsolu');?>" alt="S.I.U.A.P.S. de Rennes" width="82px" height="82px" />
         </a>
         <a class="col-xs-2 text-center logour1" href="https://www.univ-rennes1.fr">
             <img src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" width="163px" height="60px" />

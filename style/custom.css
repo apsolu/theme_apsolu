@@ -118,11 +118,11 @@ a {
 }
 
 .navbar-brand {
-    background-image: url([[pix:theme|logo_siuaps_color]]);
+    background-image: url([[pix:theme|logo_siuaps_negative_color_no_text]]);
     background-repeat: no-repeat;
-    background-size: 40px;
+    background-size: 35px;
     background-position: left center;
-    padding-left: 45px;
+    padding-left: 40px;
 }
 
 #page-footer {
