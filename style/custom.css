@@ -117,6 +117,14 @@ a {
     margin-top: 5px;
 }
 
+.navbar-brand {
+    background-image: url([[pix:theme|logo_siuaps_color]]);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: left center;
+    padding-left: 45px;
+}
+
 #page-footer {
     background-color: #6f787b;
     bottom: 0;
@@ -133,19 +141,11 @@ a {
 .page-footer-flex-center{
     align-items: center;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .page-footer-flex-bottom{
     align-self: flex-end;
-}
-
-.page-footer-flex-center .logour1 img {
-    width: 60%;
-}
-
-.page-footer-flex-center .logour2 img {
-    width: 30%;
 }
 
 #page-footer a {
