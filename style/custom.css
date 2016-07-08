@@ -23,6 +23,28 @@ div.logo {
 /* Custom Apsolu
 -------------------------*/
 
+@font-face{
+    font-family: 'Tournament';
+    src: url([[font:theme|tournament.ttf]]);
+}
+
+@font-face{
+    font-family: 'Garaje53';
+    src: url([[font:theme|garaje_53_uni_black.otf]]) format('truetype');
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-family: 'Tournament';
+}
+
+h2, .navbar-brand {
+    font-family: 'Garaje53';
+}
+
 /* tableau de bord */
 #page-my-index .block_course_overview .content .title{
     font-size: 1em;
