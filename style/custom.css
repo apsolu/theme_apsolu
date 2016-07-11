@@ -191,12 +191,20 @@ body, #page-site-index {
 }
 
 #page-user-policy #resourceobject{
-    border: none;
-    height: 55em !important;
+    max-height: 500px !important;
+}
+
+#page-user-policy #page-header {
+    display: none;
 }
 
 #page-user-policy #region-main h2 {
     display: none;
+}
+
+#page-user-policy #notice p,
+#page-user-policy #notice .buttons {
+    display: inline-block;
 }
 
 .block_course_overview .coursebox:nth-child(n+2){
