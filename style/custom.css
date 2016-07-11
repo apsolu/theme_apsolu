@@ -245,3 +245,8 @@ nav.navbar-fixed-top + * {
 .breadcrumb a span {
     color: #F39C12;
 }
+
+/* supprime la colonne 'type' sur le mod_attendance */
+.attsessions_manage_table .c1 {
+    display: none;
+}
