@@ -262,3 +262,35 @@ nav.navbar-fixed-top + * {
 .attsessions_manage_table .c1 {
     display: none;
 }
+
+/* logos des établissements dans le menu d'authentification shibboleth */
+#page-auth-shibboleth-login #idp {
+    -webkit-appearance: none;
+}
+
+#page-auth-shibboleth-login #idp option {
+    -webkit-appearance: none;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+#page-auth-shibboleth-login #idp option[value="https://ident-shib.ensc-rennes.fr/idp/shibboleth"] {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgSCRcbkMcTAgAAAmhJREFUKM9tkk1IFHEYxt///GdmZ2d3Ztddd11L3dwiFKQupRSBpngIL91LQaIOQSF57RB06OKhc3QpgqKSLmIUHYIOhoKmWRBmm4jmx667O7Pz9Z+Pt4OfiL/Ty8vzvDzwPgQRYRfm+pslXbMYoRwS4IBMzfze2NTuDfbuafi9qVg21irG/FopJoc0i9Wq8rv3U55m9V/vggNwu7e91bKxVDFSagQJsXXzwcioXTIGB7qLmjU+m3c8f1tJtiM9evpBSsclgU7PL338NJOMSi9GbnoC9QM0HVe3WU0k1JGr3zcsb1amvuUrVVOSxGxTuvF40rRYXA4hwpZhFap2QTeunM2FBZ5DREScW9nSZZFLxaEmWvb81S09HOKTSjihSGFRECjHU7q4XgYA3rDdr7N/Xo9NziysXrrQ0tvZRjjwA2TM1y0WIDLP9wMEgIrl7EQqlqpiNLy8Urj78NXE9/zw7b7O86djshQWeQBSdZhmORXTaUoq7bl6gogbRe3nRmVdNzOxSAyh+8bjttbG+0NXRZ4CIHN90/U0y+lubUpGJA4A0klVoRxzg6WC9kszPj8fXlj89+zNF4O5JdPRbGYxNy5LEiEC5Xb+cCIdy6YUAHC9YG69PP7kztuxyekffy3HtT3fC6A1k/CDgOfpjiERi+TUaDah+AEiYl6zh65dfjk64fooUHoum1YEWpdU9z9NCGnIxHMJpaelIa3KpsNuDfQ4hnUypXadOqbwfKZWPdwlAGisi5s2u9icsV0vQOzva8/VRGORkBQSjijfNrIkAoACAAAdZ5rDknhQvR/pSOrTcYHSQ8v/Oscr9pdCEyEAAAAASUVORK5CYII=');
+}
+
+#page-auth-shibboleth-login #idp option[value="https://idp.ens-rennes.fr/idp/shibboleth"] {
+    background-image: url('data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAADVtqxn8+voGsigkoX///8A1basZf79/QDn1c86wpaGlP///wDm1M481rmvYdOzqWr///8A2sC3V8WbjYvz6+gaz6ygdNrAt1fFm42NxJiKkb6Pfp769/YJ4cvEScCSg5j7+fgH38nBS7qIeKbNqJx5vo9+n9vCuVf69/YK8OXhJOvc2DDUtapnyaKVgsulmH7z6+gcyaKVg82pnXn07OkZyaKVg82pnXjx5uMjyaKVgtGvo3Ds39sryqSWf+fVzzr///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AN3EvFKye2e7r3VgwdS1qmf///8A////AP///wD///8A////AP///wDUtapnr3VhwbJ7Z7vdxLxS////ANm9tFqXTDL8vIx6ocGUhZaaUDf2zKeafP///wD///8A////AP///wDMp5p8mlA39sGUhZa8jHuhl0wy/Nm9tFqmZU/XyqSXgf///wD///8A17qxXptSOfP7+fgH////AP///wD7+fgHm1M689e6sV7///8A////AMqjl4GmZU/Xl0wy/OTRyz////8A////APbw7hSXSzH/7eHcKf///wD///8A7eHcKZdLMf/28O4U////AP///wDk0cs/l0wy/KhoU9THnpCJ////AP///wD///8Aol5H4s2onHn///8A////AM2onHmiXkfi////AP///wD///8AyKCSh6doU9XdxLxTl0wy/LeDca769vUK////ANe6sGCXTDL8uod2qLqHdqiXTDL817qxYOrb1jHIoZOEuIVzrJdMMvzcw7pV6NjTNZtSOfWkYUre+PPyD////wD///8A3cW+T7aCb7G2gnCx3sa+T9vCuVWYTTT6qWlU0raCcK/gysJJ////AK91YcK4hnWo/v39Af///wD///8A////AP///wD///8A////AP38+wOgXETnyaKVgv///wD///8A////AP///wCYTTT6487HQ////wD///8A////AP///wD///8A////AP///wDx5uMil0sx//Pr6Bz///8A////AP///wD///8AoV1G5dS1qmf///8A////AObUzjq6h3an/fz7A////wD///8A+PPyD5dMMvzj0MlB////AP///wDawLdXw5eIksynmnycVDzw0a+kcNa4rWSiXkfiu4p5pP///wD///8A////AP///wC7inmkol5H4ta4rWTRr6RvnFQ88Mqjl37+/f0ByKGTg55XP+ubUznzv5GCm/r39gr///8A////AP///wD///8A+vf2Cr+RgpubUzrznlc/68ihk4T+/f0B3v0AAMbXAADbbwAA//8AAM/zAACH4QAAO9wAAHveAAA73AAAnDEAAJ5jAAA/zwAAf98AAHveAACzzQAAh+EAAA==');
+}
+
+#page-auth-shibboleth-login #idp option[value="https://ident-shib.sciencespo-rennes.fr/idp/shibboleth"] {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAQAAAAEABcxq3DAAACxklEQVQ4y3WTzWuTSQDGf/N+xCS1JjVJG0Pr1kabralRq4Jfdd0VEXG7yrruwupBBBU8ePCgtMWL4kVPHi3oH6D25AeoCNtdtOqqjYrgVpJu+rHRsElja5r0Td53PKQEa/GBYQ4zz28eZp4R+eR7mR14gSyW+Fx6jas8u924I2HBVySSt+/K54ePY+bzsxY8G9czNTyCZRgE9vzIxJIAm44emQNSAMx8AXMqXxmyZAKQG0rw8W2MwQsXqXmX4creffJLgPZldADFZkNKibM+QFVTI7YaNwJB87YfoPfabIDQNWAGrCjIYhF7wE/joQNY7moy4xkK4+OUfD5CrWGi13vl7c5uut6+EbMTzJirW0KEL5whNfmB+ydP8mFsDONjjvq2NpxeDw1r2jjYe5WuSOTzBAIsC93lornzBK+ePOa/aJTxxDClQgHb/CqcPi+Jh/3E+/4k9eYf8sn30rGoTlQSSNPE9307eVcVTy5foW55C7WhZoxcjoXBIJlYDCOXQ9E0xqJREgPPKUxMSAVFKb+nruNp38DIwAB14eVoDgfHH/wlnB4Po0+fko4PAWCVSmSG/uVmVzeTqRRa5eY1DZvPS+rvfmJ/9AHQs6tDmtPTTKUziJmDAISikPs/zWTyXbkH0rIQWplVMgwUVUVRVYYfPUadN49AJIK0rApAWhaKpqHqOorqsONcXM/o6mUMxgfxt7ZWNprFIqPPnmGvcRNYGUHVdaRlIaXEE2yi2u9HSWbTbH/5UBy7f080tW9mxe4OvMuWouo6AEZuikT/IzS7naat3+FdGsThchHZ+zMLG78Rc7p95+w5ueN0tzjfulKm43GEqlZi2xcsoGHdWtbs/53Vv/0qKBdgrh5c6pH+lm95feMWsb4+siOjuBvqqQ2FCP/Uwap9v1R8X/2mPTt3yW2dp5hfW4dpTAOQz2YJbtkyy/MJFfAaZK23CdUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjBUMTA6NDk6MzYrMDI6MDA5Z/DvAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1LTA3LTIwVDEwOjQ5OjM2KzAyOjAwSDpIUwAAAABJRU5ErkJggg==');
+}
+
+#page-auth-shibboleth-login #idp option[value="urn:mace:cru.fr:federation:univ-rennes1.fr"] {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAQAAAAEABcxq3DAAAB6UlEQVQ4y92S3UtTcRjHv7+1ae0t6GVG/0Bd6cqmIrbONIw2KUpCiZWzSKGkRLwogi5CCCLDm4IuRjfSTWJBLikiLMvAGkl100VQXXXh2dlLZ7/tnG3fLnSmQlBBNz23z/N53r5f4P8KUgVJUGpr0uq3ejILSm0hZ2ZASjCXXMFYf8IEIKthpt7Baq1wrbdVnujuibYFQ5PMpcY6jnZNbqnyfKyv870nZVSIdQAAsdTA0NAabM9YLELm88ZmALA77G8OhIJD6Ux667PnL+smYuPdQBEo0CVs7gwAWBam59DeGblbKBScZVgIgaye3fXk6dT5/a375shS8NrVkZMAUYaXnUAUC6YXAKo8nqmNmzZ8amzwxaK3R8dVVW1IJucrYg/vbd/bEkq8jscV5jPHRKULSxsAJSj+psveHdX9brfz8ecvX70PYo/OOZ3ODyQxdGX4FkxT89XW9qrzarjndN8lUl+lgK6DzKOz48hIpCs8SiOJ+Ox0W0DxM6D4efHC4AClhpZmxTx86OBbUq5UQTgci8/Ub4JFHTaBnTU1E7ubGgemX8xcn3k1O3zqTP+2UqlkNU3D+LUXEolFScvySkSOh2+UN2kO7OH9sTvB5TW/YTAJmnLt2b7eQRrf7avN9AeNUn8H/tP4AX438DbsXuD8AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTIwVDEwOjUwOjA1KzAyOjAwu5sZmwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNS0wNy0yMFQxMDo1MDowNSswMjowMMrGoScAAAAASUVORK5CYII=');
+}
+
+#page-auth-shibboleth-login #idp option[value="urn:mace:cru.fr:federation:uhb.fr"] {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAQAAAAEABcxq3DAAAB6UlEQVQoz1WST0iUURTFf/fNlzCpWSA0EQYSYgz9cRUWNut2QdG+drWR2rizqFW0KGaVyZAGQVCGChVEm8wpgiJiQhTCFlIEYWU2g86/d1q870u7m/d4vHPPPeceY9wAJDMTGIhwAjJMiLgMcBbfTQgv+eSDMEtJoR0IvEARwpA81DmU6euI2ufK8z9WlmkBNQNjT2tPJr0zZe7F95dwF25zcfZCXTUltVRZ2veglwKMpSjwcG4ivDOCo8H57LkbAzcjtqDATdfWrvnTCwd39OGbQM1XExk46lzrv56osqAsqHh9oohjQ3MA7O3s3ha1g/40VoeKQ8ce56YXpwy8fGuq9dXxIuv/ATgyfTjMd+b5WUbhDoxw+e0lSfJe0uDsYOF9YUODNxeQ2c4sDWhCmivvrk59nsQMyA/kD2T2b6K4hyTvvaSZbzOPFiYowDiM8rXyRZLXPzJxC0eF0s+PYc25TO5k7ylqmCBi92T3mtbD7s0Udu1oof/Z0dX6b9vknMxwjlp9z/1dlWbFsCQsOMzWquWOse3Db4afLj0p/SqRAmTyuNRydaVtrC3/Ib9Y/hTnhXEMk0QTPBgWIbPEfwc+NsNjaYuSEVFkIZ7EmTUkzIMjEpFMJnDCUBzsgFCcVwVbTd4ww0Kbv2lsB+BFv9iTAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTIwVDEwOjUwOjA1KzAyOjAwu5sZmwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNS0wNy0yMFQxMDo1MDowNSswMjowMMrGoScAAAAASUVORK5CYII=');
+}
