@@ -38,7 +38,7 @@ version.php
     if and when you want to add them.
 /lang/en/
     This sub-directory contains your language files, in this case English.
-/lang/en/theme_clean.php
+/lang/en/theme_apsolu.php
     This file contains all the language strings for your theme.
     (Contains some elements that require renaming as well as the filename itself).
 /layout/
@@ -75,8 +75,8 @@ Renaming elements
 The problem when copying a theme is that you need to rename all those instances
 where the old theme name occurs, in this case clean. So using the above list as
 a guide, search through and change all the instances of the theme name
-'clean' to 'cleantheme'. This includes the filename of the lang/en/theme_clean.php.
-You need to change this to 'theme_cleantheme.php'.
+'clean' to 'cleantheme'. This includes the filename of the lang/en/theme_apsolu.php.
+You need to change this to 'theme_apsolutheme.php'.
 
 Installing your theme
 ---------------------

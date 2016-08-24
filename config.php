@@ -26,7 +26,7 @@ $THEME->name = 'apsolu';
 
 // The only thing you need to change in this file when copying it to
 // create a new theme is the name above. You also need to change the name
-// in version.php and lang/en/theme_clean.php as well.
+// in version.php and lang/en/theme_apsolu.php as well.
 
 $THEME->doctype = 'html5';
 $THEME->parents = array('bootstrap');
