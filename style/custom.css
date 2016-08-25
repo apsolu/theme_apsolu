@@ -49,6 +49,18 @@ h2, .navbar-brand {
 }
 */
 
+#apsolu-additional-html {
+    margin: 1em 0 0 0;
+    text-align: center;
+}
+
+#page-site-index #apsolu-additional-html,
+#page-auth-shibboleth-login #apsolu-additional-html,
+#page-login-index #apsolu-additional-html,
+#page-user-policy #apsolu-additional-html {
+    display: none;
+}
+
 /* tableau de bord */
 #page-my-index .block_course_overview .content .title{
     font-size: 1em;
