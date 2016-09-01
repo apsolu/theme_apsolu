@@ -206,7 +206,24 @@ body, #page-site-index {
     min-height: 120%;
 }
 
+
+/* user policy */
+@keyframes fadeIn{
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
 #page-user-policy #resourceobject{
+    animation: 1s ease-in-out 0s normal none 1 running fadeIn;
     max-height: 500px !important;
 }
 
