@@ -96,14 +96,14 @@ echo $OUTPUT->doctype() ?>
 
 <footer id="page-footer" class="row">
     <div class="col-md-8 page-footer-flex-center">
-        <a class="col-xs-2 text-center logosiuaps" href="http://www.siuaps.univ-rennes1.fr">
-            <img src="<?php echo $OUTPUT->pix_url('logo_siuaps_white_with_text', 'theme_apsolu');?>" alt="S.I.U.A.P.S. de Rennes" width="82px" height="82px" />
+        <a class="col-xs-3 col-md-2 text-center" href="https://siuaps.univ-rennes.fr">
+            <img id="apsolu-logo-siuaps" src="<?php echo $OUTPUT->pix_url('logo_siuaps_white_with_text', 'theme_apsolu');?>" alt="S.I.U.A.P.S. de Rennes" width="100%" />
         </a>
-        <a class="col-xs-2 text-center logour1" href="https://www.univ-rennes1.fr">
-            <img src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" width="163px" height="60px" />
+        <a class="col-xs-4 col-md-2 text-center" href="https://www.univ-rennes1.fr">
+            <img id="apsolu-logo-ur1" src="<?php echo $OUTPUT->pix_url('logo_ur1_white', 'theme_apsolu');?>" alt="Université de Rennes 1" width="100%" />
         </a>
-        <a class="col-xs-2 text-center logour2" href="https://www.univ-rennes2.fr">
-            <img src="<?php echo $OUTPUT->pix_url('logo_ur2_white', 'theme_apsolu');?>" alt="Université Rennes 2" width="82px" height="83px" />
+        <a class="col-xs-3 col-md-2 text-center" href="https://www.univ-rennes2.fr">
+            <img id="apsolu-logo-ur2" src="<?php echo $OUTPUT->pix_url('logo_ur2_white', 'theme_apsolu');?>" alt="Université Rennes 2" width="100%" />
         </a>
     </div>
     <div class="col-md-4 page-footer-flex-bottom">
