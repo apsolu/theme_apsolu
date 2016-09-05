@@ -169,9 +169,8 @@ a {
     color: #FFF;
     display: flex;
     left: 0;
-    margin: 0;
+    margin: 20px 0 0 0;
     max-height: 8em;
-    position: fixed;
     width: 100%;
     z-index: 5;
 }
@@ -210,12 +209,13 @@ a {
     font-size: 1.1em;
 }
 
-body, #page-site-index {
-    padding-top: 3.6em;
-    padding-bottom: 8em;
-    min-height: 120%;
+html {
+    background-color: #6f787b;
 }
 
+body {
+    padding-top: 3.6em;
+}
 
 /* user policy */
 @keyframes fadeIn{
