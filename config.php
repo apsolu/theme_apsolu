@@ -38,3 +38,16 @@ $THEME->editor_sheets = array();
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->csspostprocess = 'theme_clean_process_css';
+
+$THEME->layouts = array(
+    // The pagelayout used for Log in.
+    // Uses single column to maximise usable screen space
+    'login' => array(
+        'file' => 'login.php',
+        'regions' => array()
+    )
+);
+
+$THEME->javascripts_footer = array(
+    'login_page'
+);
