@@ -302,6 +302,10 @@ nav.navbar-fixed-top + * {
     display: none;
 }
 
+#page-auth-shibboleth-login .signuppanel {
+    display: none;
+}
+
 /* logos des établissements dans le menu d'authentification shibboleth */
 #page-auth-shibboleth-login #idp {
     -webkit-appearance: none;
