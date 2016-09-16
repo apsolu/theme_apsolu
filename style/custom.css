@@ -163,6 +163,12 @@ a {
     padding-left: 40px;
 }
 
+/* mod_feedback */
+.feedback_form .feedback-item-multichoice .felement.fgroup label {
+    display: inline;
+}
+
+/* footer */
 #page-footer {
     background-color: #6f787b;
     bottom: 0;
