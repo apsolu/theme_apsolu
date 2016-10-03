@@ -67,6 +67,7 @@ class renderer extends moodle\renderer {
         }
         $return .= \html_writer::tag('h3', $category->title);
 
+        var_dump($category->name);
         if ($category->name === 'contact') {
             if (isset($userid)) {
                 $user = $DB->get_record('user', array('id' => $userid));
@@ -86,7 +87,7 @@ class renderer extends moodle\renderer {
                         $picture = null;
                         $classes = 'contentnode';
 
-                        $fields = array('auth', 'institution', 'department', 'phone1', 'phone2');
+                        $fields = array('auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2');
                         foreach ($fields as $field) {
                             if (!empty($user->{$field})) {
                                 $content = $user->{$field};
@@ -112,6 +113,7 @@ class renderer extends moodle\renderer {
             $nodes = array (
                 'editprofile' => '',
                 'authentication' => '',
+                'idnumber' => '',
                 'email' => '',
                 'phone1' => '',
                 'phone2' => '',
@@ -121,9 +123,10 @@ class renderer extends moodle\renderer {
                 'institution' => '',
                 'custom_field_sex' => '',
                 'custom_field_birthday' => '',
-                'custom_field_option_paid' => '',
-                'custom_field_bonificationpaid' => '',
-                'custom_field_librepaid' => '',
+                'custom_field_cardpaid' => '',
+                'custom_field_muscupaid' => '',
+                'custom_field_federationpaid' => '',
+                'custom_field_validsesame' => '',
             );
 
             // Ajoute les données.
