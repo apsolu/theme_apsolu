@@ -67,7 +67,6 @@ class renderer extends moodle\renderer {
         }
         $return .= \html_writer::tag('h3', $category->title);
 
-        var_dump($category->name);
         if ($category->name === 'contact') {
             if (isset($userid)) {
                 $user = $DB->get_record('user', array('id' => $userid));
