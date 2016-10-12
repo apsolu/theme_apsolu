@@ -63,3 +63,14 @@ $string['pluginname'] = 'Apsolu';
 
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
+
+$string['validsesame'] = 'Compte Sésame validé';
+$string['lmd'] = 'LMD';
+$string['ufr'] = 'UFR';
+$string['sex'] = 'Sexe';
+$string['birthday'] = 'Date de naissance';
+$string['cardpaid'] = 'Carte sport payée';
+$string['muscupaid'] = 'Musculation payée';
+$string['federationpaid'] = 'Adhésion à l\'association sportive payée';
+$string['federationnumber'] = 'Numéro de licence FFSU';
+$string['medicalcertificate'] = 'Certificat médical FFSU';

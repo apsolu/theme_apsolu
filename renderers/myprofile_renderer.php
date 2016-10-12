@@ -73,7 +73,13 @@ class renderer extends moodle\renderer {
                 if ($user) {
                     if (isset($courseid)) {
                         $context = \context_course::instance($courseid);
-                        $canviewhiddenuserfields = \has_capability('moodle/course:viewhiddenuserfields', $context);
+                        $canviewhiddenuserfields = \has_capability('moodle/course:enrolreview', $context);
+
+                        require_once(__DIR__.'/../../../enrol/select/locallib.php');
+                        $role = \UniversiteRennes2\Apsolu\get_user_role($courseid, $userid);
+                        if ($role) {
+                            $user->role = $role->localname;
+                        }
                     } else {
                         $context = \context_user::instance($userid);
                         $canviewhiddenuserfields = \has_capability('moodle/user:viewhiddendetails', $context);
@@ -86,7 +92,8 @@ class renderer extends moodle\renderer {
                         $picture = null;
                         $classes = 'contentnode';
 
-                        $fields = array('auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2');
+                        // Classic fields.
+                        $fields = array('auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role');
                         foreach ($fields as $field) {
                             if (!empty($user->{$field})) {
                                 $content = $user->{$field};
@@ -104,6 +111,32 @@ class renderer extends moodle\renderer {
                                 $category->add_node($node);
                             }
                         }
+
+                        // Custom fields.
+                        $customfields = profile_user_record($user->id);
+                        $fields = array('validsesame', 'lmd', 'ufr', 'sex', 'birthday', 'cardpaid', 'muscupaid', 'federationpaid', 'federationnumber', 'medicalcertificate');
+                        foreach ($fields as $field) {
+                            if (isset($customfields->{$field})) {
+                                if (in_array($field, array('validsesame', 'cardpaid', 'muscupaid', 'federationpaid', 'medicalcertificate'), true)) {
+                                    $attributes = array('disabled' => 1, 'readonly' => 1);
+                                    if ($customfields->{$field}) {
+                                        $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
+                                    } else {
+                                        $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = false, $label = '', $attributes);
+                                    }
+                                } else {
+                                    if (empty($customfields->{$field})) {
+                                        continue;
+                                    }
+                                    $content = $customfields->{$field};
+                                }
+
+                                $title = get_string($field, 'theme_apsolu');
+
+                                $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                                $category->add_node($node);
+                            }
+                        }
                     }
                 }
             }
@@ -112,20 +145,23 @@ class renderer extends moodle\renderer {
             $nodes = array (
                 'editprofile' => '',
                 'authentication' => '',
+                'validsesame' => '',
+                'role' => '',
                 'idnumber' => '',
                 'email' => '',
                 'phone1' => '',
                 'phone2' => '',
-                'custom_field_lmd' => '',
-                'custom_field_ufr' => '',
+                'lmd' => '',
+                'ufr' => '',
                 'department' => '',
                 'institution' => '',
-                'custom_field_sex' => '',
-                'custom_field_birthday' => '',
-                'custom_field_cardpaid' => '',
-                'custom_field_muscupaid' => '',
-                'custom_field_federationpaid' => '',
-                'custom_field_validsesame' => '',
+                'sex' => '',
+                'birthday' => '',
+                'cardpaid' => '',
+                'muscupaid' => '',
+                'federationpaid' => '',
+                'federationnumber' => '',
+                'medicalcertificate' => '',
             );
 
             // Ajoute les données.
@@ -141,6 +177,44 @@ class renderer extends moodle\renderer {
                     unset($nodes[$key]);
                 }
             }
+        } else if ($category->name === 'coursedetails') {
+            if ($userid) {
+                if (isset($courseid)) {
+                    $context = \context_course::instance($courseid);
+                    $canviewhiddenuserfields = \has_capability('moodle/course:enrolreview', $context);
+                } else {
+                    $context = \context_user::instance($userid);
+                    $canviewhiddenuserfields = \has_capability('moodle/user:viewhiddendetails', $context);
+                }
+
+                if ($canviewhiddenuserfields) {
+                    $sql = "SELECT c.*".
+                        " FROM {cohort} c".
+                        " JOIN {cohort_members} cm ON c.id = cm.cohortid AND cm.userid = :userid".
+                        " ORDER BY c.name";
+                    $cohorts = $DB->get_records_sql($sql, array('userid' => $userid));
+                    if (count($cohorts) > 0) {
+                        $parentcat = 'coursedetails';
+                        $field = 'cohorts';
+                        $place = null;
+                        $url = null;
+                        $picture = null;
+                        $classes = 'contentnode';
+                        $title = get_string('cohorts', 'cohort');
+
+                        $content = '<ul>';
+                        foreach ($cohorts as $cohort) {
+                            $content .= '<li>'.$cohort->name.'</li>';
+                        }
+                        $content .= '</ul>';
+
+                        $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                        $category->add_node($node);
+                    }
+                }
+            }
+
+            $nodes = $category->nodes;
         } else {
             $nodes = $category->nodes;
         }
