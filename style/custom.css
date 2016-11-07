@@ -49,6 +49,12 @@ h2, .navbar-brand {
 }
 */
 
+
+/* selecteur utilisateur */
+form .userselector select {
+    max-width: 450px;
+}
+
 #apsolu-additional-html {
     margin: 1em 0 0 0;
     text-align: center;
