@@ -222,7 +222,7 @@ a {
 }
 
 html {
-    background-color: #6f787b;
+    background-color: #ffffff;
 }
 
 body {
@@ -349,4 +349,22 @@ nav.navbar-fixed-top + * {
 #page-auth-shibboleth-login #idp option[value="urn:mace:cru.fr:federation:uhb.fr"],
 #page-auth-shibboleth-login #idp option[value="urn:mace:cru.fr:federation:test.uhb.fr"] {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAQAAAAEABcxq3DAAAB6UlEQVQoz1WST0iUURTFf/fNlzCpWSA0EQYSYgz9cRUWNut2QdG+drWR2rizqFW0KGaVyZAGQVCGChVEm8wpgiJiQhTCFlIEYWU2g86/d1q870u7m/d4vHPPPeceY9wAJDMTGIhwAjJMiLgMcBbfTQgv+eSDMEtJoR0IvEARwpA81DmU6euI2ufK8z9WlmkBNQNjT2tPJr0zZe7F95dwF25zcfZCXTUltVRZ2veglwKMpSjwcG4ivDOCo8H57LkbAzcjtqDATdfWrvnTCwd39OGbQM1XExk46lzrv56osqAsqHh9oohjQ3MA7O3s3ha1g/40VoeKQ8ce56YXpwy8fGuq9dXxIuv/ATgyfTjMd+b5WUbhDoxw+e0lSfJe0uDsYOF9YUODNxeQ2c4sDWhCmivvrk59nsQMyA/kD2T2b6K4hyTvvaSZbzOPFiYowDiM8rXyRZLXPzJxC0eF0s+PYc25TO5k7ylqmCBi92T3mtbD7s0Udu1oof/Z0dX6b9vknMxwjlp9z/1dlWbFsCQsOMzWquWOse3Db4afLj0p/SqRAmTyuNRydaVtrC3/Ib9Y/hTnhXEMk0QTPBgWIbPEfwc+NsNjaYuSEVFkIZ7EmTUkzIMjEpFMJnDCUBzsgFCcVwVbTd4ww0Kbv2lsB+BFv9iTAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTIwVDEwOjUwOjA1KzAyOjAwu5sZmwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNS0wNy0yMFQxMDo1MDowNSswMjowMMrGoScAAAAASUVORK5CYII=');
+}
+
+
+/* alert */
+.alert-error {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+/* enrol */
+#page-enrol-index #notice {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    color: #a94442;
+    padding: 15px;
+    margin: 1em auto;
 }
