@@ -309,10 +309,27 @@ nav.navbar-fixed-top + * {
     color: #F39C12;
 }
 
+.breadcrumb .dimmed_text,
+.breadcrumb .dimmed_text span {
+    color: #d4d4d4;
+}
+
 /* supprime la colonne 'type' sur le mod_attendance */
 .attsessions_manage_table .c1 {
     display: none;
 }
+
+
+/* ajoute une icône pour fermer l'overlay */
+/*
+.popup_content {
+    background-color: white;
+    background-image: url([[pix:core|i/delete]]);
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+*/
 
 #page-auth-shibboleth-login .signuppanel {
     display: none;
@@ -357,6 +374,16 @@ nav.navbar-fixed-top + * {
     background-color: #f2dede;
     border-color: #ebccd1;
     color: #a94442;
+}
+
+.notifytiny.debuggingmessage {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border: 1px solid transparent;
+    border-color: #faebcc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
 /* enrol */
