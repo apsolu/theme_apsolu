@@ -370,6 +370,10 @@ nav.navbar-fixed-top + * {
 
 
 /* alert */
+.alert[data-rel="fatalerror"] {
+    margin-top: 7em;
+}
+
 .alert-error {
     background-color: #f2dede;
     border-color: #ebccd1;
