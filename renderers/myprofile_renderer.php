@@ -54,7 +54,7 @@ class renderer extends moodle\renderer {
      * @return string
      */
     public function render_category(moodle\category $category) {
-        global $DB;
+        global $CFG, $DB;
 
         $userid = \optional_param('id', null, PARAM_INT);
         $courseid = \optional_param('course', null, PARAM_INT);
@@ -188,6 +188,40 @@ class renderer extends moodle\renderer {
                 }
 
                 if ($canviewhiddenuserfields) {
+                    // Get enrolments.
+                    require_once(__DIR__.'/../../../enrol/select/lib.php');
+                    require_once(__DIR__.'/../../../enrol/select/locallib.php');
+
+                    $roles = role_fix_names($DB->get_records('role'));
+
+                    $recordsets = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
+                    $items = array();
+                    foreach ($recordsets as $course) {
+                        $enrolurl = new \moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
+                        $courseurl = new \moodle_url('/user/view.php', array('id' => $userid, 'course' => $course->id));
+
+                        $rolename = $roles[$course->roleid]->name;
+                        $status = get_string(\enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
+
+                        $items[] = '<li><a href="'.$courseurl.'">'.$course->fullname.'</a><br />'.
+                            '<span class="course-profil-complementary-span">'.$course->enrolname.' : <a class="course-profil-complementary-a" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></span></li>';
+                    }
+
+                    if (isset($items[0])) {
+                        $parentcat = 'coursedetails';
+                        $field = 'courses';
+                        $place = null;
+                        $url = null;
+                        $picture = null;
+                        $classes = '';//contentnode';
+                        $title = get_string('courseprofiles');
+                        $content = '<ul>'.implode('', $items).'</ul>';
+
+                        $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                        $category->add_node($node);
+                    }
+
+                    // Get cohorts.
                     $sql = "SELECT c.*".
                         " FROM {cohort} c".
                         " JOIN {cohort_members} cm ON c.id = cm.cohortid AND cm.userid = :userid".
