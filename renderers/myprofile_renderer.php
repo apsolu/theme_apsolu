@@ -114,10 +114,10 @@ class renderer extends moodle\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('validsesame', 'lmd', 'ufr', 'sex', 'birthday', 'cardpaid', 'muscupaid', 'federationpaid', 'federationnumber', 'medicalcertificate');
+                        $fields = array('validsesame', 'lmd', 'ufr', 'sex', 'birthday', 'cardpaid', 'muscupaid', 'federationpaid', 'federationnumber', 'medicalcertificate', 'highlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
-                                if (in_array($field, array('validsesame', 'cardpaid', 'muscupaid', 'federationpaid', 'medicalcertificate'), true)) {
+                                if (in_array($field, array('validsesame', 'cardpaid', 'muscupaid', 'federationpaid', 'medicalcertificate', 'highlevelathlete'), true)) {
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
                                     if ($customfields->{$field}) {
                                         $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
@@ -146,6 +146,7 @@ class renderer extends moodle\renderer {
                 'editprofile' => '',
                 'authentication' => '',
                 'validsesame' => '',
+                'highlevelathlete' => '',
                 'role' => '',
                 'idnumber' => '',
                 'email' => '',

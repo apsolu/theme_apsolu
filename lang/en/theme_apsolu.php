@@ -74,3 +74,4 @@ $string['muscupaid'] = 'Musculation payée';
 $string['federationpaid'] = 'Adhésion à l\'association sportive payée';
 $string['federationnumber'] = 'Numéro de licence FFSU';
 $string['medicalcertificate'] = 'Certificat médical FFSU';
+$string['highlevelathlete'] = 'Sportif de haut niveau';
