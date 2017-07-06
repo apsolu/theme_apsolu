@@ -82,10 +82,10 @@ echo $OUTPUT->doctype() ?>
                 echo '<div id="apsolu-select-authentification-method" class="sr-only">'.
                     '<ul class="apsolu-inscription" id="authentification">'.
                         '<li class="col-md-4 col-md-offset-2">'.
-                            '<a class="btn btn-success btn-lg" href="'.$CFG->wwwroot.'/auth/shibboleth/login.php">'.get_string('sesame', 'local_apsolu_homepage').'</a>'.
+                            '<a class="btn btn-success btn-lg" href="'.$CFG->wwwroot.'/auth/shibboleth/login.php">'.get_string('homepage_sesame', 'local_apsolu').'</a>'.
                         '</li>'.
                         '<li class="col-md-4">'.
-                            '<a class="btn btn-default btn-lg" href="'.$CFG->wwwroot.'/login/index.php?manual=1">'.get_string('nosesame', 'local_apsolu_homepage').'</a>'.
+                            '<a class="btn btn-default btn-lg" href="'.$CFG->wwwroot.'/login/index.php?manual=1">'.get_string('homepage_nosesame', 'local_apsolu').'</a>'.
                         '</li>'.
                     '</ul>'.
                 '</div>';
