@@ -60,6 +60,10 @@ form .userselector select {
     text-align: center;
 }
 
+#apsolu-additional-html a {
+    font-weight: bold;
+}
+
 #page-site-index #apsolu-additional-html,
 #page-auth-shibboleth-login #apsolu-additional-html,
 #page-login-index #apsolu-additional-html,
