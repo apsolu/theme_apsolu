@@ -75,11 +75,7 @@ class renderer extends moodle\renderer {
                         $context = \context_course::instance($courseid);
                         $canviewhiddenuserfields = \has_capability('moodle/course:enrolreview', $context);
 
-                        require_once(__DIR__.'/../../../enrol/select/locallib.php');
-                        $role = \UniversiteRennes2\Apsolu\get_user_role($courseid, $userid);
-                        if ($role) {
-                            $user->role = $role->localname;
-                        }
+                        $user->role = get_user_roles_in_course($userid, $courseid);
                     } else {
                         $context = \context_user::instance($userid);
                         $canviewhiddenuserfields = \has_capability('moodle/user:viewhiddendetails', $context);
