@@ -110,10 +110,10 @@ class renderer extends moodle\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('validsesame', 'lmd', 'ufr', 'sex', 'birthday', 'cardpaid', 'muscupaid', 'federationpaid', 'federationnumber', 'medicalcertificate', 'highlevelathlete');
+                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsolucardpaid', 'apsolumuscupaid', 'apsolufederationpaid', 'apsolufederationnumber', 'apsolumedicalcertificate', 'apsoluhighlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
-                                if (in_array($field, array('validsesame', 'cardpaid', 'muscupaid', 'federationpaid', 'medicalcertificate', 'highlevelathlete'), true)) {
+                                if (in_array($field, array('apsoludoublecursus', 'apsolusesame', 'apsolucardpaid', 'apsolumuscupaid', 'apsolufederationpaid', 'apsolumedicalcertificate', 'apsoluhighlevelathlete'), true)) {
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
                                     if ($customfields->{$field}) {
                                         $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
@@ -127,7 +127,7 @@ class renderer extends moodle\renderer {
                                     $content = $customfields->{$field};
                                 }
 
-                                $title = get_string($field, 'theme_apsolu');
+                                $title = get_string('fields_'.$field, 'local_apsolu');
 
                                 $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                                 $category->add_node($node);
@@ -141,24 +141,25 @@ class renderer extends moodle\renderer {
             $nodes = array (
                 'editprofile' => '',
                 'authentication' => '',
-                'validsesame' => '',
-                'highlevelathlete' => '',
+                'apsolusesame' => '',
+                'apsoludoublecursus' => '',
+                'apsoluhighlevelathlete' => '',
                 'role' => '',
                 'idnumber' => '',
                 'email' => '',
                 'phone1' => '',
                 'phone2' => '',
-                'lmd' => '',
-                'ufr' => '',
+                'apsolucycle' => '',
+                'apsoluufr' => '',
                 'department' => '',
                 'institution' => '',
-                'sex' => '',
-                'birthday' => '',
-                'cardpaid' => '',
-                'muscupaid' => '',
-                'federationpaid' => '',
-                'federationnumber' => '',
-                'medicalcertificate' => '',
+                'apsolusex' => '',
+                'apsolubirthday' => '',
+                'apsolucardpaid' => '',
+                'apsolumuscupaid' => '',
+                'apsolufederationpaid' => '',
+                'apsolufederationnumber' => '',
+                'apsolumedicalcertificate' => '',
             );
 
             // Ajoute les données.
