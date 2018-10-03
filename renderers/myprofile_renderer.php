@@ -17,8 +17,11 @@
 namespace theme_apsolu\output\core_user\myprofile;
 
 use \core_user\output\myprofile as moodle;
+use UniversiteRennes2\Apsolu\Payment;
 
 defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot.'/local/apsolu/classes/apsolu/payment.php');
 
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
@@ -110,10 +113,10 @@ class renderer extends moodle\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsolucardpaid', 'apsolumuscupaid', 'apsolufederationpaid', 'apsolufederationnumber', 'apsolumedicalcertificate', 'apsoluhighlevelathlete');
+                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsolufederationnumber', 'apsolumedicalcertificate', 'apsoluhighlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
-                                if (in_array($field, array('apsoludoublecursus', 'apsolusesame', 'apsolucardpaid', 'apsolumuscupaid', 'apsolufederationpaid', 'apsolumedicalcertificate', 'apsoluhighlevelathlete'), true)) {
+                                if (in_array($field, array('apsoludoublecursus', 'apsolusesame', 'apsolumedicalcertificate', 'apsoluhighlevelathlete'), true)) {
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
                                     if ($customfields->{$field}) {
                                         $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
@@ -132,6 +135,22 @@ class renderer extends moodle\renderer {
                                 $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                                 $category->add_node($node);
                             }
+                        }
+
+                        // Cards.
+                        $cards = Payment::get_user_cards($userid);
+                        $paymentsimages = Payment::get_statuses_images();
+                        if (count($cards) > 0) {
+                            $content = '<ul>';
+                            foreach ($cards as $card) {
+                                $card->status = Payment::get_user_card_status($card, $userid);
+
+                                $content .= '<li>'.$paymentsimages[$card->status]->image.' '.$card->name.'</li>';
+                            }
+                            $content .= '</ul>';
+
+                            $node = new moodle\node($parentcat, 'cards', get_string('cards', 'local_apsolu'), $place, $url, $content, $picture, $classes);
+                            $category->add_node($node);
                         }
                     }
                 }
@@ -155,9 +174,7 @@ class renderer extends moodle\renderer {
                 'institution' => '',
                 'apsolusex' => '',
                 'apsolubirthday' => '',
-                'apsolucardpaid' => '',
-                'apsolumuscupaid' => '',
-                'apsolufederationpaid' => '',
+                'cards' => '',
                 'apsolufederationnumber' => '',
                 'apsolumedicalcertificate' => '',
             );
