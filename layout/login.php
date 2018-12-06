@@ -42,8 +42,6 @@ echo $OUTPUT->doctype() ?>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
-
 <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header pull-left">
