@@ -405,11 +405,21 @@ nav.navbar-fixed-top + * {
 }
 
 /* profil */
-.course-profil-complementary-span {
+.course-profil-complementary-dl,
+.course-profil-complementary-p {
+    margin: 0;
+}
+
+.userprofile .course-profil-complementary-dt {
+    font-weight: normal;
     margin-left: 2em;
 }
 
-.course-profil-complementary-a {
+.userprofile .course-profil-complementary-dd {
+    margin-left: 3em;
+}
+
+.userprofile .course-profil-complementary-dd a {
     color: #9f00ff;
 }
 

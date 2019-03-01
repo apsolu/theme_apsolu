@@ -18,6 +18,7 @@ namespace theme_apsolu\output\core_user\myprofile;
 
 use \core_user\output\myprofile as moodle;
 use UniversiteRennes2\Apsolu\Payment;
+use local_apsolu\core\attendance as Attendance;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -208,6 +209,7 @@ class renderer extends moodle\renderer {
                     require_once(__DIR__.'/../../../enrol/select/locallib.php');
 
                     $roles = role_fix_names($DB->get_records('role'));
+                    $presences = Attendance::get_user_presences($userid);
 
                     $recordsets = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
                     $items = array();
@@ -218,8 +220,28 @@ class renderer extends moodle\renderer {
                         $rolename = $roles[$course->roleid]->name;
                         $status = get_string(\enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
 
-                        $items[] = '<li><a href="'.$courseurl.'">'.$course->fullname.'</a><br />'.
-                            '<span class="course-profil-complementary-span">'.$course->enrolname.' : <a class="course-profil-complementary-a" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></span></li>';
+                        if (isset($presences[$course->enrolid]) === false) {
+                            $presences[$course->enrolid] = new stdClass();
+                            $presences[$course->enrolid]->total = 0;
+                        }
+
+                        $presence = $presences[$course->enrolid]->total.' présences';
+                        if ($presences[$course->enrolid]->total < 2) {
+                            $presence = $presences[$course->enrolid]->total.' présence';
+                        }
+
+                        $items[] = '<li>'.
+                            '<p class="course-profil-complementary-p"><a href="'.$courseurl.'">'.$course->fullname.'</a></p>'.
+                            '<dl class="course-profil-complementary-dl">'.
+                                '<dt class="course-profil-complementary-dt">'.$course->enrolname.'</dt>'.
+                                '<dd class="course-profil-complementary-dd">'.
+                                    '<ul class="list-inline">'.
+                                        '<li><a href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></li>'.
+                                        '<li><span class="small">('.$presence.')</span></li>'.
+                                    '</ul>'.
+                                '</dd>'.
+                            '</dl>'.
+                            '</li>';
                     }
 
                     if (isset($items[0])) {
