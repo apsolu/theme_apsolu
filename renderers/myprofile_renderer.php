@@ -209,7 +209,7 @@ class renderer extends moodle\renderer {
                     require_once(__DIR__.'/../../../enrol/select/locallib.php');
 
                     $roles = role_fix_names($DB->get_records('role'));
-                    $presences = Attendance::get_user_presences($userid);
+                    $presences = Attendance::getUserPresences($userid);
 
                     $recordsets = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
                     $items = array();
