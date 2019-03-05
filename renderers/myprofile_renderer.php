@@ -16,6 +16,7 @@
 
 namespace theme_apsolu\output\core_user\myprofile;
 
+use stdClass;
 use \core_user\output\myprofile as moodle;
 use UniversiteRennes2\Apsolu\Payment;
 use local_apsolu\core\attendance as Attendance;
