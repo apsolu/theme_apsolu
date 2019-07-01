@@ -16,8 +16,15 @@
 
 namespace theme_apsolu\output\core_user\myprofile;
 
+use \core_user\output\myprofile\category;
+use \core_user\output\myprofile\node;
+
 use stdClass;
-use \core_user\output\myprofile as moodle;
+use context_course;
+use context_user;
+use moodle_url;
+use html_writer;
+use enrol_select_plugin;
 use UniversiteRennes2\Apsolu\Payment;
 use local_apsolu\core\attendance as Attendance;
 
@@ -28,29 +35,12 @@ require_once($CFG->dirroot.'/local/apsolu/classes/apsolu/payment.php');
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
- * @package    theme_bootstrap
- * @copyright  2012
+ * @package    theme_apsolu
+ * @copyright  2019
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-class renderer extends moodle\renderer {
-    /**
-     * Render the whole tree.
-     *
-     * @param tree $tree
-     *
-     * @return string
-     */
-    public function render_tree(moodle\tree $tree) {
-        $return = \html_writer::start_tag('div', array('class' => 'profile_tree'));
-        $categories = $tree->categories;
-        foreach ($categories as $category) {
-            $return .= $this->render($category);
-        }
-        $return .= \html_writer::end_tag('div');
-        return $return;
-    }
-
+class renderer extends \core_user\output\myprofile\renderer {
     /**
      * Render a category.
      *
@@ -58,32 +48,36 @@ class renderer extends moodle\renderer {
      *
      * @return string
      */
-    public function render_category(moodle\category $category) {
+    public function render_category(category $category) {
         global $CFG, $DB;
 
-        $userid = \optional_param('id', null, PARAM_INT);
-        $courseid = \optional_param('course', null, PARAM_INT);
+        $userid = optional_param('id', null, PARAM_INT);
+        $courseid = optional_param('course', null, PARAM_INT);
 
         $classes = $category->classes;
         if (empty($classes)) {
-            $return = \html_writer::start_tag('section', array('class' => 'node_category'));
+            $return = html_writer::start_tag('section', array('class' => 'node_category'));
         } else {
-            $return = \html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
+            $return = html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
         }
-        $return .= \html_writer::tag('h3', $category->title);
+        $return .= html_writer::tag('h3', $category->title);
+
+        if (in_array($category->name, array('privacyandpolicies', 'mobile')) === true) {
+            return '';
+        }
 
         if ($category->name === 'contact') {
             if (isset($userid)) {
                 $user = $DB->get_record('user', array('id' => $userid));
                 if ($user) {
                     if (isset($courseid)) {
-                        $context = \context_course::instance($courseid);
-                        $canviewhiddenuserfields = \has_capability('moodle/course:enrolreview', $context);
+                        $context = context_course::instance($courseid);
+                        $canviewhiddenuserfields = has_capability('moodle/course:enrolreview', $context);
 
                         $user->role = get_user_roles_in_course($userid, $courseid);
                     } else {
-                        $context = \context_user::instance($userid);
-                        $canviewhiddenuserfields = \has_capability('moodle/user:viewhiddendetails', $context);
+                        $context = context_user::instance($userid);
+                        $canviewhiddenuserfields = has_capability('moodle/user:viewhiddendetails', $context);
                     }
 
                     if ($canviewhiddenuserfields) {
@@ -108,7 +102,7 @@ class renderer extends moodle\renderer {
 
                                 $title = get_string($field);
 
-                                $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                                $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                                 $category->add_node($node);
                             }
                         }
@@ -121,9 +115,9 @@ class renderer extends moodle\renderer {
                                 if (in_array($field, array('apsoludoublecursus', 'apsolusesame', 'apsolumedicalcertificate', 'apsoluhighlevelathlete'), true)) {
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
                                     if ($customfields->{$field}) {
-                                        $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
+                                        $content = html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
                                     } else {
-                                        $content = \html_writer::checkbox($field, $customfields->{$field}, $checked = false, $label = '', $attributes);
+                                        $content = html_writer::checkbox($field, $customfields->{$field}, $checked = false, $label = '', $attributes);
                                     }
                                 } else {
                                     if (empty($customfields->{$field})) {
@@ -134,7 +128,7 @@ class renderer extends moodle\renderer {
 
                                 $title = get_string('fields_'.$field, 'local_apsolu');
 
-                                $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                                $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                                 $category->add_node($node);
                             }
                         }
@@ -151,7 +145,7 @@ class renderer extends moodle\renderer {
                             }
                             $content .= '</ul>';
 
-                            $node = new moodle\node($parentcat, 'cards', get_string('cards', 'local_apsolu'), $place, $url, $content, $picture, $classes);
+                            $node = new node($parentcat, 'cards', get_string('cards', 'local_apsolu'), $place, $url, $content, $picture, $classes);
                             $category->add_node($node);
                         }
                     }
@@ -197,17 +191,17 @@ class renderer extends moodle\renderer {
         } else if ($category->name === 'coursedetails') {
             if ($userid) {
                 if (isset($courseid)) {
-                    $context = \context_course::instance($courseid);
-                    $canviewhiddenuserfields = \has_capability('moodle/course:enrolreview', $context);
+                    $context = context_course::instance($courseid);
+                    $canviewhiddenuserfields = has_capability('moodle/course:enrolreview', $context);
                 } else {
-                    $context = \context_user::instance($userid);
-                    $canviewhiddenuserfields = \has_capability('moodle/user:viewhiddendetails', $context);
+                    $context = context_user::instance($userid);
+                    $canviewhiddenuserfields = has_capability('moodle/user:viewhiddendetails', $context);
                 }
 
                 if ($canviewhiddenuserfields) {
                     // Get enrolments.
-                    require_once(__DIR__.'/../../../enrol/select/lib.php');
-                    require_once(__DIR__.'/../../../enrol/select/locallib.php');
+                    require_once($CFG->dirroot.'/enrol/select/lib.php');
+                    require_once($CFG->dirroot.'/enrol/select/locallib.php');
 
                     $roles = role_fix_names($DB->get_records('role'));
                     $presences = Attendance::getUserPresences($userid);
@@ -215,11 +209,11 @@ class renderer extends moodle\renderer {
                     $recordsets = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
                     $items = array();
                     foreach ($recordsets as $course) {
-                        $enrolurl = new \moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
-                        $courseurl = new \moodle_url('/user/view.php', array('id' => $userid, 'course' => $course->id));
+                        $enrolurl = new moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
+                        $courseurl = new moodle_url('/user/view.php', array('id' => $userid, 'course' => $course->id));
 
                         $rolename = $roles[$course->roleid]->name;
-                        $status = get_string(\enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
+                        $status = get_string(enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
 
                         if (isset($presences[$course->enrolid]) === false) {
                             $presences[$course->enrolid] = new stdClass();
@@ -232,13 +226,13 @@ class renderer extends moodle\renderer {
                         }
 
                         $items[] = '<li>'.
-                            '<p class="course-profil-complementary-p"><a href="'.$courseurl.'">'.$course->fullname.'</a></p>'.
-                            '<dl class="course-profil-complementary-dl">'.
-                                '<dt class="course-profil-complementary-dt">'.$course->enrolname.'</dt>'.
-                                '<dd class="course-profil-complementary-dd">'.
+                            '<p class="my-0"><a href="'.$courseurl.'">'.$course->fullname.'</a></p>'.
+                            '<dl>'.
+                                '<dt class="font-weight-normal ml-3">'.$course->enrolname.'</dt>'.
+                                '<dd class="ml-5">'.
                                     '<ul class="list-inline">'.
-                                        '<li><a href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></li>'.
-                                        '<li><span class="small">('.$presence.')</span></li>'.
+                                        '<li class="list-inline-item"><a class="text-danger" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></li>'.
+                                        '<li class="list-inline-item"><span class="small">('.$presence.')</span></li>'.
                                     '</ul>'.
                                 '</dd>'.
                             '</dl>'.
@@ -255,7 +249,7 @@ class renderer extends moodle\renderer {
                         $title = get_string('courseprofiles');
                         $content = '<ul>'.implode('', $items).'</ul>';
 
-                        $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                        $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                         $category->add_node($node);
                     }
 
@@ -280,7 +274,7 @@ class renderer extends moodle\renderer {
                         }
                         $content .= '</ul>';
 
-                        $node = new moodle\node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                        $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                         $category->add_node($node);
                     }
                 }
@@ -296,43 +290,12 @@ class renderer extends moodle\renderer {
             return '';
         }
 
-        $return .= \html_writer::start_tag('ul');
+        $return .= html_writer::start_tag('ul');
         foreach ($nodes as $node) {
             $return .= $this->render($node);
         }
-        $return .= \html_writer::end_tag('ul');
-        $return .= \html_writer::end_tag('section');
-        return $return;
-    }
-
-    public function render_node(moodle\node $node) {
-        $return = '';
-        if (is_object($node->url)) {
-            $header = \html_writer::link($node->url, $node->title);
-        } else {
-            $header = $node->title;
-        }
-        $icon = $node->icon;
-        if (!empty($icon)) {
-            $header .= $this->render($icon);
-        }
-        $content = $node->content;
-        $classes = $node->classes;
-        if (!empty($content)) {
-            // There is some content to display below this make this a header.
-            $return = \html_writer::tag('dt', $header);
-            $return .= \html_writer::tag('dd', $content);
-
-            $return = \html_writer::tag('dl', $return);
-            if ($classes) {
-                $return = \html_writer::tag('li', $return, array('class' => 'contentnode ' . $classes));
-            } else {
-                $return = \html_writer::tag('li', $return, array('class' => 'contentnode'));
-            }
-        } else {
-            $return = \html_writer::span($header);
-            $return = \html_writer::tag('li', $return, array('class' => $classes));
-        }
+        $return .= html_writer::end_tag('ul');
+        $return .= html_writer::end_tag('section');
 
         return $return;
     }

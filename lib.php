@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version theme.
+ * Theme functions.
  *
  * @package   theme_apsolu
  * @copyright 2019 Université Rennes 2 {@link https://www.univ-rennes2.fr}
@@ -25,23 +25,21 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-// This is the version of the plugin.
-$plugin->version = 2019032900;
+/**
+ * Returns the main SCSS content.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string All fixed Sass for this theme.
+ */
+function theme_apsolu_get_main_scss_content($theme) {
+    global $CFG;
 
-// This is the version of Moodle this plugin requires.
-$plugin->requires = 2019030100;
+    $scss = '';
 
-// This is the component name of the plugin - it always starts with 'theme_'
-// for themes and should be the same as the name of the folder.
-$plugin->component = 'theme_apsolu';
+    // Main CSS - Get the CSS from theme Classic.
+    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/classic/pre.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/preset/default.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/classic/post.scss');
 
-// This is a list of plugins, this plugin depends on (and their versions).
-$plugin->dependencies = [
-    'theme_classic' => 2019030100
-];
-
-// This is a stable release.
-$plugin->maturity = MATURITY_STABLE;
-
-// This is the named version.
-$plugin->release = 1.0;
+    return $scss;
+}
