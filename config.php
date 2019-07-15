@@ -126,7 +126,7 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre',
     ),
     'login' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'login.php',
         'regions' => array(),
         'options' => array('langmenu' => true),
