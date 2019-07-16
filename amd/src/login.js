@@ -1,8 +1,8 @@
 define([], function() {
     return {
         initialise : function(strings) {
-            if (document.getElementById('page-login-index') === null) {
-                // N'exécute pas le script en dehors de la page de login par défaut.
+            if (document.getElementById('page-login-index') === null || document.getElementsByClassName('potentialidplist').length == 0) {
+                // N'exécute pas le script en dehors de la page de login par défaut, ou si l'authentification shibboleth ou cas n'est pas activée.
                 return;
             }
 
@@ -84,6 +84,12 @@ define([], function() {
                 pane.setAttribute('role', 'tabpanel');
 
                 div.append(pane);
+            });
+
+            // Modifie la couleur de liens Shibboleth/CAS.
+            var links = document.querySelectorAll('#page-login-index #institutional-pane a.btn-secondary');
+            links.forEach(function(link) {
+                link.classList.replace('btn-secondary', 'btn-primary');
             });
 
             // Défini l'onglet activé par défaut.
