@@ -82,7 +82,7 @@ define([], function() {
             });
 
             // Défini l'onglet activé par défaut.
-            if (window.location.hash == authid1) {
+            if (window.location.hash == "#"+authid1) {
                 var tab = document.querySelector('a[aria-controls='+authid1+']');
                 tab.setAttribute('class', 'nav-link active show');
 
