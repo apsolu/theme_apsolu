@@ -5,3 +5,7 @@
 #page-login-index .potentialidp img {
     display: none;
 }
+
+#page-auth-shibboleth-login #region-main .card.mt-1 {
+    display: none;
+}

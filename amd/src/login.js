@@ -1,6 +1,11 @@
 define([], function() {
     return {
         initialise : function(strings) {
+            if (document.getElementById('page-login-index') === null) {
+                // N'exécute pas le script en dehors de la page de login par défaut.
+                return;
+            }
+
             var authid1 = 'internal';
             var authid2 = 'institutional';
 
