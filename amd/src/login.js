@@ -90,6 +90,7 @@ define([], function() {
             var links = document.querySelectorAll('#page-login-index #institutional-pane a.btn-secondary');
             links.forEach(function(link) {
                 link.classList.replace('btn-secondary', 'btn-primary');
+                link.setAttribute('href', link.getAttribute('href').replace('/auth/shibboleth/index.php', '/auth/shibboleth/login.php'));
             });
 
             // Défini l'onglet activé par défaut.
