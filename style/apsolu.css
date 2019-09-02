@@ -9,3 +9,7 @@
 #page-auth-shibboleth-login #region-main .card.mt-1 {
     display: none;
 }
+
+#page-user-policy #resourceobject {
+    height: 1000px !important;
+}
