@@ -147,7 +147,7 @@ $THEME->layouts = [
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
-        'theme' => 'classic',
+        'theme' => 'boost',
         'file' => 'embedded.php',
         'regions' => array(),
     ),
