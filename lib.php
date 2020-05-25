@@ -28,10 +28,9 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Returns the main SCSS content.
  *
- * @param theme_config $theme The theme config object.
  * @return string All fixed Sass for this theme.
  */
-function theme_apsolu_get_main_scss_content($theme) {
+function theme_apsolu_get_main_scss_content() {
     global $CFG;
 
     $scss = '';

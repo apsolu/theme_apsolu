@@ -1,8 +1,15 @@
 define([], function() {
     return {
         initialise : function(strings) {
-            if (document.getElementById('page-login-index') === null || document.getElementsByClassName('potentialidplist').length == 0) {
-                // N'exécute pas le script en dehors de la page de login par défaut, ou si l'authentification shibboleth ou cas n'est pas activée.
+            var loginpage = document.getElementById('page-login-index');
+            if (loginpage === null) {
+                // N'exécute pas le script en dehors de la page de login par défaut.
+                return;
+            }
+
+            var shibbolethpage = document.getElementsByClassName('potentialidplist').length;
+            if (shibbolethpage === 0) {
+                // N'exécute pas le script si l'authentification Shibboleth ou CAS n'est pas activée.
                 return;
             }
 
@@ -46,7 +53,7 @@ define([], function() {
                     var order = 1;
 
                     var localepane = document.getElementById(authid1+'-pane');
-                    if (localepane == null) {
+                    if (localepane === null) {
                         // Supprime quelques libellés inutiles pour l'authentification universitaire.
                         pane.firstElementChild.remove(); // Paragraphe sur le changement de mot de passe.
                         pane.firstElementChild.remove(); // Paragraphe sur l'activation des cookies.
@@ -90,7 +97,9 @@ define([], function() {
             var links = document.querySelectorAll('#page-login-index #institutional-pane a.btn-secondary');
             links.forEach(function(link) {
                 link.classList.replace('btn-secondary', 'btn-primary');
-                link.setAttribute('href', link.getAttribute('href').replace('/auth/shibboleth/index.php', '/auth/shibboleth/login.php'));
+
+                var newlink = link.getAttribute('href').replace('/auth/shibboleth/index.php', '/auth/shibboleth/login.php');
+                link.setAttribute('href', newlink);
             });
 
             // Défini l'onglet activé par défaut.
@@ -108,5 +117,5 @@ define([], function() {
                 pane.classList.add('active', 'show');
             }
         }
-    }
+    };
 });

@@ -10,6 +10,12 @@
     display: none;
 }
 
+/*
+Commente le !important pour passer le test de coding style.
+Trouver une solution pour améliorer l'affichage de la politique du site.
+*/
+/*
 #page-user-policy #resourceobject {
     height: 1000px !important;
 }
+*/
