@@ -25,17 +25,30 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-// Raw SCSS setting.
-$string['choosereadme'] = 'Apsolu is a highly-customisable theme, based on Classic, with an alternative navigation layout. This theme is intended to be used directly, or as a parent theme when creating or updating custom themes to utilise Bootstrap 4.';
-$string['configtitle'] = 'Apsolu';
-$string['navbardark'] = 'Use a dark style navbar';
-$string['navbardarkdesc'] = 'Swaps text and background colours for the navbar at the top of the page between dark and light.';
+// Nom du thème.
 $string['pluginname'] = 'Apsolu';
-$string['presetfiles'] = 'Additional theme preset files';
-$string['presetfiles_desc'] = 'Preset files can be used to dramatically alter the appearance of the theme. See <a href=https://docs.moodle.org/dev/Boost_Presets>Boost presets</a> for information on creating and sharing your own preset files, and see the <a href=https://moodle.net/boost>Presets repository</a> for presets that others have shared.';
-$string['preset'] = 'Theme preset';
-$string['preset_desc'] = 'Pick a preset to broadly change the look of the theme.';
-$string['region-side-post'] = 'Right';
-$string['region-side-pre'] = 'Left';
-$string['sitetitle'] = 'Site title';
-$string['privacy:metadata'] = 'The Apsolu theme does not store any personal data.';
+
+// Chaines de caractères.
+$string['activities'] = 'Les activités';
+$string['activities_list'] = 'Liste des activités';
+$string['background_image'] = 'Image de fond';
+$string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d\'accueil. L\'image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
+$string['choosereadme'] = 'Apsolu est un thème basé sur le thème Moodle "Classic".';
+$string['configtitle'] = 'Apsolu';
+$string['default_homepage_section1_text'] = '<p>Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
+    '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
+$string['institutional_account_authentification_url'] = 'URL d\'authentification des comptes institutionnels';
+$string['home'] = 'Accueil';
+$string['login'] = 'Se connecter';
+$string['named_section'] = 'Section "{$a}"';
+$string['non_institutional_account_authentification_url'] = 'URL d\'authentification des comptes non institutionnels';
+$string['privacy:metadata'] = 'Le thème Apsolu n\'enregistre aucune donnée personnelle.';
+$string['section_text'] = 'Texte de la section';
+$string['section2_text'] = '<div class="alert alert-info">Le tableau des activités est généré automatiquement.</div>';
+$string['settings_configuration_homepage'] = 'Page d\'accueil';
+$string['settings_root'] = 'APSOLU'; // TODO: chaîne temporaire ; à supprimer dans le fichier settings.php.
+$string['show_credit'] = 'Afficher les crédits photographiques';
+$string['show_credit_help'] = 'Affiche le nom de l\'auteur et le type de licence de la photographie.';
+$string['signup'] = 'S\'inscrire';
+$string['the_activities'] = 'Les activités';
+$string['use_apsolu_homepage'] = 'Utiliser la page d\'accueil APSOLU';

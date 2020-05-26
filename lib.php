@@ -25,6 +25,21 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
+define('THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL', '10');
+define('THEME_APSOLU_BACKGROUND_IMAGE_1_240_160', '11');
+define('THEME_APSOLU_BACKGROUND_IMAGE_1_480_320', '12');
+define('THEME_APSOLU_BACKGROUND_IMAGE_1_960_640', '13');
+
+define('THEME_APSOLU_BACKGROUND_IMAGE_2_ORIGINAL', '20');
+define('THEME_APSOLU_BACKGROUND_IMAGE_2_240_160', '21');
+define('THEME_APSOLU_BACKGROUND_IMAGE_2_480_320', '22');
+define('THEME_APSOLU_BACKGROUND_IMAGE_2_960_640', '23');
+
+define('THEME_APSOLU_BACKGROUND_IMAGE_3_ORIGINAL', '30');
+define('THEME_APSOLU_BACKGROUND_IMAGE_3_240_160', '31');
+define('THEME_APSOLU_BACKGROUND_IMAGE_3_480_320', '32');
+define('THEME_APSOLU_BACKGROUND_IMAGE_3_960_640', '33');
+
 /**
  * Returns the main SCSS content.
  *
@@ -41,4 +56,186 @@ function theme_apsolu_get_main_scss_content() {
     $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/classic/post.scss');
 
     return $scss;
+}
+
+
+/**
+ * Loads the CSS Styles and replace the background images.
+ * If background image not available in the settings take the default images.
+ *
+ * @param string $css
+ * @param string $theme
+ *
+ * @return string $css
+ */
+function theme_apsolu_process_css($css, $theme = null) {
+    global $CFG;
+
+    $fs = get_file_storage();
+    $context = context_system::instance();
+
+    $files = $fs->get_area_files($context->id, 'theme_apsolu', 'homepage', $itemid = false);
+    foreach ($files as $file) {
+        if ($file->get_filename() === '.') {
+            continue;
+        }
+
+        switch ($file->get_itemid()) {
+            case THEME_APSOLU_BACKGROUND_IMAGE_1_240_160:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_1_240x160]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_1_480_320:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_1_480x320]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_1_960_640:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_2_240_160:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_2_240x160]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_2_480_320:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_2_480x320]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_2_960_640:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_2_960x640]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_3_240_160:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_3_240x160]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_3_480_320:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_3_480x320]]';
+                break;
+            case THEME_APSOLU_BACKGROUND_IMAGE_3_960_640:
+                $tag = '[[THEME_APSOLU:BACKGROUND_IMAGE_3_960x640]]';
+                break;
+            default:
+                $tag = null;
+        }
+
+        if ($tag === null) {
+            continue;
+        }
+
+        $url = $CFG->wwwroot.'/pluginfile.php/1/theme_apsolu/homepage/'.$file->get_itemid().'/'.$file->get_filename();
+
+        $css = str_replace($tag, $url, $css);
+    }
+
+    return $css;
+}
+
+/**
+ * Gère les contrôles d'accès pour la diffusion des fichiers du module theme_apsolu.
+ *
+ * @param stdClass $course        Course object.
+ * @param stdClass $cm            Course module object.
+ * @param stdClass $context       Context object.
+ * @param string   $filearea      File area.
+ * @param array    $args          Extra arguments.
+ * @param bool     $forcedownload Whether or not force download.
+ * @param array    $options       Additional options affecting the file serving.
+ *
+ * @return void|bool Retourne False en cas d'erreur.
+ */
+function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+    if ($context->contextlevel != CONTEXT_SYSTEM) {
+        debugging('Wrong contextlevel: '.$context->contextlevel, DEBUG_DEVELOPER);
+        return false;
+    }
+
+    if ($filearea != 'homepage') {
+        debugging('Wrong filearea: '.$filearea, DEBUG_DEVELOPER);
+        return false;
+    }
+
+    $itemid = (int)array_shift($args);
+
+    $fs = get_file_storage();
+
+    $filename = array_pop($args);
+    if (empty($args) === true) {
+        $filepath = '/';
+    } else {
+        $filepath = '/'.implode('/', $args).'/';
+    }
+
+    $file = $fs->get_file($context->id, 'theme_apsolu', $filearea, $itemid, $filepath, $filename);
+    if ($file === false) {
+        debugging(get_string('filenotfound', 'error'), DEBUG_DEVELOPER);
+        return false;
+    }
+
+    // Finally send the file.
+    send_stored_file($file, 0, 0, true, $options); // Download MUST be forced - security!
+}
+
+/**
+ * Initialise les images d'arrière-plan par défaut sur la page d'accueil personnalisée.
+ *
+ * @return void
+ */
+function theme_apsolu_initialise_homepage_background_images() {
+    global $CFG;
+
+    $sizes = array('240x160', '480x320', '960x640');
+
+    $licenses = array();
+    $licenses[1] = array('Marie-Lan Nguyen', 'cc'); // Escrime.
+    $licenses[2] = array('Clément Bucco-Lechat', 'cc-sa'); // Rugby.
+    $licenses[3] = array('Tsutomu Takasu', 'cc'); // Gymnastique.
+
+    $fs = get_file_storage();
+    $syscontext = context_system::instance();
+
+    // Initialise les images du fond 1.
+    foreach (range(1, 3) as $sectionid) {
+        list($author, $license) = $licenses[$sectionid];
+
+        $filepath = $CFG->dirroot.'/theme/apsolu/images/background_'.$sectionid.'.png';
+
+        $file = array(
+            'contextid' => $syscontext->id,
+            'component' => 'theme_apsolu',
+            'filearea'  => 'homepage',
+            'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL'),
+            'filepath'  => '/',
+            'filename'  => 'background_'.$sectionid.'.png',
+            'userid'    => null,
+            'mimetype'  => 'image/png',
+            'status' => 0,
+            'source' => null,
+            'author' => $author,
+            'license' => $license,
+            'timecreated' => time(),
+            'timemodified' => time(),
+            'sortorder' => 0,
+        );
+
+        $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $file['filename']);
+        if ($existingfile) {
+            // Supprime le précédent fichier.
+            $existingfile->delete();
+        }
+        $originalfile = $fs->create_file_from_pathname($file, $filepath);
+
+        $credits = $author.' ('.get_string($license, 'license').')';
+        set_config('homepage_section'.$sectionid.'_image_credits', $credits, 'theme_apsolu');
+
+        foreach ($sizes as $size) {
+            list($newwidth, $newheight) = explode('x', $size);
+
+            $file['itemid']++;
+            $file['filename'] = 'background_'.$sectionid.'_'.$size.'.png';
+
+            $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $file['filename']);
+            if ($existingfile) {
+                // Supprime le précédent fichier.
+                $existingfile->delete();
+            }
+
+            // Taux de compression de 0 à 9 du fichier png. La valeur 0 signifie aucune compression.
+            $quality = 9;
+            $fs->convert_image($file, $originalfile, $newwidth, $newheight, $keepaspectratio = false, $quality);
+        }
+    }
 }
