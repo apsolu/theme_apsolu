@@ -50,3 +50,17 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     $url = new moodle_url('/theme/apsolu/homepage/settings.php');
     $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_homepage', $str, $url, $capabilities));
 }
+
+if ($ADMIN->fulltree) {
+    // Ajoute une information sur la page du menu Administration du site > Présentation > Thèmes > Apsolu.
+    $settings = new admin_settingpage('themesettingapsolu', get_string('configtitle', 'theme_apsolu'));
+
+    $heading = new admin_setting_heading('theme_apsolu_heading', get_string('settings'), '', 0);
+    $settings->add($heading);
+
+    $name = 'theme_apsolu_description';
+    $title = get_string('description');
+    $description = get_string('choosereadme', 'theme_apsolu');
+    $setting = new admin_setting_description($name, $title, $description, 0);
+    $settings->add($setting);
+}
