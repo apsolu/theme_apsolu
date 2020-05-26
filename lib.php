@@ -25,6 +25,9 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
+define('THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT', 1);
+define('THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT', 3);
+
 define('THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL', '10');
 define('THEME_APSOLU_BACKGROUND_IMAGE_1_240_160', '11');
 define('THEME_APSOLU_BACKGROUND_IMAGE_1_480_320', '12');

@@ -26,6 +26,8 @@ use UniversiteRennes2\Apsolu as apsolu;
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once(__DIR__.'/homepage/settings_form.php');
+
 // Cache stuff.
 $cachedir = $CFG->dataroot.'/apsolu/theme_apsolu/cache/homepage';
 $sitescachefile = $cachedir.'/sites.json';
@@ -71,16 +73,28 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
 }
 
 // Build variable for template.
+$context = context_system::instance();
+$component = 'theme_apsolu';
+$filearea = 'homepage';
+$options = theme_apsolu_homepage_form::get_editor_options();
+
 $data = new stdClass();
 $data->sites = $sites;
 $data->activities = $activities;
 $data->count_activities = count($activities);
 $data->wwwroot = $CFG->wwwroot;
 $data->is_siuaps_rennes = isset($CFG->is_siuaps_rennes);
-$data->section1_text = get_config('theme_apsolu', 'homepage_section1_text');
+
+$text = get_config('theme_apsolu', 'homepage_section1_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+$data->section1_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config('theme_apsolu', 'homepage_section3_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+$data->section3_text = format_text($content, FORMAT_HTML, $options);
+
 $data->section1_image_credits = get_config('theme_apsolu', 'homepage_section1_image_credits');
 $data->section2_image_credits = get_config('theme_apsolu', 'homepage_section2_image_credits');
-$data->section3_text = get_config('theme_apsolu', 'homepage_section3_text');
 $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_image_credits');
 
 // Set last menu link.

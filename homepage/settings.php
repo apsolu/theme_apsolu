@@ -30,36 +30,57 @@ admin_externalpage_setup('local_apsolu_appearance_homepage');
 
 require_once($CFG->dirroot.'/theme/apsolu/homepage/settings_form.php');
 
+$component = 'theme_apsolu';
+$filearea = 'homepage';
+$editoroptions = theme_apsolu_homepage_form::get_editor_options();
+$filemanageroptions = theme_apsolu_homepage_form::get_filemanager_options();
 $syscontext = context_system::instance();
-$filemanageropts = theme_apsolu_homepage_form::get_filemanager_options();
 
 // Build form.
 $defaults = new stdClass();
 $defaults->homepage_enable = get_config('theme_apsolu', 'homepage_enable');
 
-$defaults->homepage_section1_text = array('text' => get_config('theme_apsolu', 'homepage_section1_text'), 'format' => 1);
+// Charge le contenu de l'éditeur de texte de la section 1.
+$defaults->homepage_section1_text = get_config('theme_apsolu', 'homepage_section1_text');
+$defaults->homepage_section1_textformat = FORMAT_HTML;
+$defaults = file_prepare_standard_editor($defaults, 'homepage_section1_text', $editoroptions, $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+
+// Charge l'image de fond de la section 1.
 $defaults->homepage_section1_background_image = file_get_submitted_draft_itemid('homepage_section1_background_image');
 if (empty($defaults->homepage_section1_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section1_background_image, $syscontext->id, 'theme_apsolu', 'homepage', THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL, $filemanageropts);
+    file_prepare_draft_area($defaults->homepage_section1_background_image, $syscontext->id, $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL, $filemanageroptions);
 }
+
+// Charge la préférence sur l'affichage des crédits de la section 1.
 $defaults->homepage_section1_show_credit = (empty(get_config('theme_apsolu', 'homepage_section1_image_credits')) === false);
 
+// Charge l'image de fond de la section 2.
 $defaults->homepage_section2_background_image = file_get_submitted_draft_itemid('homepage_section2_background_image');
 if (empty($defaults->homepage_section2_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section2_background_image, $syscontext->id, 'theme_apsolu', 'homepage', THEME_APSOLU_BACKGROUND_IMAGE_2_ORIGINAL, $filemanageropts);
+    file_prepare_draft_area($defaults->homepage_section2_background_image, $syscontext->id, $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_2_ORIGINAL, $filemanageroptions);
 }
+
+// Charge la préférence sur l'affichage des crédits de la section 2.
 $defaults->homepage_section2_show_credit = (empty(get_config('theme_apsolu', 'homepage_section2_image_credits')) === false);
 
-$defaults->homepage_section3_text = array('text' => get_config('theme_apsolu', 'homepage_section3_text'), 'format' => 1);
+// Charge le contenu de l'éditeur de texte de la section 3.
+$defaults->homepage_section3_text = get_config('theme_apsolu', 'homepage_section3_text');
+$defaults->homepage_section3_textformat = FORMAT_HTML;
+$defaults = file_prepare_standard_editor($defaults, 'homepage_section3_text', $editoroptions, $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+
+// Charge l'image de fond de la section 3.
 $defaults->homepage_section3_background_image = file_get_submitted_draft_itemid('homepage_section3_background_image');
 if (empty($defaults->homepage_section3_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section3_background_image, $syscontext->id, 'theme_apsolu', 'homepage', THEME_APSOLU_BACKGROUND_IMAGE_3_ORIGINAL, $filemanageropts);
+    file_prepare_draft_area($defaults->homepage_section3_background_image, $syscontext->id, $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_3_ORIGINAL, $filemanageroptions);
 }
+
+// Charge la préférence sur l'affichage des crédits de la section 3.
 $defaults->homepage_section3_show_credit = (empty(get_config('theme_apsolu', 'homepage_section3_image_credits')) === false);
 
+// Charge les préférences sur les url.
 $defaults->homepage_section4_institutional_account_url = get_config('theme_apsolu', 'homepage_section4_institutional_account_url');
 $defaults->homepage_section4_non_institutional_account_url = get_config('theme_apsolu', 'homepage_section4_non_institutional_account_url');
 
@@ -68,6 +89,10 @@ $mform = new theme_apsolu_homepage_form(null, $customdata);
 
 $notification = '';
 if ($data = $mform->get_data()) {
+    // Gère les pièces attachées des éditeurs de texte.
+    $data = file_postupdate_standard_editor($data, 'homepage_section1_text', $editoroptions, $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+    $data = file_postupdate_standard_editor($data, 'homepage_section3_text', $editoroptions, $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+
     // Gère le dépot des images.
     $fs = get_file_storage();
     $usercontext = context_user::instance($USER->id);
@@ -157,7 +182,7 @@ if ($data = $mform->get_data()) {
 
     set_config('homepage_enable', intval(isset($data->homepage_enable)), 'theme_apsolu');
 
-    set_config('homepage_section1_text', $data->homepage_section1_text['text'], 'theme_apsolu');
+    set_config('homepage_section1_text', $data->homepage_section1_text, 'theme_apsolu');
     if (isset($data->homepage_section1_show_credit) === false) {
         set_config('homepage_section1_image_credits', '');
     }
@@ -166,7 +191,7 @@ if ($data = $mform->get_data()) {
         set_config('homepage_section2_image_credits', '');
     }
 
-    set_config('homepage_section3_text', $data->homepage_section3_text['text'], 'theme_apsolu');
+    set_config('homepage_section3_text', $data->homepage_section3_text, 'theme_apsolu');
     if (isset($data->homepage_section1_show_credit) === false) {
         set_config('homepage_section3_image_credits', '');
     }

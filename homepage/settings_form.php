@@ -42,6 +42,9 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform = $this->_form;
 
         list($defaults) = $this->_customdata;
+
+        $attributes = null;
+        $editoroptions = self::get_editor_options();
         $filemanageroptions = self::get_filemanager_options();
 
         // 1. Général.
@@ -56,12 +59,12 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform->setExpanded('homepage_section1', $expanded = true);
 
         // Message affiché sur la section 'accueil'.
-        $mform->addElement('editor', 'homepage_section1_text', get_string('section_text', 'theme_apsolu'));
-        $mform->addRule('homepage_section1_text', get_string('required'), 'required', null, 'client');
-        $mform->setType('homepage_section1_text', PARAM_RAW);
+        $mform->addElement('editor', 'homepage_section1_text_editor', get_string('section_text', 'theme_apsolu'), $attributes, $editoroptions);
+        $mform->addRule('homepage_section1_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType('homepage_section1_text_editor', PARAM_RAW);
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section1_background_image', get_string('background_image', 'theme_apsolu'), $attributes = null, $filemanageroptions);
+        $mform->addElement('filemanager', 'homepage_section1_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section1_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section1_background_image', get_string('required'), 'required', null, 'client');
 
@@ -78,7 +81,7 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform->addElement('static', 'homepage_section2_text', get_string('section_text', 'theme_apsolu'), get_string('section2_text', 'theme_apsolu'));
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section2_background_image', get_string('background_image', 'theme_apsolu'), $attributes = null, $filemanageroptions);
+        $mform->addElement('filemanager', 'homepage_section2_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section2_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section2_background_image', get_string('required'), 'required', null, 'client');
 
@@ -92,12 +95,12 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform->setExpanded('homepage_section3', $expanded = true);
 
         // Texte affiché.
-        $mform->addElement('editor', 'homepage_section3_text', get_string('section_text', 'theme_apsolu'), array('cols' => '48'));
-        $mform->addRule('homepage_section3_text', get_string('required'), 'required', null, 'client');
-        $mform->setType('homepage_section3_text', PARAM_RAW);
+        $mform->addElement('editor', 'homepage_section3_text_editor', get_string('section_text', 'theme_apsolu'), array('cols' => '48'), $editoroptions);
+        $mform->addRule('homepage_section3_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType('homepage_section3_text_editor', PARAM_RAW);
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section3_background_image', get_string('background_image', 'theme_apsolu'), $attributes = null, $filemanageroptions);
+        $mform->addElement('filemanager', 'homepage_section3_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section3_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section3_background_image', get_string('required'), 'required', null, 'client');
 
@@ -132,6 +135,23 @@ class theme_apsolu_homepage_form extends moodleform {
 
         // Set default values.
         $this->set_data($defaults);
+    }
+
+    /**
+     * Retourne les options passées aux éléments du formulaire de type editor.
+     *
+     * @return array
+     */
+    public static function get_editor_options() {
+        $options = array();
+        $options['subdirs'] = false;
+        $options['maxbytes'] = 0; // Taille limite par défaut.
+        $options['maxfiles'] = -1; // Nombre de fichiers attachés illimités.
+        $options['context'] = context_system::instance();
+        $options['noclean'] = true;
+        $options['trusttext'] = false;
+
+        return $options;
     }
 
     /**
