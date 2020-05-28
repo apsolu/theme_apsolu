@@ -39,6 +39,8 @@ $string['default_homepage_section1_text'] = '<p>Bienvenue sur le site de gestion
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
 $string['institutional_account_authentification_url'] = 'URL d\'authentification des comptes institutionnels';
 $string['home'] = 'Accueil';
+$string['i_have_an_institutional_account'] = 'J\'ai un compte université';
+$string['i_have_not_an_institutional_account'] = 'Je n\'ai pas de compte université';
 $string['login'] = 'Se connecter';
 $string['named_section'] = 'Section "{$a}"';
 $string['non_institutional_account_authentification_url'] = 'URL d\'authentification des comptes non institutionnels';
