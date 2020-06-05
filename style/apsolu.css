@@ -61,7 +61,7 @@ html {
     width: 100%;
 }
 
-.apsolu-pages {
+#page-site-index .apsolu-pages {
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -74,48 +74,48 @@ html {
 
 /* Résolutions inférieures à 480px de large. */
 @media (max-width: 479px) {
-    .apsolu-pages:nth-child(1),
-    .apsolu-pages:nth-child(2) {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_240x160]]');
     }
 
-    .apsolu-pages:nth-child(3) {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_240x160]]');
     }
 
-    .apsolu-pages:nth-child(4) {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_240x160]]');
     }
 }
 
 /* Résolutions supérieures ou égales à 480px de large. */
 @media (min-width: 480px) {
-    .apsolu-pages:nth-child(1),
-    .apsolu-pages:nth-child(2) {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_480x320]]');
     }
 
-    .apsolu-pages:nth-child(3) {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_480x320]]');
     }
 
-    .apsolu-pages:nth-child(4) {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_480x320]]');
     }
 }
 
 /* Résolutions supérieures ou égales à 1024px de large. */
 @media (min-width: 1024px) {
-    .apsolu-pages:nth-child(1),
-    .apsolu-pages:nth-child(2) {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
     }
 
-    .apsolu-pages:nth-child(3) {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_960x640]]');
     }
 
-    .apsolu-pages:nth-child(4) {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_960x640]]');
     }
 }
