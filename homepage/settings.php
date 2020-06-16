@@ -184,16 +184,16 @@ if ($data = $mform->get_data()) {
 
     set_config('homepage_section1_text', $data->homepage_section1_text, 'theme_apsolu');
     if (isset($data->homepage_section1_show_credit) === false) {
-        set_config('homepage_section1_image_credits', '');
+        set_config('homepage_section1_image_credits', '', 'theme_apsolu');
     }
 
-    if (isset($data->homepage_section1_show_credit) === false) {
-        set_config('homepage_section2_image_credits', '');
+    if (isset($data->homepage_section2_show_credit) === false) {
+        set_config('homepage_section2_image_credits', '', 'theme_apsolu');
     }
 
     set_config('homepage_section3_text', $data->homepage_section3_text, 'theme_apsolu');
-    if (isset($data->homepage_section1_show_credit) === false) {
-        set_config('homepage_section3_image_credits', '');
+    if (isset($data->homepage_section3_show_credit) === false) {
+        set_config('homepage_section3_image_credits', '', 'theme_apsolu');
     }
 
     set_config('homepage_section4_institutional_account_url', $data->homepage_section4_institutional_account_url, 'theme_apsolu');
