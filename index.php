@@ -80,6 +80,7 @@ $options = theme_apsolu_homepage_form::get_editor_options();
 
 $data = new stdClass();
 $data->sites = $sites;
+$data->multisites = (count($sites) > 1);
 $data->activities = $activities;
 $data->count_activities = count($activities);
 $data->wwwroot = $CFG->wwwroot;
