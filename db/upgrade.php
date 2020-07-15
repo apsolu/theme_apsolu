@@ -66,6 +66,9 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
 
         // Initialise les images de fond.
         theme_apsolu_initialise_homepage_background_images();
+
+        // Savepoint reached.
+        upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
     }
 
     return $result;
