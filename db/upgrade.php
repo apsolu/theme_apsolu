@@ -71,5 +71,74 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
     }
 
+    $version = 2020071600;
+    if ($result && $oldversion < $version) {
+        // Convertit les images d'arrière-plan en jpg.
+        $quality = null;
+        $sizes = array('240x160', '480x320', '960x640');
+
+        $fs = get_file_storage();
+        $syscontext = context_system::instance();
+
+        foreach (range(1, 3) as $sectionid) {
+            // Récupère le fichier original au format png.
+            $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL');
+
+            $originalfile = $fs->get_file($syscontext->id, 'theme_apsolu', 'homepage', $itemid, '/', 'background_'.$sectionid.'.png');
+
+            if (!$originalfile) {
+                // L'ancienne source png n'existe pas ?
+                mtrace('Étrange... le fichier background_'.$sectionid.'.png ne semble pas exister.');
+                continue;
+            }
+
+            $file = array(
+                'contextid' => $syscontext->id,
+                'component' => 'theme_apsolu',
+                'filearea'  => 'homepage',
+                'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL'),
+                'filepath'  => '/',
+                'filename'  => 'background_'.$sectionid.'.jpg',
+                'userid'    => null,
+                'mimetype'  => 'image/jpeg',
+                'status' => $originalfile->get_status(),
+                'source' => $originalfile->get_source(),
+                'author' => $originalfile->get_author(),
+                'license' => $originalfile->get_license(),
+                'timecreated' => $originalfile->get_timecreated(),
+                'timemodified' => $originalfile->get_timemodified(),
+                'sortorder' => $originalfile->get_sortorder(),
+            );
+
+            // On enregistre l'ancienne source png au format jpg.
+            $fs->convert_image($file, $originalfile, $newwidth = null, $newheight = null, $keepaspectratio = false, $quality);
+
+            // On convertit toutes les autres tailles au format jpg.
+            foreach ($sizes as $size) {
+                list($newwidth, $newheight) = explode('x', $size);
+
+                $oldfilename = 'background_'.$sectionid.'_'.$size.'.png';
+
+                $file['itemid']++;
+                $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
+
+                $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $oldfilename);
+                if ($existingfile) {
+                    // Supprime le précédent fichier.
+                    $existingfile->delete();
+                }
+
+                // Taux de compression de 0 à 100 du fichier jpg. La valeur 0 signifie aucune compression.
+                $fs->convert_image($file, $originalfile, $newwidth, $newheight, $keepaspectratio = false, $quality);
+            }
+
+            // On supprime l'ancienne source png.
+            $originalfile->delete();
+        }
+
+        // Savepoint reached.
+        upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
+    }
+
     return $result;
 }

@@ -117,7 +117,7 @@ if ($data = $mform->get_data()) {
         $filearea = 'homepage';
         $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL');
 
-        $filename = 'background_'.$sectionid.'.png';
+        $filename = 'background_'.$sectionid.'.jpg';
         $originalfile = $fs->get_file($contextid, $component, $filearea, $itemid, '/', $filename);
 
         if ($originalfile->get_contenthash() === $draftfile->get_contenthash()) {
@@ -129,16 +129,16 @@ if ($data = $mform->get_data()) {
         // On génère les images en différents formats.
         $sizes = array();
         $sizes['ORIGINAL'] = $filename;
-        $sizes['240_160'] = 'background_'.$sectionid.'_240x160.png';
-        $sizes['480_320'] = 'background_'.$sectionid.'_480x320.png';
-        $sizes['960_640'] = 'background_'.$sectionid.'_960x640.png';
+        $sizes['240_160'] = 'background_'.$sectionid.'_240x160.jpg';
+        $sizes['480_320'] = 'background_'.$sectionid.'_480x320.jpg';
+        $sizes['960_640'] = 'background_'.$sectionid.'_960x640.jpg';
 
         foreach ($sizes as $size => $filename) {
             if ($size === 'ORIGINAL') {
                 $newwidth = null;
                 $newheight = null;
 
-                debugging('L\'image originale de la section '.$sectionid.' est convertie au format png.', DEBUG_DEVELOPER);
+                debugging('L\'image originale de la section '.$sectionid.' est convertie au format jpg.', DEBUG_DEVELOPER);
             } else {
                 list($newwidth, $newheight) = explode('_', $size);
 
@@ -162,7 +162,7 @@ if ($data = $mform->get_data()) {
 
             $resizedfile['filename'] = $filename;
             $resizedfile['filepath'] = '/';
-            $resizedfile['mimetype'] = 'image/png';
+            $resizedfile['mimetype'] = 'image/jpeg';
             $resizedfile['timemodified'] = time();
 
             $resizedfile['source'] = $draftfile->get_source();
@@ -171,8 +171,8 @@ if ($data = $mform->get_data()) {
             $resizedfile['status'] = $draftfile->get_status();
             $resizedfile['sortorder'] = $draftfile->get_sortorder();
 
-            // Taux de compression de 0 à 9 du fichier png. La valeur 0 signifie aucune compression.
-            $quality = 9;
+            // Taux de compression de 0 à 100 du fichier jpg. La valeur 0 signifie aucune compression.
+            $quality = null;
             $fs->convert_image($resizedfile, $draftfile, $newwidth, $newheight, $keepaspectratio = false, $quality);
         }
 

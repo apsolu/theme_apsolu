@@ -180,6 +180,7 @@ function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forc
 function theme_apsolu_initialise_homepage_background_images() {
     global $CFG;
 
+    $quality = null;
     $sizes = array('240x160', '480x320', '960x640');
 
     $licenses = array();
@@ -194,7 +195,7 @@ function theme_apsolu_initialise_homepage_background_images() {
     foreach (range(1, 3) as $sectionid) {
         list($author, $license) = $licenses[$sectionid];
 
-        $filepath = $CFG->dirroot.'/theme/apsolu/images/background_'.$sectionid.'.png';
+        $filepath = $CFG->dirroot.'/theme/apsolu/images/background_'.$sectionid.'.jpg';
 
         $file = array(
             'contextid' => $syscontext->id,
@@ -202,9 +203,9 @@ function theme_apsolu_initialise_homepage_background_images() {
             'filearea'  => 'homepage',
             'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL'),
             'filepath'  => '/',
-            'filename'  => 'background_'.$sectionid.'.png',
+            'filename'  => 'background_'.$sectionid.'.jpg',
             'userid'    => null,
-            'mimetype'  => 'image/png',
+            'mimetype'  => 'image/jpeg',
             'status' => 0,
             'source' => null,
             'author' => $author,
@@ -228,7 +229,7 @@ function theme_apsolu_initialise_homepage_background_images() {
             list($newwidth, $newheight) = explode('x', $size);
 
             $file['itemid']++;
-            $file['filename'] = 'background_'.$sectionid.'_'.$size.'.png';
+            $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
 
             $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $file['filename']);
             if ($existingfile) {
@@ -236,8 +237,7 @@ function theme_apsolu_initialise_homepage_background_images() {
                 $existingfile->delete();
             }
 
-            // Taux de compression de 0 à 9 du fichier png. La valeur 0 signifie aucune compression.
-            $quality = 9;
+            // Taux de compression de 0 à 100 du fichier jpg. La valeur 0 signifie aucune compression.
             $fs->convert_image($file, $originalfile, $newwidth, $newheight, $keepaspectratio = false, $quality);
         }
     }
