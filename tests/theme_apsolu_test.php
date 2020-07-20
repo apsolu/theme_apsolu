@@ -32,7 +32,7 @@ require_once(__DIR__.'/../lib.php');
  * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_apsolu_lib_testcase extends advanced_testcase {
+class theme_apsolu_test extends advanced_testcase {
     protected function setUp() {
         parent::setUp();
 
@@ -40,6 +40,22 @@ class theme_apsolu_lib_testcase extends advanced_testcase {
         theme_apsolu_initialise_homepage_background_images();
 
         $this->resetAfterTest();
+    }
+
+    /**
+     * Test that apsolu can be compiled using SassC (the defacto implemention).
+     */
+    public function test_scss_compilation_with_sassc() {
+        if (!defined('PHPUNIT_PATH_TO_SASSC')) {
+            $this->markTestSkipped('Path to SassC not provided');
+        }
+
+        $this->resetAfterTest();
+        set_config('pathtosassc', PHPUNIT_PATH_TO_SASSC);
+
+        $this->assertNotEmpty(
+            theme_config::load('apsolu')->get_css_content_debug('scss', null, null)
+        );
     }
 
     /**
