@@ -116,7 +116,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday',
+                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday',
                             'apsolufederationnumber', 'apsolumedicalcertificate', 'apsoluhighlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
@@ -165,6 +165,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             $nodes = array (
                 'editprofile' => '',
                 'authentication' => '',
+                'apsoluusertype' => '',
                 'apsolusesame' => '',
                 'apsoludoublecursus' => '',
                 'apsoluhighlevelathlete' => '',
