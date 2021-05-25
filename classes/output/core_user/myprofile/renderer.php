@@ -216,9 +216,9 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $roles = role_fix_names($DB->get_records('role'));
                     $presences = Attendance::getUserPresences($userid);
 
-                    $recordsets = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
+                    $recordset = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
                     $items = array();
-                    foreach ($recordsets as $course) {
+                    foreach ($recordset as $course) {
                         $enrolurl = new moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
                         $courseurl = new moodle_url('/user/view.php', array('id' => $userid, 'course' => $course->id));
 
@@ -248,6 +248,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                             '</dl>'.
                             '</li>';
                     }
+                    $recordset->close();
 
                     if (isset($items[0])) {
                         $parentcat = 'coursedetails';
