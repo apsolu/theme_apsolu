@@ -33,7 +33,7 @@ require_once(__DIR__.'/../lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class theme_apsolu_test extends advanced_testcase {
-    protected function setUp() {
+    protected function setUp() : void {
         parent::setUp();
 
         // Initialise les images de fond.
