@@ -74,6 +74,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
 
         if ($category->name === 'contact') {
+            $othercustomfields = array();
             if (isset($userid)) {
                 $user = $DB->get_record('user', array('id' => $userid));
                 if ($user) {
@@ -93,6 +94,27 @@ class renderer extends \core_user\output\myprofile\renderer {
                         $url = null;
                         $picture = null;
                         $classes = 'contentnode';
+
+                        // Ajoute des champs qui ne commencent pas par apsolu.
+                        $usercustomfields = profile_get_user_fields_with_data($user->id);
+                        foreach ($usercustomfields as $field) {
+                            if ($field->is_user_object_data() && strcmp(substr($field->field->shortname,0,6),'apsolu') != 0) {
+                                $title = $field->field->name;
+                                $shortname = $field->field->shortname;
+                                $data = $field->data;
+                                if (strcmp($field->field->datatype,'checkbox') == 0) {
+                                    $attributes = array('disabled' => 1, 'readonly' => 1);
+                                    $content = html_writer::checkbox($shortname, $data, $checked = ($data ? true:false), $label = '', $attributes);
+                                } else {
+                                     $content = $data;
+                                }
+                                if (!empty($content)) {
+                                    $node = new node($parentcat, $shortname, $title, $place, $url, $content, $picture, $classes);
+                                    $category->add_node($node);
+                                    $othercustomfields[$node->name] = $node;
+                                }
+                            }
+                        }
 
                         // Classic fields.
                         $fields = array('auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role');
@@ -191,6 +213,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $nodes[$node->name] = $node;
                 }
             }
+
+            $nodes = $nodes + $othercustomfields;
 
             // Supprime les nodes vides.
             foreach ($nodes as $key => $node) {
