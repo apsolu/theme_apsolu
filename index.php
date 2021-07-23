@@ -62,7 +62,12 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
     $sites = array_values($sites);
     $activities = array_values($activities);
 
-    if (is_dir($cachedir) === true) {
+    $iscachedirexists = is_dir($cachedir);
+    if ($iscachedirexists === false) {
+        $iscachedirexists = mkdir($cachedir, $CFG->directorypermissions, $recursive = true);
+    }
+
+    if ($iscachedirexists === true) {
         file_put_contents($sitescachefile, json_encode($sites));
         file_put_contents($activitiescachefile, json_encode($activities));
     }
