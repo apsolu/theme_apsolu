@@ -98,13 +98,18 @@ class renderer extends \core_user\output\myprofile\renderer {
                         // Ajoute des champs qui ne commencent pas par apsolu.
                         $usercustomfields = profile_get_user_fields_with_data($user->id);
                         foreach ($usercustomfields as $field) {
-                            if ($field->is_user_object_data() && strcmp(substr($field->field->shortname,0,6),'apsolu') != 0) {
+                            if ($field->is_user_object_data() && substr($field->field->shortname, 0, 6) !== 'apsolu') {
                                 $title = $field->field->name;
                                 $shortname = $field->field->shortname;
                                 $data = $field->data;
-                                if (strcmp($field->field->datatype,'checkbox') == 0) {
+                                if ($field->field->datatype === 'checkbox') {
+                                    if ($data) {
+                                        $checked = true;
+                                    } else {
+                                        $checked = false;
+                                    }
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
-                                    $content = html_writer::checkbox($shortname, $data, $checked = ($data ? true:false), $label = '', $attributes);
+                                    $content = html_writer::checkbox($shortname, $data, $checked, $label = '', $attributes);
                                 } else {
                                      $content = $data;
                                 }
@@ -138,22 +143,27 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle', 'apsoluufr', 'apsolusex', 'apsolubirthday',
-                            'apsolufederationnumber', 'apsolumedicalcertificate', 'apsoluhighlevelathlete');
+                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle',
+                            'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsolufederationnumber',
+                            'apsolumedicalcertificate', 'apsoluhighlevelathlete');
+                        $checkboxfields = array('apsoludoublecursus', 'apsolusesame',
+                            'apsolumedicalcertificate', 'apsoluhighlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
-                                if (in_array($field, array('apsoludoublecursus', 'apsolusesame', 'apsolumedicalcertificate', 'apsoluhighlevelathlete'), true)) {
+                                $value = $customfields->{$field};
+                                if (in_array($field, $checkboxfields, $strict = true)) {
+                                    $label = '';
                                     $attributes = array('disabled' => 1, 'readonly' => 1);
                                     if ($customfields->{$field}) {
-                                        $content = html_writer::checkbox($field, $customfields->{$field}, $checked = true, $label = '', $attributes);
+                                        $content = html_writer::checkbox($field, $value, $checked = true, $label, $attributes);
                                     } else {
-                                        $content = html_writer::checkbox($field, $customfields->{$field}, $checked = false, $label = '', $attributes);
+                                        $content = html_writer::checkbox($field, $value, $checked = false, $label, $attributes);
                                     }
                                 } else {
-                                    if (empty($customfields->{$field})) {
+                                    if (empty($value)) {
                                         continue;
                                     }
-                                    $content = $customfields->{$field};
+                                    $content = $value;
                                 }
 
                                 $title = get_string('fields_'.$field, 'local_apsolu');
@@ -265,8 +275,12 @@ class renderer extends \core_user\output\myprofile\renderer {
                                 '<dt class="font-weight-normal ml-3">'.$course->enrolname.'</dt>'.
                                 '<dd class="ml-5">'.
                                     '<ul class="list-inline">'.
-                                        '<li class="list-inline-item"><a class="text-danger" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a></li>'.
-                                        '<li class="list-inline-item"><span class="small">('.$presence.')</span></li>'.
+                                        '<li class="list-inline-item">'.
+                                            '<a class="text-danger" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a>'.
+                                        '</li>'.
+                                        '<li class="list-inline-item">'.
+                                            '<span class="small">('.$presence.')</span>'.
+                                        '</li>'.
                                     '</ul>'.
                                 '</dd>'.
                             '</dl>'.

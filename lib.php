@@ -215,7 +215,8 @@ function theme_apsolu_initialise_homepage_background_images() {
             'sortorder' => 0,
         );
 
-        $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $file['filename']);
+        $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
+            $file['itemid'], $file['filepath'], $file['filename']);
         if ($existingfile) {
             // Supprime le précédent fichier.
             $existingfile->delete();
@@ -231,7 +232,8 @@ function theme_apsolu_initialise_homepage_background_images() {
             $file['itemid']++;
             $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
 
-            $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $file['filename']);
+            $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
+                $file['itemid'], $file['filepath'], $file['filename']);
             if ($existingfile) {
                 // Supprime le précédent fichier.
                 $existingfile->delete();

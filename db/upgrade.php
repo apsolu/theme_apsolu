@@ -84,7 +84,8 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
             // Récupère le fichier original au format png.
             $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL');
 
-            $originalfile = $fs->get_file($syscontext->id, 'theme_apsolu', 'homepage', $itemid, '/', 'background_'.$sectionid.'.png');
+            $filename = 'background_'.$sectionid.'.png';
+            $originalfile = $fs->get_file($syscontext->id, 'theme_apsolu', 'homepage', $itemid, '/', $filename);
 
             if (!$originalfile) {
                 // L'ancienne source png n'existe pas ?
@@ -122,7 +123,8 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
                 $file['itemid']++;
                 $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
 
-                $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'], $file['itemid'], $file['filepath'], $oldfilename);
+                $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
+                    $file['itemid'], $file['filepath'], $oldfilename);
                 if ($existingfile) {
                     // Supprime le précédent fichier.
                     $existingfile->delete();

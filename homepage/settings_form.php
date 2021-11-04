@@ -51,66 +51,80 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform->addElement('header', 'homepage_general', get_string('general'));
 
         // Active.
-        $mform->addElement('checkbox', 'homepage_enable', get_string('use_apsolu_homepage', 'theme_apsolu'), get_string('enable'));
+        $label = get_string('use_apsolu_homepage', 'theme_apsolu');
+        $mform->addElement('checkbox', 'homepage_enable', $label, get_string('enable'));
         $mform->setType('homepage_enable', PARAM_INT);
 
         // 2. Accueil.
-        $mform->addElement('header', 'homepage_section1', get_string('named_section', 'theme_apsolu', get_string('home', 'theme_apsolu')));
+        $label = get_string('named_section', 'theme_apsolu', get_string('home', 'theme_apsolu'));
+        $mform->addElement('header', 'homepage_section1', $label);
         $mform->setExpanded('homepage_section1', $expanded = true);
 
         // Message affiché sur la section 'accueil'.
-        $mform->addElement('editor', 'homepage_section1_text_editor', get_string('section_text', 'theme_apsolu'), $attributes, $editoroptions);
+        $label = get_string('section_text', 'theme_apsolu');
+        $mform->addElement('editor', 'homepage_section1_text_editor', $label, $attributes, $editoroptions);
         $mform->addRule('homepage_section1_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section1_text_editor', PARAM_RAW);
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section1_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
+        $label = get_string('background_image', 'theme_apsolu');
+        $mform->addElement('filemanager', 'homepage_section1_background_image', $label, $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section1_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section1_background_image', get_string('required'), 'required', null, 'client');
 
         // Afficher les crédits.
-        $mform->addElement('checkbox', 'homepage_section1_show_credit', get_string('show_credit', 'theme_apsolu'), get_string('enable'));
+        $label = get_string('show_credit', 'theme_apsolu');
+        $mform->addElement('checkbox', 'homepage_section1_show_credit', $label, get_string('enable'));
         $mform->addHelpButton('homepage_section1_show_credit', 'show_credit', 'theme_apsolu');
         $mform->setType('homepage_section1_show_credit', PARAM_INT);
 
         // 3. Les activités.
-        $mform->addElement('header', 'homepage_section2', get_string('named_section', 'theme_apsolu', get_string('the_activities', 'theme_apsolu')));
+        $label = get_string('named_section', 'theme_apsolu', get_string('the_activities', 'theme_apsolu'));
+        $mform->addElement('header', 'homepage_section2', $label);
         $mform->setExpanded('homepage_section2', $expanded = true);
 
         // Texte affiché.
-        $mform->addElement('static', 'homepage_section2_text', get_string('section_text', 'theme_apsolu'), get_string('section2_text', 'theme_apsolu'));
+        $label = get_string('section_text', 'theme_apsolu');
+        $mform->addElement('static', 'homepage_section2_text', $label, get_string('section2_text', 'theme_apsolu'));
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section2_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
+        $label = get_string('background_image', 'theme_apsolu');
+        $mform->addElement('filemanager', 'homepage_section2_background_image', $label, $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section2_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section2_background_image', get_string('required'), 'required', null, 'client');
 
         // Afficher les crédits.
-        $mform->addElement('checkbox', 'homepage_section2_show_credit', get_string('show_credit', 'theme_apsolu'), get_string('enable'));
+        $label = get_string('show_credit', 'theme_apsolu');
+        $mform->addElement('checkbox', 'homepage_section2_show_credit', $label, get_string('enable'));
         $mform->addHelpButton('homepage_section2_show_credit', 'show_credit', 'theme_apsolu');
         $mform->setType('homepage_section2_show_credit', PARAM_INT);
 
         // 4. S'inscrire.
-        $mform->addElement('header', 'homepage_section3', get_string('named_section', 'theme_apsolu', get_string('signup', 'theme_apsolu')));
+        $label = get_string('named_section', 'theme_apsolu', get_string('signup', 'theme_apsolu'));
+        $mform->addElement('header', 'homepage_section3', $label);
         $mform->setExpanded('homepage_section3', $expanded = true);
 
         // Texte affiché.
-        $mform->addElement('editor', 'homepage_section3_text_editor', get_string('section_text', 'theme_apsolu'), array('cols' => '48'), $editoroptions);
+        $label = get_string('section_text', 'theme_apsolu');
+        $mform->addElement('editor', 'homepage_section3_text_editor', $label, array('cols' => '48'), $editoroptions);
         $mform->addRule('homepage_section3_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section3_text_editor', PARAM_RAW);
 
         // Image de fond.
-        $mform->addElement('filemanager', 'homepage_section3_background_image', get_string('background_image', 'theme_apsolu'), $attributes, $filemanageroptions);
+        $label = get_string('background_image', 'theme_apsolu');
+        $mform->addElement('filemanager', 'homepage_section3_background_image', $label, $attributes, $filemanageroptions);
         $mform->addHelpButton('homepage_section3_background_image', 'background_image', 'theme_apsolu');
         $mform->addRule('homepage_section3_background_image', get_string('required'), 'required', null, 'client');
 
         // Afficher les crédits.
-        $mform->addElement('checkbox', 'homepage_section3_show_credit', get_string('show_credit', 'theme_apsolu'), get_string('enable'));
+        $label = get_string('show_credit', 'theme_apsolu');
+        $mform->addElement('checkbox', 'homepage_section3_show_credit', $label, get_string('enable'));
         $mform->addHelpButton('homepage_section3_show_credit', 'show_credit', 'theme_apsolu');
         $mform->setType('homepage_section3_show_credit', PARAM_INT);
 
         // 5. Se connecter.
-        $mform->addElement('header', 'homepage_section4', get_string('named_section', 'theme_apsolu', get_string('login', 'theme_apsolu')));
+        $label = get_string('named_section', 'theme_apsolu', get_string('login', 'theme_apsolu'));
+        $mform->addElement('header', 'homepage_section4', $label);
         $mform->setExpanded('homepage_section4', $expanded = true);
 
         // URL pour s'authentifier avec le compte institutionnel.
