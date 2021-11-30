@@ -1,6 +1,6 @@
 # theme_apsolu
 
-[![Build Status](https://github.com/apsolu/theme_apsolu/workflows/Moodle%20Plugin%20CI/badge.svg?branch=master)](https://github.com/actions/starter-workflows/actions?query=workflow%3AMoodle%20Plugin%20CI)
+[![Build Status](https://github.com/apsolu/theme_apsolu/workflows/Moodle%20Plugin%20CI/badge.svg?branch=master)](https://github.com/apsolu/theme_apsolu/actions)
 [![Coverage Status](https://coveralls.io/repos/github/apsolu/theme_apsolu/badge.svg?branch=master)](https://coveralls.io/github/apsolu/theme_apsolu?branch=master)
 [![Moodle Status](https://img.shields.io/badge/moodle-3.11-blue)](https://moodle.org)
 
