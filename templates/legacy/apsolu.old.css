@@ -5,19 +5,13 @@ html {
     height: 100%;
 }
 
-body {
-    min-height: 100%;
+.navbar-header .guest {
+    display: none;
 }
-
-
 
 .editor_atto_content[contenteditable=false] {
     background-color: #e9ecef;
     cursor: not-allowed;
-}
-
-.navbar.fixed-top {
-    border-bottom: none;
 }
 
 /**
@@ -33,11 +27,6 @@ body {
     display: block;
 }
 
-/* Important: permet d'afficher l'accueil sur 100% de la largueur (MOODLE 4.*) */
-#page-site-index #page-content.blocks-pre .region-main #region-main {
-    padding: 0;
-}
-
 /* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
 #page-login-index #apsolu-topofbody,
 #page-site-index #apsolu-topofbody,
@@ -49,11 +38,6 @@ body {
     display: none;
 }
 
-/* Important: permet à l'en-tête de ne pas empiéter sur la photo d'accueil */
-#page-site-index {
-    padding-top: 100px; /* Correspond à la taille de l'en-tête */
-}
-
 #page-site-index #page,
 #page-site-index #region-main {
     margin: 0;
@@ -63,11 +47,6 @@ body {
 #page-site-index #page-content.blocks-pre .region-main {
     flex: 0 0 100%;
     max-width: none;
-}
-
-/* Important : évite la bordure blanche par défaut */
-#page-content.blocks-pre .region-main #region-main {
-    border: none;
 }
 
 #page-site-index #page,
@@ -87,42 +66,7 @@ body {
     width: 100%;
 }
 
-.navbar-header .guest {
-    display: none;
-}
-
-/**
- * Règles CSS pour les blocs de la homepage.
- */
-.apsolu-brand {
-    padding: 0.5em;
-    color: blue;
-}
-
-/* Homepage: articles */
-.apsolu-article {
-    background: #F2F2F2;
-    padding: 1em;
-}
-
-#accueil.apsolu-article {
-
-}
-
-#formats-cours.apsolu-article {
-
-}
-
-#adhesion.apsolu-article {
-
-}
-
-#inscription.apsolu-article {
-
-}
-
-/* Homepage: blocs images */
-#page-site-index .apsolu-images {
+#page-site-index .apsolu-pages {
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -135,55 +79,49 @@ body {
 
 /* Résolutions inférieures à 480px de large. */
 @media (max-width: 479px) {
-    #page-site-index #section-1.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_240x160]]');
-        height: 160px;
     }
 
-    #page-site-index #section-2.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_240x160]]');
-        height: 160px;
     }
 
-    #page-site-index #section-3.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_240x160]]');
-        height: 160px;
     }
 }
 
 /* Résolutions supérieures ou égales à 480px de large. */
 @media (min-width: 480px) {
-    #page-site-index #section-1.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_480x320]]');
-        height: 320px;
     }
 
-    #page-site-index #section-2.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_480x320]]');
-        height: 320px;
     }
 
-    #page-site-index #section-3.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_480x320]]');
-        height: 320px;
     }
 }
 
 /* Résolutions supérieures ou égales à 1024px de large. */
 @media (min-width: 1024px) {
-    #page-site-index #section-1.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(1),
+    #page-site-index .apsolu-pages:nth-child(2) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
-        height: 50vh;
     }
 
-    #page-site-index #section-2.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(3) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_960x640]]');
-        height: 50vh;
     }
 
-    #page-site-index #section-3.apsolu-images {
+    #page-site-index .apsolu-pages:nth-child(4) {
         background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_960x640]]');
-        height: 50vh;
     }
 }
 
@@ -193,39 +131,83 @@ body {
     margin: auto;
 }
 
-/* Homepage: crédits photos */
-.apsolu-photo-credits {
-    margin: 0.8em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    background: rgba(255, 255, 255, 0.8);
-    display: inline-block;
-    font-size: .8em;
+.apsolu-opac-text {
+    background-color: rgba(255, 255, 255, .8);
+    border: .1em solid #fff;
+    border-radius: .5em;
+    padding: 3em 1em 1em 1em;
 }
 
-.apsolu-photo-credits p {
+#accueil .apsolu-opac-text,
+#inscription .apsolu-opac-text {
+    margin-top: 2%;
+}
+
+/* Homepage: menu */
+.apsolu-scroll-menu {
+    position: fixed;
+    top: 15%;
+    left: 0;
     margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.5em;
+    z-index: 1;
 }
 
-.apsolu-photo-credits a {
-    text-decoration: underline;
+.apsolu-scroll-menu ul {
+    margin: 0;
+    padding: 0;
+    border-left: 5px solid #6f787b;
+    overflow: hidden;
 }
 
-/* Homepage: pied de page */
-#apsolu-homepage-footer {
-    background-color: lightgrey;
+.apsolu-scroll-menu li {
+    padding: 0;
+    margin-top: 3px;
+    list-style: none;
 }
 
-#apsolu-homepage-footer-navigation {
-    background: blue;
-    color: red;
-    height: 2em;
+.apsolu-scroll-menu li:first-child {
+    margin-top: 0;
 }
 
-#apsolu-footer-navigation a {
-    background: blue;
+.apsolu-scroll-menu .btn {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    display: block;
+    padding: 5px 10px;
 }
 
+@media (max-width: 994px) {
+    .apsolu-scroll-menu {
+        bottom: 0;
+        display: block;
+        left: unset;
+        position: fixed;
+        top: unset;
+        width: 100%;
+    }
 
+    #apsolu-scroll-menu-links {
+        display: block;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #apsolu-scroll-menu-links li {
+        display: inline-block;
+    }
+
+    .apsolu-scroll-menu .btn {
+        font-size: .7em;
+    }
+}
+
+/* Homepage: home. */
+/* TODO: RM ! */
 #apsolu-logo-div {
     align-items: center;
     display: flex;
@@ -267,9 +249,14 @@ body {
 }
 
 #apsolu-activities-list-h3 {
+    margin-top: -1em;
 }
 
 /* Homepage: inscription. */
+#inscription {
+    padding-bottom: 15%;
+}
+
 .apsolu-inscription {
     text-align: center;
     list-style: none;
@@ -295,6 +282,15 @@ body {
     content: ' : ';
 }
 
+.apsolu-photo-credits {
+    font-size: .85em;
+    margin: 0;
+    padding: 2em 0 0 0;
+}
+
+.apsolu-photo-credits a {
+    text-decoration: underline;
+}
 
 /**
  * Règles CSS pour la page d'authentification.
@@ -311,74 +307,10 @@ body {
     display: none;
 }
 
-/* Navigation */
-.apsolu-navbar {
-    height: 50px;
-
-}
-
-#apsolu-header-navbar.apsolu-navbar {
-    padding-left: 0;
-}
-
-#apsolu-header-navbar.navbar.fixed-top {
-    /*align-items: normal;*/
-    height: 50px;
-    border-bottom: 2px #00B395 !important;
-    color: white;
-    z-index: 1050;
-}
-
-#apsolu-homepage-navbar.navbar.fixed-top {
-    /*align-items: normal;*/
-    background: #004D40;
-    color: white;
-    border-top: 4px solid #00B395;
-    margin-top: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-}
-
-/**
- * Règles CSS pour la personnalisation des couleurs.
- */
-
-.apsolu-link-dark a {
-    color: black;
-}
-
-.apsolu-link-light a {
-    color: white;
-}
-
-.dropdown-menu a {
-    color: #004D40;
-}
-
-.apsolu-link-custom a {
-    color: blue;
-}
-
-.apsolu-color-custom-1 {
-    background-color: #00B395;
-}
-
-.apsolu-color-custom-2 {
-    background-color: #004D40;
-}
-
-#apsolu-custom-footer {
-}
-
-/* Homepage: Personnalisation barre de défilement */
-.region-main {
-    scrollbar-color: #004D40 #00B395;
-}
-
-/**
- *Commente le !important pour passer le test de coding style.
- *Trouver une solution pour améliorer l'affichage de la politique du site.
- */
-
+/*
+Commente le !important pour passer le test de coding style.
+Trouver une solution pour améliorer l'affichage de la politique du site.
+*/
 /*
 #page-user-policy #resourceobject {
     height: 1000px !important;

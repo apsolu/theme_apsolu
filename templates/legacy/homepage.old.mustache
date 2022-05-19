@@ -1,0 +1,159 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_apsolu/homepage
+
+    Template Moodle pour afficher la page d'accueil personnalisée.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * count_activities
+    * dashboard_link
+    * login_link
+    * section1_text
+    * section1_image_credits
+    * sites
+        * id
+        * name
+    * activities
+        * id
+        * name
+    * section2_image_credits
+    * section3_text
+    * section3_image_credits
+    * institutional_account_url
+    * non_institutional_account_url
+
+    Example context (json):
+    {
+        "count_activities": "0",
+        "dashboard_link": "",
+        "login_link": "",
+        "section1_text": "",
+        "section1_image_credits": "",
+        "sites": [],
+        "activities": [],
+        "section2_image_credits": "",
+        "section3_text": "",
+        "section3_image_credits": "",
+        "institutional_account_url": "",
+        "non_institutional_account_url": ""
+    }
+}}
+<div id="apsolu-page">
+    {{#count_activities}}
+        {{! Menu. }}
+        <div class="apsolu-scroll-menu">
+            <ul id="apsolu-scroll-menu-links" class="pull-left">
+                <li><a id="apsolu-home-a" class="btn btn-light btn-lg" href="#accueil">{{#str}}home, theme_apsolu{{/str}}</a></li>
+                <li><a id="apsolu-activities-a" class="btn btn-light btn-lg" href="#activites">{{#str}}the_activities, theme_apsolu{{/str}}</a></li>
+                <li><a id="apsolu-signup-a" class="btn btn-light btn-lg" href="#inscription">{{#str}}signup, theme_apsolu{{/str}}</a></li>
+                {{#dashboard_link}}
+                    <li><a id="apsolu-myhome-a" class="btn btn-lg btn-login btn-success" href="{{ . }}">{{#str}}myhome, moodle{{/str}}</a></li>
+                {{/dashboard_link}}
+                {{#login_link}}
+                    <li><a id="apsolu-login-a" class="btn btn-lg btn-login btn-success" href="{{ . }}">{{#str}}login, moodle{{/str}}</a></li>
+                {{/login_link}}
+            </ul>
+        </div>
+    {{/count_activities}}
+
+    {{! 1ère section : Page d'accueil. }}
+    <div class="apsolu-pages" id="accueil">
+        <div class="apsolu-contents col-md-8 col-md-offset-2 apsolu-opac-text">
+            <h2 class="sr-only">{{#str}}home, theme_apsolu{{/str}}</h2>
+
+            {{{ section1_text }}}
+
+            {{#section1_image_credits}}
+            <p class="apsolu-photo-credits text-right">Crédit image de fond : {{ section1_image_credits }}</p>
+            {{/section1_image_credits}}
+        </div>
+    </div>
+
+    {{#count_activities}}
+        {{! 2ème section : Liste des activités. }}
+        <div class="apsolu-pages" id="activites">
+            <div class="apsolu-contents col-md-8 col-md-offset-2">
+                <div class="apsolu-opac-text">
+                    <h2 class="sr-only">{{#str}}activities, theme_apsolu{{/str}}</h2>
+                    <h3 id="apsolu-activities-list-h3">{{#str}}activities_list, theme_apsolu{{/str}}</h3>
+
+                    <div id="apsolu-sites-content-div" class="text-right">
+                        {{! sites }}
+                        <ul id="apsolu-sites-list-ul" class="list-inline">
+                            {{#multisites}}
+                                <li class="list-inline-item"><a class="btn btn-outline-primary" href="{{wwwroot}}/local/apsolu/presentation/summary.php">{{#str}}all_cities, local_apsolu{{/str}}</a></li>
+                            {{/multisites}}
+                            {{#sites}}
+                                <li class="list-inline-item"><a class="btn btn-outline-primary" href="{{wwwroot}}/local/apsolu/presentation/summary.php?siteid={{id}}">{{name}}</a></li>
+                            {{/sites}}
+                        </ul>
+                    </div>
+
+                    <div id="apsolu-activities-content-div">
+                        {{! activities }}
+                        <ul id="apsolu-activities-list-ul" class="list-unstyled row">
+                            {{#activities}}
+                                <li class="col-md-3 list-group-item mb-1 overflow-hidden text-center"><span class="apsolu-homepage-activities-items-span">{{name}}</span></li>
+                            {{/activities}}
+                        </ul>
+                    </div>
+
+                    {{#section2_image_credits}}
+                    <p class="apsolu-photo-credits text-right">Crédit image de fond : {{ section2_image_credits }}</p>
+                    {{/section2_image_credits}}
+                </div>
+            </div>
+        </div>
+
+        {{! 3ème section : Page d'inscription. }}
+        <div class="apsolu-pages" id="inscription">
+            <div class="apsolu-contents col-md-8 col-md-offset-2">
+                <div class="apsolu-opac-text">
+                    <h2 class="sr-only">{{#str}}signup, theme_apsolu{{/str}}</h2>
+
+                    {{{ section3_text }}}
+
+                    {{#section3_image_credits}}
+                    <p class="apsolu-photo-credits text-right">Crédit image de fond : {{ section3_image_credits }}</p>
+                    {{/section3_image_credits}}
+                </div>
+            </div>
+
+            {{#login_link}}
+            <ul class="apsolu-inscription row justify-content-md-center" id="authentification">
+                {{#institutional_account_url}}
+                <li class="col-md-4 col-md-offset-2">
+                    <a class="btn btn-success btn-lg" href="{{ institutional_account_url }}">{{#str}}i_have_an_institutional_account, theme_apsolu{{/str}}</a>
+                </li>
+                {{/institutional_account_url}}
+                {{#non_institutional_account_url}}
+                <li class="col-md-4">
+                    <a class="btn btn-default btn-secondary btn-lg" href="{{ non_institutional_account_url }}#internal">{{#str}}i_have_not_an_institutional_account, theme_apsolu{{/str}}</a>
+                </li>
+                {{/non_institutional_account_url}}
+            </ul>
+            {{/login_link}}
+        </div>
+    {{/count_activities}}
+</div>
