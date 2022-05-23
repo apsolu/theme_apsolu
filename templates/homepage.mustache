@@ -63,7 +63,7 @@
     {{! En-tête }}
     {{! Menu 2 : Navigation }}
     <nav class="navbar fixed-top apsolu-navbar apsolu-color-custom-2" id="apsolu-homepage-navbar">
-        <div class="container d-flex justify-content-center">
+        <span class="container d-flex justify-content-center">
             {{#count_activities}}
                 <ul class="nav m-auto">
                     <li class="nav-item apsolu-link-light">
@@ -98,18 +98,18 @@
                     </li>
                 </ul>
             {{/count_activities}}
-        </div>
+        </span>
     </nav>
 
     {{! Section 1 : accueil }}
     <section class="apsolu-pages" id="accueil">
-        <div class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-1">
+        <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-1">
             {{#section1_image_credits}}
                 <p class="apsolu-photo-credits">
                     Crédit image de fond : {{ section1_image_credits }}
                 </p>
             {{/section1_image_credits}}
-        </div>
+        </span>
 
         <article class="apsolu-article mb-0">
             <div class="container-md">
@@ -121,13 +121,13 @@
     {{! Section 2 : Formats de cours }}
     <section class="apsolu-pages" id="activites">
 
-        <div class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-2">
+        <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-2">
             {{#section2_image_credits}}
                 <p class="apsolu-photo-credits">
                     Crédit image de fond : {{ section2_image_credits }}
                 </p>
             {{/section2_image_credits}}
-        </div>
+        </span>
 
         <article class="apsolu-article">
             <div class="container-md">
@@ -139,19 +139,20 @@
                             activities_list, theme_apsolu{{/str}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#">Stages</a>
+                        <a class="nav-link disabled" data-bs-toggle="tab" href="#stages">Stages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#">Evenements</a>
+                        <a class="nav-link disabled" data-bs-toggle="tab" href="#evenements">Evenements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#">Animations</a>
+                        <a class="nav-link disabled" data-bs-toggle="tab" href="#animations">Animations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#">Pratiques autonomes</a>
+                        <a class="nav-link disabled" data-bs-toggle="tab" href="#pratiques">Pratiques autonomes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#">Adhésion à l'Association Sportive</a>
+                        <a class="nav-link disabled" data-bs-toggle="tab" href="#adhesion">Adhésion à l'Association
+                            Sportive</a>
                     </li>
                 </ul>
 
@@ -166,14 +167,17 @@
                             {{! sites }}
                             <ul id="apsolu-sites-list-ul" class="list-inline">
                                 {{#multisites}}
-                                    <li class="list-inline-item"><a class="btn btn-outline-primary"
+                                    <li class="list-inline-item"><a class="btn btn-outline-info"
                                                                     href="{{wwwroot}}/local/apsolu/presentation/summary.php">{{#str}}
                                         all_cities, local_apsolu{{/str}}</a></li>
                                 {{/multisites}}
                                 {{#sites}}
-                                    <li class="list-inline-item"><a class="btn btn-outline-primary"
-                                                                    href="{{wwwroot}}/local/apsolu/presentation/summary.php?siteid={{id}}
-                                        ">{{name}}</a></li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info"
+                                           href="{{wwwroot}}/local/apsolu/presentation/summary.php?siteid={{id}}">
+                                        {{name}}
+                                        </a>
+                                    </li>
                                 {{/sites}}
                             </ul>
                         </div>
@@ -182,41 +186,32 @@
                             {{! activities }}
                             <ul id="apsolu-activities-list-ul" class="list-unstyled row">
                                 {{#activities}}
-                                    <li class="col-md-3 list-group-item mb-1 overflow-hidden text-center"><span
-                                        class="apsolu-homepage-activities-items-span">{{name}}</span></li>
+                                    <li class="col-md-3 mb-2 overflow-hidden text-center">
+                                        <button class="btn btn-info col">{{name}}</button>
+                                    </li>
                                 {{/activities}}
                             </ul>
                         </div>
                     </div>
 
-                    {{! TODO Section 2b : Cours }}
-                    <div class="tab-pane fade" id="profile">
-                        <p></p>
-                    </div>
-
                     {{! TODO Section 2c : Stages }}
-                    <div class="tab-pane fade" id="dropdown1">
-                        <p></p>
+                    <div class="tab-pane fade" id="stages">
                     </div>
 
                     {{! TODO Section 2d : Evénements }}
-                    <div class="tab-pane fade" id="dropdown2">
-                        <p></p>
-                    </div>
-
-                    {{! TODO Section 2d : Evénements }}
-                    <div class="tab-pane fade" id="dropdown2">
-                        <p></p>
+                    <div class="tab-pane fade" id="evenements">
                     </div>
 
                     {{! TODO Section 2e : Animations }}
-                    <div class="tab-pane fade" id="dropdown2">
-                        <p></p>
+                    <div class="tab-pane fade" id="animations">
                     </div>
 
                     {{! TODO Section 2f : Pratiques autonomes }}
-                    <div class="tab-pane fade" id="dropdown2">
-                        <p></p>
+                    <div class="tab-pane fade" id="pratiques">
+                    </div>
+
+                    {{! TODO Section 2g : Adhésion à l'AS }}
+                    <div class="tab-pane fade" id="adhesion">
                     </div>
 
                 </div>
@@ -225,19 +220,16 @@
 
     </section>
 
-    {{! TODO Section 3 : Evénements }}
-    <section></section>
-
-    {{! TODO Section 4 : Inscription }}
+    {{! TODO Section 3 : Inscription }}
     <section class="apsolu-pages" id="inscription">
 
-        <div class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-3">
+        <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-3">
             {{#section3_image_credits}}
                 <p class="apsolu-photo-credits">
                     Crédit image de fond : {{ section3_image_credits }}
                 </p>
             {{/section3_image_credits}}
-        </div>
+        </span>
 
         <article class="apsolu-article">
             <div class="container-md">
@@ -246,10 +238,10 @@
                 {{{ section3_text }}}
 
                 {{#login_link}}
-                    <ul class="row justify-content-md-center">
+                    <ul class="nav justify-content-center">
                         {{#institutional_account_url}}
                             <li class="col-md-4 col-md-offset-2">
-                                <a class="btn btn-success btn-lg" href="{{ institutional_account_url }}">
+                                <a class="btn btn-info btn-lg" href="{{ institutional_account_url }}">
                                     {{#str}}i_have_an_institutional_account, theme_apsolu{{/str}}
                                 </a>
                             </li>
