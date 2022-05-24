@@ -20,6 +20,10 @@ body {
     border-bottom: none;
 }
 
+/*.navbar{*/
+/*    height: auto;*/
+/*}*/
+
 /**
  * Règles CSS pour la homepage.
  */
@@ -37,6 +41,10 @@ body {
 #page-site-index #page-content.blocks-pre .region-main #region-main {
     padding: 0;
 }
+ /* Important: évite le décalage des blocs dans le menu d'administration */
+#page-content.blocks-pre .region-main #region-main {
+    padding-top: 0;
+}
 
 /* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
 #page-login-index #apsolu-topofbody,
@@ -51,7 +59,7 @@ body {
 
 /* Important: permet à l'en-tête de ne pas empiéter sur la photo d'accueil */
 #page-site-index {
-    padding-top: 100px; /* Correspond à la taille de l'en-tête */
+    padding-top: 99px; /* Correspond à la taille de l'en-tête */
 }
 
 #page-site-index #page,
@@ -89,6 +97,9 @@ body {
 
 .navbar-header .guest {
     display: none;
+}
+
+.dropdown-menu {
 }
 
 /**
@@ -313,8 +324,13 @@ body {
 
 /* Navigation */
 .apsolu-navbar {
-    height: 50px;
+    min-height: 50px;
 
+}
+
+/* Important : permet au menu déroulant d'avoir un fond sur viewport réduit */
+.navbar.fixed-top {
+    height:auto;
 }
 
 #apsolu-header-navbar.apsolu-navbar {
@@ -323,7 +339,7 @@ body {
 
 #apsolu-header-navbar.navbar.fixed-top {
     /*align-items: normal;*/
-    height: 50px;
+    min-height: 50px;
     border-bottom: 2px #00B395 !important;
     color: white;
     z-index: 1050;
