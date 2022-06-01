@@ -82,14 +82,14 @@
 
         <ul class="nav d-flex justify-content-end" id="apsolu-dashboard-links">
             {{#dashboard_link}}
-                <li class="nav-item">
+                <li class="nav-item apsolu-link-light">
                     <a id="apsolu-myhome-a" href="{{ . }}">
                         {{#str}}myhome, moodle{{/str}}
                     </a>
                 </li>
             {{/dashboard_link}}
             {{#login_link}}
-                <li class="nav-item">
+                <li class="nav-item apsolu-link-light">
                     <a id="apsolu-login-a" href="{{ . }}">
                         {{#str}}login, moodle{{/str}}
                     </a>
@@ -98,7 +98,7 @@
             <li>
                 {{{ output.navbar_plugin_output }}}
             </li>
-            <li class="nav-item">
+            <li class="nav-item apsolu-link-light">
                 {{{ output.user_menu }}}
             </li>
         </ul>

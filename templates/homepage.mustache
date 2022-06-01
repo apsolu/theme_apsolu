@@ -76,15 +76,14 @@
                             Formats de cours
                         </a>
                         <div class="dropdown-menu aalink" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#activites">{{#str}}
+                            <a class="dropdown-item" href="#liste-activites">{{#str}}
                                 the_activities, theme_apsolu{{/str}}</a>
-                            <a class="dropdown-item disabled" href="#activites">Cours</a>
-                            <a class="dropdown-item disabled" href="#activites">Stages</a>
-                            <a class="dropdown-item disabled" href="#activites">Evénements</a>
-                            <a class="dropdown-item disabled" href="#activites">Animations</a>
-                            <a class="dropdown-item disabled" href="#activites">Pratiques autonomes</a>
+                            <a class="dropdown-item disabled" href="#stages">Stages</a>
+                            <a class="dropdown-item disabled" href="#evenements">Evénements</a>
+                            <a class="dropdown-item disabled" href="#animations">Animations</a>
+                            <a class="dropdown-item disabled" href="#pratiques">Pratiques autonomes</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item disabled" href="#activites">Adhésion à l'association sportive</a>
+                            <a class="dropdown-item disabled" href="#adhesion">Adhésion à l'association sportive</a>
                         </div>
                     </li>
                     <li class="nav-item apsolu-link-light">
@@ -133,36 +132,45 @@
             <div class="container-md">
                 <h2>Formats de cours</h2>
 
-                <ul class="nav nav-tabs mb-2" id="apsolu-formats-cours">
+                {{! Onglets formats de cours. }}
+                <ul class="nav nav-tabs mb-2" id="apsolu-formats-cours" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#home">{{#str}}
+                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#liste-activites" role="tab">{{#str}}
                             activities_list, theme_apsolu{{/str}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" data-bs-toggle="tab" href="#stages">Stages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#evenements">Evenements</a>
+                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
+                           data-toggle="tab"
+                           href="#evenements">Evenements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#animations">Animations</a>
+                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
+                           data-toggle="tab"
+                           href="#animations">Animations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#pratiques">Pratiques autonomes</a>
+                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
+                           data-toggle="tab"
+                           href="#pratiques">Pratiques autonomes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#adhesion">Adhésion à l'Association
-                            Sportive</a>
+                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
+                           data-toggle="tab"
+                           href="#adhesion">Adhésion à l'Association Sportive</a>
                     </li>
                 </ul>
 
+                {{! Contenu des onglets formats de cours. }}
                 <div id="apsolu-formats-cours-contenu" class="tab-content">
-
-                    <div class="tab-pane fade show active" id="home">
-
+                    <div class="tab-pane fade show active" id="liste-activites" role="tabpanel">
                         {{! TODO Section 2a : Activités }}
                         <h2 class="sr-only">{{#str}}activities, theme_apsolu{{/str}}</h2>
 
+                        {{! Affichage des sites. }}
                         <div id="apsolu-sites-content-div" class="text-right">
                             {{! sites }}
                             <ul id="apsolu-sites-list-ul" class="list-inline">
@@ -181,7 +189,7 @@
                                 {{/sites}}
                             </ul>
                         </div>
-
+                        {{! Liste des activités. }}
                         <div id="apsolu-activities-content-div">
                             {{! activities }}
                             <ul id="apsolu-activities-list-ul" class="list-unstyled row">
@@ -193,25 +201,60 @@
                             </ul>
                         </div>
                     </div>
-
                     {{! TODO Section 2c : Stages }}
-                    <div class="tab-pane fade" id="stages">
+                    <div class="tab-pane fade disabled" id="stages">
                     </div>
 
                     {{! TODO Section 2d : Evénements }}
-                    <div class="tab-pane fade" id="evenements">
+                    <div class="tab-pane fade d-none" id="evenements" role="tabpanel">
+                        <div class="d-flex justify-content-center ">
+                            <div class="card mx-2" style="width: 18rem;">
+                                <div class="card-header">
+                                    <h5 class="card-title"></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"></p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                </div>
+                            </div>
+                            <div class="card mx-2" style="width: 18rem;">
+                                <div class="card-header">
+                                    <h5 class="card-title"></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"></p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                </div>
+                            </div>
+                            <div class="card mx-2" style="width: 18rem;">
+                                <div class="card-header">
+                                    <h5 class="card-title"></h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"></p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="d-none">Tous nos événements →</a>
                     </div>
 
                     {{! TODO Section 2e : Animations }}
-                    <div class="tab-pane fade" id="animations">
+                    <div class="tab-pane fade" id="animations" role="tabpanel">
                     </div>
 
                     {{! TODO Section 2f : Pratiques autonomes }}
-                    <div class="tab-pane fade" id="pratiques">
+                    <div class="tab-pane fade" id="pratiques" role="tabpanel">
                     </div>
 
                     {{! TODO Section 2g : Adhésion à l'AS }}
-                    <div class="tab-pane fade" id="adhesion">
+                    <div class="tab-pane fade" id="adhesion" role="tabpanel">
                     </div>
 
                 </div>
@@ -263,11 +306,11 @@
     </section>
 
     {{! TODO Pied de page }}
-    <footer class="footer " id="apsolu-custom-footer">
+    <footer class="footer d-none" id="apsolu-custom-footer">
         <div class="container-fluid">
             <div class="row apsolu-color-custom-1 d-none">
             </div>
-            <div class="row apsolu-color-custom-2 d-none">
+            <div class="row apsolu-color-custom-2">
                 <nav>
                     <ul class="nav justify-content-start apsolu-link-light">
                         <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#mentionsLegales">Mentions
@@ -295,7 +338,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3></h3>
+                <h3>Sous-titre</h3>
+                <p>Contenu.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -315,7 +359,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3></h3>
+                <h3>Sous-titre</h3>
+                <p>Contenu.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
