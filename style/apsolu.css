@@ -10,7 +10,6 @@ body {
 }
 
 
-
 .editor_atto_content[contenteditable=false] {
     background-color: #e9ecef;
     cursor: not-allowed;
@@ -41,7 +40,8 @@ body {
 #page-site-index #page-content.blocks-pre .region-main #region-main {
     padding: 0;
 }
- /* Important: évite le décalage des blocs dans le menu d'administration */
+
+/* Important: évite le décalage des blocs dans le menu d'administration */
 #page-content.blocks-pre .region-main #region-main {
     padding-top: 0;
 }
@@ -106,14 +106,30 @@ body {
  * Règles CSS pour les blocs de la homepage.
  */
 .apsolu-brand {
-    padding: 0.5em;
-    color: blue;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-bottom: 0;
+    min-height: 50px; /* Important : force le nom de l'instance à prendre toute la hauteur quand le logo n'est pas affiché. */
+}
+
+.apsolu-brand a:hover {
+    text-decoration: none;
+}
+
+nav.navbar .logo img {
+    max-height: 2em;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    line-height: inherit;
+    white-space: nowrap;
 }
 
 /* Homepage: articles */
 .apsolu-article {
     background: #F2F2F2;
-    padding: 1em;
+    padding: 2em;
 }
 
 #accueil.apsolu-article {
@@ -227,7 +243,6 @@ body {
 }
 
 #apsolu-homepage-footer-navigation {
-    background: blue;
     color: red;
     height: 2em;
 }
@@ -236,6 +251,11 @@ body {
     background: blue;
 }
 
+.btn-activite {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 #apsolu-logo-div {
     align-items: center;
@@ -322,27 +342,30 @@ body {
     display: none;
 }
 
-/* Navigation */
+/**
+* Navigation
+**/
 .apsolu-navbar {
     min-height: 50px;
-
+    padding: unset; /* Important: permet au brand de prendre toute la hauteur */
 }
 
 /* Important : permet au menu déroulant d'avoir un fond sur viewport réduit */
 .navbar.fixed-top {
-    height:auto;
+    height: auto;
 }
 
 #apsolu-header-navbar.apsolu-navbar {
     padding-left: 0;
+
 }
 
 #apsolu-header-navbar.navbar.fixed-top {
     /*align-items: normal;*/
-    min-height: 50px;
-    border-bottom: 2px #00B395 !important;
+    border-bottom: 2px #00B395;
     color: white;
     z-index: 1050;
+    padding-right: 1em;
 }
 
 #apsolu-homepage-navbar.navbar.fixed-top {
