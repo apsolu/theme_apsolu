@@ -214,6 +214,13 @@ nav.navbar .logo img {
     }
 }
 
+.pagelayout-login #page {
+    background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
 .apsolu-contents {
     padding-top: 3em;
     padding-bottom: 20px;
@@ -375,6 +382,10 @@ nav.navbar .logo img {
     border-top: 4px solid #00B395;
     margin-top: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+}
+
+.primary-navigation .navigation .nav-link {
+    color:white;
 }
 
 /**

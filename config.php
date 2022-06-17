@@ -45,7 +45,7 @@ $THEME->editor_sheets = array('editor');
 // themes. We have added add more than one parent here to inherit from multiple parents, and if we did they would be processed in
 // order of importance (later themes overriding earlier ones). Things we will inherit from the parent theme include
 // styles and mustache templates and some (not all) settings.
-$THEME->parents = ['boost', 'classic'];
+$THEME->parents = array('boost');
 
 // A dock is a way to take blocks out of the page and put them in a persistent floating area on the side of the page.
 // does not support a dock so we won't either - but look at bootstrapbase for an example of a theme with a dock.
@@ -66,92 +66,100 @@ $THEME->scss = function($theme) {
 // This is the function that all CSS should be passed to before being delivered.
 $THEME->csspostprocess = 'theme_apsolu_process_css';
 
+// This is a feature that tells the blocks library not to use the "Add a block" block. We don't want this in boost based themes because
+// it forces a block region into the page when editing is enabled and it takes up too much room.
+$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
+
 // Since we are using 2 parent themes the correct location of the layout files needs to be defined.
 // For this theme we need the multiple column layouts.
-$THEME->layouts = [
+$THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array(),
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // The site home page.
     'frontpage' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
+        'theme' => 'boost',
+        'file' => 'columns1.php',
+        'regions' => array(),
         'options' => array('nofullheader' => true),
     ),
     // Server administration scripts.
     'admin' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
-        'regions' => array('side-pre', 'side-post'),
+        'theme' => 'boost',
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true, 'langmenu' => true, 'nocontextheader' => true),
     ),
     // My public page.
     'mypublic' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     'login' => array(
-        'theme' => 'apsolu',
+        'theme' => 'boost',
         'file' => 'login.php',
         'regions' => array(),
         'options' => array('langmenu' => true),
     ),
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
-        'theme' => 'classic',
-        'file' => 'contentonly.php',
+        'theme' => 'boost',
+        'file' => 'columns1.php',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nonavbar' => true),
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
-        'theme' => 'classic',
-        'file' => 'contentonly.php',
+        'theme' => 'boost',
+        'file' => 'columns1.php',
         'regions' => array(),
-        'options' => array('nofooter' => true, 'nocoursefooter' => true),
+        'options' => array(
+            'nofooter' => true,
+            'nocoursefooter' => true,
+            'activityheader' => array(
+                'nocompletion' => true
+            )
+        ),
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
@@ -165,32 +173,34 @@ $THEME->layouts = [
     'maintenance' => array(
         'theme' => 'boost',
         'file' => 'maintenance.php',
-        'regions' => array(),
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
     ),
     // Should display the content and basic headers only.
     'print' => array(
-        'theme' => 'classic',
-        'file' => 'contentonly.php',
+        'theme' => 'boost',
+        'file' => 'columns1.php',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nonavbar' => false),
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
+        'theme' => 'boost',
         'file' => 'embedded.php',
         'regions' => array(),
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'theme' => 'classic',
-        'file' => 'columns.php',
+        'theme' => 'boost',
+        'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
-        'theme' => 'classic',
+        'theme' => 'boost',
         'file' => 'secure.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     )
-];
+);
