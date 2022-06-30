@@ -33,7 +33,11 @@ $string['activities'] = 'Les activités';
 $string['activities_list'] = 'Liste des activités';
 $string['background_image'] = 'Image de fond';
 $string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d\'accueil. L\'image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
-$string['choosereadme'] = 'Apsolu est un thème basé sur le thème Moodle "Boost".';
+$string['choosereadme'] = '<p>Apsolu est un thème basé sur le thème Moodle "Boost".</p>
+<p>
+Contact : contact@apsolu.fr<br>
+Site officiel : <a href="https://www.apsolu.fr/">www.apsolu.fr</a><br>
+</p>';
 $string['configtitle'] = 'Apsolu';
 $string['default_homepage_section1_text'] = '<p>Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
@@ -54,9 +58,22 @@ $string['show_credit_help'] = 'Affiche le nom de l\'auteur et le type de licence
 $string['signup'] = 'S\'inscrire';
 $string['the_activities'] = 'Les activités';
 $string['use_apsolu_homepage'] = 'Utiliser la page d\'accueil APSOLU';
+$string['settings_configuration_customizer'] = 'Personnalisation';
+$string['use_apsolu_customizer'] = 'Personnaliser l\'instance APSOLU';
+$string['customizer_colors_label'] = 'Personnaliser les couleurs';
+$string['customizer_colors_desc'] = 'Sélectionnez le schéma de couleurs que vous voulez avoir pour votre site.';
 $string['brandcolor_1'] = 'Couleur principale';
 $string['brandcolor_2'] = 'Couleur secondaire';
-$string['brandcolor_3'] = 'Couleur des liens';
-$string['brandcolor_1_desc'] = 'La couleur affichée en arrière-plan du nom du site et en bordure.';
-$string['brandcolor_2_desc'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page.';
-$string['brandcolor_3_desc'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
+$string['brandcolor_links'] = 'Couleur des liens';
+$string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du site et en bordure.';
+$string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page.';
+$string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
+$string['customizer_navbar_label'] = 'Personnaliser la barre de liens';
+$string['customizer_navbar_link_1'] = 'Lien n°1';
+$string['customizer_navbar_link_2'] = 'Lien n°2';
+$string['customizer_navbar_link_3'] = 'Lien n°3';
+$string['legal_customizer_label'] = 'Personnalisation des infos légales';
+$string['legal_customizer_medical'] = 'Éditer les recommandations médicales';
+$string['legal_customizer_confidential'] = 'Éditer la politique de confidentialité';
+$string['legal_customizer_notice'] = 'Éditer les mentions légales';
+$string['legal_customizer_contact'] = 'Éditer les informations de contact';
