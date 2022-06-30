@@ -49,6 +49,11 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     $str = get_string('settings_configuration_homepage', 'theme_apsolu');
     $url = new moodle_url('/theme/apsolu/homepage/settings.php');
     $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_homepage', $str, $url, $capabilities));
+
+    // Présentation > Personnalisation de l'instance.
+    $str = get_string('settings_configuration_customizer', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/customizer/settings.php');
+    $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_customizer', $str, $url, $capabilities));
 }
 
 if ($ADMIN->fulltree) {
