@@ -43,6 +43,11 @@ define('THEME_APSOLU_BACKGROUND_IMAGE_3_240_160', '31');
 define('THEME_APSOLU_BACKGROUND_IMAGE_3_480_320', '32');
 define('THEME_APSOLU_BACKGROUND_IMAGE_3_960_640', '33');
 
+define('THEME_APSOLU_MEDICAL_DOC_TEXT', 40);
+define('THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT', 41);
+define('THEME_APSOLU_CONFIDENTIAL_DOC_TEXT', 42);
+define('THEME_APSOLU_CONTACT_DOC_TEXT', 43);
+
 /**
  * Returns the main SCSS content.
  *
@@ -54,13 +59,12 @@ function theme_apsolu_get_main_scss_content() {
     $scss = '';
 
     // Main CSS - Get the CSS from theme Classic.
-    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/classic/pre.scss');
-    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/preset/default.scss');
-    $scss .= file_get_contents($CFG->dirroot . '/theme/classic/scss/classic/post.scss');
+    $scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/pre.scss');
+    $scss .= file_get_contents($CFG->dirroot.'/theme/boost/scss/preset/default.scss');
+    $scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/post.scss');
 
     return $scss;
 }
-
 
 /**
  * Loads the CSS Styles and replace the background images.
@@ -135,12 +139,12 @@ function theme_apsolu_process_css($css, $theme = null) {
  * @param stdClass $context       Context object.
  * @param string   $filearea      File area.
  * @param array    $args          Extra arguments.
- * @param bool     $forcedownload Whether or not force download.
+ * @param boolean     $forcedownload Whether or not force download.
  * @param array    $options       Additional options affecting the file serving.
  *
- * @return void|bool Retourne False en cas d'erreur.
+ * @return void|boolean Retourne False en cas d'erreur.
  */
-function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
     if ($context->contextlevel != CONTEXT_SYSTEM) {
         debugging('Wrong contextlevel: '.$context->contextlevel, DEBUG_DEVELOPER);
         return false;
@@ -151,7 +155,7 @@ function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forc
         return false;
     }
 
-    $itemid = (int)array_shift($args);
+    $itemid = (int) array_shift($args);
 
     $fs = get_file_storage();
 
@@ -215,8 +219,14 @@ function theme_apsolu_initialise_homepage_background_images() {
             'sortorder' => 0,
         );
 
-        $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
-            $file['itemid'], $file['filepath'], $file['filename']);
+        $existingfile = $fs->get_file(
+            $file['contextid'],
+            $file['component'],
+            $file['filearea'],
+            $file['itemid'],
+            $file['filepath'],
+            $file['filename']
+        );
         if ($existingfile) {
             // Supprime le précédent fichier.
             $existingfile->delete();
@@ -232,8 +242,14 @@ function theme_apsolu_initialise_homepage_background_images() {
             $file['itemid']++;
             $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
 
-            $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
-                $file['itemid'], $file['filepath'], $file['filename']);
+            $existingfile = $fs->get_file(
+                $file['contextid'],
+                $file['component'],
+                $file['filearea'],
+                $file['itemid'],
+                $file['filepath'],
+                $file['filename']
+            );
             if ($existingfile) {
                 // Supprime le précédent fichier.
                 $existingfile->delete();

@@ -42,6 +42,9 @@
     * section3_image_credits
     * institutional_account_url
     * non_institutional_account_url
+    * legal_notice_doc_text
+    * confidential_doc_text
+    * contact_doc_text
 
     Example context (json):
     {
@@ -56,7 +59,10 @@
         "section3_text": "",
         "section3_image_credits": "",
         "institutional_account_url": "",
-        "non_institutional_account_url": ""
+        "non_institutional_account_url": "",
+        "legal_notice_doc_text": "",
+        "confidential_doc_text": "",
+        "contact_doc_text": ""
     }
 }}
 {{! En-tête }}
@@ -214,8 +220,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Sous-titre</h3>
-                <p>Contenu.</p>
+                {{{ legal_notice_doc_text }}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -229,14 +234,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confidentialiteLabel">Données personnelles</h5>
+                <h5 class="modal-title" id="confidentialiteLabel">Politique de confidentialité</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Sous-titre</h3>
-                <p>Contenu.</p>
+                {{{ confidential_doc_text }}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -256,6 +260,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                {{{ contact_doc_text }}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

@@ -91,6 +91,7 @@ $data->count_activities = count($activities);
 $data->wwwroot = $CFG->wwwroot;
 $data->is_siuaps_rennes = isset($CFG->is_siuaps_rennes);
 
+// Sections personnalisées.
 $text = get_config('theme_apsolu', 'homepage_section1_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
@@ -104,6 +105,22 @@ $data->section3_text = format_text($content, FORMAT_HTML, $options);
 $data->section1_image_credits = get_config('theme_apsolu', 'homepage_section1_image_credits');
 $data->section2_image_credits = get_config('theme_apsolu', 'homepage_section2_image_credits');
 $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_image_credits');
+
+// Documents personnalisés (modals).
+$text = get_config('theme_apsolu', 'legal_notice_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
+$data->legal_notice_doc_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config('theme_apsolu', 'confidential_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_CONFIDENTIAL_DOC_TEXT);
+$data->confidential_doc_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config('theme_apsolu', 'contact_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
+$data->contact_doc_text = format_text($content, FORMAT_HTML, $options);
 
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {

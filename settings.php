@@ -54,6 +54,33 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     $str = get_string('settings_configuration_customizer', 'theme_apsolu');
     $url = new moodle_url('/theme/apsolu/customizer/settings.php');
     $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_customizer', $str, $url, $capabilities));
+
+    // Documents.
+    if (empty($ADMIN->locate('theme_apsolu_documents')) === true) {
+        $ADMIN->add('apsolu', new admin_category('theme_apsolu_documents', get_string('documents_settings', 'theme_apsolu')));
+    }
+
+    // Documents > Mentions légales.
+    $str = get_string('legal_notice', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/documents/legal_notice_settings.php');
+    $ADMIN->add('theme_apsolu_documents', new admin_externalpage('theme_apsolu_documents_legal_notice', $str, $url, $capabilities));
+
+    // Documents > Politique de confidentialité.
+    $str = get_string('confidential', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/documents/confidential_settings.php');
+    $ADMIN->add('theme_apsolu_documents', new admin_externalpage('theme_apsolu_documents_confidential', $str, $url, $capabilities));
+
+    // Documents > Recommandations médicales.
+    $str = get_string('medical_rec', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/documents/medical_settings.php');
+    $ADMIN->add('theme_apsolu_documents', new admin_externalpage('theme_apsolu_documents_medical', $str, $url, $capabilities));
+
+    // Documents > Nous contacter.
+    $str = get_string('contact_us', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/documents/contact_settings.php');
+    $ADMIN->add('theme_apsolu_documents', new admin_externalpage('theme_apsolu_documents_contact', $str, $url, $capabilities));
+
+    // TODO: Documents > Droit à l'image.
 }
 
 if ($ADMIN->fulltree) {
