@@ -78,10 +78,11 @@ class theme_apsolu_legal_notice_form extends moodleform {
         $options = array();
         $options['subdirs'] = false;
         $options['maxbytes'] = 0; // Taille limite par défaut.
-        $options['maxfiles'] = -1; // Nombre de fichiers attachés illimités.
+        $options['maxfiles'] = 0; // Aucun fichier autorisé.
         $options['context'] = context_system::instance();
         $options['noclean'] = true;
         $options['trusttext'] = false;
+        $options['enable_filemanagement'] = false; // On désactive les boutons de gestion de fichiers.
 
         return $options;
     }
