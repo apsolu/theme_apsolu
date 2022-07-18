@@ -38,13 +38,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function nav_link_2_text():string {
-        $text1 = get_config('theme_apsolu','nav_link_2_text');
-        return $text1;
+        $text2 = get_config('theme_apsolu','nav_link_2_text');
+        return $text2;
     }
 
     public function nav_link_3_text():string {
-        $text1 = get_config('theme_apsolu','nav_link_3_text');
-        return $text1;
+        $text3 = get_config('theme_apsolu','nav_link_3_text');
+        return $text3;
     }
 
     public function nav_link_1_url():string {
@@ -53,13 +53,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function nav_link_2_url():string {
-        $url1 = get_config('theme_apsolu','nav_link_2_url');
-        return $url1;
+        $url2 = get_config('theme_apsolu','nav_link_2_url');
+        return $url2;
     }
 
     public function nav_link_3_url():string {
-        $url1 = get_config('theme_apsolu','nav_link_3_url');
-        return $url1;
+        $url3 = get_config('theme_apsolu','nav_link_3_url');
+        return $url3;
     }
 
 }
