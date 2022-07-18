@@ -72,9 +72,8 @@ $string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du 
 $string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page.';
 $string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
 $string['customizer_navbar_label'] = 'Personnaliser la barre de liens';
-$string['customizer_navbar_link_1'] = 'Lien n°1';
-$string['customizer_navbar_link_2'] = 'Lien n°2';
-$string['customizer_navbar_link_3'] = 'Lien n°3';
+$string['nav_url_label'] = 'Lien menu';
+$string['nav_text_label'] = 'Texte à afficher pour le lien';
 $string['confidential'] = 'Politique de confidentialité';
 $string['legal_notice'] = 'Mentions légales';
 $string['medical_rec'] = 'Recommandations médicales';
@@ -88,3 +87,4 @@ $string['customize_contact'] = 'Éditer les informations de contact';
 $string['document_text'] = 'Contenu du document';
 $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre modale, au clic sur le lien approprié dans le footer.';
 $string['default_'] = '';
+

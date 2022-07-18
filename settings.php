@@ -50,11 +50,6 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     $url = new moodle_url('/theme/apsolu/homepage/settings.php');
     $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_homepage', $str, $url, $capabilities));
 
-    // Présentation > Personnalisation de l'instance.
-    $str = get_string('settings_configuration_customizer', 'theme_apsolu');
-    $url = new moodle_url('/theme/apsolu/customizer/settings.php');
-    $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_customizer', $str, $url, $capabilities));
-
     // Documents.
     if (empty($ADMIN->locate('theme_apsolu_documents')) === true) {
         $ADMIN->add('apsolu', new admin_category('theme_apsolu_documents', get_string('documents_settings', 'theme_apsolu')));
@@ -84,15 +79,87 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
 }
 
 if ($ADMIN->fulltree) {
-    // Ajoute une information sur la page du menu Administration du site > Présentation > Thèmes > Apsolu.
-    $settings = new admin_settingpage('themesettingapsolu', get_string('configtitle', 'theme_apsolu'));
 
-    $heading = new admin_setting_heading('theme_apsolu_heading', get_string('settings'), '', 0);
-    $settings->add($heading);
+    // 1. Paramètres.
+    // Ajoute une information sur la page du menu Administration du site > Présentation > Thèmes > Apsolu.
+    $page = new admin_settingpage('themesettingapsolu', get_string('settings'));
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingapsolu', get_string('configtitle', 'theme_apsolu'));
 
     $name = 'theme_apsolu_description';
     $title = get_string('description');
     $description = get_string('choosereadme', 'theme_apsolu');
     $setting = new admin_setting_description($name, $title, $description, 0);
-    $settings->add($setting);
+    $page->add($setting);
+
+    $settings->add($page);
+
+    // 2. Personnaliser les couleurs.
+    $page = new admin_settingpage('theme_apsolu_customize_colors', get_string('customizer_colors_label', 'theme_apsolu'));
+
+    // 2b. Couleur principale.
+    $name = 'theme_apsolu/brandcolor';
+    $title = get_string('brandcolor_1_label', 'theme_apsolu');
+    $description = get_string('brandcolor_1_help', 'theme_apsolu');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // 2c. Couleur secondaire.
+    $name = 'theme_apsolu/brandcolor_2';
+    $title = get_string('brandcolor_2_label', 'theme_apsolu');
+    $description = get_string('brandcolor_2_help', 'theme_apsolu');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // 2d. Couleur des liens.
+    $name = 'theme_apsolu/brandcolor_links';
+    $title = get_string('brandcolor_links_label', 'theme_apsolu');
+    $description = get_string('brandcolor_links_help', 'theme_apsolu');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    $settings->add($page);
+
+    // 3. Personnalisation du menu.
+    $page = new admin_settingpage('theme_apsolu_customize_links', get_string('customizer_navbar_label', 'theme_apsolu'));
+
+    //3a. URL 1.
+    $name = 'theme_apsolu/nav_link_1_url';
+    $number = 'n°1';
+    $setting = new admin_setting_configtext($name,get_string('nav_url_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_URL);
+    $page->add($setting);
+
+    $name = 'theme_apsolu/nav_link_1_text';
+    $number = 'n°1';
+    $setting = new admin_setting_configtext($name,get_string('nav_text_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_RAW_TRIMMED);
+    $page->add($setting);
+
+    //3b. URL 2.
+    $name = 'theme_apsolu/nav_link_2_url';
+    $number = 'n°2';
+    $setting = new admin_setting_configtext($name,get_string('nav_url_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_URL);
+    $page->add($setting);
+
+    $name = 'theme_apsolu/nav_link_2_text';
+    $number = 'n°2';
+    $setting = new admin_setting_configtext($name,get_string('nav_text_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_RAW_TRIMMED);
+    $page->add($setting);
+
+    //3c. URL 3.
+    $name = 'theme_apsolu/nav_link_3_url';
+    $number = 'n°3';
+    $setting = new admin_setting_configtext($name,get_string('nav_url_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_URL);
+    $page->add($setting);
+
+    $name = 'theme_apsolu/nav_link_3_text';
+    $number = 'n°3';
+    $setting = new admin_setting_configtext($name,get_string('nav_text_label', 'theme_apsolu').' '.$number,get_string('nav_link_help', 'theme_apsolu'),null,PARAM_RAW_TRIMMED);
+    $page->add($setting);
+
+    $settings->add($page);
+
+    // 4. TODO: Personnalisation des libellés.
+
 }

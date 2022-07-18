@@ -1,0 +1,56 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+
+    @template theme_apsolu/components/navigation-menu
+
+    Template Moodle pour afficher la navbar custom sur la page d'accueil.
+
+    Context variables required for this template:
+    * nav_link_1_url
+    * nav_link_2_url
+    * nav_link_3_url
+    * nav_link_1_text
+    * nav_link_2_text
+    * nav_link_3_text
+    * output - The core renderer for the page
+
+    Example context (json):
+    {
+        "output": {
+            "nav_link_1_url": true,
+            "theme_apsolu/nav_link_1_text": "",
+            "nav_link_2_url": "",
+            "theme_apsolu/nav_link_2_text": "",
+            "nav_link_3_url": "",
+            "theme_apsolu/nav_link_3_text": "",
+            "support_contact": "",
+        },
+        "config": {
+            "wwwroot": "#"
+        },
+        "sitename": "Moodle Site"
+    }
+}}
+    <ul class="nav mr-auto apsolu-link-light">
+        <li class="nav-item"><a class="nav-link" href="{{{ output.nav_link_1_url }}}">{{{ output.nav_link_1_text }}}</a>
+        </li>
+        <li class="nav-item"><a class="nav-link " href="{{{ output.nav_link_2_url }}}">{{{ output.nav_link_2_text }}}</a>
+        </li>
+        <li class="nav-item"><a class="nav-link " href="{{{ output.nav_link_3_url }}}">{{{ output.nav_link_3_text }}}</a>
+        </li>
+    </ul>

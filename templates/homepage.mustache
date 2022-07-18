@@ -27,6 +27,7 @@
 
     Context variables required for this template:
     * count_activities
+    * sitename - The name of the site
     * dashboard_link
     * login_link
     * section1_text
@@ -48,6 +49,7 @@
 
     Example context (json):
     {
+        "sitename": "",
         "count_activities": "0",
         "dashboard_link": "",
         "login_link": "",
@@ -65,8 +67,8 @@
         "contact_doc_text": ""
     }
 }}
+
 {{! En-tête }}
-{{>theme_boost/navbar}}
 {{! Menu 2 : Navigation }}
 {{>theme_apsolu/homepage-navbar}}
 <div id="apsolu-page">
@@ -209,62 +211,3 @@
 
 </div>
 
-{{! TODO Mentions légales }}
-<div class="modal fade" id="mentionsLegales" tabindex="-1" aria-labelledby="mentionsLegalesLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mentionsLegalesLabel">Mentions Légales</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {{{ legal_notice_doc_text }}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{! TODO Politique de confidentialité }}
-<div class="modal fade" id="confidentialite" tabindex="-1" aria-labelledby="confidentialiteLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confidentialiteLabel">Politique de confidentialité</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {{{ confidential_doc_text }}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{! TODO Contact }}
-<div class="modal fade" id="contact" tabindex="-1" aria-labelledby="contactLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mentionsLegalesLabel">Contact</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {{{ contact_doc_text }}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
