@@ -29,28 +29,37 @@ defined('MOODLE_INTERNAL') || die;
  * Custom Core renderer.
  */
 class core_renderer extends \theme_boost\output\core_renderer {
+
+    // TODO: Conditionner l'affichage des liens.
+
     public function nav_link_1_text():string {
-        return "Université Rennes 1";
+        $text1 = get_config('theme_apsolu','nav_link_1_text');
+        return $text1;
     }
 
     public function nav_link_2_text():string {
-        return "Université Rennes 2";
+        $text1 = get_config('theme_apsolu','nav_link_2_text');
+        return $text1;
     }
 
     public function nav_link_3_text():string {
-        return "SIUAPS Rennes";
+        $text1 = get_config('theme_apsolu','nav_link_3_text');
+        return $text1;
     }
 
     public function nav_link_1_url():string {
-        return "https://www.univ-rennes1.fr/";
+        $url1 = get_config('theme_apsolu','nav_link_1_url');
+        return $url1;
     }
 
     public function nav_link_2_url():string {
-        return "https://www.univ-rennes2.fr/";
+        $url1 = get_config('theme_apsolu','nav_link_2_url');
+        return $url1;
     }
 
     public function nav_link_3_url():string {
-        return "https://siuaps.univ-rennes.fr/";
+        $url1 = get_config('theme_apsolu','nav_link_3_url');
+        return $url1;
     }
 
 }
