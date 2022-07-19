@@ -53,15 +53,51 @@ define('THEME_APSOLU_CONTACT_DOC_TEXT', 43);
  *
  * @return string All fixed Sass for this theme.
  */
-function theme_apsolu_get_main_scss_content() {
+function theme_apsolu_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
 
     // Main CSS - Get the CSS from theme Classic.
     $scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/pre.scss');
-    $scss .= file_get_contents($CFG->dirroot.'/theme/boost/scss/preset/default.scss');
-    $scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/post.scss');
+    $scss .= file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss'); // Preset Apsolu
+    //$scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/post.scss');
+
+    return $scss;
+}
+
+/**
+ * Récupère le SCSS à rajouter pour le schéma de couleurs personnalisé.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array
+ */
+function theme_apsolu_get_pre_scss($theme) {
+    //global $CFG;
+
+    $scss = '';
+    $configurable = [
+        // Clefs de config définies dans les settings.
+        'brandcolor' => ['primary'], // Couleur principale.
+        'brandcolor_2' => ['secondary'], // Couleur de contraste.
+        'brandcolor_links' => ['links'], // Couleur des liens.
+    ];
+
+    // Prepend variables first.
+    foreach ($configurable as $configkey => $targets) {
+        $value = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
+        if (empty($value)) {
+            continue;
+        }
+        array_map(function($target) use (&$scss, $value) {
+            $scss .= '$' . $target . ': ' . $value . ";\n";
+        }, (array) $targets);
+    }
+
+    // Prepend pre-scss.
+    if (!empty($theme->settings->scsspre)) {
+        $scss .= $theme->settings->scsspre;
+    }
 
     return $scss;
 }
