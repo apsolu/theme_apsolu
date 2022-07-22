@@ -90,10 +90,9 @@ $THEME->layouts = array(
     ),
     // The site home page.
     'frontpage' => array(
-        'theme' => 'boost',
-        'file' => 'columns1.php',
+        'theme' => 'apsolu',
+        'file' => 'home.php',
         'regions' => array(),
-        'options' => array('nofullheader' => true),
     ),
     // Server administration scripts.
     'admin' => array(
