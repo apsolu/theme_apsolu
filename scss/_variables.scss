@@ -1,0 +1,34 @@
+/**
+ * Styles complémentaires pour la personnalisation de l'instance.
+ */
+/* Variables
+ Variables should follow the `$component-state-property-size` formula for
+ consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.*/
+
+// Couleurs
+$apsolu-light: #f2f2f2 !default;
+$apsolu-dark: #343a40 !default;
+$custom-color-1: #00b395 !default; // Par défaut teinte claire
+$custom-color-2: #004d40 !default; // Par défaut teinte foncée
+$custom-color-3: #004d40 !default; // Couleur pour les liens
+
+$footer-color-1: $custom-color-1 !default; // Couleur optionnelle pour le footer
+$footer-color-2: $custom-color-2 !default; // Couleur pour le bloc optionnel footer
+
+$apsolu-colors: () !default;
+$apsolu-colors: map-merge(
+        (
+            "light": $apsolu-light,
+            "dark": $apsolu-dark,
+            "custom-1": $custom-color-1,
+            "custom-2": $custom-color-2,
+            "custom-3": $custom-color-3,
+            "footer-1": $footer-color-1,
+            "footer-2": $footer-color-1,
+        ),
+        $apsolu-colors
+);
+
+// Composants
+$navbar-border-color: apsolu-colors("custom-1") !default; // Utilisé pour bordure de la navbar
+$btn-outline-color: apsolu-colors("custom-1") !default; // Utilisé pour bordure de la navbar

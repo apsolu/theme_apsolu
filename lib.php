@@ -78,9 +78,9 @@ function theme_apsolu_get_pre_scss($theme) {
     $scss = '';
     $configurable = [
         // Clefs de config définies dans les settings.
-        'brandcolor' => ['primary'], // Couleur principale.
-        'brandcolor_2' => ['secondary'], // Couleur de contraste.
-        'brandcolor_links' => ['links'], // Couleur des liens.
+        'custom_brandcolor' => ['custom-color-1'], // Couleur principale.
+        'custom_brandcolor_2' => ['custom-color-2'], // Couleur de contraste.
+        'custom_brandcolor_links' => ['custom-color-3'], // Couleur des liens.
     ];
 
     // Prepend variables first.

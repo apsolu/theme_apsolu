@@ -1,4 +1,7 @@
-// Bootstrap variables
+/*
+    Variables Bootstrap :
+    Tables, Options, Body, Fonts, Navbar, Breadcrumbs...
+ */
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -109,39 +112,41 @@ $spacers: (
     6: ($spacer * 3)
 ) !default;
 
+/*
+    Les imports :
+    "fontawesome", "bootstrap" et "moodle" sont hérités du thème Boost. Ne pas modifier.
+    "variables" (_variables.scss) est spécifique à Apsolu et ajoute des variables personnalisées. Peut être modifié.
+ */
 // Import FontAwesome.
 @import "fontawesome";
-
 // Import All of Bootstrap
 @import "bootstrap";
-
 // Import Core moodle CSS
 @import "moodle";
-
+// Variables custom Apsolu.
 @import "variables";
 
-// Preset CSS
+/*
+    Preset pour Apsolu :
+    Règles de styles nécessaires à l'affichage de la page d'accueil et du thème APSOLU de manière générale.
+ */
 
-$navbar-height: 50px;
-$moremenu-height: 50px;
-
+// 1. Elements généraux.
 body {
+    min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+html {
+    height: 100%;
 }
 
-// Rounded user pictures
-.userpicture {
-    border-radius: 50%;
+#page-content.blocks-pre .region-main #region-main {
+    padding-top: 0; /* Important: évite le décalage des blocs dans le menu d'administration */
 }
 
-// Reset the default styling back to the bootstrap defaults for
-// the secondary outline button because gray-200 is much too light
-// for an outline button.
+// 1a. Boutons.
 .btn-outline-secondary {
     @include button-outline-variant($gray-600);
     border-color: $gray-600;
@@ -155,36 +160,73 @@ body {
     @include button-outline-variant($warning-outline);
 }
 
-///////////////
-
-/**
- * Règles CSS générales.
- */
-html {
-    height: 100%;
+.btn-activite {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-body {
-    min-height: 100%;
+// 1b. Liens.
+#page-site-index #region-main article a {
+    color: $custom-color-3;
+}
+#page-site-index #region-main article a {
+    color: darken($custom-color-3,0.8);
 }
 
+#page-site-index #region-main .nav-tabs .nav-link.disabled {
+    color: $gray-800!important;
+}
 
-.editor_atto_content[contenteditable=false] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
+// 2. Navigation.
+$navbar-height: 50px;
+$moremenu-height: 50px;
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
 }
 
 .navbar.fixed-top {
     border-bottom: none;
+    height: auto; // Important : permet au menu déroulant d'avoir un fond sur viewport réduit.
 }
 
-/*.navbar{*/
-/*    height: auto;*/
-/*}*/
+.primary-navigation .navigation .nav-link {
+    color: white;
+}
 
-/**
- * Règles CSS pour la homepage.
- */
+.navbar-header .guest {
+    display: none;
+}
+
+.dropdown-menu {
+    // Placeholder.
+}
+
+.apsolu-navbar {
+    min-height: 50px;
+    padding: unset; /* Important: permet au brand de prendre toute la hauteur */
+}
+
+#apsolu-header-navbar.apsolu-navbar {
+    padding-left: 0;
+}
+
+#apsolu-header-navbar.navbar.fixed-top {
+    color: white;
+    padding-right: 1em;
+}
+
+#apsolu-homepage-navbar.navbar.fixed-top {
+    background: $custom_color_2;
+    color: white;
+    border-top: 4px solid $custom-color-1;
+    margin-top: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+}
+
+// 3. Page d'accueil.
+// 3a. Affichage de la page.
 #page-site-index {
     height: 100%;
     margin: 0;
@@ -195,17 +237,10 @@ body {
     display: block;
 }
 
-/* Important: permet d'afficher l'accueil sur 100% de la largueur (MOODLE 4.*) */
 #page-site-index #page-content.blocks-pre .region-main #region-main {
-    padding: 0;
+    padding: 0; /* Important: permet d'afficher l'accueil sur 100% de la largueur (MOODLE 4.*) */
 }
 
-/* Important: évite le décalage des blocs dans le menu d'administration */
-#page-content.blocks-pre .region-main #region-main {
-    padding-top: 0;
-}
-
-/* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
 #page-login-index #apsolu-topofbody,
 #page-site-index #apsolu-topofbody,
 #page-site-index #page-header,
@@ -213,12 +248,11 @@ body {
 #page-site-index #page-content > .columnright,
 #page-site-index #apsolu-page ~ *,
 #page-site-index #page-footer {
-    display: none;
+    display: none; /* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
 }
 
-/* Important: permet à l'en-tête de ne pas empiéter sur la photo d'accueil */
 #page-site-index {
-    padding-top: 99px; /* Correspond à la taille de l'en-tête */
+    padding-top: 99px; /* Important: permet à l'en-tête de ne pas empiéter sur la photo d'accueil */
 }
 
 #page-site-index #page,
@@ -232,9 +266,8 @@ body {
     max-width: none;
 }
 
-/* Important : évite la bordure blanche par défaut */
 #page-content.blocks-pre .region-main #region-main {
-    border: none;
+    border: none; /* Important : évite la bordure blanche par défaut */
 }
 
 #page-site-index #page,
@@ -245,7 +278,6 @@ body {
 #apsolu-page {
     display: block;
     float: none;
-    /*height: 100%;*/
     left: 0;
     margin: 0;
     max-width: 100%;
@@ -254,16 +286,7 @@ body {
     width: 100%;
 }
 
-.navbar-header .guest {
-    display: none;
-}
-
-.dropdown-menu {
-}
-
-/**
- * Règles CSS pour les blocs de la homepage.
- */
+// 3b. Affichage des infos de l'instance dans la barre de navigation.
 .apsolu-brand {
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -285,7 +308,8 @@ nav.navbar .logo img {
     white-space: nowrap;
 }
 
-/* Homepage: articles */
+// 3c. Affichage des articles.
+
 .apsolu-article {
     background: #f2f2f2;
     padding: 2em;
@@ -307,7 +331,7 @@ nav.navbar .logo img {
 
 }
 
-/* Homepage: blocs images */
+// 3d. Affichage des blocs images.
 #page-site-index .apsolu-images {
     background-attachment: fixed;
     background-position: center center;
@@ -373,19 +397,6 @@ nav.navbar .logo img {
     }
 }
 
-.pagelayout-login #page {
-    background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
-}
-
-.apsolu-contents {
-    padding-top: 3em;
-    padding-bottom: 20px;
-    margin: auto;
-}
-
 /* Homepage: crédits photos */
 .apsolu-photo-credits {
     margin: 0.8em;
@@ -403,26 +414,117 @@ nav.navbar .logo img {
     text-decoration: underline;
 }
 
-/* Homepage: pied de page */
+// 3e. Section: Activites.
+#apsolu-activities-list-ul {
+    margin-bottom: 0;
+}
+
+#apsolu-activities-list-ul .list-group-item {
+    padding: .2em .5em;
+}
+
+.apsolu-homepage-activities-items-span {
+    display: block;
+    padding: .5em 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    word-break: break-all;
+}
+
+// 3f. Affichage du pied de page.
 #apsolu-homepage-footer {
     background-color: lightgrey;
 }
 
-#apsolu-homepage-footer-navigation {
-    color: red;
-    height: 2em;
+/* Homepage: inscription. */
+.apsolu-inscription {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-#apsolu-footer-navigation a {
-    background: blue;
+.apsolu-inscription a {
+    white-space: normal;
+    margin-top: 20px;
 }
 
-.btn-activite {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+//.apsolu-register-dl {
+//    margin-left: 2em;
+//}
+//
+//.apsolu-register-dt,
+//.apsolu-register-dd {
+//    display: inline;
+//}
+//
+//.apsolu-register-dt:after {
+//    content: ' : ';
+//}
+
+// 4. Page de connexion.
+.pagelayout-login #page {
+    background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
 }
 
+#page-login-index .potentialidp {
+    margin: 1em 0;
+}
+
+#page-login-index .potentialidp img {
+    display: none;
+}
+
+#page-auth-shibboleth-login #region-main .card.mt-1 {
+    display: none;
+}
+
+// 5. Personnalisation des couleurs.
+.apsolu-link-dark a {
+    color: black;
+}
+
+.apsolu-link-light a {
+    color: white;
+}
+
+.dropdown-menu a {
+    color: #004d40;
+}
+
+.apsolu-link-custom a {
+    color: blue;
+}
+
+.apsolu-color-custom-1 {
+    background-color: $custom-color-1;
+}
+
+.apsolu-color-custom-2 {
+    background-color: $custom-color-2;
+}
+
+#apsolu-custom-footer {
+}
+
+// 6. Divers.
+// 6a. Affichage de l'avatar utilisateur.
+.userpicture {
+    border-radius: 50%;
+}
+
+// 6b. Affichage des éditeurs de texte.
+.editor_atto_content[contenteditable=false] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+// 6c. Affichage des logos sur l'instance du SIUAPS Rennes.
 #apsolu-logo-div {
     align-items: center;
     display: flex;
@@ -443,145 +545,6 @@ nav.navbar .logo img {
     height: auto;
     width: 45%;
 }
-
-/* Homepage : activities. */
-#apsolu-activities-list-ul {
-    margin-bottom: 0;
-}
-
-#apsolu-activities-list-ul .list-group-item {
-    padding: .2em .5em;
-}
-
-.apsolu-homepage-activities-items-span {
-    display: block;
-    padding: .5em 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    word-break: break-all;
-}
-
-#apsolu-activities-list-h3 {
-}
-
-/* Homepage: inscription. */
-.apsolu-inscription {
-    text-align: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.apsolu-inscription a {
-    white-space: normal;
-    margin-top: 20px;
-}
-
-.apsolu-register-dl {
-    margin-left: 2em;
-}
-
-.apsolu-register-dt,
-.apsolu-register-dd {
-    display: inline;
-}
-
-.apsolu-register-dt:after {
-    content: ' : ';
-}
-
-
-/**
- * Règles CSS pour la page d'authentification.
- */
-#page-login-index .potentialidp {
-    margin: 1em 0;
-}
-
-#page-login-index .potentialidp img {
-    display: none;
-}
-
-#page-auth-shibboleth-login #region-main .card.mt-1 {
-    display: none;
-}
-
-/**
-* Navigation
-**/
-.apsolu-navbar {
-    min-height: 50px;
-    padding: unset; /* Important: permet au brand de prendre toute la hauteur */
-}
-
-/* Important : permet au menu déroulant d'avoir un fond sur viewport réduit */
-.navbar.fixed-top {
-    height: auto;
-}
-
-#apsolu-header-navbar.apsolu-navbar {
-    padding-left: 0;
-
-}
-
-#apsolu-header-navbar.navbar.fixed-top {
-    /*align-items: normal;*/
-    border-bottom: 2px #00b395;
-    color: white;
-    /*z-index: 1050;*/
-    padding-right: 1em;
-}
-
-#apsolu-homepage-navbar.navbar.fixed-top {
-    /*align-items: normal;*/
-    background: $secondary;
-    color: white;
-    border-top: 4px solid $primary;
-    margin-top: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-}
-
-.primary-navigation .navigation .nav-link {
-    color: white;
-}
-
-/**
- * Règles CSS pour la personnalisation des couleurs.
- */
-
-.apsolu-link-dark a {
-    color: black;
-}
-
-.apsolu-link-light a {
-    color: white;
-}
-
-.dropdown-menu a {
-    color: #004d40;
-}
-
-.apsolu-link-custom a {
-    color: blue;
-}
-
-.apsolu-color-custom-1 {
-    background-color: $primary;
-}
-
-.apsolu-color-custom-2 {
-    background-color: $secondary;
-}
-
-#apsolu-custom-footer {
-}
-
-///* Homepage: Personnalisation barre de défilement */
-//.region-main {
-//    scrollbar-color: #004D40 #00B395;
-//}
 
 /**
  *Commente le !important pour passer le test de coding style.
