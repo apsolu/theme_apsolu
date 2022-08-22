@@ -6,10 +6,19 @@
 
 ## Description
 
-Un thème basé sur le thème *classic* de Moodle. Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.
+Un thème basé sur le thème *Boost* de Moodle.
 
+Ce thème ajoute :
+* un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU,
+* une page d'accueil qui intègre par défaut des informations relatives à l'offre de formation,
+* des fonctionnalités permettant de personnaliser visuellement son instance APSOLU.
 
-## Installation
+## Pré-requis
+* Moodle doit être au minimum en version 3.11
+* Le module principal d'APSOLU (*local_apsolu*) doit être installé
+* Les thèmes *Boost* et *Classic* doivent être installés
+
+## Installation du thème APSOLU
 
 ```bash
 cd /your/moodle/path
@@ -17,6 +26,39 @@ git clone https://github.com/apsolu/theme_apsolu theme/apsolu
 php admin/cli/upgrade.php
 ```
 
+## Configuration du thème APSOLU dans Moodle
+### 1. Activation et configuration de la page d'accueil
+
+`APSOLU > Présentation > Page d'accueil`
+* Activer "Utiliser la page d'accueil APSOLU"
+
+#### 1a. Personnaliser les blocs
+
+`APSOLU > Présentation > Page d'accueil`
+
+Vous pouvez personnaliser l'ensemble des contenus affichés sur la page d'accueil :
+* Section "accueil"
+* Section "les activités"
+* Section "s'inscrire"
+* Section "se connecter"
+
+#### 1b. Personnaliser les documents
+
+`APSOLU > Documents`
+
+Ce nouveau noeud permet de personnaliser le contenu des fenêtres modales présentes sur la page d'accueil :
+* Mentions légales
+* Politique de confidentialité
+* Recommandations médicales
+* Nous contacter
+
+### 2. Personnalisation de l'instance
+`Présentation > Thèmes > Apsolu`
+
+Les options suivantes vous sont proposées :
+* Personnaliser les couleurs
+* Personnaliser la barre de liens
+* Personnaliser les libellés du site (WIP)
 
 ## Crédits images
 Ce plugin utilise par défaut des images d'arrière-plan.
