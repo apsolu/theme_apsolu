@@ -76,9 +76,10 @@
     <section class="apsolu-pages" id="accueil">
         <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-1">
             {{#section1_image_credits}}
-                <p class="apsolu-photo-credits">
-                    Crédit image de fond : {{ section1_image_credits }}
-                </p>
+                <span class="badge apsolu-photo-credits">
+                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
+                    {{ section1_image_credits }}
+                </span>
             {{/section1_image_credits}}
         </span>
 
@@ -94,87 +95,91 @@
 
         <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-2">
             {{#section2_image_credits}}
-                <p class="apsolu-photo-credits">
-                    Crédit image de fond : {{ section2_image_credits }}
-                </p>
+                <span class="badge apsolu-photo-credits">
+                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
+                    {{ section2_image_credits }}
+                </span>
             {{/section2_image_credits}}
         </span>
-
+        <div class="apsolu-article-title">
+            <div class="container">
+                <h2><i aria-hidden="true" class="fa fa-chevron-circle-down mr-3"></i>Formats de pratique</h2>
+            </div>
+        </div>
         <article class="apsolu-article">
             <div class="container-md">
-                <h2>Offre sportive</h2>
+                <div id="formats-cours">
+                    {{! Onglets formats de cours. }}
+                    <ul class="nav nav-tabs mb-2" role="tablist">
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="liste-activites" aria-selected="false" class="nav-link active"
+                               data-toggle="tab"
+                               href="#liste-activites" role="tab">{{#str}}
+                                activities_list, theme_apsolu{{/str}}</a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#stages">Stages</a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#evenements">Evenements</a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#animations">Animations</a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#pratiques">Pratiques autonomes</a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#adhesion">Adhésion à l'Association Sportive</a>
+                        </li>
+                    </ul>
 
-                {{! Onglets formats de cours. }}
-                <ul class="nav nav-tabs mb-2" id="apsolu-formats-cours" role="tablist">
-                    <li class="nav-item" id="liste-activites">
-                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                           href="#liste-activites" role="tab" >{{#str}}
-                            activities_list, theme_apsolu{{/str}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" data-bs-toggle="tab" href="#stages">Stages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link"
-                           data-toggle="tab"
-                           href="#evenements">Evenements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
-                           data-toggle="tab"
-                           href="#animations">Animations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
-                           data-toggle="tab"
-                           href="#pratiques">Pratiques autonomes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link disabled"
-                           data-toggle="tab"
-                           href="#adhesion">Adhésion à l'Association Sportive</a>
-                    </li>
-                </ul>
-
-                {{! Contenu des onglets formats de cours. }}
-                <div id="apsolu-formats-cours-contenu" class="tab-content">
-                    <div class="tab-pane fade show active"  role="tabpanel">
+                    {{! Contenu des onglets formats de cours. }}
+                    <div class="tab-content">
 
                         {{! Section 2a : Activités. }}
                         {{>theme_apsolu/activities/activities-list}}
 
-                        {{! TODO Section 2c : Stages }}
+                        {{! TODO Section 2c : Stages. }}
                         {{>theme_apsolu/activities/sport-training-sessions}}
 
-                        {{! TODO Section 2d : Evénements }}
+                        {{! TODO Section 2d : Evénements. }}
                         {{>theme_apsolu/activities/events}}
 
-                        {{! TODO Section 2e : Animations }}
+                        {{! TODO Section 2e : Animations. }}
                         {{>theme_apsolu/activities/animations}}
 
-                        {{! TODO Section 2f : Pratiques autonomes }}
+                        {{! TODO Section 2f : Pratiques autonomes. }}
                         {{>theme_apsolu/activities/practice}}
 
-                        {{! TODO Section 2g : Adhésion à l'AS }}
+                        {{! TODO Section 2g : Adhésion à l'AS. }}
                         {{>theme_apsolu/activities/sport-association}}
 
+
                     </div>
-            </div>
+                </div>
         </article>
 
     </section>
 
-    {{! TODO Section 3 : Inscription }}
+    {{! Section 3 : Inscription / Connexion. }}
     <section class="apsolu-pages" id="authentification">
-
-        <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-3">
+        <div class="apsolu-images" id="section-3">
             {{#section3_image_credits}}
-                <p class="apsolu-photo-credits">
-                    Crédit image de fond : {{ section3_image_credits }}
-                </p>
+                <div class="badge apsolu-photo-credits float-right">
+                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
+                    {{ section3_image_credits }}
+                </div>
             {{/section3_image_credits}}
-        </span>
-
+        </div>
+        <div class="apsolu-article-title">
+            <div class="container"><h2><i aria-hidden="true" class="fa fa-chevron-circle-down mr-3"></i>{{#str}}signup, theme_apsolu{{/str}}</h2></div>
+        </div>
         <article class="apsolu-article">
             <div class="container-md">
                 <h2 class="sr-only">{{#str}}signup, theme_apsolu{{/str}}</h2>
@@ -203,6 +208,7 @@
 
             </div>
         </article>
+
 
     </section>
 
