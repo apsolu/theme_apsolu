@@ -134,7 +134,6 @@ $spacers: (
 // 1. Elements généraux.
 body {
     min-height: 100%;
-    //font-family: "Fira Sans","Roboto","San Francisco","Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -338,9 +337,9 @@ nav.navbar .logo img {
 .apsolu-article-title {
     //background: $gray-500;
     background: rgba(80, 80, 80, 0.8);
-    webkit-backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); // Safari (9+).
-    backdrop-filter: blur(10px); // Chromium (76+) & Firefox (103+).
+    //webkit-backdrop-filter: blur(10px);
+    //-webkit-backdrop-filter: blur(10px); // Safari (9+).
+    //backdrop-filter: blur(10px); // Chromium (76+) & Firefox (103+).
     padding: 1em;
     clear:both;
 }
