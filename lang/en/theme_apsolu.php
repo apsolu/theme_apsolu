@@ -38,7 +38,8 @@ $string['choosereadme'] = '<p>Apsolu est un thème basé sur le thème Moodle "B
 <p>
 Contact : contact@apsolu.fr<br>
 Site officiel : <a href="https://www.apsolu.fr/">www.apsolu.fr</a><br>
-</p>';
+</p>
+<div class="alert alert-info"><p>Vous pouvez ici personnaliser l\'apparence générale de votre instance APSOLU.Pour personnaliser la page d\'accueil, rendez-vous dans le menu "APSOLU > Présentation > Page d\'accueil".</p></div>';
 $string['configtitle'] = 'Apsolu';
 $string['default_homepage_section1_text'] = '<p>Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
@@ -78,6 +79,12 @@ $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre mod
 
 //$string['default_'] = '';
 
+$string['settings_configuration_homepage_activities'] = 'Formats de pratique';
+$string['settings_configuration_homepage_activities_desc'] = '<p class="lead">Vous permet de modifier l\'affichage des formats de pratique dans la page d\'accueil APSOLU.</p>' ;
+$string['homepage_activities_infobox'] = 'Information supplémentaire';
+$string['homepage_activities_infobox_help'] = '<p>Permet d\'afficher une boîte d\'information au-dessus du contenu de la section.</p><div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><div>Exemple de boîte.</div></div>';
+
+$string['settings_configuration_homepage_desc'] = '<p class="lead">Vous permet de configurer le contenu et l\'affichage de la page d\'accueil APSOLU.</p>' ;
 // 3. Personnalisation des couleurs.
 $string['customizer_colors_label'] = 'Personnaliser les couleurs';
 $string['customizer_colors_desc'] = 'Sélectionnez le schéma de couleurs que vous voulez avoir pour votre site.';
@@ -92,7 +99,8 @@ $string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barr
 $string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
 
 // 4. Personnalisation de la navbar.
-$string['customizer_navbar_label'] = 'Personnaliser la barre de liens';
+$string['customizer_links_label'] = 'Personnaliser la barre de liens';
+$string['customize_links_desc'] = '<div class="alert alert-info"><p>Vous pouvez intégrer jusqu\'a trois liens hypertexte vers d\'autres sites de votre écosystème (ex: site institutionel de l\'établissement, site du service des sports, etc.) dans la barre de navigation en tête de page.</p></div>';
 $string['nav_url_label'] = 'Lien menu';
 $string['nav_text_label'] = 'Texte à afficher pour le lien';
 
