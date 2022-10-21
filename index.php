@@ -92,21 +92,40 @@ $data->wwwroot = $CFG->wwwroot;
 $data->is_siuaps_rennes = isset($CFG->is_siuaps_rennes);
 
 // Sections personnalisées.
+// Section 1.
 $text = get_config('theme_apsolu', 'homepage_section1_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
 $data->section1_text = format_text($content, FORMAT_HTML, $options);
 
+// Section 2.
+$text = get_config('theme_apsolu', 'homepage_section2_activities_infobox_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT);
+$data->homepage_section2_activities_infobox_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config('theme_apsolu', 'homepage_section2_practice_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT);
+$data->homepage_section2_practice_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config('theme_apsolu', 'homepage_section2_association_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT);
+$data->homepage_section2_association_text = format_text($content, FORMAT_HTML, $options);
+
+// Section 3.
 $text = get_config('theme_apsolu', 'homepage_section3_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
 $data->section3_text = format_text($content, FORMAT_HTML, $options);
 
+// Images de section.
 $data->section1_image_credits = get_config('theme_apsolu', 'homepage_section1_image_credits');
 $data->section2_image_credits = get_config('theme_apsolu', 'homepage_section2_image_credits');
 $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_image_credits');
 
-// Documents personnalisés (modals).
+// Fenêtes modales.
 $text = get_config('theme_apsolu', 'legal_notice_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);

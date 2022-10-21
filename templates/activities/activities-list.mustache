@@ -23,7 +23,7 @@
     * none
 
     Data attributes required for JS:
-    * none
+    * homepage_section2_activities_infobox_text
 
     Context variables required for this template:
     * none
@@ -35,38 +35,43 @@
 <h2 class="sr-only">{{#str}}activities, theme_apsolu{{/str}}</h2>
 
 <div class="tab-pane fade show active" id="liste-activites" role="tabpanel">
-    <div class="alert alert-light d-flex align-items-center alert-dismissible fade show border-left " role="alert">
-        <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
-        <div>Vous trouverez ci-dessous l'offre complète de formation. Pour afficher l'ensemble des créneaux disponibles, choisissez "tous les sites" ou triez par campus.</div>
+    {{# homepage_section2_activities_infobox_text }}
+        <div class="alert alert-light d-flex align-items-center alert-dismissible fade show border-left " role="alert">
+            <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
+            <div>{{{homepage_section2_activities_infobox_text}}}</div>
+        </div>
+    {{/ homepage_section2_activities_infobox_text }}
+    <hr>
+    {{! Affichage des sites. }}
+    <div id="apsolu-sites-content-div" class="text-right">
+        {{! sites }}
+        <ul id="apsolu-sites-list-ul" class="list-inline">
+            {{#multisites}}
+                <li class="list-inline-item">
+                    <a class="btn btn-outline-info btn-sm" href="{{wwwroot}}/local/apsolu/presentation/summary.php">
+                        {{#str}}all_cities, local_apsolu{{/str}}</a></li>
+            {{/multisites}}
+            {{#sites}}
+                <li class="list-inline-item">
+                    <a class="btn btn-outline-info btn-sm" href="{{wwwroot}}/local/apsolu/presentation/summary.php?siteid={{id}}">
+                    {{name}}
+                    </a>
+                </li>
+            {{/sites}}
+        </ul>
     </div>
-{{! Affichage des sites. }}
-<div id="apsolu-sites-content-div" class="text-right">
-    {{! sites }}
-    <ul id="apsolu-sites-list-ul" class="list-inline">
-        {{#multisites}}
-            <li class="list-inline-item"><a class="btn btn-outline-info"
-                                            href="{{wwwroot}}/local/apsolu/presentation/summary.php">{{#str}}
-                all_cities, local_apsolu{{/str}}</a></li>
-        {{/multisites}}
-        {{#sites}}
-            <li class="list-inline-item">
-                <a class="btn btn-outline-info"
-                   href="{{wwwroot}}/local/apsolu/presentation/summary.php?siteid={{id}}">
-                {{name}}
-                </a>
-            </li>
-        {{/sites}}
-    </ul>
-</div>
-{{! Liste des activités. }}
-<div id="apsolu-activities-content-div">
-    {{! activities }}
-    <ul id="apsolu-activities-list-ul" class="list-unstyled row">
-        {{#activities}}
-            <li class="col-md-3 mb-2 overflow-hidden text-center">
-                <a class="btn btn-activite btn-info col" href="{{wwwroot}}/local/apsolu/presentation/activity.php?id={{id}}">{{name}}</a>
-            </li>
-        {{/activities}}
-    </ul>
-</div>
+    <hr>
+    {{! Liste des activités. }}
+    <div id="apsolu-activities-content-div">
+        {{! activities }}
+        <ul id="apsolu-activities-list-ul" class="list-unstyled row">
+            {{#activities}}
+                <li class="col-md-3 mb-2 overflow-hidden text-center">
+                    <a class="btn btn-activite btn-info col" href="{{wwwroot}}/local/apsolu/presentation/activity.php?id={{id}}">
+                    {{name}}
+                    </a>
+                </li>
+            {{/activities}}
+        </ul>
+    </div>
 </div>
