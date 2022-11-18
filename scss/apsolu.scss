@@ -1,146 +1,63 @@
 /*
-    Variables Bootstrap :
-    Tables, Options, Body, Fonts, Navbar, Breadcrumbs...
- */
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #8f959e !default;
-$gray-600: #6a737b !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #1d2125 !default;
-$black: #000 !default;
-
-$blue: #0f6cbf !default;
-$indigo: #6610f2 !default;
-$purple: #613d7c !default;
-$pink: #e83e8c !default;
-$red: #ca3120 !default;
-$orange: #f0ad4e !default;
-$yellow: #ff7518 !default;
-$green: #357a32 !default;
-$teal: #20c997 !default;
-$cyan: #008196 !default;
-
-$primary: $orange !default;
-$success: $green !default;
-$info: $cyan !default;
-$warning: $orange !default;
-$danger: $red !default;
-$secondary: $gray-400 !default;
-
-$info-outline: #1f7e9a;
-$warning-outline: #a6670e;
-
-// Tables
-$table-accent-bg: rgba($black, .03) !default;
-
-// Options
-$enable-responsive-font-sizes: true !default;
-
-// Body
-$body-color: $gray-900 !default;
-
-// Fonts
-$font-size-base: 0.9375rem !default;
-$rfs-base-font-size: 0.9rem !default;
-$headings-font-weight: 700 !default;
-
-// Navbar
-$navbar-dark-hover-color: rgba($white, 1) !default;
-$navbar-light-color: rgba($black, 0.6) !default;
-$navbar-light-hover-color: rgba($black, .9) !default;
-
-// Breadcrumbs
-$breadcrumb-padding-y: .5rem !default;
-$breadcrumb-padding-x: 0 !default;
-$breadcrumb-item-padding: .5rem !default;
-$breadcrumb-margin-bottom: 0 !default;
-$breadcrumb-bg: transparent !default;
-$breadcrumb-divider: "/" !default;
-$breadcrumb-divider-rtl: "/" !default;
-
-// Alerts
-$alert-border-width: 0 !default;
-
-$card-group-margin: .25rem;
-
-// Toasts
-$toast-color: $white !default;
-$toast-background-color: rgba($gray-900, .95) !default;
-$toast-header-color: $gray-100 !default;
-$toast-header-background-color: rgba($white, .1) !default;
-
-// Custom control size
-$custom-control-indicator-size: 1.25rem;
-
-$input-btn-focus-color: rgba($primary, .75) !default;
-
-$input-border-color: $gray-500 !default;
-
-$dropdown-link-hover-color: $white;
-$dropdown-link-hover-bg: $primary;
-
-$popover-max-width: 300px !default;
-
-$border-radius: .5rem !default;
-$border-radius-lg: .6rem !default;
-
-// stylelint-disable
-$theme-colors: () !default;
-$theme-colors: map-merge((
-    primary: $primary,
-    secondary: $secondary,
-    success: $success,
-    info: $info,
-    warning: $warning,
-    danger: $danger,
-), $theme-colors);
-// stylelint-enable
-
-$spacer: 1rem !default;
-$spacers: (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 2),
-    6: ($spacer * 3)
-) !default;
-
-/*
     Les imports :
-    "fontawesome", "bootstrap" et "moodle" sont hérités du thème Boost. Ne pas modifier.
-    "variables" (_variables.scss) est spécifique à Apsolu et ajoute des variables personnalisées. Peut être modifié.
+    "fontawesome", "bootstrap" et "moodle" sont importés depuis le thème Boost. Ne pas modifier.
+    "variables" (_variables.scss) est spécifique à Apsolu, surcharge Bootstrap et ajoute des variables personnalisées. Peut être modifié.
  */
 // Import FontAwesome.
-@import "fontawesome";
-// Import All of Bootstrap
-@import "bootstrap";
-// Import Core moodle CSS
-@import "moodle";
+@import "../../boost/scss/fontawesome";
 // Variables custom Apsolu.
 @import "variables";
+// Import All of Bootstrap.
+@import "../../boost/scss/bootstrap";
+// Import Core moodle CSS.
+@import "../../boost/scss/moodle";
+// Import icônes Font Awesome.
+@import "../../boost/scss/fontawesome/font-awesome";
 
 /*
     Preset pour Apsolu :
     Règles de styles nécessaires à l'affichage de la page d'accueil et du thème APSOLU de manière générale.
  */
-
 // 1. Elements généraux.
 body {
     min-height: 100%;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+
+    p, li, a {
+        font-weight: 350;
+    }
+
+    h1, h2, h3 {
+        font-weight: lighter;
+    }
+
 }
+
 
 html {
     height: 100%;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 0.9rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 1rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.1rem;
+    }
 }
 
 #page-content.blocks-pre .region-main #region-main {
@@ -148,17 +65,42 @@ html {
 }
 
 // 1a. Boutons.
-.btn-outline-secondary {
-    @include button-outline-variant($gray-600);
-    border-color: $gray-600;
+.btn {
+    &-primary {
+        border-bottom: 2px solid darken($primary, 10%);
+    }
+
+    &-secondary {
+        border-bottom: 2px solid darken($secondary, 10%);
+        outline: 0;
+    }
+
+    &-info {
+        border-bottom: 2px solid darken($info, 10%);
+    }
+
+    &-success {
+        border-bottom: 2px solid darken($success, 10%);
+    }
+
+    &-warning {
+        border-bottom: 2px solid darken($warning, 10%);
+    }
 }
 
-.btn-outline-info {
-    @include button-outline-variant($info-outline);
-}
+.btn-outline {
+    &-secondary {
+        @include button-outline-variant($gray-600);
+        border-color: $gray-600;
+    }
 
-.btn-outline-warning {
-    @include button-outline-variant($warning-outline);
+    &-info {
+        @include button-outline-variant($info-outline);
+    }
+
+    &-warning {
+        @include button-outline-variant($warning-outline);
+    }
 }
 
 .btn-activite {
@@ -167,87 +109,56 @@ html {
     text-overflow: ellipsis;
 }
 
-.btn-info {
-    border-bottom: 2px solid darken($info, 10%);
-}
-
-.btn-primary {
-    border-bottom: 2px solid darken($primary, 10%);
-}
-
-.btn-secondary {
-    border-bottom: 2px solid darken($secondary, 10%);
-    outline: 0;
-}
-
-.btn-success {
-    border-bottom: 2px solid darken($success, 10%);
-}
-
-.btn-warning {
-    border-bottom: 2px solid darken($warning, 10%);
-}
 // 1b. Liens.
-#page-site-index #region-main .apsolu-article p a {
+#page-site-index #region-main {
+    .nav-tabs .nav-link {
+        color: unset !important;
+
+        .disabled {
+            color: $gray-800 !important;
+        }
+    }
+}
+
+.apsolu-article p a, span a {
     color: $custom-color-3;
-}
-#page-site-index #region-main .apsolu-article .btn a {
-    color: unset;
-}
-
-#page-site-index #region-main .nav-tabs .nav-link {
-    color: unset !important;
-}
-
-#page-site-index #region-main .nav-tabs .nav-link.disabled {
-    color: $gray-800 !important;
 }
 
 // 2. Navigation.
-$navbar-height: 50px;
-$moremenu-height: 50px;
 
 .navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
-}
+    .fixed-top {
+        border-bottom: unset !important;
+        height: auto; // Important : permet au menu déroulant d'avoir un fond sur viewport réduit.
+    }
 
-.navbar.fixed-top {
-    border-bottom: none;
-    height: auto; // Important : permet au menu déroulant d'avoir un fond sur viewport réduit.
+    &-apsolu {
+        height: $navbar-height;
+        padding: unset; /* Important: permet au brand de prendre toute la hauteur */
+        border-bottom: 4px solid $custom-color-1; // On surcharge la bordure de base de la navbar.
+        align-items: stretch;
+    }
 }
 
 .primary-navigation .navigation .nav-link {
-    color: white;
+    color: $gray-400;
+    font-size: small;
+    text-transform: uppercase;
 }
 
 .navbar-header .guest {
     display: none;
 }
 
-.dropdown-menu {
-    // Placeholder.
+#apsolu-homepage-navbar {
+    min-height: $navbar-height;
 }
 
-.apsolu-navbar {
-    min-height: 50px;
-    padding: unset; /* Important: permet au brand de prendre toute la hauteur */
-}
-
-#apsolu-header-navbar.apsolu-navbar {
-    padding-left: 0;
-}
-
-#apsolu-header-navbar.navbar.fixed-top {
-    color: white;
-    padding-right: 1em;
-}
-
-#apsolu-homepage-navbar.navbar.fixed-top {
-    background: $custom_color_2;
-    color: white;
-    border-top: 4px solid $custom-color-1;
-    margin-top: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+#apsolu-header-navbar {
+    border-bottom: $custom-border; // On surcharge la bordure de base de la navbar.
+    .nav-link:hover, .nav-link:focus {
+        border-bottom: 4px solid darken($custom-color-1, 10%);
+    }
 }
 
 // 3. Page d'accueil.
@@ -255,60 +166,57 @@ $moremenu-height: 50px;
 #page-site-index {
     height: 100%;
     margin: 0;
-    padding: 0;
-}
-
-#page-site-index #page-content {
-    display: block;
-}
-
-#page-site-index #page-content.blocks-pre .region-main #region-main {
-    padding: 0; /* Important: permet d'afficher l'accueil sur 100% de la largueur (MOODLE 4.*) */
-}
-
-#page-login-index #apsolu-topofbody,
-#page-site-index #apsolu-topofbody,
-#page-site-index #page-header,
-#page-site-index #page-content > .columnleft,
-#page-site-index #page-content > .columnright,
-#page-site-index #apsolu-page ~ *,
-#page-site-index #page-footer {
-    display: none; /* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
-}
-
-#page-site-index {
     padding-top: 99px; /* Important: permet à l'en-tête de ne pas empiéter sur la photo d'accueil */
-}
 
-#page-site-index #page,
-#page-site-index #region-main {
-    margin: 0;
-    padding: 0;
-}
+    #page,
+    #region-main {
+        margin: 0;
+        padding: 0;
+    }
 
-#page-site-index #page-content.blocks-pre .region-main {
-    flex: 0 0 100%;
-    max-width: none;
-}
+    #apsolu-topofbody,
+    #page-header,
+    #page-content > .columnleft,
+    #page-content > .columnright,
+    #apsolu-page ~ *,
+    #page-footer {
+        display: none; /* Masque les annonces, le header, les blocs et le footer sur la page d'accueil. */
+    }
 
-#page-content.blocks-pre .region-main #region-main {
-    border: none; /* Important : évite la bordure blanche par défaut */
-}
+    #page,
+    #page-content,
+    #region-main-box,
+    #region-main,
+    #region-main > div,
+    #apsolu-page {
+        display: block;
+        float: none;
+        left: 0;
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
 
-#page-site-index #page,
-#page-site-index #page-content,
-#page-site-index #region-main-box,
-#page-site-index #region-main,
-#page-site-index #region-main > div,
-#apsolu-page {
-    display: block;
-    float: none;
-    left: 0;
-    margin: 0;
-    max-width: 100%;
-    padding: 0;
-    scroll-behavior: smooth;
-    width: 100%;
+    #page-content {
+        display: block;
+
+        .blocks-pre .region-main {
+            flex: 0 0 100%;
+            max-width: none;
+
+            #region-main {
+                padding: 0; /* Important: permet d'afficher l'accueil sur 100% de la largueur (MOODLE 4.*) */
+            }
+        }
+    }
+
+    .modal-body {
+        overflow-y: auto !important;
+        max-height: 80vh;
+        scrollbar-width: thin;
+    }
 }
 
 // 3b. Affichage des infos de l'instance dans la barre de navigation.
@@ -317,86 +225,69 @@ $moremenu-height: 50px;
     padding-right: 0.5em;
     padding-bottom: 0;
     min-height: 50px; /* Important : force le nom de l'instance à prendre toute la hauteur quand le logo n'est pas affiché. */
-}
 
-.apsolu-brand a:hover {
-    text-decoration: none;
-}
-
-nav.navbar .logo img {
-    max-height: 2em;
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 .navbar-brand {
     font-size: 1.5em;
+    font-weight: 300;
     line-height: inherit;
     white-space: nowrap;
+
+    .logo {
+        max-height: calc(50px - (0.25rem * 2));
+    }
 }
 
 // 3c. Affichage des titres de sections.
 .apsolu-article-title {
-    //background: $gray-500;
-    background: rgba(80, 80, 80, 0.8);
-    //webkit-backdrop-filter: blur(10px);
-    //-webkit-backdrop-filter: blur(10px); // Safari (9+).
-    //backdrop-filter: blur(10px); // Chromium (76+) & Firefox (103+).
+    background: rgba(80, 80, 80, 0.1);
     padding: 1em;
-    clear:both;
-}
+    clear: both;
 
-.apsolu-article-title h2 {
-    color: $white;
-    text-transform: uppercase;
-    font-size: 1.5em;
-    position: relative;
+    h2 {
+        color: $gray-600;
+        text-transform: uppercase;
+        font-size: 1.5em;
+        position: relative;
+    }
 }
 
 // 3d. Affichage des sections.
 .apsolu-article {
-    //background: #f2f2f290;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 2em;
+    background: $gray-100;
+    padding: 3em;
     backdrop-filter: blur(8px);
+
+    .nav-tabs .nav-link {
+        margin-bottom: -1px;
+        border-radius: unset;
+
+        :first-child {
+            border-left: none;
+        }
+    }
 }
+
 section .badge {
-    line-height:normal;
-}
-
-.apsolu-article .nav-tabs .nav-link {
-    margin-bottom: -1px;
-    border-radius: unset;
-}
-
-.apsolu-article .nav-tabs .nav-link:first-child {
-    border-left: none;
-}
-
-.apsolu-article .nav-tabs {
-}
-#accueil.apsolu-article {
-
+    line-height: normal;
 }
 
 #formats-cours {
     background: white;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-}
 
-#formats-cours .tab-content {
-    padding: 1em;
-}
+    .tab-content {
+        padding: 1em;
+    }
 
-#formats-cours .alert-light {
-    background-color: $gray-200;
-    border-left: 15px solid $gray-300;
-}
-
-#adhesion.apsolu-article {
-
-}
-
-#inscription.apsolu-article {
-
+    .alert-light {
+        background-color: $gray-200;
+        border-left: 15px solid $gray-300;
+    }
 }
 
 // 3e. Affichage des blocs images.
@@ -411,84 +302,103 @@ section .badge {
     padding-top: 5%;
 }
 
+//@media screen and (max-width: 1366px) {
+//}
+
+//@media screen and (max-width: 1920px) {
+//}
+
+//@media handheld, (orientation: portrait) and (max-width: 479px) {
+//}
+
+//@media handheld, (orientation: landscape) and (max-width: 479px) {
+//}
+
 /* Résolutions inférieures à 480px de large. */
 @media (max-width: 479px) {
-    #page-site-index #section-1.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_240x160]]');
-        height: 160px;
-    }
+    #page-site-index {
+        #section-1.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_240x160]]');
+            height: 160px;
+        }
 
-    #page-site-index #section-2.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_240x160]]');
-        height: 160px;
-    }
+        #section-2.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_240x160]]');
+            height: 160px;
+        }
 
-    #page-site-index #section-3.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_240x160]]');
-        height: 160px;
+        #section-3.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_240x160]]');
+            height: 160px;
+        }
     }
 }
 
 /* Résolutions supérieures ou égales à 480px de large. */
 @media (min-width: 480px) {
-    #page-site-index #section-1.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_480x320]]');
-        height: 320px;
-    }
+    #page-site-index {
+        #section-1.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_480x320]]');
+            height: 320px;
+        }
 
-    #page-site-index #section-2.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_480x320]]');
-        height: 320px;
-    }
+        #section-2.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_480x320]]');
+            height: 320px;
+        }
 
-    #page-site-index #section-3.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_480x320]]');
-        height: 320px;
+        #section-3.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_480x320]]');
+            height: 320px;
+        }
     }
 }
 
 /* Résolutions supérieures ou égales à 1024px de large. */
 @media (min-width: 1024px) {
-    #page-site-index #section-1.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
-        height: 50vh;
+    #page-site-index {
+        #section-1.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+            height: 60vh;
+        }
+
+        #section-2.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_960x640]]');
+            height: 60vh;
+        }
+
+        #section-3.apsolu-images {
+            background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_960x640]]');
+            height: 60vh;
+        }
     }
 
-    #page-site-index #section-2.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_2_960x640]]');
-        height: 50vh;
-    }
-
-    #page-site-index #section-3.apsolu-images {
-        background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_3_960x640]]');
-        height: 50vh;
-    }
 }
 
 /* Homepage: crédits photos */
-.apsolu-photo-credits {
-    margin: 0.8em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    background: rgba(255, 255, 255, 0.8);
-    display: inline-block;
-    font-size: .8em;
-}
+.badge {
+    &-photo-credits {
+        margin: 0.8em;
+        background: rgba(255, 255, 255, 0.8);
+        font-size: .8em;
 
-.apsolu-photo-credits p {
-    margin: 0;
-}
+        p {
+            margin: 0;
+        }
 
-.apsolu-photo-credits a {
-    text-decoration: underline;
+        a {
+            text-decoration: underline;
+        }
+    }
 }
 
 // 3e. Section: Activites.
 #apsolu-activities-list-ul {
     margin-bottom: 0;
-}
 
-#apsolu-activities-list-ul .list-group-item {
-    padding: .2em .5em;
+    .list-group-item {
+        padding: .2em .5em;
+    }
 }
 
 .apsolu-homepage-activities-items-span {
@@ -503,53 +413,63 @@ section .badge {
 
 // 3f. Affichage du pied de page.
 #apsolu-custom-footer-1 {
+    border-top: 4px solid $custom-color-1;
 }
 
 #apsolu-custom-footer-1 .container {
     padding: 2em;
+
+    ::before {
+        content: attr(class, "d-none");
+    }
 }
 
-#apsolu-custom-footer-2  {
-    background-color: $custom-color-1;
-}
+footer {
+    .footer-dark {
+        color: rgba(255, 255, 255, 0.8);
+    }
 
-footer .footer-dark {
-    color: rgba(255, 255, 255, 0.8);
-}
+    .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+        color: #fff;
+    }
 
-footer .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
-    color: #ffffff;
-}
-footer .nav-list li {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    list-style: none;
-}
+    .nav-list li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        list-style: none;
 
-footer .nav-list li a:hover:before {
-    margin-left: 0;
-    opacity: 1;
-    visibility: visible;
-}
+        a:hover:before {
+            margin-left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 
-footer ul, ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    ul, ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-footer .modal-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 1.25em;
-    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-}
-footer .modal-container .col {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    .modal-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1em;
+        font: 900 13px/1;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+
+        :hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    .modal-container .col {
+        //border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
 }
 
 /* Homepage: inscription. */
@@ -558,40 +478,57 @@ footer .modal-container .col {
     list-style: none;
     margin: 0;
     padding: 0;
+
+    a {
+        white-space: normal;
+        margin-top: 20px;
+    }
 }
 
-.apsolu-inscription a {
-    white-space: normal;
-    margin-top: 20px;
-}
+.apsolu-register {
+    &-dl {
+        margin-left: 2em;
+    }
 
-//.apsolu-register-dl {
-//    margin-left: 2em;
-//}
-//
-//.apsolu-register-dt,
-//.apsolu-register-dd {
-//    display: inline;
-//}
-//
-//.apsolu-register-dt:after {
-//    content: ' : ';
-//}
+    &-dt,
+    &-dd {
+        display: inline;
+    }
+
+    &-dt:after {
+        content: ' : ';
+    }
+}
 
 // 4. Page de connexion.
-.pagelayout-login #page {
-    background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
+//.pagelayout-login #page {
+//    background-image: url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+//    background-size: 100% 100%;
+//    background-repeat: no-repeat;
+//    background-position: left top;
+//}
+
+#page-login-index {
+    .potentialidp {
+        margin: 1em 0;
+
+        img {
+            display: none;
+        }
+    }
+
+    #apsolu-topofbody {
+        display: none; //! *Masque les annonces, le header, les blocs et le footer sur la page d 'accueil. *!
+    }
 }
 
-#page-login-index .potentialidp {
-    margin: 1em 0;
-}
+#apsolu-topofbody {
+    max-width: fit-content;
+    margin: auto;
 
-#page-login-index .potentialidp img {
-    display: none;
+    p {
+        margin-bottom: 0;
+    }
 }
 
 #page-auth-shibboleth-login #region-main .card.mt-1 {
@@ -599,71 +536,235 @@ footer .modal-container .col {
 }
 
 // 5. Personnalisation des couleurs.
-.apsolu-link-dark a {
-    color: black;
-}
+.apsolu-link {
+    &-dark a {
+        color: black;
+    }
 
-.apsolu-link-light a {
-    color: white;
+    &-light a {
+        color: white;
+    }
+
+    &-custom a {
+        color: blue;
+    }
 }
 
 .dropdown-menu a {
     color: #004d40;
 }
 
-.apsolu-link-custom a {
-    color: blue;
+.apsolu-color-custom {
+    &-1 {
+        background-color: $custom-color-1;
+    }
+
+    &-2 {
+        background-color: $custom-color-2;
+    }
 }
 
-.apsolu-color-custom-1 {
-    background-color: $custom-color-1;
+// 6. Backoffice : Affichage des éléments côté administration.
+// 6a. Navigation
+//.moremenu {
+//    .nav-tabs {
+//        border: unset;
+//        background-color: unset;
+//    }
+//}
+
+// 6b. Tableaux.
+#table-courses-sortable.table-sortable thead tr .header {
+    background-image: unset;
 }
 
-.apsolu-color-custom-2 {
-    background-color: $custom-color-2;
+.table-sortable {
+    thead tr .headerSortUp {
+        background-image: unset;
+    }
+
+    thead tr .headerSortDown {
+        background-image: unset;
+    }
 }
 
-
-// 6. Divers.
-// 6a. Affichage de l'avatar utilisateur.
-.userpicture {
-    border-radius: 50%;
+div.inf {
+    background: #f2f2f2 !important;
+    //padding: 1em;
 }
 
-// 6b. Affichage des éditeurs de texte.
+table caption {
+    font-weight: 300;
+    line-height: unset;
+}
+
+#region-main {
+    overflow-x: unset; // Corrige l'apparition d'une scrollbar horizontale inutile dans le region-main?
+}
+
+// 6c. Affichage des éditeurs de texte.
 .editor_atto_content[contenteditable=false] {
     background-color: #e9ecef;
     cursor: not-allowed;
 }
 
-// 6c. Affichage des logos sur l'instance du SIUAPS Rennes.
+.pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
+    max-width: unset;
+}
+
+
+// 7. Divers.
+// 7a. Affichage de l'avatar utilisateur.
+.userpicture {
+    border-radius: 50%;
+}
+
+
+// 7b. Affichage des logos sur l'instance du SIUAPS Rennes.
 #apsolu-logo-div {
     align-items: center;
     display: flex;
     margin-bottom: 2em;
 }
 
-#logo-siuaps-div img {
-    height: auto;
-    width: 45%;
+#logo {
+    &-siuaps-div img {
+        height: auto;
+        width: 45%;
+    }
+
+    &-rennes1-div img {
+        height: auto;
+        width: 75%;
+    }
+
+    &-rennes2-div img {
+        height: auto;
+        width: 45%;
+    }
 }
 
-#logo-rennes1-div img {
-    height: auto;
-    width: 75%;
+//7c. Autre
+
+#page-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+}
+#page-site-index #page-wrapper {
+    padding-top:unset;
+    background: unset;
+}
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+        -webkit-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 }
 
-#logo-rennes2-div img {
-    height: auto;
-    width: 45%;
+#textbox {
+    animation: FadeIn 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    animation-fill-mode: both;
+
+    border: 4px solid white;
+    background-color: rgb(0, 0, 0, 0.6);
+
+    h1, h2, h3, h4 {
+        font-size: 3em;
+        font-weight: 300;
+    }
+
+    p {
+        max-font-size: 1.3em;
+    }
 }
 
-#page-site-index .modal-body {
-    overflow-y: auto !important;
-    max-height: 80vh;
+@media (max-width: 479px) {
+    #textbox {
+        h1, h2, h3, h4 {
+            font-size: 1em;
+        }
+
+        p {
+            font-size: 0.8em;
+        }
+    }
+}
+
+/* Résolutions supérieures ou égales à 480px de large. */
+@media (min-width: 480px) and (max-width: 900px) {
+    #textbox {
+        h1, h2, h3, h4 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 0.9em;
+        }
+    }
+}
+
+.secondary-navigation {
+    max-width: unset;
+    width: 100%;
+    margin: unset;
+    padding: unset;
+    margin-bottom: 1em;
+}
+
+// Style Hover
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: darken($custom-color-1, 10%);
+}
+
+.primary-navigation .navigation {
+    margin-bottom: 4px; // Permet de ne pas déborder sur la bordure.
+}
+
+.card-title {
+    font-weight: 300;
+}
+
+/* Styles pour la barre de défilement. */
+// Firefox.
+* {
     scrollbar-width: thin;
+    scrollbar-color: darken($custom-color-1, 10%) $gray-900;
 }
 
+// Chrome, Edge, and Safari.
+*::-webkit-scrollbar {
+    width: 10px;
+
+    &-track {
+        background: $gray-900;
+    }
+
+    &-thumb {
+        background-color: $custom-color-1;
+    }
+
+}
 
 /**
  *Commente le !important pour passer le test de coding style.

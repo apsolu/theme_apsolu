@@ -5,6 +5,49 @@
  Variables should follow the `$component-state-property-size` formula for
  consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.*/
 
+// Surcharge des variables Bootstrap.
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #8f959e !default;
+$gray-600: #6a737b !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #1d2125 !default;
+$black:    #000 !default;
+
+$blue:    #0f6cbf !default;
+$indigo:  #6610f2 !default;
+$purple:  #613d7c !default;
+$pink:    #e83e8c !default;
+$red:     #ca3120 !default;
+$orange:  #f0ad4e !default;
+$yellow:  #ff7518 !default;
+$green:   #357a32 !default;
+$teal:    #20c997 !default;
+$cyan:    #008196 !default;
+
+$primary:       $blue !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+$secondary:     $gray-400 !default;
+
+// stylelint-disable
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+), $theme-colors);
+// stylelint-enable
+
 // Couleurs
 $apsolu-light: #f2f2f2 !default;
 $apsolu-dark: #343a40 !default;
@@ -29,6 +72,26 @@ $apsolu-colors: map-merge(
         $apsolu-colors
 );
 
+$info:    #1f7e9a;
+$warning: #a6670e;
+$info-outline: #1f7e9a;
+$warning-outline: #a6670e;
+
 // Composants
 $navbar-border-color: apsolu-colors("custom-1") !default; // Utilisé pour bordure de la navbar
 $btn-outline-color: apsolu-colors("custom-1") !default; // Utilisé pour bordure des boutons
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+$breadcrumb-divider: quote(">"); // On change le séparateur du fil d'ariane pour rendre la hiérarchie plus explicite.
+$navbar-height: 50px;
+$moremenu-height: 50px;
+$custom-border: 4px solid $custom-color-1;
+$gradient: 0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,0) 70%;
