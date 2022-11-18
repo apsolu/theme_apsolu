@@ -566,12 +566,10 @@ footer {
 
 // 6. Backoffice : Affichage des éléments côté administration.
 // 6a. Navigation
-//.moremenu {
-//    .nav-tabs {
-//        border: unset;
-//        background-color: unset;
-//    }
-//}
+.moremenu {
+    .nav-link.active {
+        border-bottom: solid 4px darken($custom-color-1, 10%);
+}
 
 // 6b. Tableaux.
 #table-courses-sortable.table-sortable thead tr .header {
