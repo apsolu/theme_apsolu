@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2020071600;
+$plugin->version = 2022102701;
 
 // Requires Moodle 3.11.0.
 $plugin->requires = 2021051700;
@@ -45,4 +45,4 @@ $plugin->dependencies = [
 $plugin->maturity = MATURITY_STABLE;
 
 // This is the named version.
-$plugin->release = 1.0;
+$plugin->release = 2.0;
