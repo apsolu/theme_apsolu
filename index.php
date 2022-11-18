@@ -98,6 +98,11 @@ $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
 $data->section1_text = format_text($content, FORMAT_HTML, $options);
 
+$text = get_config('theme_apsolu', 'homepage_section1_welcome_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
+$data->section1_welcome_text = format_text($content, FORMAT_HTML, $options);
+
 // Section 2.
 $text = get_config('theme_apsolu', 'homepage_section2_activities_infobox_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
@@ -125,6 +130,28 @@ $data->section1_image_credits = get_config('theme_apsolu', 'homepage_section1_im
 $data->section2_image_credits = get_config('theme_apsolu', 'homepage_section2_image_credits');
 $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_image_credits');
 
+// Logos de pied de page.
+$itemid = 60;
+$filepath = get_config('theme_apsolu', 'homepage_footer_logo_1');
+$data->homepage_footer_logo_1 = $filepath;
+$data->get_homepage_footer_logo_1_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+
+$itemid = 61;
+$filepath = get_config('theme_apsolu', 'homepage_footer_logo_2');
+$data->homepage_footer_logo_2 = $filepath;
+$data->get_homepage_footer_logo_2_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+
+$itemid = 62;
+$filepath = get_config('theme_apsolu', 'homepage_footer_logo_3');
+$data->homepage_footer_logo_3 = $filepath;
+$data->get_homepage_footer_logo_3_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+
+// Texte de pied de page.
+$text = get_config('theme_apsolu', 'footer_text_section');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
+$data->footer_text_section = format_text($content, FORMAT_HTML, $options);
+
 // Fenêtes modales.
 $text = get_config('theme_apsolu', 'legal_notice_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
@@ -140,6 +167,16 @@ $text = get_config('theme_apsolu', 'contact_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
 $data->contact_doc_text = format_text($content, FORMAT_HTML, $options);
+
+// Liens personnalisés.
+$data->nav_link_1_url = get_config('theme_apsolu','nav_link_1_url');
+$data->nav_link_1_text = get_config('theme_apsolu','nav_link_1_text');
+
+$data->nav_link_2_url = get_config('theme_apsolu','nav_link_2_url');
+$data->nav_link_2_text = get_config('theme_apsolu','nav_link_2_text');
+
+$data->nav_link_3_url = get_config('theme_apsolu','nav_link_3_url');
+$data->nav_link_3_text = get_config('theme_apsolu','nav_link_3_text');
 
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {
@@ -167,7 +204,7 @@ if (isloggedin() && !isguestuser()) {
     }
 }
 
-$PAGE->set_pagelayout('base'); // Désactive l'affichage des blocs (ou pas).
+$PAGE->set_pagelayout('home'); // Désactive l'affichage des blocs (ou pas).
 
 // Call template.
 echo $OUTPUT->render_from_template('theme_apsolu/homepage', $data);

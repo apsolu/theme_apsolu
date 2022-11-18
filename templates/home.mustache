@@ -17,16 +17,28 @@
 {{!
     @template theme_apsolu/home
 
-    Boost 1 column layout template.
+    Template général pour l'affichage de la page d'accueil, basé sur le template à une colonne du thème Boost.
 
     Context variables required for this template:
     * sitename - The name of the site
     * output - The core renderer for the page
     * bodyattributes - attributes for the body tag as a string of html attributes
+    * count_activities
+    * sites
+        * id
+        * name
+    * activities
+        * id
+        * name
+    * login_link
 
     Example context (json):
     {
         "sitename": "Moodle",
+        "count_activities": "",
+        "sites": [],
+        "activities": [],
+        "login_link": "",
         "output": {
             "doctype": "<!DOCTYPE html>",
             "page_title": "Test page",
@@ -38,23 +50,22 @@
 }}
 {{> theme_boost/head }}
 
-<body {{{ bodyattributes }}}>
+<body {{{ bodyattributes }}} data-spy="scroll" data-target="#apsolu-homepage-navbar" data-offset="0">
 {{> core/local/toast/wrapper}}
 
 <div id="page-wrapper" class="d-print-block">
 
     {{{ output.standard_top_of_body_html }}}
-    {{> theme_apsolu/components/navigation-menu }}
 
+    <!--  Menu custom APSOLU avec liens personnalisés.  -->
+    <div class="fixed-top shadow-sm">
+        {{> theme_apsolu/components/header }}
+    </div>
 
     <div id="page" class="container-fluid d-print-block">
         <div id="page-content" class="row d-print-block">
             <div id="region-main-box" class="col-12">
                 <section id="region-main" aria-label="{{#str}}content{{/str}}">
-                    {{{ output.course_content_header }}}
-                    {{#headercontent}}
-                        {{> core/activity_header }}
-                    {{/headercontent}}
                     {{{ output.main_content }}}
                     {{{ output.activity_navigation }}}
                     {{{ output.course_content_footer }}}

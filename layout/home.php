@@ -19,7 +19,7 @@
  * Reprend en grande partie la configuration du layout columns1 du thème Boost.
  *
  * @package    theme_apsolu
- * @copyright  2022 marmin_k <${USEREMAIL}>
+ * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
@@ -29,6 +29,12 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
+    'nav_link_1_url' => get_config('theme_apsolu','nav_link_1_url'),
+    'nav_link_1_text' => get_config('theme_apsolu','nav_link_1_text'),
+    'nav_link_2_url' => get_config('theme_apsolu','nav_link_2_url'),
+    'nav_link_2_text' => get_config('theme_apsolu','nav_link_2_text'),
+    'nav_link_3_url' => get_config('theme_apsolu','nav_link_3_url'),
+    'nav_link_3_text' => get_config('theme_apsolu','nav_link_3_text'),
 ];
 
 echo $OUTPUT->render_from_template('theme_apsolu/home', $templatecontext);
