@@ -25,13 +25,6 @@ defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
 
-/**
- * Classe définissant le formulaire pour configurer la page d'accueil du site.
- *
- * @package    theme_apsolu
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class theme_apsolu_homepage_form extends moodleform {
     /**
      * Définit les champs du formulaire.
@@ -65,6 +58,12 @@ class theme_apsolu_homepage_form extends moodleform {
         $mform->addElement('editor', 'homepage_section1_text_editor', $label, $attributes, $editoroptions);
         $mform->addRule('homepage_section1_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section1_text_editor', PARAM_RAW);
+
+        // Encart d'accueil.
+        $label = 'Encart accueil';
+        $mform->addElement('editor', 'homepage_section1_welcome_text_editor', $label, $attributes, $editoroptions);
+        $mform->addRule('homepage_section1_welcome_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType('homepage_section1_welcome_text_editor', PARAM_RAW);
 
         // Image de fond.
         $label = get_string('background_image', 'theme_apsolu');

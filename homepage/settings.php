@@ -36,6 +36,8 @@ $editoroptions = theme_apsolu_homepage_form::get_editor_options();
 $filemanageroptions = theme_apsolu_homepage_form::get_filemanager_options();
 $syscontext = context_system::instance();
 
+$description = get_string('settings_configuration_homepage_desc','theme_apsolu');
+
 // Build form.
 $defaults = new stdClass();
 $defaults->homepage_enable = get_config('theme_apsolu', 'homepage_enable');
@@ -45,6 +47,12 @@ $defaults->homepage_section1_text = get_config('theme_apsolu', 'homepage_section
 $defaults->homepage_section1_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'homepage_section1_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+
+// Charge l'encart de la section 1.
+$defaults->homepage_section1_welcome_text = get_config('theme_apsolu', 'homepage_section1_welcome_text');
+$defaults->homepage_section1_welcome_textformat = FORMAT_HTML;
+$defaults = file_prepare_standard_editor($defaults, 'homepage_section1_welcome_text', $editoroptions,
+    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
 
 // Charge l'image de fond de la section 1.
 $defaults->homepage_section1_background_image = file_get_submitted_draft_itemid('homepage_section1_background_image');
@@ -101,6 +109,8 @@ if ($data = $mform->get_data()) {
         $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
     $data = file_postupdate_standard_editor($data, 'homepage_section3_text', $editoroptions,
         $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+    $data = file_postupdate_standard_editor($data, 'homepage_section1_welcome_text', $editoroptions,
+        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
 
     // Gère le dépot des images.
     $fs = get_file_storage();
@@ -198,6 +208,8 @@ if ($data = $mform->get_data()) {
         set_config('homepage_section1_image_credits', '', 'theme_apsolu');
     }
 
+    set_config('homepage_section1_welcome_text', $data->homepage_section1_welcome_text, 'theme_apsolu');
+
     if (isset($data->homepage_section2_show_credit) === false) {
         set_config('homepage_section2_image_credits', '', 'theme_apsolu');
     }
@@ -228,6 +240,7 @@ if ($data = $mform->get_data()) {
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('settings_configuration_homepage', 'theme_apsolu'));
+echo $description;
 
 // Affiche le formulaire.
 $mform->display();

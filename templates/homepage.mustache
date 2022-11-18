@@ -32,6 +32,7 @@
     * login_link
     * section1_text
     * section1_image_credits
+    * section1_welcome_text
     * sites
         * id
         * name
@@ -55,6 +56,7 @@
         "login_link": "",
         "section1_text": "",
         "section1_image_credits": "",
+        "section1_welcome_text": "",
         "sites": [],
         "activities": [],
         "section2_image_credits": "",
@@ -67,7 +69,10 @@
         "contact_doc_text": ""
     }
 }}
-
+<!--<div class="fixed-top shadow-sm">-->
+<!--    {{! theme_apsolu/components/navigation-menu }}-->
+<!--    {{! theme_apsolu/homepage-navbar }}-->
+<!--</div>-->
 {{! En-tête }}
 {{! Menu 2 : Navigation }}
 <div id="apsolu-page">
@@ -75,37 +80,42 @@
     <section id="accueil" class="apsolu-pages">
         <span id="section-1" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section1_image_credits}}
-                <span class="badge badge-photo-credits">
-                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
-                    {{ section1_image_credits }}
-                </span>
+                <div class="badge badge-photo-credits">
+                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section1_image_credits }}"></i></span>
+                    <span class="d-none d-sm-inline">{{ section1_image_credits }}</span>
+                </div>
             {{/section1_image_credits}}
-            <div id="textbox" style="border: 4px solid white; background-color: rgb(0, 0, 0, 0.6);"
-                 class="mr-auto my-auto ml-5 p-3">
-                <h2 style="color:white;" class="display-4">C'est la rentrée !</h2>
-                <p style="color:white;">Les insciptions sont ouvertes pour le semestre 1, pensez à vous inscrire dès maintenant.</p>
-            </div>
+            {{#section1_welcome_text}}
+                <div id="textbox" class="mr-auto my-auto ml-5 p-3 text-light">
+                    {{{ section1_welcome_text }}}
+                </div>
+            {{/section1_welcome_text}}
         </span>
+        <div class="apsolu-article-title">
+            <div class="container">
+                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}about, theme_apsolu{{/str}}</h2>
+            </div>
+        </div>
         <article class="apsolu-article mb-0">
             <div class="container-md">
-                {{{ section1_text }}}
+                        {{{ section1_text }}}
             </div>
         </article>
     </section>
 
     {{! Section 2 : Formats de cours }}
     <section id="activites" class="apsolu-pages">
-        <span id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse">
+        <div id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section2_image_credits}}
-                <span class="badge badge-photo-credits">
-                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
-                    {{ section2_image_credits }}
-                </span>
+                <div class="badge badge-photo-credits d-none d-sm-block">
+                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section2_image_credits }}"></i></span>
+                    <span class="d-none d-sm-inline">{{ section2_image_credits }}</span>
+                </div>
             {{/section2_image_credits}}
-        </span>
+        </div>
         <div class="apsolu-article-title">
             <div class="container">
-                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-down mr-3"></i>Formats de pratique</h2>
+                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}courses_catalogue, theme_apsolu{{/str}}</h2>
             </div>
         </div>
         <article class="apsolu-article">
@@ -122,35 +132,35 @@
                         {{# homepage_section2_training_text }}
                             <li role="presentation" class="nav-item">
                                 <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#stages">Stages
+                                   href="#stages">{{#str}}sport_training_sessions, theme_apsolu{{/str}}
                                 </a>
                             </li>
                         {{/ homepage_section2_training_text }}
                         {{# homepage_section2_events_text }}
                             <li role="presentation" class="nav-item">
                                 <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#evenements">Evenements
+                                   href="#evenements">{{#str}}events, theme_apsolu{{/str}}
                                 </a>
                             </li>
                         {{/ homepage_section2_events_text }}
                         {{# homepage_section2_animations_text }}
                             <li role="presentation" class="nav-item">
                                 <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#animations">Animations
+                                   href="#animations">{{#str}}animations, theme_apsolu{{/str}}
                                 </a>
                             </li>
                         {{/ homepage_section2_animations_text }}
                         {{# homepage_section2_practice_text}}
                             <li role="presentation" class="nav-item">
                                 <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#pratiques">Pratiques autonomes
+                                   href="#pratiques">{{#str}}practice, theme_apsolu{{/str}}
                                 </a>
                             </li>
                         {{/homepage_section2_practice_text}}
                         {{# homepage_section2_association_text }}
                             <li role="presentation" class="nav-item">
                                 <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#adhesion">Adhésion à l'Association Sportive
+                                   href="#adhesion">{{#str}}sport_association, theme_apsolu{{/str}}
                                 </a>
                             </li>
                         {{/ homepage_section2_association_text }}
@@ -159,54 +169,50 @@
                     {{! Contenu des onglets formats de cours. }}
                     <div class="tab-content">
                         {{! Section 2a : Activités. }}
-                        {{>theme_apsolu/activities/activities-list}}
+                        {{> theme_apsolu/activities/activities-list }}
                         {{! TODO Section 2c : Stages. }}
-                        {{>theme_apsolu/activities/sport-training-sessions}}
+                        {{> theme_apsolu/activities/sport-training-sessions }}
                         {{! TODO Section 2d : Evénements. }}
-                        {{>theme_apsolu/activities/events}}
+                        {{> theme_apsolu/activities/events }}
                         {{! TODO Section 2e : Animations. }}
-                        {{>theme_apsolu/activities/animations}}
-                        {{! TODO Section 2f : Pratiques autonomes. }}
-                        {{>theme_apsolu/activities/practice}}
-                        {{! TODO Section 2g : Adhésion à l'AS. }}
-                        {{>theme_apsolu/activities/sport-association}}
+                        {{> theme_apsolu/activities/animations }}
+                        {{! Section 2f : Pratiques autonomes. }}
+                        {{> theme_apsolu/activities/practice }}
+                        {{! Section 2g : Adhésion à l'AS. }}
+                        {{> theme_apsolu/activities/sport-association }}
                     </div>
                 </div>
             </div>
         </article>
-
     </section>
 
     {{! Section 3 : S'inscrire. }}
-    <section class="apsolu-pages" id="inscription">
-        <span class="apsolu-images d-flex align-items-end flex-row-reverse" id="section-3">
+    <section id="inscription" class="apsolu-pages">
+        <div id="section-3" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section3_image_credits}}
-                <span class="badge badge-photo-credits">
-                    <i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :"></i>
-                    {{ section3_image_credits }}
-                </span>
+                <div class="badge badge-photo-credits ">
+                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section3_image_credits }}"></i></span>
+                    <span class="d-none d-sm-inline">{{ section3_image_credits }}</span>
+                </div>
             {{/section3_image_credits}}
-        </span>
+        </div>
         <div class="apsolu-article-title">
             <div class="container">
-                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-down mr-3"></i>{{#str}}
+                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
                     signup, theme_apsolu{{/str}}</h2>
             </div>
         </div>
         <article class="apsolu-article">
             <div class="container-md">
                 <h2 class="sr-only">{{#str}}signup, theme_apsolu{{/str}}</h2>
-
                 {{{ section3_text }}}
-
             </div>
         </article>
-
     </section>
 
     {{! Section 4 : Connexion. }}
     {{#login_link}}
-        <section class="apsolu-pages" id="connexion">
+        <section id="connexion" class="apsolu-pages">
             <article class="apsolu-article">
                 <div class="container">
                     <div class="jumbotron">
@@ -235,8 +241,7 @@
             </article>
         </section>
     {{/login_link}}
-    {{! TODO Pied de page }}
-    {{>theme_apsolu/components/footer}}
-
+    <!-- On charge le pied de page -->
+    {{> theme_apsolu/components/footer }}
 </div>
 
