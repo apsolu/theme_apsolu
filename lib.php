@@ -43,10 +43,21 @@ define('THEME_APSOLU_BACKGROUND_IMAGE_3_240_160', '31');
 define('THEME_APSOLU_BACKGROUND_IMAGE_3_480_320', '32');
 define('THEME_APSOLU_BACKGROUND_IMAGE_3_960_640', '33');
 
-define('THEME_APSOLU_MEDICAL_DOC_TEXT', 40);
-define('THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT', 41);
-define('THEME_APSOLU_CONFIDENTIAL_DOC_TEXT', 42);
-define('THEME_APSOLU_CONTACT_DOC_TEXT', 43);
+define('THEME_APSOLU_MEDICAL_DOC_TEXT', '40');
+define('THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT', '41');
+define('THEME_APSOLU_CONFIDENTIAL_DOC_TEXT', '42');
+define('THEME_APSOLU_CONTACT_DOC_TEXT', '43');
+
+define('THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT', '50');
+define('THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT', '51');
+define('THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT', '52');
+
+define('THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1', '60');
+define('THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2', '61');
+define('THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3', '62');
+
+define('THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT', '70');
+define('THEME_APSOLU_HOMEPAGE_FOOTER_TEXT', '71');
 
 /**
  * Returns the main SCSS content.
@@ -56,11 +67,11 @@ define('THEME_APSOLU_CONTACT_DOC_TEXT', 43);
 function theme_apsolu_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';
+    $scss = '';Met
 
-    // Main CSS - Get the CSS from theme Classic.
-    $scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/pre.scss');
     $scss .= file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss'); // Preset Apsolu
+    // Main CSS - Get the CSS from theme Classic.
+    //$scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/pre.scss');
     //$scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/post.scss');
 
     return $scss;

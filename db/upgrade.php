@@ -25,7 +25,7 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/theme/apsolu/lib.php');
+require_once($CFG->dirroot . '/theme/apsolu/lib.php');
 
 /**
  * Procédure de mise à jour.
@@ -45,9 +45,17 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
         $settings = array();
         $settings['homepage_enable'] = 1;
         $settings['homepage_section1_text'] = get_string('default_homepage_section1_text', 'theme_apsolu');
+        $settings['homepage_section1_welcome_text'] = '';
+        $settings['homepage_section2_activities_infobox_text'] = '';
+        $settings['homepage_section2_practice_text'] = '';
+        $settings['homepage_section2_association_text'] = '';
         $settings['homepage_section3_text'] = '';
         $settings['homepage_section4_institutional_account_url'] = '';
         $settings['homepage_section4_non_institutional_account_url'] = '';
+        $settings['confidential_doc_text'] = '';
+        $settings['contact_doc_text'] = '';
+        $settings['legal_notice_doc_text'] = '';
+        $settings['medical_doc_text'] = '';
 
         foreach ($settings as $settingname => $default) {
             $value = get_config('local_apsolu', $settingname);
@@ -61,7 +69,7 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
         if (empty(get_config('theme_apsolu', 'homepage_enable')) === true) {
             set_config('customfrontpageinclude', '');
         } else {
-            set_config('customfrontpageinclude', $CFG->dirroot.'/theme/apsolu/index.php');
+            set_config('customfrontpageinclude', $CFG->dirroot . '/theme/apsolu/index.php');
         }
 
         // Initialise les images de fond.
@@ -82,26 +90,26 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
 
         foreach (range(1, 3) as $sectionid) {
             // Récupère le fichier original au format png.
-            $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL');
+            $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_' . $sectionid . '_ORIGINAL');
 
-            $filename = 'background_'.$sectionid.'.png';
+            $filename = 'background_' . $sectionid . '.png';
             $originalfile = $fs->get_file($syscontext->id, 'theme_apsolu', 'homepage', $itemid, '/', $filename);
 
             if (!$originalfile) {
                 // L'ancienne source png n'existe pas ?
-                mtrace('Étrange... le fichier background_'.$sectionid.'.png ne semble pas exister.');
+                mtrace('Étrange... le fichier background_' . $sectionid . '.png ne semble pas exister.');
                 continue;
             }
 
             $file = array(
                 'contextid' => $syscontext->id,
                 'component' => 'theme_apsolu',
-                'filearea'  => 'homepage',
-                'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL'),
-                'filepath'  => '/',
-                'filename'  => 'background_'.$sectionid.'.jpg',
-                'userid'    => null,
-                'mimetype'  => 'image/jpeg',
+                'filearea' => 'homepage',
+                'itemid' => constant('THEME_APSOLU_BACKGROUND_IMAGE_' . $sectionid . '_ORIGINAL'),
+                'filepath' => '/',
+                'filename' => 'background_' . $sectionid . '.jpg',
+                'userid' => null,
+                'mimetype' => 'image/jpeg',
                 'status' => $originalfile->get_status(),
                 'source' => $originalfile->get_source(),
                 'author' => $originalfile->get_author(),
@@ -118,10 +126,10 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
             foreach ($sizes as $size) {
                 list($newwidth, $newheight) = explode('x', $size);
 
-                $oldfilename = 'background_'.$sectionid.'_'.$size.'.png';
+                $oldfilename = 'background_' . $sectionid . '_' . $size . '.png';
 
                 $file['itemid']++;
-                $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
+                $file['filename'] = 'background_' . $sectionid . '_' . $size . '.jpg';
 
                 $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
                     $file['itemid'], $file['filepath'], $oldfilename);

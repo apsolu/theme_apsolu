@@ -17,7 +17,7 @@
 {{!
     @template theme_apsolu/activities/practice
 
-    Template pour afficher les créneaux
+    Template pour afficher les informations de pratique autonome.
 
     Classes required for JS:
     * none
@@ -26,14 +26,15 @@
     * none
 
     Context variables required for this template:
-    * none
+    * homepage_section2_practice_text
 
     Example context (json):
     {
+        "homepage_section2_practice_text" : ""
     }
 }}
-{{# homepage_section2_practice_text}}
-<div class="tab-pane fade" id="pratiques" role="tabpanel">
-    {{{homepage_section2_practice_text}}}
+{{# homepage_section2_practice_text }}
+<div id="pratiques" class="tab-pane fade"  role="tabpanel">
+    {{{ homepage_section2_practice_text }}}
 </div>
-{{/homepage_section2_practice_text}}
+{{/ homepage_section2_practice_text }}
