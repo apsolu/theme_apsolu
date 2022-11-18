@@ -34,14 +34,13 @@ $string['activities'] = 'Les activités';
 $string['activities_list'] = 'Liste des activités';
 $string['background_image'] = 'Image de fond';
 $string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d\'accueil. L\'image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
-$string['choosereadme'] = '<p>Apsolu est un thème basé sur le thème Moodle "Boost".</p>
-<p>
-Contact : contact@apsolu.fr<br>
-Site officiel : <a href="https://www.apsolu.fr/">www.apsolu.fr</a><br>
-</p>
-<div class="alert alert-info"><p>Vous pouvez ici personnaliser l\'apparence générale de votre instance APSOLU.Pour personnaliser la page d\'accueil, rendez-vous dans le menu "APSOLU > Présentation > Page d\'accueil".</p></div>';
+$string['choosereadme'] = '<div class="alert alert-secondary" role="alert">
+  <p class="lead">Apsolu est un thème basé sur le thème Moodle "Boost".</p><p>Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.<br>Vous pouvez ici personnaliser l\'apparence générale de votre instance APSOLU.</p>
+  <hr>
+  <p>Contact : contact@apsolu.fr<br>Site officiel : <a class="alert-link" href="https://www.apsolu.fr/">www.apsolu.fr</a></p></div>
+<div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Pour personnaliser la page d\'accueil, rendez-vous dans le menu "APSOLU > Présentation > Page d\'accueil".</p></div>';
 $string['configtitle'] = 'Apsolu';
-$string['default_homepage_section1_text'] = '<p>Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
+$string['default_homepage_section1_text'] = '<p class="lead">Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
 $string['institutional_account_authentification_url'] = 'URL d\'authentification des comptes institutionnels';
 $string['home'] = 'Accueil';
@@ -62,6 +61,15 @@ $string['the_activities'] = 'Les activités';
 $string['use_apsolu_homepage'] = 'Utiliser la page d\'accueil APSOLU';
 $string['settings_configuration_customizer'] = 'Personnalisation';
 $string['use_apsolu_customizer'] = 'Personnaliser l\'instance APSOLU';
+$string['about'] = 'à propos';
+
+// 1a. Les "chapeaux"
+$string['courses_catalogue'] = 'Formats de pratique';
+$string['sport_training_sessions'] = 'Stages';
+$string['events'] = 'Evenements';
+$string['animations'] = 'Animations';
+$string['practice'] = 'Pratiques autonomes';
+$string['sport_association'] = 'Adhésion à l\'Association sportive';
 
 // 2. APSOLU > Documents.
 $string['confidential'] = 'Politique de confidentialité';
@@ -78,35 +86,34 @@ $string['document_text'] = 'Contenu du document';
 $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre modale, au clic sur le lien approprié dans le footer.';
 
 //$string['default_'] = '';
-
 $string['settings_configuration_homepage_activities'] = 'Formats de pratique';
 $string['settings_configuration_homepage_activities_desc'] = '<p class="lead">Vous permet de modifier l\'affichage des formats de pratique dans la page d\'accueil APSOLU.</p>' ;
 $string['homepage_activities_infobox'] = 'Information supplémentaire';
 $string['homepage_activities_infobox_help'] = '<p>Permet d\'afficher une boîte d\'information au-dessus du contenu de la section.</p><div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><div>Exemple de boîte.</div></div>';
+$string['settings_configuration_homepage_desc'] = '<p class="lead">Vous permet de configurer le contenu et l\'affichage de la page d\'accueil APSOLU.</p>';
 
-$string['settings_configuration_homepage_desc'] = '<p class="lead">Vous permet de configurer le contenu et l\'affichage de la page d\'accueil APSOLU.</p>' ;
 // 3. Personnalisation des couleurs.
 $string['customizer_colors_label'] = 'Personnaliser les couleurs';
 $string['customizer_colors_desc'] = 'Sélectionnez le schéma de couleurs que vous voulez avoir pour votre site.';
 $string['brandcolor_1_label'] = 'Couleur principale';
 $string['brandcolor_2_label'] = 'Couleur secondaire';
 $string['brandcolor_links_label'] = 'Couleur des liens';
-$string['brandcolor_1'] = '$brandcolor-1';
-$string['brandcolor_2'] = '$brandcolor-2';
-$string['brandcolor_links'] = '$brandcolor-link';
+$string['brandcolor_1_default'] = '#00b395';
+$string['brandcolor_2_default'] = '#004d40';
+$string['brandcolor_links_default'] = '#004d40';
 $string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du site et en bordure.';
 $string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page.';
 $string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
 
 // 4. Personnalisation de la navbar.
 $string['customizer_links_label'] = 'Personnaliser la barre de liens';
-$string['customize_links_desc'] = '<div class="alert alert-info"><p>Vous pouvez intégrer jusqu\'a trois liens hypertexte vers d\'autres sites de votre écosystème (ex: site institutionel de l\'établissement, site du service des sports, etc.) dans la barre de navigation en tête de page.</p></div>';
-$string['nav_url_label'] = 'Lien menu';
-$string['nav_text_label'] = 'Texte à afficher pour le lien';
+$string['customize_links_desc'] = '<div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Vous pouvez intégrer jusqu\'a trois liens hypertexte vers d\'autres sites de votre écosystème (ex: site institutionel de l\'établissement, site du service des sports, etc.) à afficher dans la barre de navigation en en-tête, ainsi que dans le pied de page du site. <br> Pour chaque lien, il faudra renseigner une URL complète et le texte à afficher pour le lien.</p></div>';
+$string['nav_url_label'] = 'Lien hypertexte';
+$string['nav_text_label'] = 'Libellé du lien';
 
 // 5. Personnalisation des libellés.
 $string['customize_labels'] = 'Personnaliser les libellés du site';
-$string['customize_labels_desc'] = '<div class="alert alert-info"><p>Si vous utilisez APSOLU autrement que pour la gestion d\'activités sportives, vous pouvez personnaliser les libellés affichés dans l\'administration ainsi que sur la page d\'accueil. Par défaut, le contexte sportif est utilisé. Pour modifier d\'autres libellés absents sur cette page, rendez-vous dans le menu "Langue > Personnalisation de la langue".</p></div>';
+$string['customize_labels_desc'] = '<div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Si vous utilisez APSOLU autrement que pour la gestion d\'activités sportives, vous pouvez personnaliser les libellés affichés dans l\'administration ainsi que sur la page d\'accueil. Par défaut, le contexte sportif est utilisé. Pour modifier d\'autres libellés absents sur cette page, rendez-vous dans le menu "Langue > Personnalisation de la langue".</p></div>';
 // 5a. Personnalisation des libellés > Libellés par défaut.
 $string['add_category_default'] = 'Ajouter une activité physique';
 $string['category_has_been_deleted_default'] = 'L\'activité physique a été supprimée.';
@@ -127,7 +134,6 @@ $string['settings_activities_default'] = 'Activités physiques';
 
 // 5. Personnalisation du footer.
 $string['customize_footer'] = 'Personnaliser le pied de page';
-$string['customize_footer_desc'] = '<div class="alert alert-info"><p>Vous pouvez activer un pied de page supplémentaire personnalisé sur la page d\'accueil.</p></div>';
+$string['customize_footer_desc'] = '<div class="alert alert-info d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Vous pouvez activer un pied de page supplémentaire personnalisé sur la page d\'accueil.</p></div>';
 $string['footer_active'] = 'Activer le pied de page personnalisé';
-$string['add_footer_text'] = '';
-$string['add_footer_logo_1'] = 'Personnaliser le pied de page';
+$string['footer_block'] = 'Bloc de pied de page';
