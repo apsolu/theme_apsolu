@@ -67,7 +67,7 @@ define('THEME_APSOLU_HOMEPAGE_FOOTER_TEXT', '71');
 function theme_apsolu_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';Met
+    $scss = '';
 
     $scss .= file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss'); // Preset Apsolu
     // Main CSS - Get the CSS from theme Classic.
