@@ -66,6 +66,10 @@ function xmldb_theme_apsolu_install() {
 
     set_config('footer_text_section','','theme_apsolu');
 
+    set_config('custom_brandcolor', '','theme_apsolu');
+    set_config('custom_brandcolor_2', '','theme_apsolu');
+    set_config('custom_brandcolor_links', '','theme_apsolu');
+
     theme_apsolu_initialise_homepage_background_images();
 
     return true;

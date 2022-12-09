@@ -61,6 +61,11 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     $url = new moodle_url('/theme/apsolu/activities/settings.php');
     $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_activities', $str, $url, $capabilities));
 
+    // Présentation > Formats de pratique.
+    $str = get_string('settings_configuration_customize', 'theme_apsolu');
+    $url = new moodle_url('/theme/apsolu/customize/settings.php');
+    $ADMIN->add('local_apsolu_appearance', new admin_externalpage('local_apsolu_appearance_customize', $str, $url, $capabilities));
+
     // Documents.
     if (empty($ADMIN->locate('theme_apsolu_documents')) === true) {
         $ADMIN->add('apsolu', new admin_category('theme_apsolu_documents', get_string('documents_settings', 'theme_apsolu')));
@@ -158,60 +163,60 @@ if ($ADMIN->fulltree) {
     $settings->add($page);
 
     // 3. Personnaliser la barre de liens.
-    $page = new admin_settingpage('theme_apsolu_customize_links', get_string('customizer_links_label', 'theme_apsolu'));
-
-    $name = 'theme_apsolu/customize_links_heading';
-    $heading = '';
-    $information = get_string('customize_links_desc', 'theme_apsolu');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $page->add($setting);
+    //$page = new admin_settingpage('theme_apsolu_customize_links', get_string('customizer_links_label', 'theme_apsolu'));
+    //
+    //$name = 'theme_apsolu/customize_links_heading';
+    //$heading = '';
+    //$information = get_string('customize_links_desc', 'theme_apsolu');
+    //$setting = new admin_setting_heading($name, $heading, $information);
+    //$page->add($setting);
 
     //3a. URL 1.
-    $name = 'theme_apsolu/nav_link_1_heading';
-    $number = 'n°1';
-    $heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
-    $setting = new admin_setting_heading($name, $heading, '');
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_1_url';
-    $setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_1_text';
-    $setting = new admin_setting_configtext($name, get_string('nav_text_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
-    $page->add($setting);
+    //$name = 'theme_apsolu/nav_link_1_heading';
+    //$number = 'n°1';
+    //$heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
+    //$setting = new admin_setting_heading($name, $heading, '');
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_1_url';
+    //$setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_1_text';
+    //$setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
+    //$page->add($setting);
 
     //3b. URL 2.
-    $name = 'theme_apsolu/nav_link_2_heading';
-    $number = 'n°2';
-    $heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
-    $setting = new admin_setting_heading($name, $heading, '');
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_2_url';
-    $setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_2_text';
-    $setting = new admin_setting_configtext($name, get_string('nav_text_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
-    $page->add($setting);
+    //$name = 'theme_apsolu/nav_link_2_heading';
+    //$number = 'n°2';
+    //$heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
+    //$setting = new admin_setting_heading($name, $heading, '');
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_2_url';
+    //$setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_2_text';
+    //$setting = new admin_setting_configtext($name, get_string('nav_text_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
+    //$page->add($setting);
 
     //3c. URL 3.
-    $name = 'theme_apsolu/nav_link_3_heading';
-    $number = 'n°3';
-    $heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
-    $setting = new admin_setting_heading($name, $heading, '');
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_3_url';
-    $setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
-    $page->add($setting);
-
-    $name = 'theme_apsolu/nav_link_3_text';
-    $setting = new admin_setting_configtext($name, get_string('nav_text_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
-    $page->add($setting);
-
-    $settings->add($page);
+    //$name = 'theme_apsolu/nav_link_3_heading';
+    //$number = 'n°3';
+    //$heading = get_string('nav_text_label', 'theme_apsolu') . ' ' . $number;
+    //$setting = new admin_setting_heading($name, $heading, '');
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_3_url';
+    //$setting = new admin_setting_configtext($name, get_string('nav_url_label', 'theme_apsolu'), null, null, PARAM_URL);
+    //$page->add($setting);
+    //
+    //$name = 'theme_apsolu/nav_link_3_text';
+    //$setting = new admin_setting_configtext($name, get_string('nav_text_label', 'theme_apsolu'), null, null, PARAM_RAW_TRIMMED);
+    //$page->add($setting);
+    //
+    //$settings->add($page);
 
     // 4. Personnaliser le pied de page.
     $page = new admin_settingpage('theme_apsolu_customize_footer', get_string('customize_footer', 'theme_apsolu'));
@@ -227,14 +232,6 @@ if ($ADMIN->fulltree) {
     $information = '';
     $setting = new admin_setting_heading($name, $heading, $information);
     $page->add($setting);
-
-    // Activer le pied de page personnalisé.
-    /*$name = 'theme_apsolu/footer_activate';
-    $title = get_string('footer_active', 'theme_apsolu');
-    $description = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>Si le pied de page personnalisé est désactivé, seuls les boutons "mentions légales", "politique de confidentialité" et "contact" seront affichés sur la page d\'accueil.</div>';
-    $default = 0;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-    $page->add($setting);*/
 
     // Blac 1 : Logos.
     $name = 'theme_apsolu/footer_1_heading';
@@ -282,33 +279,9 @@ if ($ADMIN->fulltree) {
 
     $name = 'theme_apsolu/footer_3_description';
     $title = get_string('description');
-    $description =
-        '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Affiche les liens hypertexte déjà définis dans la barre de liens.</p></div>';
+    $description = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Affiche les liens hypertexte déjà définis dans la barre de liens.</p></div>';
     $setting = new admin_setting_description($name, $title, $description, 0);
     $page->add($setting);
 
     $settings->add($page);
-
-    // 5. TODO: Personnalisation des libellés.
-    //$page = new admin_settingpage('theme_apsolu_customize_labels', get_string('customize_labels', 'theme_apsolu'));
-    //
-    //$name = 'theme_apsolu/customize_labels_description';
-    //$information = get_string('customize_labels_desc', 'theme_apsolu');
-    //$heading = '';
-    //$setting = new admin_setting_heading($name, $heading, $information);
-    //$page->add($setting);
-    //
-    //$name = 'theme_apsolu/customize_labels_heading';
-    //$information = '';
-    //$heading = get_string('general');
-    //$setting = new admin_setting_heading($name, $heading, $information);
-    //$page->add($setting);
-    //
-    //// 4a. Activités sportives.
-    //$name = 'local_apsolu/categories';
-    //$setting = new admin_setting_configtext($name, get_string('categories', 'local_apsolu'), null,
-    //    get_string('categories_default', 'theme_apsolu'), PARAM_TEXT);
-    //$page->add($setting);
-
-    //$settings->add($page);
 }
