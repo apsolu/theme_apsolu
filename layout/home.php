@@ -35,6 +35,8 @@ $templatecontext = [
     'nav_link_2_text' => get_config('theme_apsolu','nav_link_2_text'),
     'nav_link_3_url' => get_config('theme_apsolu','nav_link_3_url'),
     'nav_link_3_text' => get_config('theme_apsolu','nav_link_3_text'),
+    'homepage_section2_association_text' => get_config('theme_apsolu', 'homepage_section2_association_text'),
+    'homepage_section2_practice_text' => get_config('theme_apsolu', 'homepage_section2_practice_text'),
 ];
 
 echo $OUTPUT->render_from_template('theme_apsolu/home', $templatecontext);

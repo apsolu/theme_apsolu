@@ -69,8 +69,8 @@ $string['courses_catalogue'] = 'Formats de pratique';
 $string['sport_training_sessions'] = 'Stages';
 $string['events'] = 'Evenements';
 $string['animations'] = 'Animations';
-$string['practice'] = 'Pratiques autonomes';
-$string['sport_association'] = 'Adhésion à l\'Association sportive';
+$string['practice'] = 'Les pratiques autonomes';
+$string['sport_association'] = 'Adhésion à l\'AS';
 
 // 2. APSOLU > Documents.
 $string['confidential'] = 'Politique de confidentialité';

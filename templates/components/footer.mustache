@@ -48,40 +48,38 @@
     }
 }}
 <footer id="apsolu-custom-footer-1" class="section text-light bg-dark">
-    <div class="container p-3">
-        <div class="row d-flex">
-            <div class="col-5 justify-content-end ">
-                {{#homepage_footer_logo_1}}
-                    <img id="footer-logo-1" src="{{{ get_homepage_footer_logo_1_url }}}">
-                {{/homepage_footer_logo_1}}
-                {{#homepage_footer_logo_2}}
-                    <img id="footer-logo-2" src="{{{ get_homepage_footer_logo_2_url }}}">
-                {{/homepage_footer_logo_2}}
-                {{#homepage_footer_logo_3}}
-                    <img id="footer-logo-3" src="{{{ get_homepage_footer_logo_3_url }}}">
-                {{/homepage_footer_logo_3}}
-            </div>
-            <div class="col-4">
-                <div class="pr-xl-4">
-                    <p>{{ footer_text_section }}</p>
-                </div>
-            </div>
-            <div class="col-3">
-                <ul class="nav-list">
-                    <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link"
-                                                                                    aria-hidden="true"></i></a>
-                    </li>
-                    <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link"
-                                                                                    aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link"
-                                                                                                     aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container-lg p-3">
+    <div class="d-flex flex-row flex-wrap justify-content-between">
+        <div class="col align-self-center mr-auto">
+            {{#homepage_footer_logo_1}}
+                <img id="footer-logo-1" src="{{{ get_homepage_footer_logo_1_url }}}">
+            {{/homepage_footer_logo_1}}
+            {{#homepage_footer_logo_2}}
+                <img id="footer-logo-2" src="{{{ get_homepage_footer_logo_2_url }}}">
+            {{/homepage_footer_logo_2}}
+            {{#homepage_footer_logo_3}}
+                <img id="footer-logo-3" src="{{{ get_homepage_footer_logo_3_url }}}">
+            {{/homepage_footer_logo_3}}
+        </div>
+        <div class="col">
+            <p>{{ footer_text_section }}</p>
+        </div>
+        <div class="col ml-auto">
+            <ul class="nav-list">
+                <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link"
+                                                                                aria-hidden="true"></i></a>
+                </li>
+                <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link"
+                                                                                aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link"
+                                                                                                 aria-hidden="true"></i></a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="row no-gutters modal-container">
+    </div>
+    <div class="d-flex flex-row flex-wrap no-gutters modal-container">
         {{#legal_notice_doc_text}}
             <div class="col">
                 <div class="col">
