@@ -52,7 +52,8 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         $mform->addGroup($activationarray,'');*/
 
         // 1. Liste des activités.
-        $mform->addElement('header', 'homepage_activities_list', 'Liste des activités');
+        $title = get_string('the_activities_configuration','theme_apsolu');
+        $mform->addElement('header', 'homepage_activities_list',$title);
         $mform->setExpanded('homepage_activities_list', $expanded = true);
 
         // 1a. Texte affiché.
@@ -69,7 +70,8 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         // TODO : 4. Animations.
 
         // 5. Pratiques autonomes.
-        $mform->addElement('header', 'homepage_practice', 'Pratiques autonomes');
+        $title = get_string('practice','theme_apsolu');
+        $mform->addElement('header', 'homepage_practice', $title);
         $mform->setExpanded('homepage_practice', $expanded = true);
 
         // Texte.
@@ -78,7 +80,8 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         $mform->setType('homepage_section2_practice_text_editor', PARAM_RAW);
 
         // 6. Adhésion à l'association sportive.
-        $mform->addElement('header', 'homepage_sport_association', 'Adhésion à l\'association sportive');
+        $title = get_string('sport_association','theme_apsolu');
+        $mform->addElement('header', 'homepage_sport_association', $title);
         $mform->setExpanded('homepage_sport_association', $expanded = true);
 
         // Texte.
@@ -87,14 +90,8 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         $mform->setType('homepage_section2_association_text_editor', PARAM_RAW);
 
         // 7. Validation du formulaire.
-        $buttonarray[] = &$mform->createElement('submit', 'submitbutton', get_string('savechanges'));
-
-        //$mform->addGroup($buttonarray,'buttonar','',array(' '), false);
-        //$mform->closeHeaderBefore('buttonar');
-
-        // 3. Validation du formulaire.
-        $buttonarray[] = &$mform->createElement('submit', 'submitbutton', get_string('savechanges'));
-
+        $buttonarray = array();
+        $buttonarray[] =& $mform->createElement('submit', 'submitbutton', get_string('savechanges'));
         $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
         $mform->closeHeaderBefore('buttonar');
 
