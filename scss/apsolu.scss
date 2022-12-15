@@ -731,6 +731,10 @@ table caption {
     margin: unset;
     padding: unset;
     margin-bottom: 1em;
+
+    .navigation {
+        visibility: hidden;
+    }
 }
 
 // Style Hover
