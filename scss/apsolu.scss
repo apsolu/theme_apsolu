@@ -731,7 +731,6 @@ table caption {
     margin: unset;
     padding: unset;
     margin-bottom: 1em;
-
     .navigation {
         visibility: hidden;
     }
@@ -789,6 +788,10 @@ input[type="color"] {
 
 .apsolu-colorpicker input[type="color"]::-webkit-color-swatch {
     border: none;
+}
+
+.pagelayout-login #page {
+    background: unset; //Fait sauter le fond du container pour la page login Shibboleth.
 }
 
 /**
