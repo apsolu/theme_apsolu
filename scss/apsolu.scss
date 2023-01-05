@@ -523,6 +523,7 @@ footer {
 }
 
 #apsolu-topofbody {
+    @extend .mb-4;
     max-width: fit-content;
     margin: auto;
 
@@ -794,6 +795,34 @@ input[type="color"] {
     background: unset; //Fait sauter le fond du container pour la page login Shibboleth.
 }
 
+.fcontainer {
+    background: #f9f9f9;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+#page-drawers {
+    scrollbar-color: unset;
+}
+
+#page-header {
+    background: $white;
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+.breadcrumb {
+    font-size: small;
+    padding: 0.5em;
+}
+
+#page, #page.drawers {
+    margin-top: unset;
+}
 /**
  *Commente le !important pour passer le test de coding style.
  *Trouver une solution pour améliorer l'affichage de la politique du site.
