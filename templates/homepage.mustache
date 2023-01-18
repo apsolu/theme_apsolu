@@ -75,7 +75,8 @@
         <span id="section-1" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section1_image_credits}}
                 <div class="badge badge-photo-credits">
-                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section1_image_credits }}"></i></span>
+                    <span><i class="fa fa-camera" aria-hidden="true"
+                             alt="Crédit image de fond :{{ section1_image_credits }}"></i></span>
                     <span class="d-none d-sm-inline">{{ section1_image_credits }}</span>
                 </div>
             {{/section1_image_credits}}
@@ -87,12 +88,13 @@
         </span>
         <div class="apsolu-article-title">
             <div class="container">
-                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}about, theme_apsolu{{/str}}</h2>
+                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
+                    about, theme_apsolu{{/str}}</h2>
             </div>
         </div>
         <article class="apsolu-article mb-0">
             <div class="container-md">
-                        {{{ section1_text }}}
+                {{{ section1_text }}}
             </div>
         </article>
     </section>
@@ -102,14 +104,16 @@
         <div id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section2_image_credits}}
                 <div class="badge badge-photo-credits d-none d-sm-block">
-                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section2_image_credits }}"></i></span>
+                    <span><i class="fa fa-camera" aria-hidden="true"
+                             alt="Crédit image de fond :{{ section2_image_credits }}"></i></span>
                     <span class="d-none d-sm-inline">{{ section2_image_credits }}</span>
                 </div>
             {{/section2_image_credits}}
         </div>
         <div class="apsolu-article-title">
             <div class="container">
-                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}courses_catalogue, theme_apsolu{{/str}}</h2>
+                <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
+                    courses_catalogue, theme_apsolu{{/str}}</h2>
             </div>
         </div>
         <article class="apsolu-article">
@@ -118,44 +122,49 @@
                     {{! Onglets formats de cours. }}
                     <ul class="nav nav-tabs mb-2" role="tablist">
                         <li role="presentation" class="nav-item">
-                            <a role="tab" aria-controls="liste-activites" aria-selected="false" class="nav-link active"
-                               data-toggle="tab" href="#liste-activites" role="tab">
+                            <button id="liste-activites-tab" class="nav-link active" data-toggle="tab" data-target="#liste-activites"
+                                    type="button" role="tab" aria-controls="liste-activites" aria-selected="false">
                                 {{#str}}activities_list, theme_apsolu{{/str}}
-                            </a>
+                            </button>
                         </li>
                         {{# homepage_section2_training_text }}
                             <li role="presentation" class="nav-item">
-                                <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#stages">{{#str}}sport_training_sessions, theme_apsolu{{/str}}
-                                </a>
+                                <button id="stages-tab" class="nav-link" data-toggle="tab" data-target="#stages" type="button"
+                                        role="tab" aria-controls="stages" aria-selected="false">{{#str}}
+                                    sport_training_sessions, theme_apsolu{{/str}}
+                                </button>
                             </li>
                         {{/ homepage_section2_training_text }}
                         {{# homepage_section2_events_text }}
                             <li role="presentation" class="nav-item">
-                                <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#evenements">{{#str}}events, theme_apsolu{{/str}}
-                                </a>
+                                <button id="evenements-tab" class="nav-link" data-toggle="tab" data-target="#evenements"
+                                        type="button" role="tab" aria-controls="evenements" aria-selected="false">{{#str}}
+                                    events, theme_apsolu{{/str}}
+                                </button>
                             </li>
                         {{/ homepage_section2_events_text }}
                         {{# homepage_section2_animations_text }}
                             <li role="presentation" class="nav-item">
-                                <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#animations">{{#str}}animations, theme_apsolu{{/str}}
-                                </a>
+                                <button id="animations-tab" class="nav-link" data-toggle="tab" data-target="#animations"
+                                        type="button" role="tab" aria-controls="animations" aria-selected="false">{{#str}}
+                                    animations, theme_apsolu{{/str}}
+                                </button>
                             </li>
                         {{/ homepage_section2_animations_text }}
                         {{# homepage_section2_practice_text}}
                             <li role="presentation" class="nav-item">
-                                <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#pratiques">{{#str}}practice, theme_apsolu{{/str}}
-                                </a>
+                                <button id="pratiques-tab" class="nav-link" data-toggle="tab" data-target="#pratiques" type="button"
+                                        role="tab" aria-controls="pratiques" aria-selected="false">{{#str}}
+                                    practice, theme_apsolu{{/str}}
+                                </button>
                             </li>
                         {{/homepage_section2_practice_text}}
                         {{# homepage_section2_association_text }}
                             <li role="presentation" class="nav-item">
-                                <a role="tab" aria-controls="courses" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#adhesion">{{#str}}sport_association, theme_apsolu{{/str}}
-                                </a>
+                                <button id="adhesion-tab" class="nav-link" data-toggle="tab" data-target="#adhesion" type="button"
+                                        role="tab" aria-controls="adhesion" aria-selected="false">{{#str}}
+                                    sport_association, theme_apsolu{{/str}}
+                                </button>
                             </li>
                         {{/ homepage_section2_association_text }}
                     </ul>
@@ -185,7 +194,8 @@
         <div id="section-3" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section3_image_credits}}
                 <div class="badge badge-photo-credits ">
-                    <span><i class="fa fa-camera" aria-hidden="true" alt="Crédit image de fond :{{ section3_image_credits }}"></i></span>
+                    <span><i class="fa fa-camera" aria-hidden="true"
+                             alt="Crédit image de fond :{{ section3_image_credits }}"></i></span>
                     <span class="d-none d-sm-inline">{{ section3_image_credits }}</span>
                 </div>
             {{/section3_image_credits}}

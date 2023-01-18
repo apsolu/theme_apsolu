@@ -131,52 +131,52 @@ $data->section2_image_credits = get_config('theme_apsolu', 'homepage_section2_im
 $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_image_credits');
 
 // Logos de pied de page.
-$itemid = 60;
-$filepath = get_config('theme_apsolu', 'homepage_footer_logo_1');
+$itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1;
+$filepath = get_config($component, 'homepage_footer_logo_1');
 $data->homepage_footer_logo_1 = $filepath;
 $data->get_homepage_footer_logo_1_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
 
-$itemid = 61;
-$filepath = get_config('theme_apsolu', 'homepage_footer_logo_2');
+$itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2;
+$filepath = get_config($component, 'homepage_footer_logo_2');
 $data->homepage_footer_logo_2 = $filepath;
 $data->get_homepage_footer_logo_2_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
 
-$itemid = 62;
-$filepath = get_config('theme_apsolu', 'homepage_footer_logo_3');
+$itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3;
+$filepath = get_config($component, 'homepage_footer_logo_3');
 $data->homepage_footer_logo_3 = $filepath;
 $data->get_homepage_footer_logo_3_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
 
 // Texte de pied de page.
-$text = get_config('theme_apsolu', 'footer_text_section');
+$text = get_config($component, 'footer_text_section');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
 $data->footer_text_section = format_text($content, FORMAT_HTML, $options);
 
 // Fenêtes modales.
-$text = get_config('theme_apsolu', 'legal_notice_doc_text');
+$text = get_config($component, 'legal_notice_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
 $data->legal_notice_doc_text = format_text($content, FORMAT_HTML, $options);
 
-$text = get_config('theme_apsolu', 'confidential_doc_text');
+$text = get_config($component, 'confidential_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_CONFIDENTIAL_DOC_TEXT);
 $data->confidential_doc_text = format_text($content, FORMAT_HTML, $options);
 
-$text = get_config('theme_apsolu', 'contact_doc_text');
+$text = get_config($component, 'contact_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
 $data->contact_doc_text = format_text($content, FORMAT_HTML, $options);
 
 // Liens personnalisés.
-$data->nav_link_1_url = get_config('theme_apsolu','nav_link_1_url');
-$data->nav_link_1_text = get_config('theme_apsolu','nav_link_1_text');
+$data->nav_link_1_url = get_config($component,'nav_link_1_url');
+$data->nav_link_1_text = get_config($component,'nav_link_1_text');
 
-$data->nav_link_2_url = get_config('theme_apsolu','nav_link_2_url');
-$data->nav_link_2_text = get_config('theme_apsolu','nav_link_2_text');
+$data->nav_link_2_url = get_config($component,'nav_link_2_url');
+$data->nav_link_2_text = get_config($component,'nav_link_2_text');
 
-$data->nav_link_3_url = get_config('theme_apsolu','nav_link_3_url');
-$data->nav_link_3_text = get_config('theme_apsolu','nav_link_3_text');
+$data->nav_link_3_url = get_config($component,'nav_link_3_url');
+$data->nav_link_3_text = get_config($component,'nav_link_3_text');
 
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {
@@ -185,13 +185,13 @@ if (isloggedin() && !isguestuser()) {
 } else {
     $noauth = true;
 
-    $data->institutional_account_url = get_config('theme_apsolu', 'homepage_section4_institutional_account_url');
+    $data->institutional_account_url = get_config($component, 'homepage_section4_institutional_account_url');
     if (empty($data->institutional_account_url) === false) {
         $data->institutional_account_url = new moodle_url($data->institutional_account_url);
         $noauth = false;
     }
 
-    $data->non_institutional_account_url = get_config('theme_apsolu', 'homepage_section4_non_institutional_account_url');
+    $data->non_institutional_account_url = get_config($component, 'homepage_section4_non_institutional_account_url');
     if (empty($data->non_institutional_account_url) === false) {
         $data->non_institutional_account_url = new moodle_url($data->non_institutional_account_url);
         $noauth = false;

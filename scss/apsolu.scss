@@ -67,24 +67,24 @@ html {
 // 1a. Boutons.
 .btn {
     &-primary {
-        border-bottom: 2px solid darken($primary, 10%);
+        box-shadow: inset 0px -2px 0px 0px darken($primary, 10%);
     }
 
     &-secondary {
-        border-bottom: 2px solid darken($secondary, 10%);
+        box-shadow: inset 0px -2px 0px 0px darken($secondary, 10%);
         outline: 0;
     }
 
     &-info {
-        border-bottom: 2px solid darken($info, 10%);
+        box-shadow: inset 0px -2px 0px 0px darken($info, 10%);
     }
 
     &-success {
-        border-bottom: 2px solid darken($success, 10%);
+        box-shadow: inset 0px -2px 0px 0px darken($success, 10%);
     }
 
     &-warning {
-        border-bottom: 2px solid darken($warning, 10%);
+        box-shadow: inset 0px -2px 0px 0px darken($warning, 10%);
     }
 }
 
@@ -822,6 +822,20 @@ input[type="color"] {
 
 #page, #page.drawers {
     margin-top: unset;
+}
+
+#footer-logo {
+    height: 100px;
+    max-height: 100px;
+    &-1 {
+        @extend #footer-logo;
+    }
+    &-2 {
+        @extend #footer-logo;
+    }
+    &-3 {
+        @extend #footer-logo;
+    }
 }
 /**
  *Commente le !important pour passer le test de coding style.

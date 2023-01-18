@@ -32,6 +32,10 @@
     * nav_link_1_text
     * nav_link_2_text
     * nav_link_3_text
+    * homepage_footer_logo_1
+    * homepage_footer_logo_2
+    * homepage_footer_logo_3
+    * footer_text_section
     * output - The core renderer for the page
 
     Example context (json):
@@ -43,63 +47,73 @@
                 "theme_apsolu/nav_link_2_text": "",
                 "nav_link_3_url": "",
                 "theme_apsolu/nav_link_3_text": "",
-                "support_contact": "",
         },
     }
 }}
 <footer id="apsolu-custom-footer-1" class="section text-light bg-dark">
-    <div class="container-lg p-3">
-    <div class="d-flex flex-row flex-wrap justify-content-between">
-        <div class="col align-self-center mr-auto">
-            {{#homepage_footer_logo_1}}
-                <img id="footer-logo-1" src="{{{ get_homepage_footer_logo_1_url }}}">
-            {{/homepage_footer_logo_1}}
-            {{#homepage_footer_logo_2}}
-                <img id="footer-logo-2" src="{{{ get_homepage_footer_logo_2_url }}}">
-            {{/homepage_footer_logo_2}}
-            {{#homepage_footer_logo_3}}
-                <img id="footer-logo-3" src="{{{ get_homepage_footer_logo_3_url }}}">
-            {{/homepage_footer_logo_3}}
+    <div class="container-fluid">
+        {{! Pied de page personnalisé }}
+        <div class="row row-cols-3 mx-6 my-3 justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                <div class="row row-cols-md-3 justify-content-center">
+                    {{#homepage_footer_logo_1}}
+                        <div class="col-4 col-md-auto">
+                            <img id="footer-logo-1" class="mw-100" src="{{{ get_homepage_footer_logo_1_url }}}">
+                        </div>
+                    {{/homepage_footer_logo_1}}
+                    {{#homepage_footer_logo_2}}
+                        <div class="col-4 col-md-auto">
+                            <img id="footer-logo-2" class="mw-100" src="{{{ get_homepage_footer_logo_2_url }}}">
+                        </div>
+                    {{/homepage_footer_logo_2}}
+                    {{#homepage_footer_logo_3}}
+                        <div class="col-4 col-md-auto">
+                            <img id="footer-logo-3" class="mw-100" src="{{{ get_homepage_footer_logo_3_url }}}">
+                        </div>
+                    {{/homepage_footer_logo_3}}
+                </div>
+            </div>
+            {{! Note de bas de page }}
+            <div class="col-12 col-md-3">
+                <p>{{ footer_text_section }}</p>
+            </div>
+            {{! Liens hypertexte }}
+            <div class="col-12 col-md-2">
+                <ul class="nav-list">
+                    <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link"
+                                                                                    aria-hidden="true"></i></a>
+                    </li>
+                    <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link"
+                                                                                    aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link"
+                                                                                                     aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col">
-            <p>{{ footer_text_section }}</p>
-        </div>
-        <div class="col ml-auto">
-            <ul class="nav-list">
-                <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link"
-                                                                                aria-hidden="true"></i></a>
-                </li>
-                <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link"
-                                                                                aria-hidden="true"></i></a>
-                </li>
-                <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link"
-                                                                                                 aria-hidden="true"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </div>
-    <div class="d-flex flex-row flex-wrap no-gutters modal-container">
-        {{#legal_notice_doc_text}}
-            <div class="col">
-                <div class="col">
+        <hr class="my-0">
+        {{! Navigation : fenêtes modales }}
+        <div class="row row-cols-3 modal-container justify-content-center">
+            {{#legal_notice_doc_text}}
+                <div class="col-12 col-sm-3">
                     <a class="modal-inner" data-toggle="modal" data-target="#mentionsLegales" href="#">{{#str}}
                         legal_notice, theme_apsolu{{/str}}</a>
                 </div>
-            </div>
-        {{/legal_notice_doc_text}}
-        {{#confidential_doc_text}}
-            <div class="col">
-                <a class="modal-inner" data-toggle="modal" data-target="#confidentialite" href="#">{{#str}}
-                    confidential, theme_apsolu{{/str}}</a>
-            </div>
-        {{/confidential_doc_text}}
-        {{#contact_doc_text}}
-            <div class="col">
-                <a class="modal-inner" data-toggle="modal" data-target="#contact" href="#">{{#str}}
-                    contact_us, theme_apsolu{{/str}}</a>
-            </div>
-        {{/contact_doc_text}}
+            {{/legal_notice_doc_text}}
+            {{#confidential_doc_text}}
+                <div class="col-12 col-sm-3">
+                    <a class="modal-inner" data-toggle="modal" data-target="#confidentialite" href="#">{{#str}}
+                        confidential, theme_apsolu{{/str}}</a>
+                </div>
+            {{/confidential_doc_text}}
+            {{#contact_doc_text}}
+                <div class="col-12 col-sm-3">
+                    <a class="modal-inner" data-toggle="modal" data-target="#contact" href="#">{{#str}}
+                        contact_us, theme_apsolu{{/str}}</a>
+                </div>
+            {{/contact_doc_text}}
+        </div>
     </div>
 </footer>
 
