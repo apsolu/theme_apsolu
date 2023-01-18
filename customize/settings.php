@@ -57,23 +57,21 @@ $defaults->nav_link_3_url = get_config($component, 'nav_link_3_url');
 $defaults->nav_link_3_text = get_config($component, 'nav_link_3_text');
 
 // TODO: Charger les logos.
-//$defaults->homepage_footer_logo_1 = file_get_submitted_draft_itemid(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1);
-//if (empty($defaults->homepage_footer_logo_1) === true) {
-//    file_prepare_draft_area($defaults->homepage_footer_logo_1, $syscontext->id,
-//        $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, $filemanageroptions);
-//}
-
-//$defaults->homepage_footer_logo_2 = file_get_submitted_draft_itemid('homepage_footer_logo_2');
-//if (empty($defaults->homepage_footer_logo_2) === true) {
-//    file_prepare_draft_area($defaults->homepage_footer_logo_2, $syscontext->id,
-//        $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, $filemanageroptions);
-//}
-//
-//$defaults->homepage_footer_logo_3 = file_get_submitted_draft_itemid('homepage_footer_logo_3');
-//if (empty($defaults->homepage_footer_logo_3) === true) {
-//    file_prepare_draft_area($defaults->homepage_footer_logo_3, $syscontext->id,
-//        $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, $filemanageroptions);
-//}
+$defaults->homepage_footer_logo_1 = file_get_submitted_draft_itemid('homepage_footer_logo_1');
+if (empty($defaults->homepage_footer_logo_1) === true) {
+    file_prepare_draft_area($defaults->homepage_footer_logo_1, $syscontext->id,
+        $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, $filemanageroptions);
+}
+$defaults->homepage_footer_logo_2 = file_get_submitted_draft_itemid('homepage_footer_logo_2');
+if (empty($defaults->homepage_footer_logo_2) === true) {
+    file_prepare_draft_area($defaults->homepage_footer_logo_2, $syscontext->id, 'theme_apsolu', 'homepage',
+        THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, $filemanageroptions);
+}
+$defaults->homepage_footer_logo_3 = file_get_submitted_draft_itemid('homepage_footer_logo_3');
+if (empty($defaults->homepage_footer_logo_3) === true) {
+    file_prepare_draft_area($defaults->homepage_footer_logo_3, $syscontext->id, 'theme_apsolu', 'homepage',
+        THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, $filemanageroptions);
+}
 
 // Charge la note de pied de page.
 $defaults->footer_text_section = get_config($component, 'footer_text_section');
@@ -86,24 +84,47 @@ $customdata = array($defaults);
 // On instancie le formulaire.
 $mform = new theme_apsolu_customize_form(null, $customdata);
 
-//On lui accorde des valeurs par défaut.
-$mform->set_data($customdata);
-
 $notification = '';
+
 if ($data = $mform->get_data()) {
-
-    // Vide le cache du thème à l'enregistrement.
-    theme_reset_all_caches();
-
-        // Gère les pièces attachées des éditeurs de texte.
+    // Gère les pièces attachées des éditeurs de texte.
     $data = file_postupdate_standard_editor($data, 'footer_text_section', $editoroptions,
         $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
     set_config('footer_text_section', $data->footer_text_section, $component);
 
+    // Sauvegarde les brouillons vers leur emplacement final.
+    file_save_draft_area_files($defaults->homepage_footer_logo_1, $syscontext->id, $component, $filearea,
+        THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, $filemanageroptions);
+    file_save_draft_area_files($defaults->homepage_footer_logo_2, $syscontext->id, $component, $filearea,
+        THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, $filemanageroptions);
+    file_save_draft_area_files($defaults->homepage_footer_logo_3, $syscontext->id, $component, $filearea,
+        THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, $filemanageroptions);
+
+    // Gère le dépot des images.
+    $fs = get_file_storage();
+    $filepath = '/';
+    $files = $fs->get_area_files($syscontext->id, 'theme_apsolu', 'homepage', $itemid = false);
+    foreach ($files as $file) {
+        if ($file->get_filename() === '.') {
+            continue;
+        }
+        switch ($file->get_itemid()) {
+            case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1:
+                set_config('homepage_footer_logo_1',$filepath.$file->get_filename(),$component);
+                break;
+            case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2:
+                set_config('homepage_footer_logo_2',$filepath.$file->get_filename(),$component);
+                break;
+            case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3:
+                set_config('homepage_footer_logo_3',$filepath.$file->get_filename(),$component);
+                break;
+        }
+    }
+
     // Gère les couleurs et les liens hypertextes personnalisés.
-    set_config('custom_brandcolor',$data->custom_brandcolor,$component);
-    set_config('custom_brandcolor_2',$data->custom_brandcolor_2,$component);
-    set_config('custom_brandcolor_links',$data->custom_brandcolor_links,$component);
+    set_config('custom_brandcolor', $data->custom_brandcolor, $component);
+    set_config('custom_brandcolor_2', $data->custom_brandcolor_2, $component);
+    set_config('custom_brandcolor_links', $data->custom_brandcolor_links, $component);
 
     set_config('nav_link_1_url', $data->nav_link_1_url, $component);
     set_config('nav_link_1_text', $data->nav_link_1_text, $component);
@@ -114,8 +135,8 @@ if ($data = $mform->get_data()) {
     set_config('nav_link_3_url', $data->nav_link_3_url, $component);
     set_config('nav_link_3_text', $data->nav_link_3_text, $component);
 
-    // TODO: Gère le dépôt des logos.
-
+    // Vide le cache du thème à l'enregistrement.
+    theme_reset_all_caches();
 
     // Retourne une notification de confirmation à l'enregistrement.
     $returnurl = new moodle_url('/theme/apsolu/customize/settings.php');

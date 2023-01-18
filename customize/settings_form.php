@@ -129,10 +129,10 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->addElement('html', $information);
 
         // 3a. Bloc 1 : Logos.
-        //$title = get_string('footer_block', 'theme_apsolu') . ' 1';
-        //$mform->addElement('html', '<h4>' . $title . '</h4>');
-        //$information = 'Vous pouvez placer jusqu\'à 3 logos dans le pied de page';
-        //$mform->addElement('html', $information);
+        $title = get_string('footer_block', 'theme_apsolu') . ' 1';
+        $mform->addElement('html', '<h4>' . $title . '</h4>');
+        $information = 'Vous pouvez placer jusqu\'à 3 logos dans le pied de page';
+        $mform->addElement('html', $information);
 
         $logos = array(
             "footer_logo_1" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, 'homepage_footer_logo_1','Logo n°1'),
@@ -140,16 +140,12 @@ class theme_apsolu_customize_form extends moodleform {
             "footer_logo_3" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, 'homepage_footer_logo_3','Logo n°3')
         );
 
-        //$mform->addElement('filemanager', $logos["footer_logo_1"][1], $logos["footer_logo_1"][2], $attributes, $filemanageroptions);
-        //
-        //$label = 'Logo n°2';
-        //$mform->addElement('filemanager', 'homepage_footer_logo_2', $label, $attributes, $filemanageroptions);
-        //
-        //$label = 'Logo n°3';
-        //$mform->addElement('filemanager', 'homepage_footer_logo_3', $label, $attributes, $filemanageroptions);
+        $mform->addElement('filemanager', $logos["footer_logo_1"][1], $logos["footer_logo_1"][2], $attributes, $filemanageroptions);
+        $mform->addElement('filemanager', $logos["footer_logo_2"][1], $logos["footer_logo_2"][2], $attributes, $filemanageroptions);
+        $mform->addElement('filemanager', $logos["footer_logo_3"][1], $logos["footer_logo_3"][2], $attributes, $filemanageroptions);
 
         // 3b. Bloc 2 : Note de bas de page.
-        $title = get_string('footer_block', 'theme_apsolu') . ' 2';
+        $title = get_string('footer_block', $component) . ' 2';
         $mform->addElement('html', '<h4>' . $title . '</h4>');
 
         $label = 'Note de pied de page';
@@ -157,7 +153,7 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->setType('footer_text_section_editor', PARAM_TEXT);
 
         // 3c. Bloc 3 : Liens hypertexte.
-        $title = get_string('footer_block', 'theme_apsolu') . ' 3';
+        $title = get_string('footer_block', $component) . ' 3';
         $mform->addElement('html', '<h4>' . $title . '</h4>');
         $mform->addElement('static', 'Liens du pied de page');
         $description =
@@ -213,7 +209,7 @@ class theme_apsolu_customize_form extends moodleform {
         $options['maxbytes'] = 0;
         $options['areamaxbytes'] = FILE_AREA_MAX_BYTES_UNLIMITED;
         $options['maxfiles'] = 1;
-        $options['accepted_types'] = array(' . jpg', ' . png');
+        $options['accepted_types'] = array('.jpg', '.png');
         $options['context'] = context_system::instance();
 
         return $options;
