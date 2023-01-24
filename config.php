@@ -50,6 +50,8 @@ $THEME->yuicssmodules = array();
 // Most themes will use this rendererfactory as this is the one that allows the theme to override any other renderer.
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
+$THEME->haseditswitch = false;
+
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
 // Définition des templates qui vont structurer nos pages.

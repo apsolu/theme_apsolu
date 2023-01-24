@@ -80,15 +80,18 @@
             {{! Liens hypertexte }}
             <div class="col-12 col-md-2">
                 <ul class="nav-list">
-                    <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link"
-                                                                                    aria-hidden="true"></i></a>
+{{#nav_link_1_text}}
+                    <li><a href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     </li>
-                    <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link"
-                                                                                    aria-hidden="true"></i></a>
+    {{/nav_link_1_text}}
+    {{#nav_link_2_text}}
+                    <li><a href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     </li>
-                    <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link"
-                                                                                                     aria-hidden="true"></i></a>
+        {{/nav_link_2_text}}
+        {{#nav_link_3_text}}
+                    <li class="nav-item"><a href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     </li>
+            {{/nav_link_3_text}}
                 </ul>
             </div>
         </div>

@@ -79,23 +79,28 @@
     <div id="brand-links" class="primary-navigation">
         <nav class="moremenu navigation observed">
             <ul class="nav more-nav navbar-nav" role="menubar">
-                <li class="nav-item"><a class="nav-link" role="menuitem" href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}}</a>
-                </li>
-                <li class="nav-item"><a class="nav-link " role="menuitem" href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}}</a>
-                </li>
-                <li class="nav-item"><a class="nav-link " role="menuitem" href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}}</a>
-                </li>
+                {{#nav_link_1_text}}
+                    <li class="nav-item"><a class="nav-link" role="menuitem"
+                                            href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}}</a>
+                    </li>
+                {{/nav_link_1_text}}
+                {{#nav_link_2_text}}
+                    <li class="nav-item"><a class="nav-link " role="menuitem"
+                                            href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}}</a>
+                    </li>
+                {{/nav_link_2_text}}
+                {{#nav_link_3_text}}
+                    <li class="nav-item"><a class="nav-link " role="menuitem"
+                                            href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}}</a>
+                    </li>
+                {{/nav_link_3_text}}
             </ul>
         </nav>
     </div>
 
-
     <div id="usernavigation" class="navbar-nav ml-auto">
-        {{{ output.navbar_plugin_output }}}
-        <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
-            {{#usermenu}}
-                {{> core/user_menu }}
-            {{/usermenu}}
+        <div class="d-flex align-items-stretch py-1 usermenu-container" data-region="usermenu">
+            {{{ output.user_menu }}}
         </div>
     </div>
 </nav>
@@ -105,40 +110,40 @@
         <i class="fa fa-chevron-down fa-fw " aria-hidden="true"></i>
     </button>
 
-<div id="navbarMenu" class="navbar-collapse justify-content-md-center collapse">
-{{!#count_activities}}
-<ul class="navbar-nav">
-    <li class="nav-item active">
-        <a class="nav-link " href="#accueil">{{#str}}home, theme_apsolu{{/str}}</a>
-    </li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-       role="button"
-       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="bi bi-plus"></i>
-        {{#str}}courses_catalogue, theme_apsolu{{/str}}
-    </a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-<a class="dropdown-item" href="#liste-activites">{{#str}}
-    the_activities, theme_apsolu{{/str}}</a>
-{{# homepage_section2_training_sessions_text }}<a class="dropdown-item disabled d-none" href="#stages">{{#str}}sport_training_sessions, theme_apsolu{{/str}}</a>{{/ homepage_section2_training_sessions_text }}
-{{# homepage_section2_events }}<a class="dropdown-item disabled d-none" href="#evenements">{{#str}}events, theme_apsolu{{/str}}</a>{{/ homepage_section2_events }}
-{{# homepage_section2_animations }}<a class="dropdown-item disabled d-none" href="#animations">{{#str}}animations, theme_apsolu{{/str}}</a>{{/ homepage_section2_animations }}
-{{# homepage_section2_practice_text }}<a class="dropdown-item" href="#pratiques">{{#str}}practice, theme_apsolu{{/str}}</a>{{/ homepage_section2_practice_text }}
-    <div class="dropdown-divider"></div>
-{{# homepage_section2_association_text }}<a class="dropdown-item" href="#adhesion">{{#str}}sport_association, theme_apsolu{{/str}}</a>{{/ homepage_section2_association_text }}
-</div>
-</li>
-    <li class="nav-item">
-        <a class="nav-link" href="#inscription">{{#str}}
-            signup, theme_apsolu{{/str}}</a>
-    </li>
-    <li class="nav-item">
-
-            <a class="nav-link" href="#connexion">{{#str}}login, moodle{{/str}}</a>
-
-    </li>
-</ul>
-{{!/count_activities}}
-</div>
+    <div id="navbarMenu" class="navbar-collapse justify-content-md-center collapse">
+        {{!#count_activities}}
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link " href="#accueil">{{#str}}home, theme_apsolu{{/str}}</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                   role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-plus"></i>
+                    {{#str}}courses_catalogue, theme_apsolu{{/str}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#liste-activites">{{#str}}
+                        the_activities, theme_apsolu{{/str}}</a>
+                    {{# homepage_section2_training_sessions_text }}<a class="dropdown-item disabled d-none" href="#stages">{{#str}}
+                        sport_training_sessions, theme_apsolu{{/str}}</a>{{/ homepage_section2_training_sessions_text }}
+                    {{# homepage_section2_events }}<a class="dropdown-item disabled d-none" href="#evenements">{{#str}}
+                        events, theme_apsolu{{/str}}</a>{{/ homepage_section2_events }}
+                    {{# homepage_section2_animations }}<a class="dropdown-item disabled d-none" href="#animations">{{#str}}
+                        animations, theme_apsolu{{/str}}</a>{{/ homepage_section2_animations }}
+                    {{# homepage_section2_practice_text }}<a class="dropdown-item" href="#pratiques">{{#str}}
+                        practice, theme_apsolu{{/str}}</a>{{/ homepage_section2_practice_text }}
+                    <div class="dropdown-divider"></div>
+                    {{# homepage_section2_association_text }}<a class="dropdown-item" href="#adhesion">{{#str}}
+                        sport_association, theme_apsolu{{/str}}</a>{{/ homepage_section2_association_text }}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#inscription">{{#str}}
+                    signup, theme_apsolu{{/str}}/{{#str}}login, moodle{{/str}}</a>
+            </li>
+        </ul>
+        {{!/count_activities}}
+    </div>
 </nav>
