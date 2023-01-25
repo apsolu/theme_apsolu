@@ -536,7 +536,9 @@ footer {
 #apsolu-topofbody {
     @extend .mb-4;
     max-width: fit-content;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0 !important; // taille de la marge du page wrapper.
 
     p {
         margin-bottom: 0;
@@ -667,6 +669,7 @@ table caption {
     background-size: cover;
     min-height: 100%;
     background-image: linear-gradient($gradient), url('[[THEME_APSOLU:BACKGROUND_IMAGE_1_960x640]]');
+    padding-top: 4rem;
 }
 
 #page-site-index #page-wrapper {
