@@ -146,6 +146,17 @@ html {
     font-weight: 300;
 }
 
+.login {
+    color: $gray-400 !important;
+    a {
+        color: lighten($custom-color-3, 10%);
+    }
+
+    a:hover {
+        //color:unset;
+    }
+}
+
 .navbar-header .guest {
     display: none;
 }
