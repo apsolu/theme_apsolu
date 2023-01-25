@@ -26,10 +26,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2022102701;
+$plugin->version = 2023012500;
 
-// Requires Moodle 3.11.0.
-$plugin->requires = 2021051700;
+// Requires Moodle 4.0.0.
+$plugin->requires = 2022041900.00;
 
 // This is the component name of the plugin - it always starts with 'theme_'
 // for themes and should be the same as the name of the folder.
@@ -37,8 +37,7 @@ $plugin->component = 'theme_apsolu';
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'local_apsolu' => 2021072300,
-    'theme_classic' => 2019030100
+    'local_apsolu' => 2023012500,
 ];
 
 // This is a stable release.
