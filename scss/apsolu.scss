@@ -837,6 +837,14 @@ input[type="color"] {
         @extend #footer-logo;
     }
 }
+
+.userinitials {
+    font-size: .7rem;
+    width: 30px !important;
+    height: 30px !important;
+    margin-bottom: 4px;
+}
+
 /**
  *Commente le !important pour passer le test de coding style.
  *Trouver une solution pour améliorer l'affichage de la politique du site.

@@ -62,7 +62,6 @@ class theme_apsolu_homepage_form extends moodleform {
         // Encart d'accueil.
         $label = 'Encart accueil';
         $mform->addElement('editor', 'homepage_section1_welcome_text_editor', $label, $attributes, $editoroptions);
-        $mform->addRule('homepage_section1_welcome_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section1_welcome_text_editor', PARAM_RAW);
 
         // Image de fond.

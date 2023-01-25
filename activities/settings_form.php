@@ -61,7 +61,6 @@ class theme_apsolu_homepage_activities_form extends moodleform {
 
         // Texte.
         $mform->addElement('editor', 'homepage_section2_activities_infobox_text_editor', $infoBox, $attributes, $editoroptions);
-        $mform->addRule('homepage_section2_activities_infobox_text_editor', get_string('required'), 'required', null, 'client');
         $mform->addHelpButton('homepage_section2_activities_infobox_text_editor', 'homepage_activities_infobox', 'theme_apsolu');
         $mform->setType('homepage_section2_activities_infobox_text', PARAM_RAW);
 
@@ -76,7 +75,6 @@ class theme_apsolu_homepage_activities_form extends moodleform {
 
         // Texte.
         $mform->addElement('editor', 'homepage_section2_practice_text_editor', $sectionText, $attributes, $editoroptions);
-        $mform->addRule('homepage_section2_practice_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section2_practice_text_editor', PARAM_RAW);
 
         // 6. Adhésion à l'association sportive.
@@ -86,7 +84,6 @@ class theme_apsolu_homepage_activities_form extends moodleform {
 
         // Texte.
         $mform->addElement('editor', 'homepage_section2_association_text_editor', $sectionText, $attributes, $editoroptions);
-        $mform->addRule('homepage_section2_association_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section2_association_text_editor', PARAM_RAW);
 
         // 7. Validation du formulaire.
