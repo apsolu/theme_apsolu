@@ -98,6 +98,10 @@ class renderer extends \core_user\output\myprofile\renderer {
                         // Ajoute des champs qui ne commencent pas par apsolu.
                         $usercustomfields = profile_get_user_fields_with_data($user->id);
                         foreach ($usercustomfields as $field) {
+                            if (empty($field->visible)) {
+                                continue;
+                            }
+
                             if ($field->is_user_object_data() && substr($field->field->shortname, 0, 6) !== 'apsolu') {
                                 $title = $field->field->name;
                                 $shortname = $field->field->shortname;
