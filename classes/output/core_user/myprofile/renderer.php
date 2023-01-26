@@ -148,10 +148,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
                         $fields = array('apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle',
-                            'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsolufederationnumber',
-                            'apsolumedicalcertificate', 'apsoluhighlevelathlete');
-                        $checkboxfields = array('apsoludoublecursus', 'apsolusesame',
-                            'apsolumedicalcertificate', 'apsoluhighlevelathlete');
+                            'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete');
+                        $checkboxfields = array('apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete');
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
                                 $value = $customfields->{$field};
@@ -217,8 +215,6 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'apsolusex' => '',
                 'apsolubirthday' => '',
                 'cards' => '',
-                'apsolufederationnumber' => '',
-                'apsolumedicalcertificate' => '',
             );
 
             // Ajoute les données.
