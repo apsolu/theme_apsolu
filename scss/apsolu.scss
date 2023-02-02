@@ -25,7 +25,7 @@ body {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    //position: relative; Ne pas décommenter, sinon casse le rendue de la vue pour évaluer les devoirs.
+    //position: relative; //Ne pas décommenter, sinon casse le rendue de la vue pour évaluer les devoirs.
 
     p, li, a {
         font-weight: 350;
@@ -148,6 +148,7 @@ html {
 
 .login {
     color: $gray-400 !important;
+
     a {
         color: lighten($custom-color-3, 10%);
     }
@@ -746,8 +747,9 @@ table caption {
     margin: unset;
     padding: unset;
     margin-bottom: 1em;
+
     .navigation {
-        visibility: hidden;
+        //visibility: hidden; A décommenter pour cacher le menu secondaire.
     }
 }
 
@@ -843,12 +845,15 @@ input[type="color"] {
 #footer-logo {
     height: 100px;
     max-height: 100px;
+
     &-1 {
         @extend #footer-logo;
     }
+
     &-2 {
         @extend #footer-logo;
     }
+
     &-3 {
         @extend #footer-logo;
     }
@@ -874,4 +879,22 @@ input[type="color"] {
 
 #page-mod-assign-grader h4 {
     font-size: 1em; // Evite un débordement sur la page d'évaluation des devoirs.
+}
+
+/*
+    Cache les entrées 1 (accueil) & 3 (mes cours) du menu.
+    A garder actif en attendant une mise à jour future de Moodle qui permette
+    la modification ou suppression des entrées par défaut.
+*/
+.primary-navigation:not(#brand-links) {
+    li:nth-child(1) {
+        display: none;
+    }
+    li:nth-child(3) {
+        display: none;
+    }
+}
+
+#page-footer {
+    display: none;
 }

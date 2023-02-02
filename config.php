@@ -50,7 +50,7 @@ $THEME->yuicssmodules = array();
 // Most themes will use this rendererfactory as this is the one that allows the theme to override any other renderer.
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
-$THEME->haseditswitch = false;
+$THEME->haseditswitch = true;
 
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
@@ -66,14 +66,14 @@ $THEME->layouts = array(
     'standard' => array(
         'theme' => 'boost',
         'file' => 'drawers.php',
-        'regions' => array('side-pre', 'side-post'),
+        'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
         'theme' => 'boost',
         'file' => 'drawers.php',
-        'regions' => array('side-pre', 'side-post'),
+        'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
@@ -103,12 +103,20 @@ $THEME->layouts = array(
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
+    // My courses page.
+    'mycourses' => array(
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+        'options' => array('nonavbar' => true),
+    ),
     // My dashboard page.
     'mydashboard' => array(
         'theme' => 'boost',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
+        'options' => array('nonavbar' => true, 'langmenu' => true),
     ),
     // My public page.
     'mypublic' => array(
@@ -128,7 +136,15 @@ $THEME->layouts = array(
         'theme' => 'boost',
         'file' => 'columns1.php',
         'regions' => array(),
-        'options' => array('nofooter' => true, 'nonavbar' => true),
+        'options' => array(
+            'nofooter' => true,
+            'nonavbar' => true,
+            'activityheader' => [
+                'notitle' => true,
+                'nocompletion' => true,
+                'nodescription' => true
+            ]
+        )
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
@@ -138,16 +154,17 @@ $THEME->layouts = array(
         'options' => array(
             'nofooter' => true,
             'nocoursefooter' => true,
-            'activityheader' => array(
+            'activityheader' => [
                 'nocompletion' => true
-            )
+            ]
         ),
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
         'theme' => 'boost',
         'file' => 'embedded.php',
-        'regions' => array(),
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
     ),
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
     // This must not have any blocks, links, or API calls that would lead to database or cache interaction.
@@ -155,15 +172,14 @@ $THEME->layouts = array(
     'maintenance' => array(
         'theme' => 'boost',
         'file' => 'maintenance.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
+        'regions' => array(),
     ),
     // Should display the content and basic headers only.
     'print' => array(
         'theme' => 'boost',
         'file' => 'columns1.php',
         'regions' => array(),
-        'options' => array('nofooter' => true, 'nonavbar' => false),
+        'options' => array('nofooter' => true, 'nonavbar' => false, 'noactivityheader' => true),
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(

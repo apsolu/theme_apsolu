@@ -36,10 +36,10 @@ user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
 
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', false) === false);
-    $blockdraweropen = (get_user_preferences('drawer-open-block') === true);
+    $blockdraweropen = (get_user_preferences('drawer-open-block', false) === false);
 } else {
     $courseindexopen = false;
-    $blockdraweropen = true;
+    $blockdraweropen = false;
 }
 
 if (defined('BEHAT_SITE_RUNNING')) {
