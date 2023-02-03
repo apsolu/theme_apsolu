@@ -46,18 +46,14 @@
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
         </button>
-        <span class="mb-0 apsolu-color-custom-1">
-        <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center my-1 mr-2 ml-2 p-0 aabtn">
-
+        <div class="d-none d-inline-flex d-md-flex align-content-center my-auto px-2 h-100 apsolu-color-custom-1">
+            <a href="{{{ config.homeurl }}}" class="navbar-brand mr-0 my-auto">
             {{# output.should_display_navbar_logo }}
-                <img src="{{output.get_compact_logo_url}}" class="logo mr-2" alt="{{sitename}}">
+                <img src="{{output.get_compact_logo_url}}" class="d-inline-block logo" alt="{{sitename}}">
             {{/ output.should_display_navbar_logo }}
-
-            {{{ sitename }}}
-
-        </a>
-        </span>
-
+                <span class="my-0">{{{ sitename }}}</span>
+            </a>
+        </div>
 
         {{#primarymoremenu}}
             <div class="primary-navigation">
