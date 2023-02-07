@@ -749,8 +749,12 @@ table caption {
     margin-bottom: 1em;
 
     .navigation {
-        //visibility: hidden; A décommenter pour cacher le menu secondaire.
+        display: none; // Cache le menu secondaire.
     }
+}
+
+#page-admin-search .secondary-navigation .navigation {
+    display: block; // Affiche le menu secondaire dans la partie administration.
 }
 
 // Style Hover
