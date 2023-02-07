@@ -76,27 +76,27 @@
             </a>
     </span>
 
+    {{#isloggedin}}
+        {{#menu}}
+        <div class="primary-navigation">
+            {{> core/moremenu}}
+        </div>
+        {{/menu}}
+    {{/isloggedin}}
+
+    {{^isloggedin}}
     <div id="brand-links" class="primary-navigation">
         <nav class="moremenu navigation observed">
             <ul class="nav more-nav navbar-nav" role="menubar">
-                {{#nav_link_1_text}}
-                    <li class="nav-item"><a class="nav-link" role="menuitem"
-                                            href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}}</a>
+                {{#menu}}
+                    <li class="nav-item">
+                        <a class="nav-link" role="menuitem" href="{{ url }}">{{ text }}</a>
                     </li>
-                {{/nav_link_1_text}}
-                {{#nav_link_2_text}}
-                    <li class="nav-item"><a class="nav-link " role="menuitem"
-                                            href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}}</a>
-                    </li>
-                {{/nav_link_2_text}}
-                {{#nav_link_3_text}}
-                    <li class="nav-item"><a class="nav-link " role="menuitem"
-                                            href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}}</a>
-                    </li>
-                {{/nav_link_3_text}}
+                {{/menu}}
             </ul>
         </nav>
     </div>
+    {{/isloggedin}}
 
     <div id="usernavigation" class="navbar-nav ml-auto">
         <div class="d-flex align-items-stretch py-1 usermenu-container" data-region="usermenu">

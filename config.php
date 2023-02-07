@@ -58,34 +58,34 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array(),
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
@@ -98,7 +98,7 @@ $THEME->layouts = array(
     ),
     // Server administration scripts.
     'admin' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
@@ -112,7 +112,7 @@ $THEME->layouts = array(
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
@@ -120,7 +120,7 @@ $THEME->layouts = array(
     ),
     // My public page.
     'mypublic' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
@@ -189,7 +189,7 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'theme' => 'boost',
+        'theme' => 'apsolu',
         'file' => 'drawers.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',

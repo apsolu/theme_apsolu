@@ -25,6 +25,23 @@
 defined('MOODLE_INTERNAL') || die();
 
 $isloggedin = (isloggedin() && !isguestuser());
+if ($isloggedin) {
+    // Menu principal d'un utilisateur authentifié.
+    $primarymenu = theme_apsolu_get_primary_menu();
+    $menu = $primarymenu['moremenu'];
+} else {
+    // Menu principal d'un utilisateur non authentifié.
+    $menu = [];
+    for ($i = 1 ; $i <= 3; $i++) {
+        $url = get_config('theme_apsolu', sprintf('nav_link_%s_url', $i));
+        $text = get_config('theme_apsolu', sprintf('nav_link_%s_text', $i));
+        if (empty($url) === true || empty($text) === true) {
+            continue;
+        }
+
+        $menu[] = ['text' => $text, 'url' => $url];
+    }
+}
 
 $bodyattributes = $OUTPUT->body_attributes([]);
 $templatecontext = [
@@ -32,12 +49,7 @@ $templatecontext = [
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
     'isloggedin' => $isloggedin,
-    'nav_link_1_url' => get_config('theme_apsolu','nav_link_1_url'),
-    'nav_link_1_text' => get_config('theme_apsolu','nav_link_1_text'),
-    'nav_link_2_url' => get_config('theme_apsolu','nav_link_2_url'),
-    'nav_link_2_text' => get_config('theme_apsolu','nav_link_2_text'),
-    'nav_link_3_url' => get_config('theme_apsolu','nav_link_3_url'),
-    'nav_link_3_text' => get_config('theme_apsolu','nav_link_3_text'),
+    'menu' => $menu,
     'homepage_section2_association_text' => get_config('theme_apsolu', 'homepage_section2_association_text'),
     'homepage_section2_practice_text' => get_config('theme_apsolu', 'homepage_section2_practice_text'),
 ];

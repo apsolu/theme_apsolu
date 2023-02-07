@@ -35,8 +35,8 @@ user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
 user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
 
 if (isloggedin()) {
-    $courseindexopen = (get_user_preferences('drawer-open-index', false) === false);
-    $blockdraweropen = (get_user_preferences('drawer-open-block', false) === false);
+    $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
+    $blockdraweropen = (get_user_preferences('drawer-open-block') == true);
 } else {
     $courseindexopen = false;
     $blockdraweropen = false;
@@ -76,14 +76,14 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-$primary = new core\navigation\output\primary($PAGE);
-$renderer = $PAGE->get_renderer('core');
-$primarymenu = $primary->export_for_template($renderer);
+$primarymenu = theme_apsolu_get_primary_menu();
+
 $buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions() && !$PAGE->has_secondary_navigation();
 // If the settings menu will be included in the header then don't add it here.
 $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
 
 $header = $PAGE->activityheader;
+$renderer = $PAGE->get_renderer('core');
 $headercontent = $header->export_for_template($renderer);
 
 $templatecontext = [

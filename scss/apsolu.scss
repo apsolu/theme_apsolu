@@ -158,10 +158,6 @@ html {
     }
 }
 
-.navbar-header .guest {
-    display: none;
-}
-
 #apsolu-homepage-navbar {
     min-height: $navbar-height;
 }
@@ -883,20 +879,6 @@ input[type="color"] {
 
 #page-mod-assign-grader h4 {
     font-size: 1em; // Evite un débordement sur la page d'évaluation des devoirs.
-}
-
-/*
-    Cache les entrées 1 (accueil) & 3 (mes cours) du menu.
-    A garder actif en attendant une mise à jour future de Moodle qui permette
-    la modification ou suppression des entrées par défaut.
-*/
-.primary-navigation:not(#brand-links) {
-    li:nth-child(1) {
-        display: none;
-    }
-//    li:nth-child(3) {
-//        display: none;
-//    }
 }
 
 #page-footer {

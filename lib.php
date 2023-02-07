@@ -183,6 +183,37 @@ function theme_apsolu_process_css($css, $theme = null) {
 }
 
 /**
+ * Construit le menu de navigation principal pour un utilisateur authentifié.
+ *
+ * @return array Retourne un tableau contenant la structure du menu.
+ */
+function theme_apsolu_get_primary_menu() {
+    global $PAGE;
+
+    $primary = new core\navigation\output\primary($PAGE);
+    $renderer = $PAGE->get_renderer('core');
+    $primarymenu = $primary->export_for_template($renderer);
+
+    // Supprime le premier élément du menu qui correspond à l'index du site.
+    array_shift($primarymenu['moremenu']['nodearray']);
+
+    // Remplace l'url du tableau de bord.
+    if (isset($primarymenu['moremenu']['nodearray'][1]) === true) {
+        $primarymenu['moremenu']['nodearray'][1]['url'] = new moodle_url('/my/#courses');
+    }
+
+    // Remplace l'url de l'administration.
+    if (isset($primarymenu['moremenu']['nodearray'][2]) === true) {
+        $primarymenu['moremenu']['nodearray'][2]['url'] = new moodle_url('/admin/search.php#linkapsolu');
+    }
+
+    // Duplique le contenu dans l'index mobileprimarynav.
+    $primarymenu['mobileprimarynav'] = $primarymenu['moremenu']['nodearray'];
+
+    return $primarymenu;
+}
+
+/**
  * Gère les contrôles d'accès pour la diffusion des fichiers du module theme_apsolu.
  *
  * @param stdClass $course        Course object.
