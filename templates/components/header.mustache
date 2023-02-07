@@ -141,7 +141,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#inscription">{{#str}}
-                    signup, theme_apsolu{{/str}}/{{#str}}login, moodle{{/str}}</a>
+                    signup, theme_apsolu{{/str}}{{^isloggedin}}/{{#str}}login, moodle{{/str}}{{/isloggedin}}</a>
             </li>
         </ul>
         {{!/count_activities}}

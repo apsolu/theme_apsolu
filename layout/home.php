@@ -24,11 +24,14 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+$isloggedin = (isloggedin() && !isguestuser());
+
 $bodyattributes = $OUTPUT->body_attributes([]);
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
+    'isloggedin' => $isloggedin,
     'nav_link_1_url' => get_config('theme_apsolu','nav_link_1_url'),
     'nav_link_1_text' => get_config('theme_apsolu','nav_link_1_text'),
     'nav_link_2_url' => get_config('theme_apsolu','nav_link_2_url'),
