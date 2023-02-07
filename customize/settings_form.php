@@ -90,7 +90,7 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->addElement('text', 'custom_brandcolor_links', 'Couleur des liens et boutons',
             array("id" => $brandcolors["brandcolor_links"][0], "aria-describedby" => "colorHelp3"));
         $mform->addElement('html', '<small id="colorHelp3" class="form-text text-muted">' . $colorinfo[2] . '</small>');
-        $mform->setType('custom_brandcolor_3', PARAM_TEXT);
+        $mform->setType('custom_brandcolor_links', PARAM_TEXT);
 
         // 2. Personnaliser la barre de liens.
         $mform->addElement('header', 'theme_apsolu_customize_links', get_string('customizer_links_label', $component));
