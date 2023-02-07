@@ -164,8 +164,13 @@ html {
 
 #apsolu-header-navbar {
     border-bottom: $custom-border; // On surcharge la bordure de base de la navbar.
+    color: $gray-400;
     .nav-link:hover, .nav-link:focus {
         border-bottom: 4px solid darken($custom-color-1, 10%);
+    }
+
+    label.text-primary {
+        color: #f2ca27 !important;
     }
 }
 
