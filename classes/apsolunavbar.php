@@ -17,6 +17,7 @@
 namespace theme_apsolu;
 
 use core\navigation\views\view;
+use moodle_url;
 use theme_boost\boostnavbar;
 
 /**
@@ -105,9 +106,9 @@ class apsolunavbar extends boostnavbar {
         }
 
         // Set the designated one path for courses.
-      $mycoursesnode = $this->get_item('mycourses');
-        if (!is_null($mycoursesnode)) {
-            $url = new \moodle_url('/my/courses.php');
+        $mycoursesnode = $this->get_item('mycourses');
+        if ($mycoursesnode !== null) {
+            $url = new moodle_url('/my/#courses');
             $mycoursesnode->action = $url;
             $mycoursesnode->text = get_string('mycourses');
         }
