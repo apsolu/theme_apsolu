@@ -29,7 +29,6 @@ use theme_boost\boostnavbar;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class apsolunavbar extends boostnavbar {
-
     /**
      * Prepares the navigation nodes for use with boost.
      */
@@ -42,9 +41,6 @@ class apsolunavbar extends boostnavbar {
             return;
         }
 
-        // Remove the navbar nodes that already exist in the primary navigation menu.
-        //$this->remove_items_that_exist_in_navigation($PAGE->primarynav);
-
         // Defines whether section items with an action should be removed by default.
         $removesections = true;
 
@@ -54,18 +50,10 @@ class apsolunavbar extends boostnavbar {
                 $this->remove('permissions');
             }
         }
+
         if ($this->page->context->contextlevel == CONTEXT_COURSE) {
             // Remove any duplicate navbar nodes.
             $this->remove_duplicate_items();
-            // Remove 'My courses' and 'Courses' if we are in the course context.
-            //$this->remove('mycourses');
-            //$this->remove('courses');
-            // Remove the course category breadcrumb node.
-            //$this->remove($this->page->course->category, \breadcrumb_navigation_node::TYPE_CATEGORY);
-            // Remove the course breadcrumb node.
-            //$this->remove($this->page->course->id, \breadcrumb_navigation_node::TYPE_COURSE);
-            // Remove the navbar nodes that already exist in the secondary navigation menu.
-            //$this->remove_items_that_exist_in_navigation($PAGE->secondarynav);
 
             switch ($this->page->pagetype) {
                 case 'group-groupings':
@@ -106,11 +94,6 @@ class apsolunavbar extends boostnavbar {
             }
         }
 
-        if ($this->page->context->contextlevel == CONTEXT_SYSTEM) {
-            // Remove the navbar nodes that already exist in the secondary navigation menu.
-            //$this->remove_items_that_exist_in_navigation($PAGE->secondarynav);
-        }
-
         // Set the designated one path for courses.
         $mycoursesnode = $this->get_item('mycourses');
         if ($mycoursesnode !== null) {
@@ -121,14 +104,7 @@ class apsolunavbar extends boostnavbar {
 
         $this->remove_no_link_items($removesections);
 
-        // Don't display the navbar if there is only one item. Apparently this is bad UX design.
-        /*if ($this->item_count() <= 1) {
-            $this->clear_items();
-            return;
-        }*/
-
         // Make sure that the last item is not a link. Not sure if this is always a good idea.
         $this->remove_last_item_action();
     }
-
 }
