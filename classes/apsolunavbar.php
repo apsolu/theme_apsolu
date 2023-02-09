@@ -36,6 +36,12 @@ class apsolunavbar extends boostnavbar {
     protected function prepare_nodes_for_boost(): void {
         global $PAGE;
 
+        if ($this->item_count() === 0) {
+            debugging('Attention : page « '.$PAGE->url.' » sans fil d\'ariane.', $level = DEBUG_DEVELOPER);
+
+            return;
+        }
+
         // Remove the navbar nodes that already exist in the primary navigation menu.
         //$this->remove_items_that_exist_in_navigation($PAGE->primarynav);
 

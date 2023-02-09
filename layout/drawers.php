@@ -68,6 +68,11 @@ $secondarynavigation = false;
 $overflow = '';
 if ($PAGE->has_secondary_navigation()) {
     $tablistnav = $PAGE->has_tablist_secondary_navigation();
+
+    // NOTE: workaround pour afficher le fil d'ariane sur les pages de type : user/index.php?id=<courseid>
+    // TODO: creuser et déclarer éventuellement le bug chez Moodle.
+    $OUTPUT->page->navbar->get_items();
+
     $moremenu = new \core\navigation\output\more_menu($PAGE->secondarynav, 'nav-tabs', true, $tablistnav);
     $secondarynavigation = $moremenu->export_for_template($OUTPUT);
     $overflowdata = $PAGE->secondarynav->get_overflow_menu_data();
