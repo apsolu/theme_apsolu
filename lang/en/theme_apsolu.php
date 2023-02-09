@@ -65,7 +65,7 @@ $string['use_apsolu_customizer'] = 'Personnaliser l\'instance APSOLU';
 $string['about'] = 'à propos';
 
 // 1a. Les "chapeaux"
-$string['courses_catalogue'] = 'Formats de pratique';
+$string['courses_catalogue'] = 'Notre offre';
 $string['sport_training_sessions'] = 'Stages';
 $string['events'] = 'Evenements';
 $string['animations'] = 'Animations';
