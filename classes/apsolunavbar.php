@@ -22,7 +22,8 @@ use theme_boost\boostnavbar;
 
 /**
  * Surcharge la navbar du thème Boost pour empêcher la suppression de certains noeuds dans le fil d'ariane.
- * Documentation complète dans le fichier theme_boost/boostnavbar.
+ *
+ * @see Documentation complète dans le fichier theme_boost/boostnavbar.
  *
  * @package    theme_apsolu
  * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>

@@ -86,9 +86,8 @@ $string['customize_contact'] = 'Éditer les informations de contact';
 $string['document_text'] = 'Contenu du document';
 $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre modale, au clic sur le lien approprié dans le footer.';
 
-//$string['default_'] = '';
 $string['settings_configuration_homepage_activities'] = 'Formats de pratique';
-$string['settings_configuration_homepage_activities_desc'] = '<p class="lead">Vous permet de modifier l\'affichage des formats de pratique dans la page d\'accueil APSOLU.</p>' ;
+$string['settings_configuration_homepage_activities_desc'] = '<p class="lead">Vous permet de modifier l\'affichage des formats de pratique dans la page d\'accueil APSOLU.</p>';
 $string['homepage_activities_infobox'] = 'Information supplémentaire';
 $string['homepage_activities_infobox_help'] = '<p>Permet d\'afficher une boîte d\'information au-dessus du contenu de la section.</p><div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><div>Exemple de boîte.</div></div>';
 $string['settings_configuration_homepage_desc'] = '<p class="lead">Vous permet de configurer le contenu et l\'affichage de la page d\'accueil APSOLU.</p>';

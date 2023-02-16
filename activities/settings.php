@@ -29,7 +29,7 @@
  * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-// Standard GPL and phpdocs
+
 require(__DIR__.'/../../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
@@ -50,19 +50,19 @@ $plugin = 'theme_apsolu';
 $defaults = new stdClass();
 
 // Charge le contenu de la liste des activité.
-$defaults->homepage_section2_activities_infobox_text = get_config('theme_apsolu','homepage_section2_activities_infobox_text');
+$defaults->homepage_section2_activities_infobox_text = get_config('theme_apsolu', 'homepage_section2_activities_infobox_text');
 $defaults->homepage_section2_activities_infobox_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'homepage_section2_activities_infobox_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT);
 
 // Charge le contenu de l'éditeur de texte pour les pratiques autonomes.
-$defaults->homepage_section2_practice_text = get_config($plugin,'homepage_section2_practice_text');
+$defaults->homepage_section2_practice_text = get_config($plugin, 'homepage_section2_practice_text');
 $defaults->homepage_section2_practice_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'homepage_section2_practice_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT);
 
 // Charge le contenu de l'éditeur de texte pour l'Adhésion à l'Association sportive.
-$defaults->homepage_section2_association_text = get_config($plugin,'homepage_section2_association_text');
+$defaults->homepage_section2_association_text = get_config($plugin, 'homepage_section2_association_text');
 $defaults->homepage_section2_association_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'homepage_section2_association_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT);
@@ -76,7 +76,7 @@ $customdata = array($defaults);
 // On instancie le formulaire.
 $mform = new theme_apsolu_homepage_activities_form(null, $customdata);
 
-//On lui accorde des valeurs par défaut.
+// On lui accorde des valeurs par défaut.
 $mform->set_data($customdata);
 
 $notification = '';

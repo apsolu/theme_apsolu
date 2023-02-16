@@ -30,21 +30,21 @@
 require(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
-// Authorisation accès admin, doit être appelé sur chaque page admin
+// Authorisation accès admin, doit être appelé sur chaque page admin.
 admin_externalpage_setup('theme_apsolu_documents_legal_notice');
 
-// On récupère le formulaire de personnalisation
+// On récupère le formulaire de personnalisation.
 require_once($CFG->dirroot . '/theme/apsolu/documents/form/legal_notice_form.php');
 
-// Définition des variables
+// Définition des variables.
 $component = 'theme_apsolu';
 $filearea = 'homepage';
 $editoroptions = theme_apsolu_legal_notice_form::get_editor_options();
 $syscontext = context_system::instance();
 
-// Construction du formulaire
+// Construction du formulaire.
 $defaults = new stdClass();
-$defaults -> custom_legal_notice_active = get_config('theme_apsolu','custom_legal_notice_active');
+$defaults->custom_legal_notice_active = get_config('theme_apsolu', 'custom_legal_notice_active');
 
 // Charge le contenu de l'éditeur de texte.
 $defaults->legal_notice_doc_text = get_config('theme_apsolu', 'legal_notice_doc_text');
@@ -56,11 +56,11 @@ $customdata = array($defaults);
 // On instancie le formulaire.
 $mform = new theme_apsolu_legal_notice_form(null, $customdata);
 
-//On lui accorde des valeurs par défaut.
+// On lui accorde des valeurs par défaut.
 $mform->set_data($customdata);
 
 $notification = '';
-if($data = $mform->get_data()) {
+if ($data = $mform->get_data()) {
 
     $data = file_postupdate_standard_editor($data, 'legal_notice_doc_text', $editoroptions,
         $syscontext, $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);

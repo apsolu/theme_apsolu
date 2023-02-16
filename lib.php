@@ -22,9 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// This line protects the file from being accessed by a URL directly.
-defined('MOODLE_INTERNAL') || die();
-
 define('THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT', 1);
 define('THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT', 3);
 
@@ -66,30 +63,25 @@ define('THEME_APSOLU_CUSTOM_BRANDCOLOR_3', '82');
 /**
  * Returns the main SCSS content.
  *
+ * @param theme_config $theme The theme config object.
+ *
  * @return string All fixed Sass for this theme.
  */
 function theme_apsolu_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';
-
-    $scss .= file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss'); // Preset Apsolu
-    // Main CSS - Get the CSS from theme Classic.
-    //$scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/pre.scss');
-    //$scss .= file_get_contents($CFG->dirroot.'/theme/classic/scss/classic/post.scss');
-
-    return $scss;
+    // Preset Apsolu.
+    return file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss');
 }
 
 /**
  * Récupère le SCSS à rajouter pour le schéma de couleurs personnalisé.
  *
  * @param theme_config $theme The theme config object.
+ *
  * @return array
  */
 function theme_apsolu_get_pre_scss($theme) {
-    //global $CFG;
-
     $scss = '';
     $configurable = [
         // Clefs de config définies dans les settings.

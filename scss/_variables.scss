@@ -60,16 +60,16 @@ $footer-color-2: $custom-color-2 !default; // Couleur pour le bloc optionnel foo
 
 $apsolu-colors: () !default;
 $apsolu-colors: map-merge(
-        (
-            "light": $apsolu-light,
-            "dark": $apsolu-dark,
-            "custom-1": $custom-color-1,
-            "custom-2": $custom-color-2,
-            "custom-3": $custom-color-3,
-            "footer-1": $footer-color-1,
-            "footer-2": $footer-color-1,
-        ),
-        $apsolu-colors
+    (
+        "light": $apsolu-light,
+        "dark": $apsolu-dark,
+        "custom-1": $custom-color-1,
+        "custom-2": $custom-color-2,
+        "custom-3": $custom-color-3,
+        "footer-1": $footer-color-1,
+        "footer-2": $footer-color-1,
+    ),
+    $apsolu-colors
 );
 
 $info:    #1f7e9a;
@@ -94,4 +94,4 @@ $breadcrumb-divider: quote(">"); // On change le séparateur du fil d'ariane pou
 $navbar-height: 50px;
 $moremenu-height: 50px;
 $custom-border: 4px solid $custom-color-1;
-$gradient: 0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,0) 70%;
+$gradient: 0deg, rgba(2, 0, 36, 1) 0%, rgba(255, 255, 255, 0) 70%;

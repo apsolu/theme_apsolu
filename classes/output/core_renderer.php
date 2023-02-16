@@ -16,8 +16,13 @@
 
 namespace theme_apsolu\output;
 
-defined('MOODLE_INTERNAL') || die;
-
+/**
+ * Surcharge le rendu de la navbar.
+ *
+ * @package    theme_apsolu
+ * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * Renders the "breadcrumb" for all pages in boost.

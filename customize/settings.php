@@ -110,13 +110,13 @@ if ($data = $mform->get_data()) {
         }
         switch ($file->get_itemid()) {
             case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1:
-                set_config('homepage_footer_logo_1',$filepath.$file->get_filename(),$component);
+                set_config('homepage_footer_logo_1', $filepath.$file->get_filename(), $component);
                 break;
             case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2:
-                set_config('homepage_footer_logo_2',$filepath.$file->get_filename(),$component);
+                set_config('homepage_footer_logo_2', $filepath.$file->get_filename(), $component);
                 break;
             case THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3:
-                set_config('homepage_footer_logo_3',$filepath.$file->get_filename(),$component);
+                set_config('homepage_footer_logo_3', $filepath.$file->get_filename(), $component);
                 break;
         }
     }

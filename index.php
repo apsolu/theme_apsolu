@@ -132,19 +132,31 @@ $data->section3_image_credits = get_config('theme_apsolu', 'homepage_section3_im
 
 // Logos de pied de page.
 $itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1;
-$filepath = get_config($component, 'homepage_footer_logo_1');
-$data->homepage_footer_logo_1 = $filepath;
-$data->get_homepage_footer_logo_1_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+$data->homepage_footer_logo_1 = get_config($component, 'homepage_footer_logo_1');
+if (empty($data->homepage_footer_logo_1) === false) {
+    $pathname = '/';
+    $filename = substr($data->homepage_footer_logo_1, 1);
+    $data->get_homepage_footer_logo_1_url = moodle_url::make_pluginfile_url($context->id, $component,
+        $filearea, $itemid, $pathname, $filename);
+}
 
 $itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2;
-$filepath = get_config($component, 'homepage_footer_logo_2');
-$data->homepage_footer_logo_2 = $filepath;
-$data->get_homepage_footer_logo_2_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+$data->homepage_footer_logo_2 = get_config($component, 'homepage_footer_logo_2');
+if (empty($data->homepage_footer_logo_2) === false) {
+    $pathname = '/';
+    $filename = substr($data->homepage_footer_logo_2, 1);
+    $data->get_homepage_footer_logo_2_url = moodle_url::make_pluginfile_url($context->id, $component,
+        $filearea, $itemid, $pathname, $filename);
+}
 
 $itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3;
-$filepath = get_config($component, 'homepage_footer_logo_3');
-$data->homepage_footer_logo_3 = $filepath;
-$data->get_homepage_footer_logo_3_url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$context->id/$component/$filearea/$itemid".$filepath);
+$data->homepage_footer_logo_3 = get_config($component, 'homepage_footer_logo_3');
+if (empty($data->homepage_footer_logo_3) === false) {
+    $pathname = '/';
+    $filename = substr($data->homepage_footer_logo_3, 1);
+    $data->get_homepage_footer_logo_3_url = moodle_url::make_pluginfile_url($context->id, $component,
+        $filearea, $itemid, $pathname, $filename);
+}
 
 // Texte de pied de page.
 $text = get_config($component, 'footer_text_section');
@@ -169,14 +181,14 @@ $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
 $data->contact_doc_text = format_text($content, FORMAT_HTML, $options);
 
 // Liens personnalisés.
-$data->nav_link_1_url = get_config($component,'nav_link_1_url');
-$data->nav_link_1_text = get_config($component,'nav_link_1_text');
+$data->nav_link_1_url = get_config($component, 'nav_link_1_url');
+$data->nav_link_1_text = get_config($component, 'nav_link_1_text');
 
-$data->nav_link_2_url = get_config($component,'nav_link_2_url');
-$data->nav_link_2_text = get_config($component,'nav_link_2_text');
+$data->nav_link_2_url = get_config($component, 'nav_link_2_url');
+$data->nav_link_2_text = get_config($component, 'nav_link_2_text');
 
-$data->nav_link_3_url = get_config($component,'nav_link_3_url');
-$data->nav_link_3_text = get_config($component,'nav_link_3_text');
+$data->nav_link_3_url = get_config($component, 'nav_link_3_url');
+$data->nav_link_3_text = get_config($component, 'nav_link_3_text');
 
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {

@@ -1,8 +1,9 @@
 /*
     Les imports :
     "fontawesome", "bootstrap" et "moodle" sont importés depuis le thème Boost. Ne pas modifier.
-    "variables" (_variables.scss) est spécifique à Apsolu, surcharge Bootstrap et ajoute des variables personnalisées. Peut être modifié.
- */
+    "variables" (_variables.scss) est spécifique à Apsolu, surcharge Bootstrap
+        et ajoute des variables personnalisées. Peut être modifié.
+*/
 // Import FontAwesome.
 @import "../../boost/scss/fontawesome";
 // Variables custom Apsolu.
@@ -27,11 +28,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     //position: relative; //Ne pas décommenter, sinon casse le rendue de la vue pour évaluer les devoirs.
 
-    p, li, a {
+    p,
+    li,
+    a {
         font-weight: 350;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
         font-weight: lighter;
     }
 
@@ -67,24 +72,24 @@ html {
 // 1a. Boutons.
 .btn {
     &-primary {
-        box-shadow: inset 0px -2px 0px 0px darken($primary, 10%);
+        box-shadow: inset 0 -2px 0 0 darken($primary, 10%);
     }
 
     &-secondary {
-        box-shadow: inset 0px -2px 0px 0px darken($secondary, 10%);
+        box-shadow: inset 0 -2px 0 0 darken($secondary, 10%);
         outline: 0;
     }
 
     &-info {
-        box-shadow: inset 0px -2px 0px 0px darken($info, 10%);
+        box-shadow: inset 0 -2px 0 0 darken($info, 10%);
     }
 
     &-success {
-        box-shadow: inset 0px -2px 0px 0px darken($success, 10%);
+        box-shadow: inset 0 -2px 0 0 darken($success, 10%);
     }
 
     &-warning {
-        box-shadow: inset 0px -2px 0px 0px darken($warning, 10%);
+        box-shadow: inset 0 -2px 0 0 darken($warning, 10%);
     }
 }
 
@@ -120,7 +125,8 @@ html {
     }
 }
 
-.apsolu-article p a, span a {
+.apsolu-article p a,
+span a {
     color: $custom-color-3;
 }
 
@@ -165,7 +171,8 @@ html {
 #apsolu-header-navbar {
     border-bottom: $custom-border; // On surcharge la bordure de base de la navbar.
     color: $gray-400;
-    .nav-link:hover, .nav-link:focus {
+    .nav-link:hover,
+    .nav-link:focus {
         border-bottom: 4px solid darken($custom-color-1, 10%);
     }
 
@@ -300,7 +307,7 @@ section .badge {
 
 #formats-cours {
     background: white;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
 
     .tab-content {
         padding: 1em;
@@ -451,7 +458,9 @@ footer {
         color: rgba(255, 255, 255, 0.8);
     }
 
-    .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    .footer-classic a,
+    .footer-classic a:focus,
+    .footer-classic a:active {
         color: #fff;
     }
 
@@ -467,7 +476,8 @@ footer {
         }
     }
 
-    ul, ol {
+    ul,
+    ol {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -632,7 +642,8 @@ table caption {
     cursor: not-allowed;
 }
 
-.pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
+.pagelayout-standard #page.drawers .main-inner,
+body.limitedwidth #page.drawers .main-inner {
     max-width: unset;
 }
 
@@ -716,7 +727,10 @@ table caption {
     border: 4px solid white;
     background-color: rgb(0, 0, 0, 0.6);
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
         font-size: 3em;
         font-weight: 300;
     }
@@ -728,7 +742,10 @@ table caption {
 
 @media (max-width: 479px) {
     #textbox {
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-size: 1em;
         }
 
@@ -741,7 +758,10 @@ table caption {
 /* Résolutions supérieures ou égales à 480px de large. */
 @media (min-width: 480px) and (max-width: 900px) {
     #textbox {
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-size: 2em;
         }
 
@@ -768,7 +788,8 @@ table caption {
 }
 
 // Style Hover
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
     color: darken($custom-color-1, 10%);
 }
 
@@ -852,7 +873,8 @@ input[type="color"] {
     flex-wrap: wrap !important;
 }
 
-#page, #page.drawers {
+#page,
+#page.drawers {
     margin-top: unset;
 }
 

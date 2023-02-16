@@ -24,8 +24,6 @@
 
 namespace theme_apsolu\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * The apsolu theme does not store any data.
  *

@@ -15,13 +15,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Layout spécifique à la page d'accueil Apsolu.
- * Reprend en grande partie la configuration du layout columns1 du thème Boost.
+ * Layout spécifique à la page d'accueil Apsolu. Reprend en grande partie la configuration du layout columns1 du thème Boost.
  *
  * @package    theme_apsolu
  * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 
 $isloggedin = (isloggedin() && !isguestuser());
@@ -32,7 +32,7 @@ if ($isloggedin) {
 } else {
     // Menu principal d'un utilisateur non authentifié.
     $menu = [];
-    for ($i = 1 ; $i <= 3; $i++) {
+    for ($i = 1; $i <= 3; $i++) {
         $url = get_config('theme_apsolu', sprintf('nav_link_%s_url', $i));
         $text = get_config('theme_apsolu', sprintf('nav_link_%s_text', $i));
         if (empty($url) === true || empty($text) === true) {

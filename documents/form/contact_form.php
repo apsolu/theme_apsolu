@@ -27,6 +27,7 @@ require_once("$CFG->libdir/formslib.php");
 
 /**
  * Formulaire d'édition des informations de contact.
+ *
  * @return void
  */
 class theme_apsolu_contact_form extends moodleform {
@@ -51,16 +52,16 @@ class theme_apsolu_contact_form extends moodleform {
         $mform->setType('custom_'.$document.'_active', PARAM_INT);
 
         // 2. Editer les informations de contact.
-        $mform->addElement('header', $document.'_edit', get_string('customize_'.$document,$component));
+        $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));
 
         // 2a. Editeur de texte.
-        $mform->addElement('editor', $document.'_doc_text_editor', get_string('document_text',$component), null, $editoroptions);
+        $mform->addElement('editor', $document.'_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
         $mform->addRule($document.'_doc_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType($document.'_doc_text', PARAM_RAW);
-        $mform->addHelpButton($document.'_doc_text_editor','modal_content','theme_apsolu');
+        $mform->addHelpButton($document.'_doc_text_editor', 'modal_content', 'theme_apsolu');
 
         // 2b. Désactive l'éditeur si les informations de contact ne sont pas activées.
-        $mform->disabledIf($document.'_doc_text_editor','custom_'.$document.'_active');
+        $mform->disabledIf($document.'_doc_text_editor', 'custom_'.$document.'_active');
 
         // 3. Validation du formulaire.
         // Ajoute le bouton submit.
@@ -71,8 +72,9 @@ class theme_apsolu_contact_form extends moodleform {
     }
 
     /**
+     * Retourne les options passées aux éléments du formulaire de type editor.
+     *
      * @return array
-     * @throws dml_exception
      */
     public static function get_editor_options() {
         $options = array();
@@ -86,4 +88,4 @@ class theme_apsolu_contact_form extends moodleform {
 
         return $options;
     }
-};
+}

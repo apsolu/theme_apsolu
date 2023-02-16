@@ -30,12 +30,10 @@ $capabilities = array(
 );
 
 $filearea = 'homepage';
-$options = array('maxfiles' => 1, 'accepted_types' => array('.jpg','.png'));
+$options = array('maxfiles' => 1, 'accepted_types' => array('.jpg', '.png'));
 
-/**
- * Ajoute des noeuds au menu d'administration.
- */
-if ($hassiteconfig or has_any_capability($capabilities, context_system::instance())) {
+// Ajoute des noeuds au menu d'administration.
+if ($hassiteconfig || has_any_capability($capabilities, context_system::instance())) {
     // Ajoute un noeud Apsolu au menu d'administration.
     if (empty($ADMIN->locate('apsolu')) === true) {
         // Crée le noeud.
@@ -94,9 +92,7 @@ if ($hassiteconfig or has_any_capability($capabilities, context_system::instance
     // TODO: Documents > Droit à l'image.
 }
 
-/**
- * Ajoute les paramètres personnalisables du thème.
- */
+// Ajoute les paramètres personnalisables du thème.
 if ($ADMIN->fulltree) {
 
     // 1. Description.

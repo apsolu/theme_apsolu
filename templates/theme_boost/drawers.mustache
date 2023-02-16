@@ -36,6 +36,7 @@
             "doctype": "<!DOCTYPE html>",
             "page_title": "Test page",
             "favicon": "favicon.ico",
+            "htmlattributes": "lang=\"en\"",
             "main_content": "<h1>Headings make html validators happier</h1>"
          },
         "bodyattributes":"",
@@ -170,8 +171,6 @@
     {{{ output.standard_after_main_region_html }}}
 </div>
 
-</body>
-</html>
 {{#js}}
     M.util.js_pending('theme_boost/loader');
     require(['theme_boost/loader', 'theme_boost/drawer', 'theme_apsolu/topofbody'], function(Loader, Drawer, Topofbody) {
@@ -181,3 +180,5 @@
     });
 {{/js}}
 
+</body>
+</html>

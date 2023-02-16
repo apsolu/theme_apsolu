@@ -36,7 +36,7 @@ $editoroptions = theme_apsolu_homepage_form::get_editor_options();
 $filemanageroptions = theme_apsolu_homepage_form::get_filemanager_options();
 $syscontext = context_system::instance();
 
-$description = get_string('settings_configuration_homepage_desc','theme_apsolu');
+$description = get_string('settings_configuration_homepage_desc', 'theme_apsolu');
 
 // Build form.
 $defaults = new stdClass();

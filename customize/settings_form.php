@@ -15,28 +15,35 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ${PLUGINNAME} file description here.
+ * Définition du formulaire pour personnaliser le thème APSOLU.
  *
  * @package    theme_apsolu
  * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
 
+/**
+ * Classe définissant le formulaire pour personnaliser le thème APSOLU.
+ *
+ * @package    theme_apsolu
+ * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class theme_apsolu_customize_form extends moodleform {
-
     /**
      * Définit les champs du formulaire.
      *
-     * @return void
      * @throws coding_exception
      * @throws moodle_exception
+     *
+     * @return void
      */
     protected function definition() {
         global $PAGE;
-        global $CFG;
 
         $mform = $this->_form; // On stocke une référence au formulaire dans la variable $mform.
 
@@ -50,8 +57,8 @@ class theme_apsolu_customize_form extends moodleform {
 
         // Variables.
         $component = 'theme_apsolu';
-        $urlLabel = get_string('nav_url_label', $component);
-        $textLabel = get_string('nav_text_label', $component);
+        $urllabel = get_string('nav_url_label', $component);
+        $textlabel = get_string('nav_text_label', $component);
         $colorinfo = array(
             get_string('brandcolor_1_help', 'theme_apsolu'),
             get_string('brandcolor_2_help', 'theme_apsolu'),
@@ -100,30 +107,30 @@ class theme_apsolu_customize_form extends moodleform {
 
         // 2a. Lien n°1.
         $url1 = [
-            $mform->createElement('text', 'nav_link_1_url', null, array("placeholder" => $urlLabel)),
-            $mform->createElement('text', 'nav_link_1_text', null, array("placeholder" => $textLabel))
+            $mform->createElement('text', 'nav_link_1_url', null, array("placeholder" => $urllabel)),
+            $mform->createElement('text', 'nav_link_1_text', null, array("placeholder" => $textlabel))
         ];
         $mform->setType('nav_link_1_url', PARAM_URL);
         $mform->setType('nav_link_1_text', PARAM_RAW_TRIMMED);
-        $mform->addGroup($url1,'nav_link_1','Lien n°1','',false);
+        $mform->addGroup($url1, 'nav_link_1', 'Lien n°1', '', false);
 
         // 2b. Lien n°2.
         $url2 = [
-            $mform->createElement('text', 'nav_link_2_url', null, array("placeholder" => $urlLabel)),
-            $mform->createElement('text', 'nav_link_2_text', null, array("placeholder" => $textLabel))
+            $mform->createElement('text', 'nav_link_2_url', null, array("placeholder" => $urllabel)),
+            $mform->createElement('text', 'nav_link_2_text', null, array("placeholder" => $textlabel))
         ];
         $mform->setType('nav_link_2_url', PARAM_URL);
         $mform->setType('nav_link_2_text', PARAM_RAW_TRIMMED);
-        $mform->addGroup($url2,'nav_link_2','Lien n°2','',false);
+        $mform->addGroup($url2, 'nav_link_2', 'Lien n°2', '', false);
 
         // 2c. Lien n°3.
         $url3 = [
-            $mform->createElement('text', 'nav_link_3_url', null, array("placeholder" => $urlLabel)),
-            $mform->createElement('text', 'nav_link_3_text', null, array("placeholder" => $textLabel))
+            $mform->createElement('text', 'nav_link_3_url', null, array("placeholder" => $urllabel)),
+            $mform->createElement('text', 'nav_link_3_text', null, array("placeholder" => $textlabel))
         ];
         $mform->setType('nav_link_3_url', PARAM_URL);
         $mform->setType('nav_link_3_text', PARAM_RAW_TRIMMED);
-        $mform->addGroup($url3,'nav_link_3','Lien n°3','',false);
+        $mform->addGroup($url3, 'nav_link_3', 'Lien n°3', '', false);
 
         // 3. Personnaliser le pied de page.
         $mform->addElement('header', 'theme_apsolu_customize_footer', get_string('customize_footer', $component));
@@ -138,9 +145,9 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->addElement('html', $information);
 
         $logos = array(
-            "footer_logo_1" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, 'homepage_footer_logo_1','Logo n°1'),
-            "footer_logo_2" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, 'homepage_footer_logo_2','Logo n°2'),
-            "footer_logo_3" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, 'homepage_footer_logo_3','Logo n°3')
+            "footer_logo_1" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, 'homepage_footer_logo_1', 'Logo n°1'),
+            "footer_logo_2" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, 'homepage_footer_logo_2', 'Logo n°2'),
+            "footer_logo_3" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, 'homepage_footer_logo_3', 'Logo n°3')
         );
 
         $mform->addElement('filemanager', $logos["footer_logo_1"][1], $logos["footer_logo_1"][2], $attributes, $filemanageroptions);
@@ -159,15 +166,20 @@ class theme_apsolu_customize_form extends moodleform {
         $title = get_string('footer_block', $component) . ' 3';
         $mform->addElement('html', '<h4>' . $title . '</h4>');
         $mform->addElement('static', 'Liens du pied de page');
-        $description =
-            '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Affiche les liens hypertexte déjà définis dans la barre de liens.</p></div>';
+        $description = '<div class="alert alert-secondary d-flex align-items-center">
+            <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
+            <p class="mb-0">Affiche les liens hypertexte déjà définis dans la barre de liens.</p>
+            </div>';
         $mform->addElement('html', $description);
 
         // 4. TODO: Personnaliser les libellés.
-        //$mform->addElement('header', 'theme_apsolu_customize_labels', get_string('customize_labels', $component));
-        //$mform->closeHeaderBefore('buttonar');
-        //$information = get_string('customize_labels_desc', $component);
-        //$mform->addElement('html', $information);
+        $available = false;
+        if ($available === true) {
+            $mform->addElement('header', 'theme_apsolu_customize_labels', get_string('customize_labels', $component));
+            $mform->closeHeaderBefore('buttonar');
+            $information = get_string('customize_labels_desc', $component);
+            $mform->addElement('html', $information);
+        }
 
         // 5. Validation du formulaire.
         $buttonarray = array();
@@ -217,5 +229,4 @@ class theme_apsolu_customize_form extends moodleform {
 
         return $options;
     }
-
 }

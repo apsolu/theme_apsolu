@@ -22,9 +22,17 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_apsolu;
+
+use advanced_testcase;
+use context_system;
+use theme_config;
+
 defined('MOODLE_INTERNAL') || die();
 
-require_once(__DIR__.'/../lib.php');
+global $CFG;
+
+require_once($CFG->dirroot.'/theme/apsolu/lib.php');
 
 /**
  * Classe PHPUnit permettant de tester les fichiers lib.php du module theme_apsolu.
@@ -33,6 +41,11 @@ require_once(__DIR__.'/../lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class theme_apsolu_test extends advanced_testcase {
+    /**
+     * Initialise un environnement de test.
+     *
+     * @return void
+     */
     protected function setUp() : void {
         parent::setUp();
 
@@ -44,6 +57,10 @@ class theme_apsolu_test extends advanced_testcase {
 
     /**
      * Test that apsolu can be compiled using SassC (the defacto implemention).
+     *
+     * @coversNothing
+     *
+     * @return void
      */
     public function test_scss_compilation_with_sassc() {
         if (!defined('PHPUNIT_PATH_TO_SASSC')) {
@@ -59,17 +76,21 @@ class theme_apsolu_test extends advanced_testcase {
     }
 
     /**
-     * Test la fonction theme_apsolu_get_main_scss_content().
+     * Teste la fonction theme_apsolu_get_main_scss_content().
+     *
+     * @covers ::theme_apsolu_get_main_scss_content()
      *
      * @return void
      */
     public function test_theme_apsolu_get_main_scss_content() {
         // Vérifie que les CSS sont bien générées.
-        $this->assertNotEmpty(theme_apsolu_get_main_scss_content());
+        $this->assertNotEmpty(theme_apsolu_get_main_scss_content(null));
     }
 
     /**
-     * Test la fonction theme_apsolu_initialise_homepage_background_images().
+     * Teste la fonction theme_apsolu_initialise_homepage_background_images().
+     *
+     * @covers ::theme_apsolu_initialise_homepage_background_images()
      *
      * @return void
      */
@@ -79,7 +100,9 @@ class theme_apsolu_test extends advanced_testcase {
     }
 
     /**
-     * Test la fonction theme_apsolu_pluginfile().
+     * Teste la fonction theme_apsolu_pluginfile().
+     *
+     * @covers ::theme_apsolu_pluginfile()
      *
      * @return void
      */
@@ -105,7 +128,9 @@ class theme_apsolu_test extends advanced_testcase {
     }
 
     /**
-     * Test la fonction theme_apsolu_process_css().
+     * Teste la fonction theme_apsolu_process_css().
+     *
+     * @covers ::theme_apsolu_process_css()
      *
      * @return void
      */
@@ -113,7 +138,7 @@ class theme_apsolu_test extends advanced_testcase {
         $css = '';
         $this->assertEmpty(theme_apsolu_process_css($css));
 
-        $css = file_get_contents(__DIR__.'/../style/apsolu.css');
+        $css = file_get_contents(__DIR__.'/../scss/apsolu.scss');
         $this->assertNotEmpty(theme_apsolu_process_css($css));
 
         // Contrôle que les "constantes" sont bien remplacées dans le fichier CSS final.

@@ -17,8 +17,8 @@
 /**
  * A drawer based layout for the boost theme.
  *
- * @package   theme_boost
- * @copyright 2021 Bas Brands
+ * @package   theme_apsolu
+ * @copyright 2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
