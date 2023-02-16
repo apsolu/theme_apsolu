@@ -75,7 +75,7 @@ if (empty($defaults->homepage_footer_logo_3) === true) {
 
 // Charge la note de pied de page.
 $defaults->footer_text_section = get_config($component, 'footer_text_section');
-$defaults->footer_text_section_textformat = FORMAT_HTML;
+$defaults->footer_text_sectionformat = FORMAT_HTML;
 $defaults->footer_text_section = file_prepare_standard_editor($defaults, 'footer_text_section', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
 
