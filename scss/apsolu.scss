@@ -117,10 +117,10 @@ html {
 // 1b. Liens.
 #page-site-index #region-main {
     .nav-tabs .nav-link {
-        color: unset !important;
+        color: unset;
 
         .disabled {
-            color: $gray-800 !important;
+            color: $gray-800;
         }
     }
 }
@@ -134,7 +134,7 @@ span a {
 
 .navbar {
     .fixed-top {
-        border-bottom: unset !important;
+        border-bottom: unset;
         height: auto; // Important : permet au menu déroulant d'avoir un fond sur viewport réduit.
     }
 
@@ -153,7 +153,7 @@ span a {
 }
 
 .login {
-    color: $gray-400 !important;
+    color: $gray-400;
 
     a {
         color: lighten($custom-color-3, 10%);
@@ -174,10 +174,6 @@ span a {
     .nav-link:hover,
     .nav-link:focus {
         border-bottom: 4px solid darken($custom-color-1, 10%);
-    }
-
-    label.text-primary {
-        color: #f2ca27 !important;
     }
 }
 
@@ -242,7 +238,7 @@ form.editmode-switch-form {
     }
 
     .modal-body {
-        overflow-y: auto !important;
+        overflow-y: auto;
         max-height: 80vh;
         scrollbar-width: thin;
     }
@@ -288,7 +284,6 @@ form.editmode-switch-form {
 // 3d. Affichage des sections.
 .apsolu-article {
     background: $gray-100;
-    padding: 3em;
     //backdrop-filter: blur(8px);
 
     .nav-tabs .nav-link {
@@ -556,10 +551,10 @@ footer {
 
 #apsolu-topofbody {
     @extend .mb-4;
+    @extend .mt-0;
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0 !important; // taille de la marge du page wrapper.
 
     p {
         margin-bottom: 0;
@@ -623,8 +618,7 @@ footer {
 }
 
 div.inf {
-    background: #f2f2f2 !important;
-    //padding: 1em;
+    background: #f2f2f2;
 }
 
 table caption {
@@ -736,7 +730,7 @@ body.limitedwidth #page.drawers .main-inner {
     }
 
     p {
-        max-font-size: 1.3em;
+        font-size: 1.3em;
     }
 }
 
@@ -870,7 +864,7 @@ input[type="color"] {
     font-size: 0.9em;
     padding: 0.5em;
     display: flex;
-    flex-wrap: wrap !important;
+    flex-wrap: wrap;
 }
 
 #page,
@@ -895,23 +889,12 @@ input[type="color"] {
     }
 }
 
-.userinitials {
+#apsolu-header-navbar .userinitials {
     font-size: .7rem;
-    width: 30px !important;
-    height: 30px !important;
     margin-bottom: 4px;
+    width: 23px;
+    height: 23px;
 }
-
-/**
- *Commente le !important pour passer le test de coding style.
- *Trouver une solution pour améliorer l'affichage de la politique du site.
- */
-
-/*
-#page-user-policy #resourceobject {
-    height: 1000px !important;
-}
-*/
 
 #page-mod-assign-grader h4 {
     font-size: 1em; // Evite un débordement sur la page d'évaluation des devoirs.
