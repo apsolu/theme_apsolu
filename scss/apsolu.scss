@@ -798,7 +798,7 @@ body.limitedwidth #page.drawers .main-inner {
 /* Styles pour la barre de défilement. */
 // Firefox.
 * {
-    scrollbar-width: thin;
+    // scrollbar-width: thin;
     scrollbar-color: darken($custom-color-1, 10%) $gray-900;
 }
 
@@ -850,8 +850,8 @@ input[type="color"] {
     font-weight: bold;
 }
 
-#page-drawers {
-    scrollbar-color: unset;
+#page.drawers {
+    scrollbar-width: unset; // Permet à la scrollbar de reprendre sa taille par défaut.
 }
 
 #page-header {
