@@ -71,7 +71,7 @@
 }}
 <div id="apsolu-page">
     {{! Section 1 : accueil }}
-    <section id="accueil" class="apsolu-pages">
+    <div id="accueil" class="apsolu-pages">
         <span id="section-1" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section1_image_credits}}
                 <div class="badge badge-photo-credits">
@@ -97,10 +97,10 @@
                 {{{ section1_text }}}
             </div>
         </article>
-    </section>
+    </div>
 
     {{! Section 2 : Formats de cours }}
-    <section id="activites" class="apsolu-pages">
+    <div id="activites" class="apsolu-pages">
         <div id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section2_image_credits}}
                 <div class="badge badge-photo-credits d-none d-sm-block">
@@ -188,10 +188,10 @@
                 </div>
             </div>
         </article>
-    </section>
+    </div>
 
     {{! Section 3 : S'inscrire. }}
-    <section id="inscription" class="apsolu-pages">
+    <div id="inscription" class="apsolu-pages">
         <div id="section-3" class="apsolu-images d-flex align-items-end flex-row-reverse">
             {{#section3_image_credits}}
                 <div class="badge badge-photo-credits ">
@@ -209,15 +209,14 @@
                 </div>
             </div>
             <div class="container-md p-3">
-                <h2 class="sr-only">{{#str}}signup, theme_apsolu{{/str}}</h2>
                 {{{ section3_text }}}
             </div>
         </article>
-    </section>
+    </div>
 
     {{! Section 4 : Connexion. }}
     {{#login_link}}
-        <section id="connexion" class="apsolu-pages">
+        <div id="connexion" class="apsolu-pages">
             <article class="apsolu-article">
                 <div class="container">
                     <div class="jumbotron">
@@ -244,7 +243,7 @@
                     </div>
                 </div>
             </article>
-        </section>
+        </div>
     {{/login_link}}
     <!-- On charge le pied de page -->
     {{> theme_apsolu/components/footer }}
