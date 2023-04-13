@@ -35,10 +35,10 @@ $string['activities_list'] = 'Liste des activités';
 $string['background_image'] = 'Image de fond';
 $string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d’accueil. L’image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
 $string['choosereadme'] = '<div class="alert alert-secondary" role="alert">
-  <p class="lead">Apsolu est un thème basé sur le thème Moodle "Boost".</p><p>Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.<br>Vous pouvez ici personnaliser l’apparence générale de votre instance APSOLU.</p>
+  <p class="lead">Apsolu est un thème basé sur le thème Moodle « Boost ».</p><p>Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.<br>Vous pouvez ici personnaliser l’apparence générale de votre instance APSOLU.</p>
   <hr>
   <p>Contact : contact@apsolu.fr<br>Site officiel : <a class="alert-link" href="https://www.apsolu.fr/">www.apsolu.fr</a></p></div>
-<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Pour personnaliser la page d’accueil, rendez-vous dans le menu "APSOLU > Présentation > Page d’accueil".</p></div>';
+<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Pour personnaliser la page d’accueil, rendez-vous dans le menu « APSOLU > Présentation > Page d’accueil ».</p></div>';
 $string['configtitle'] = 'Apsolu';
 $string['default_homepage_section1_text'] = '<p class="lead">Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
@@ -47,7 +47,7 @@ $string['home'] = 'Accueil';
 $string['i_have_an_institutional_account'] = 'J’ai un compte université';
 $string['i_have_not_an_institutional_account'] = 'Je n’ai pas de compte université';
 $string['login'] = 'Se connecter';
-$string['named_section'] = 'Section "{$a}"';
+$string['named_section'] = 'Section « {$a} »';
 $string['non_institutional_account_authentification_url'] = 'URL d’authentification des comptes non institutionnels';
 $string['privacy:metadata'] = 'Le thème Apsolu n’enregistre aucune donnée personnelle.';
 $string['section_text'] = 'Texte de la section';
@@ -64,7 +64,7 @@ $string['settings_configuration_customizer'] = 'Personnalisation';
 $string['use_apsolu_customizer'] = 'Personnaliser l’instance APSOLU';
 $string['about'] = 'à propos';
 
-// 1a. Les "chapeaux"
+// 1a. Les « chapeaux »
 $string['courses_catalogue'] = 'Notre offre';
 $string['sport_training_sessions'] = 'Stages';
 $string['events'] = 'Evenements';
@@ -114,7 +114,7 @@ $string['nav_text_label'] = 'Libellé du lien';
 
 // 5. Personnalisation des libellés.
 $string['customize_labels'] = 'Personnaliser les libellés du site';
-$string['customize_labels_desc'] = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Si vous utilisez APSOLU autrement que pour la gestion d’activités sportives, vous pouvez personnaliser les libellés affichés dans l’administration ainsi que sur la page d’accueil. Par défaut, le contexte sportif est utilisé. Pour modifier d’autres libellés absents sur cette page, rendez-vous dans le menu "Langue > Personnalisation de la langue".</p></div>';
+$string['customize_labels_desc'] = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Si vous utilisez APSOLU autrement que pour la gestion d’activités sportives, vous pouvez personnaliser les libellés affichés dans l’administration ainsi que sur la page d’accueil. Par défaut, le contexte sportif est utilisé. Pour modifier d’autres libellés absents sur cette page, rendez-vous dans le menu « Langue > Personnalisation de la langue ».</p></div>';
 // 5a. Personnalisation des libellés > Libellés par défaut.
 $string['add_category_default'] = 'Ajouter une activité physique';
 $string['category_has_been_deleted_default'] = 'L’activité physique a été supprimée.';
@@ -122,9 +122,9 @@ $string['category_must_be_parent_of_a_grouping_of_sports_activities_default'] = 
 $string['category_saved_default'] = 'Activité physique enregistrée.';
 $string['category_updated_default'] = 'Activité physique modifiée.';
 $string['course_has_been_moved_to_because_selected_category_did_not_match_to_grouping_of_sports_activities_default'] = 'Le cours « {$a->fullname} » a été déplacé dans la catégorie « {$a->category} », car la catégorie sélectionnée ne correspondait pas à une catégorie d’activité sportive.';
-$string['do_you_want_to_delete_category_default'] = 'Voulez-vous supprimer l’activité physique "{$a}" ?';
+$string['do_you_want_to_delete_category_default'] = 'Voulez-vous supprimer l’activité physique « {$a} » ?';
 $string['edit_category_default'] = 'Modifier une activité physique';
-$string['grouping_cannot_be_deleted_default'] = 'Le groupement d’activités "{$a}" ne peut pas être supprimé, car il est rattaché aux activités physiques suivantes :';
+$string['grouping_cannot_be_deleted_default'] = 'Le groupement d’activités « {$a} » ne peut pas être supprimé, car il est rattaché aux activités physiques suivantes :';
 $string['settings_activities_default'] = 'Activités physiques';
 $string['categories_default'] = 'Activités sportives';
 $string['categories_list_default'] = 'Liste des activités sportives';
