@@ -98,7 +98,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                         // Ajoute des champs qui ne commencent pas par apsolu.
                         $usercustomfields = profile_get_user_fields_with_data($user->id);
                         foreach ($usercustomfields as $field) {
-                            if (empty($field->visible)) {
+                            if (!$field->is_visible()) {
                                 continue;
                             }
 
