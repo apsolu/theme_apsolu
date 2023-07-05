@@ -250,7 +250,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $roles = role_fix_names($DB->get_records('role'));
                     $presences = Attendance::getUserPresences($userid);
 
-                    $recordset = \UniversiteRennes2\Apsolu\get_recordset_user_activity_enrolments($userid, $onlyactive = false);
+                    $recordset = enrol_select_get_recordset_user_activity_enrolments($userid, $onlyactive = false);
                     $items = array();
                     foreach ($recordset as $course) {
                         $enrolurl = new moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
