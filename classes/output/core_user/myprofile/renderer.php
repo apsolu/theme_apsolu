@@ -175,6 +175,16 @@ class renderer extends \core_user\output\myprofile\renderer {
                             }
                         }
 
+                        // Numéro FFSU.
+                        $adhesion = $DB->get_record('apsolu_federation_adhesions', ['userid' => $userid]);
+                        if ($adhesion !== false && empty($adhesion->federationnumber) === false) {
+                            $field = 'apsolufederationnumber';
+                            $title = get_string('federation_number', 'local_apsolu');
+                            $content = $adhesion->federationnumber;
+                            $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                            $category->add_node($node);
+                        }
+
                         // Cards.
                         $cards = Payment::get_user_cards($userid);
                         $paymentsimages = Payment::get_statuses_images();
@@ -203,6 +213,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'apsolusesame' => '',
                 'apsoludoublecursus' => '',
                 'apsoluhighlevelathlete' => '',
+                'apsolufederationnumber' => '',
                 'role' => '',
                 'idnumber' => '',
                 'email' => '',
