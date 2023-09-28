@@ -77,7 +77,7 @@ class theme_apsolu_confidential_form extends moodleform {
      * @return array
      */
     public static function get_editor_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = false;
         $options['maxbytes'] = 0; // Taille limite par défaut.
         $options['maxfiles'] = 0; // Aucun fichier autorisé.

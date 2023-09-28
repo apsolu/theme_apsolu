@@ -218,7 +218,7 @@ function theme_apsolu_get_primary_menu() {
  *
  * @return void|boolean Retourne False en cas d'erreur.
  */
-function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     if ($context->contextlevel != CONTEXT_SYSTEM) {
         debugging('Wrong contextlevel: '.$context->contextlevel, DEBUG_DEVELOPER);
         return false;
@@ -259,12 +259,12 @@ function theme_apsolu_initialise_homepage_background_images() {
     global $CFG;
 
     $quality = null;
-    $sizes = array('240x160', '480x320', '960x640');
+    $sizes = ['240x160', '480x320', '960x640'];
 
-    $licenses = array();
-    $licenses[1] = array('Marie-Lan Nguyen', 'cc'); // Escrime.
-    $licenses[2] = array('Clément Bucco-Lechat', 'cc-sa'); // Rugby.
-    $licenses[3] = array('Tsutomu Takasu', 'cc'); // Gymnastique.
+    $licenses = [];
+    $licenses[1] = ['Marie-Lan Nguyen', 'cc']; // Escrime.
+    $licenses[2] = ['Clément Bucco-Lechat', 'cc-sa']; // Rugby.
+    $licenses[3] = ['Tsutomu Takasu', 'cc']; // Gymnastique.
 
     $fs = get_file_storage();
     $syscontext = context_system::instance();
@@ -275,7 +275,7 @@ function theme_apsolu_initialise_homepage_background_images() {
 
         $filepath = $CFG->dirroot.'/theme/apsolu/images/background_'.$sectionid.'.jpg';
 
-        $file = array(
+        $file = [
             'contextid' => $syscontext->id,
             'component' => 'theme_apsolu',
             'filearea'  => 'homepage',
@@ -291,7 +291,7 @@ function theme_apsolu_initialise_homepage_background_images() {
             'timecreated' => time(),
             'timemodified' => time(),
             'sortorder' => 0,
-        );
+        ];
 
         $existingfile = $fs->get_file(
             $file['contextid'],

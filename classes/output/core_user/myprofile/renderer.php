@@ -24,8 +24,8 @@
 
 namespace theme_apsolu\output\core_user\myprofile;
 
-use \core_user\output\myprofile\category;
-use \core_user\output\myprofile\node;
+use core_user\output\myprofile\category;
+use core_user\output\myprofile\node;
 
 use stdClass;
 use context_course;
@@ -63,20 +63,20 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $classes = $category->classes;
         if (empty($classes)) {
-            $return = html_writer::start_tag('section', array('class' => 'node_category'));
+            $return = html_writer::start_tag('section', ['class' => 'node_category']);
         } else {
-            $return = html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
+            $return = html_writer::start_tag('section', ['class' => 'node_category ' . $classes]);
         }
         $return .= html_writer::tag('h3', $category->title);
 
-        if (in_array($category->name, array('privacyandpolicies', 'mobile')) === true) {
+        if (in_array($category->name, ['privacyandpolicies', 'mobile']) === true) {
             return '';
         }
 
         if ($category->name === 'contact') {
-            $othercustomfields = array();
+            $othercustomfields = [];
             if (isset($userid)) {
-                $user = $DB->get_record('user', array('id' => $userid));
+                $user = $DB->get_record('user', ['id' => $userid]);
                 if ($user) {
                     if (isset($courseid)) {
                         $context = context_course::instance($courseid);
@@ -112,7 +112,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                                     } else {
                                         $checked = false;
                                     }
-                                    $attributes = array('disabled' => 1, 'readonly' => 1);
+                                    $attributes = ['disabled' => 1, 'readonly' => 1];
                                     $content = html_writer::checkbox($shortname, $data, $checked, $label = '', $attributes);
                                 } else {
                                      $content = $data;
@@ -126,7 +126,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                         }
 
                         // Classic fields.
-                        $fields = array('auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role');
+                        $fields = ['auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role'];
                         foreach ($fields as $field) {
                             if (!empty($user->{$field})) {
                                 $content = $user->{$field};
@@ -147,15 +147,15 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = array('apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle',
-                            'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete');
-                        $checkboxfields = array('apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete');
+                        $fields = ['apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle',
+                            'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete', ];
+                        $checkboxfields = ['apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete'];
                         foreach ($fields as $field) {
                             if (isset($customfields->{$field})) {
                                 $value = $customfields->{$field};
                                 if (in_array($field, $checkboxfields, $strict = true)) {
                                     $label = '';
-                                    $attributes = array('disabled' => 1, 'readonly' => 1);
+                                    $attributes = ['disabled' => 1, 'readonly' => 1];
                                     if ($customfields->{$field}) {
                                         $content = html_writer::checkbox($field, $value, $checked = true, $label, $attributes);
                                     } else {
@@ -206,7 +206,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
 
             // Ordre d'affichage des informations.
-            $nodes = array (
+            $nodes = [
                 'editprofile' => '',
                 'authentication' => '',
                 'apsoluusertype' => '',
@@ -226,7 +226,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'apsolusex' => '',
                 'apsolubirthday' => '',
                 'cards' => '',
-            );
+            ];
 
             // Ajoute les données.
             foreach ($category->nodes as $node) {
@@ -262,10 +262,10 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $presences = Attendance::getUserPresences($userid);
 
                     $recordset = enrol_select_get_recordset_user_activity_enrolments($userid, $onlyactive = false);
-                    $items = array();
+                    $items = [];
                     foreach ($recordset as $course) {
-                        $enrolurl = new moodle_url('/enrol/select/manage.php', array('enrolid' => $course->enrolid));
-                        $courseurl = new moodle_url('/user/view.php', array('id' => $userid, 'course' => $course->id));
+                        $enrolurl = new moodle_url('/enrol/select/manage.php', ['enrolid' => $course->enrolid]);
+                        $courseurl = new moodle_url('/user/view.php', ['id' => $userid, 'course' => $course->id]);
 
                         $rolename = $roles[$course->roleid]->name;
                         $status = get_string(enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
@@ -318,7 +318,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                         " FROM {cohort} c".
                         " JOIN {cohort_members} cm ON c.id = cm.cohortid AND cm.userid = :userid".
                         " ORDER BY c.name";
-                    $cohorts = $DB->get_records_sql($sql, array('userid' => $userid));
+                    $cohorts = $DB->get_records_sql($sql, ['userid' => $userid]);
                     if (count($cohorts) > 0) {
                         $parentcat = 'coursedetails';
                         $field = 'cohorts';

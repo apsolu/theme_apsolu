@@ -52,7 +52,7 @@ $defaults->legal_notice_doc_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'legal_notice_doc_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 // On instancie le formulaire.
 $mform = new theme_apsolu_legal_notice_form(null, $customdata);
 

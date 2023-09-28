@@ -24,13 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
     'moodle/category:manage',
     'moodle/course:create',
-);
+];
 
 $filearea = 'homepage';
-$options = array('maxfiles' => 1, 'accepted_types' => array('.jpg', '.png'));
+$options = ['maxfiles' => 1, 'accepted_types' => ['.jpg', '.png']];
 
 // Ajoute des noeuds au menu d'administration.
 if ($hassiteconfig || has_any_capability($capabilities, context_system::instance())) {

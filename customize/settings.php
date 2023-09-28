@@ -79,7 +79,7 @@ $defaults->footer_text_sectionformat = FORMAT_HTML;
 $defaults->footer_text_section = file_prepare_standard_editor($defaults, 'footer_text_section', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 
 // On instancie le formulaire.
 $mform = new theme_apsolu_customize_form(null, $customdata);

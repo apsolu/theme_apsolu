@@ -111,7 +111,7 @@ class theme_apsolu_test extends advanced_testcase {
         $cm = null;
         $context = context_system::instance();
         $filearea = 'homepage';
-        $args = array(THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL);
+        $args = [THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL];
         $forcedownload = true;
 
         // Test le bon fonctionnement du téléchargement d'une image.
@@ -124,7 +124,7 @@ class theme_apsolu_test extends advanced_testcase {
         $this->assertFalse(theme_apsolu_pluginfile($course, $cm, $context, $filearea = 'draft', $args, $forcedownload));
 
         // Contrôle qu'une erreur est levée lorsque l'itemid n'existe pas.
-        $this->assertFalse(theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args = array(99), $forcedownload));
+        $this->assertFalse(theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args = [99], $forcedownload));
     }
 
     /**

@@ -46,7 +46,7 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
     // Rebuild cache.
 
     // Get sites.
-    $sites = $DB->get_records('apsolu_cities', $conditions = array(), $sort = 'name');
+    $sites = $DB->get_records('apsolu_cities', $conditions = [], $sort = 'name');
 
     // Get activities.
     $sql = "SELECT DISTINCT cc.id, cc.name, cc.description".

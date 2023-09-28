@@ -52,7 +52,7 @@ $defaults->contact_doc_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'contact_doc_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 // On instancie le formulaire.
 $mform = new theme_apsolu_contact_form(null, $customdata);
 

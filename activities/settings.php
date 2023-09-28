@@ -71,7 +71,7 @@ $defaults = file_prepare_standard_editor($defaults, 'homepage_section2_associati
 // TODO : Charger les événements.
 // TODO : Charger les animations.
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 
 // On instancie le formulaire.
 $mform = new theme_apsolu_homepage_activities_form(null, $customdata);

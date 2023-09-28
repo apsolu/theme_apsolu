@@ -99,7 +99,7 @@ $defaults->homepage_section4_institutional_account_url = $value;
 $value = get_config('theme_apsolu', 'homepage_section4_non_institutional_account_url');
 $defaults->homepage_section4_non_institutional_account_url = $value;
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 $mform = new theme_apsolu_homepage_form(null, $customdata);
 
 $notification = '';
@@ -147,7 +147,7 @@ if ($data = $mform->get_data()) {
         }
 
         // On génère les images en différents formats.
-        $sizes = array();
+        $sizes = [];
         $sizes['ORIGINAL'] = $filename;
         $sizes['240_160'] = 'background_'.$sectionid.'_240x160.jpg';
         $sizes['480_320'] = 'background_'.$sectionid.'_480x320.jpg';
@@ -174,7 +174,7 @@ if ($data = $mform->get_data()) {
                 $file->delete();
             }
 
-            $resizedfile = array();
+            $resizedfile = [];
             $resizedfile['contextid'] = $contextid;
             $resizedfile['component'] = $component;
             $resizedfile['filearea'] = $filearea;

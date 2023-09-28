@@ -42,11 +42,11 @@ $THEME->prescsscallback = 'theme_apsolu_get_pre_scss';
 // This is the function that all CSS should be passed to before being delivered.
 $THEME->csspostprocess = 'theme_apsolu_process_css';
 // Définit les règles de style de l'éditeur de texte.
-$THEME->editor_sheets = array('editor');
+$THEME->editor_sheets = ['editor'];
 // Pas de prise en charge des blocks dans Boost.
 $THEME->enable_dock = false;
 // This is an old setting used to load specific CSS for some YUI JS. Utile pour l'appel au colourpicker.
-$THEME->yuicssmodules = array();
+$THEME->yuicssmodules = [];
 // Most themes will use this rendererfactory as this is the one that allows the theme to override any other renderer.
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
@@ -55,150 +55,150 @@ $THEME->haseditswitch = true;
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
 // Définition des templates qui vont structurer nos pages.
-$THEME->layouts = array(
+$THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
-    'base' => array(
+    'base' => [
         'theme' => 'apsolu',
         'file' => 'drawers.php',
-        'regions' => array(),
-    ),
+        'regions' => [],
+    ],
     // Standard layout with blocks, this is recommended for most pages with general information.
-    'standard' => array(
+    'standard' => [
         'theme' => 'apsolu',
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    // Main course page.
-    'course' => array(
-        'theme' => 'apsolu',
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true),
-    ),
-    'coursecategory' => array(
-        'theme' => 'apsolu',
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    // Part of course, typical for modules - default page layout if $cm specified in require_login().
-    'incourse' => array(
-        'theme' => 'apsolu',
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    // The site home page.
-    'frontpage' => array(
-        'theme' => 'apsolu',
-        'file' => 'home.php',
-        'regions' => array(),
-    ),
-    // Server administration scripts.
-    'admin' => array(
-        'theme' => 'apsolu',
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    // My courses page.
-    'mycourses' => array(
         'file' => 'drawers.php',
         'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true),
-    ),
+    ],
+    // Main course page.
+    'course' => [
+        'theme' => 'apsolu',
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+        'options' => ['langmenu' => true],
+    ],
+    'coursecategory' => [
+        'theme' => 'apsolu',
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+    ],
+    // Part of course, typical for modules - default page layout if $cm specified in require_login().
+    'incourse' => [
+        'theme' => 'apsolu',
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+    ],
+    // The site home page.
+    'frontpage' => [
+        'theme' => 'apsolu',
+        'file' => 'home.php',
+        'regions' => [],
+    ],
+    // Server administration scripts.
+    'admin' => [
+        'theme' => 'apsolu',
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+    ],
+    // My courses page.
+    'mycourses' => [
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+        'options' => ['nonavbar' => true],
+    ],
     // My dashboard page.
-    'mydashboard' => array(
+    'mydashboard' => [
         'theme' => 'apsolu',
         'file' => 'drawers.php',
-        'regions' => array('side-pre'),
+        'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true, 'langmenu' => true),
-    ),
+        'options' => ['nonavbar' => true, 'langmenu' => true],
+    ],
     // My public page.
-    'mypublic' => array(
+    'mypublic' => [
         'theme' => 'apsolu',
         'file' => 'drawers.php',
-        'regions' => array('side-pre'),
+        'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-    ),
-    'login' => array(
+    ],
+    'login' => [
         'theme' => 'boost',
         'file' => 'login.php',
-        'regions' => array(),
-        'options' => array('langmenu' => true),
-    ),
+        'regions' => [],
+        'options' => ['langmenu' => true],
+    ],
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
-    'popup' => array(
+    'popup' => [
         'theme' => 'boost',
         'file' => 'columns1.php',
-        'regions' => array(),
-        'options' => array(
+        'regions' => [],
+        'options' => [
             'nofooter' => true,
             'nonavbar' => true,
             'activityheader' => [
                 'notitle' => true,
                 'nocompletion' => true,
-                'nodescription' => true
-            ]
-        )
-    ),
+                'nodescription' => true,
+            ],
+        ],
+    ],
     // No blocks and minimal footer - used for legacy frame layouts only!
-    'frametop' => array(
+    'frametop' => [
         'theme' => 'boost',
         'file' => 'columns1.php',
-        'regions' => array(),
-        'options' => array(
+        'regions' => [],
+        'options' => [
             'nofooter' => true,
             'nocoursefooter' => true,
             'activityheader' => [
-                'nocompletion' => true
-            ]
-        ),
-    ),
+                'nocompletion' => true,
+            ],
+        ],
+    ],
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
-    'embedded' => array(
+    'embedded' => [
         'theme' => 'boost',
         'file' => 'embedded.php',
-        'regions' => array('side-pre'),
+        'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-    ),
+    ],
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
     // This must not have any blocks, links, or API calls that would lead to database or cache interaction.
     // Please be extremely careful if you are modifying this layout.
-    'maintenance' => array(
+    'maintenance' => [
         'theme' => 'boost',
         'file' => 'maintenance.php',
-        'regions' => array(),
-    ),
+        'regions' => [],
+    ],
     // Should display the content and basic headers only.
-    'print' => array(
+    'print' => [
         'theme' => 'boost',
         'file' => 'columns1.php',
-        'regions' => array(),
-        'options' => array('nofooter' => true, 'nonavbar' => false, 'noactivityheader' => true),
-    ),
+        'regions' => [],
+        'options' => ['nofooter' => true, 'nonavbar' => false, 'noactivityheader' => true],
+    ],
     // The pagelayout used when a redirection is occuring.
-    'redirect' => array(
+    'redirect' => [
         'theme' => 'boost',
         'file' => 'embedded.php',
-        'regions' => array(),
-    ),
+        'regions' => [],
+    ],
     // The pagelayout used for reports.
-    'report' => array(
+    'report' => [
         'theme' => 'apsolu',
         'file' => 'drawers.php',
-        'regions' => array('side-pre'),
+        'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-    ),
+    ],
     // The pagelayout used for safebrowser and securewindow.
-    'secure' => array(
+    'secure' => [
         'theme' => 'boost',
         'file' => 'secure.php',
-        'regions' => array('side-pre'),
+        'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
-    )
-);
+    ],
+];

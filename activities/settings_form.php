@@ -51,7 +51,7 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         // Activation des chapeaux.
         $available = false;
         if ($available === true) {
-            $activationarray = array();
+            $activationarray = [];
             $mform->addElement('header', 'homepage_chapeaux', 'activer les chapeaux');
             $activationarray[] = $mform->addElement('checkbox'); // Section  Liste des activités.
             $activationarray[] = $mform->addElement('checkbox'); // Section 2 les stages.
@@ -97,9 +97,9 @@ class theme_apsolu_homepage_activities_form extends moodleform {
         $mform->setType('homepage_section2_association_text_editor', PARAM_RAW);
 
         // 7. Validation du formulaire.
-        $buttonarray = array();
+        $buttonarray = [];
         $buttonarray[] =& $mform->createElement('submit', 'submitbutton', get_string('savechanges'));
-        $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
+        $mform->addGroup($buttonarray, 'buttonar', '', [' '], false);
         $mform->closeHeaderBefore('buttonar');
 
         // Set default values.
@@ -112,7 +112,7 @@ class theme_apsolu_homepage_activities_form extends moodleform {
      * @return array
      */
     public static function get_editor_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = false;
         $options['maxbytes'] = 0; // Taille limite par défaut.
         $options['maxfiles'] = -1; // Nombre de fichiers attachés illimités.

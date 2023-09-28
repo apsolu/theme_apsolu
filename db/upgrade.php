@@ -42,7 +42,7 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
     $version = 2020052600;
     if ($result && $oldversion < $version) {
         // Récupère la configuration du module local_apsolu.
-        $settings = array();
+        $settings = [];
         $settings['homepage_enable'] = 1;
         $settings['homepage_section1_text'] = get_string('default_homepage_section1_text', 'theme_apsolu');
         $settings['homepage_section1_welcome_text'] = '';
@@ -83,7 +83,7 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
     if ($result && $oldversion < $version) {
         // Convertit les images d'arrière-plan en jpg.
         $quality = null;
-        $sizes = array('240x160', '480x320', '960x640');
+        $sizes = ['240x160', '480x320', '960x640'];
 
         $fs = get_file_storage();
         $syscontext = context_system::instance();
@@ -101,7 +101,7 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
                 continue;
             }
 
-            $file = array(
+            $file = [
                 'contextid' => $syscontext->id,
                 'component' => 'theme_apsolu',
                 'filearea' => 'homepage',
@@ -117,7 +117,7 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
                 'timecreated' => $originalfile->get_timecreated(),
                 'timemodified' => $originalfile->get_timemodified(),
                 'sortorder' => $originalfile->get_sortorder(),
-            );
+            ];
 
             // On enregistre l'ancienne source png au format jpg.
             $fs->convert_image($file, $originalfile, $newwidth = null, $newheight = null, $keepaspectratio = false, $quality);

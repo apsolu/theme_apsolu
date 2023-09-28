@@ -110,7 +110,7 @@ class theme_apsolu_homepage_form extends moodleform {
 
         // Texte affiché.
         $label = get_string('section_text', 'theme_apsolu');
-        $mform->addElement('editor', 'homepage_section3_text_editor', $label, array('cols' => '48'), $editoroptions);
+        $mform->addElement('editor', 'homepage_section3_text_editor', $label, ['cols' => '48'], $editoroptions);
         $mform->addRule('homepage_section3_text_editor', get_string('required'), 'required', null, 'client');
         $mform->setType('homepage_section3_text_editor', PARAM_RAW);
 
@@ -133,18 +133,18 @@ class theme_apsolu_homepage_form extends moodleform {
 
         // URL pour s'authentifier avec le compte institutionnel.
         $label = get_string('institutional_account_authentification_url', 'theme_apsolu');
-        $mform->addElement('text', 'homepage_section4_institutional_account_url', $label, array('size' => '100'));
+        $mform->addElement('text', 'homepage_section4_institutional_account_url', $label, ['size' => '100']);
         $mform->setType('homepage_section4_institutional_account_url', PARAM_URL);
 
         // URL pour s'authentifier avec un compte générique.
         $label = get_string('non_institutional_account_authentification_url', 'theme_apsolu');
-        $mform->addElement('text', 'homepage_section4_non_institutional_account_url', $label, array('size' => '100'));
+        $mform->addElement('text', 'homepage_section4_non_institutional_account_url', $label, ['size' => '100']);
         $mform->setType('homepage_section4_non_institutional_account_url', PARAM_URL);
 
         // 6. Validation du formulaire.
         $buttonarray[] = &$mform->createElement('submit', 'submitbutton', get_string('savechanges'));
 
-        $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
+        $mform->addGroup($buttonarray, 'buttonar', '', [' '], false);
         $mform->closeHeaderBefore('buttonar');
 
         // Hidden fields.
@@ -161,7 +161,7 @@ class theme_apsolu_homepage_form extends moodleform {
      * @return array
      */
     public static function get_editor_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = false;
         $options['maxbytes'] = 0; // Taille limite par défaut.
         $options['maxfiles'] = -1; // Nombre de fichiers attachés illimités.
@@ -178,12 +178,12 @@ class theme_apsolu_homepage_form extends moodleform {
      * @return array
      */
     public static function get_filemanager_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = 0;
         $options['maxbytes'] = 0;
         $options['areamaxbytes'] = FILE_AREA_MAX_BYTES_UNLIMITED;
         $options['maxfiles'] = 1;
-        $options['accepted_types'] = array('.jpg', '.png');
+        $options['accepted_types'] = ['.jpg', '.png'];
         $options['context'] = context_system::instance();
 
         return $options;

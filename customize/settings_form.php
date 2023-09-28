@@ -59,17 +59,17 @@ class theme_apsolu_customize_form extends moodleform {
         $component = 'theme_apsolu';
         $urllabel = get_string('nav_url_label', $component);
         $textlabel = get_string('nav_text_label', $component);
-        $colorinfo = array(
+        $colorinfo = [
             get_string('brandcolor_1_help', 'theme_apsolu'),
             get_string('brandcolor_2_help', 'theme_apsolu'),
-            get_string('brandcolor_links_help', 'theme_apsolu')
-        );
+            get_string('brandcolor_links_help', 'theme_apsolu'),
+        ];
 
-        $brandcolors = array(
-            "brandcolor_1" => array(THEME_APSOLU_CUSTOM_BRANDCOLOR, 'custom_brandcolor'),
-            "brandcolor_2" => array(THEME_APSOLU_CUSTOM_BRANDCOLOR_2, 'custom_brandcolor_2'),
-            "brandcolor_links" => array(THEME_APSOLU_CUSTOM_BRANDCOLOR_3, 'custom_brandcolor_links')
-        );
+        $brandcolors = [
+            "brandcolor_1" => [THEME_APSOLU_CUSTOM_BRANDCOLOR, 'custom_brandcolor'],
+            "brandcolor_2" => [THEME_APSOLU_CUSTOM_BRANDCOLOR_2, 'custom_brandcolor_2'],
+            "brandcolor_links" => [THEME_APSOLU_CUSTOM_BRANDCOLOR_3, 'custom_brandcolor_links'],
+        ];
 
         // 1. Personnaliser les couleurs.
         $mform->addElement('header', 'theme_apsolu_customize_colors', get_string('customizer_colors_label', $component));
@@ -79,7 +79,7 @@ class theme_apsolu_customize_form extends moodleform {
         $colorpicker = '<div id="colorpicker_1" class="admin_colourpicker"></div>';
         $mform->addElement('html', $colorpicker);
         $mform->addElement('text', 'custom_brandcolor', 'Couleur principale',
-            array("id" => $brandcolors["brandcolor_1"][0], "aria-describedby" => "colorHelp"));
+            ["id" => $brandcolors["brandcolor_1"][0], "aria-describedby" => "colorHelp"]);
         $mform->addElement('html', '<small id="colorHelp" class="form-text text-muted">' . $colorinfo[0] . '</small>');
         $mform->setType('custom_brandcolor', PARAM_TEXT);
 
@@ -87,7 +87,7 @@ class theme_apsolu_customize_form extends moodleform {
         $colorpicker = '<div id="colorpicker_2" class="admin_colourpicker"></div>';
         $mform->addElement('html', $colorpicker);
         $mform->addElement('text', 'custom_brandcolor_2', 'Couleur secondaire',
-            array("id" => $brandcolors["brandcolor_2"][0], "aria-describedby" => "colorHelp2"));
+            ["id" => $brandcolors["brandcolor_2"][0], "aria-describedby" => "colorHelp2"]);
         $mform->addElement('html', '<small id="colorHelp2" class="form-text text-muted">' . $colorinfo[1] . '</small>');
         $mform->setType('custom_brandcolor_2', PARAM_TEXT);
 
@@ -95,7 +95,7 @@ class theme_apsolu_customize_form extends moodleform {
         $colorpicker = '<div id="colorpicker_3" class="admin_colourpicker"></div>';
         $mform->addElement('html', $colorpicker);
         $mform->addElement('text', 'custom_brandcolor_links', 'Couleur des liens et boutons',
-            array("id" => $brandcolors["brandcolor_links"][0], "aria-describedby" => "colorHelp3"));
+            ["id" => $brandcolors["brandcolor_links"][0], "aria-describedby" => "colorHelp3"]);
         $mform->addElement('html', '<small id="colorHelp3" class="form-text text-muted">' . $colorinfo[2] . '</small>');
         $mform->setType('custom_brandcolor_links', PARAM_TEXT);
 
@@ -107,8 +107,8 @@ class theme_apsolu_customize_form extends moodleform {
 
         // 2a. Lien n°1.
         $url1 = [
-            $mform->createElement('text', 'nav_link_1_url', null, array("placeholder" => $urllabel)),
-            $mform->createElement('text', 'nav_link_1_text', null, array("placeholder" => $textlabel))
+            $mform->createElement('text', 'nav_link_1_url', null, ["placeholder" => $urllabel]),
+            $mform->createElement('text', 'nav_link_1_text', null, ["placeholder" => $textlabel]),
         ];
         $mform->setType('nav_link_1_url', PARAM_URL);
         $mform->setType('nav_link_1_text', PARAM_RAW_TRIMMED);
@@ -116,8 +116,8 @@ class theme_apsolu_customize_form extends moodleform {
 
         // 2b. Lien n°2.
         $url2 = [
-            $mform->createElement('text', 'nav_link_2_url', null, array("placeholder" => $urllabel)),
-            $mform->createElement('text', 'nav_link_2_text', null, array("placeholder" => $textlabel))
+            $mform->createElement('text', 'nav_link_2_url', null, ["placeholder" => $urllabel]),
+            $mform->createElement('text', 'nav_link_2_text', null, ["placeholder" => $textlabel]),
         ];
         $mform->setType('nav_link_2_url', PARAM_URL);
         $mform->setType('nav_link_2_text', PARAM_RAW_TRIMMED);
@@ -125,8 +125,8 @@ class theme_apsolu_customize_form extends moodleform {
 
         // 2c. Lien n°3.
         $url3 = [
-            $mform->createElement('text', 'nav_link_3_url', null, array("placeholder" => $urllabel)),
-            $mform->createElement('text', 'nav_link_3_text', null, array("placeholder" => $textlabel))
+            $mform->createElement('text', 'nav_link_3_url', null, ["placeholder" => $urllabel]),
+            $mform->createElement('text', 'nav_link_3_text', null, ["placeholder" => $textlabel]),
         ];
         $mform->setType('nav_link_3_url', PARAM_URL);
         $mform->setType('nav_link_3_text', PARAM_RAW_TRIMMED);
@@ -144,11 +144,11 @@ class theme_apsolu_customize_form extends moodleform {
         $information = 'Vous pouvez placer jusqu\'à 3 logos dans le pied de page';
         $mform->addElement('html', $information);
 
-        $logos = array(
-            "footer_logo_1" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, 'homepage_footer_logo_1', 'Logo n°1'),
-            "footer_logo_2" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, 'homepage_footer_logo_2', 'Logo n°2'),
-            "footer_logo_3" => array(THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, 'homepage_footer_logo_3', 'Logo n°3')
-        );
+        $logos = [
+            "footer_logo_1" => [THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_1, 'homepage_footer_logo_1', 'Logo n°1'],
+            "footer_logo_2" => [THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2, 'homepage_footer_logo_2', 'Logo n°2'],
+            "footer_logo_3" => [THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3, 'homepage_footer_logo_3', 'Logo n°3'],
+        ];
 
         $mform->addElement('filemanager', $logos["footer_logo_1"][1], $logos["footer_logo_1"][2], $attributes, $filemanageroptions);
         $mform->addElement('filemanager', $logos["footer_logo_2"][1], $logos["footer_logo_2"][2], $attributes, $filemanageroptions);
@@ -182,10 +182,10 @@ class theme_apsolu_customize_form extends moodleform {
         }
 
         // 5. Validation du formulaire.
-        $buttonarray = array();
+        $buttonarray = [];
         $buttonarray[] = &$mform->createElement('submit', 'submitbutton', get_string('savechanges'));
 
-        $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
+        $mform->addGroup($buttonarray, 'buttonar', '', [' '], false);
         $mform->closeHeaderBefore('buttonar');
 
         // Hidden fields.
@@ -202,7 +202,7 @@ class theme_apsolu_customize_form extends moodleform {
      * @return array
      */
     public static function get_editor_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = false;
         $options['maxbytes'] = 0; // Taille limite par défaut.
         $options['maxfiles'] = -1; // Nombre de fichiers attachés illimités.
@@ -219,12 +219,12 @@ class theme_apsolu_customize_form extends moodleform {
      * @return array
      */
     public static function get_filemanager_options() {
-        $options = array();
+        $options = [];
         $options['subdirs'] = 0;
         $options['maxbytes'] = 0;
         $options['areamaxbytes'] = FILE_AREA_MAX_BYTES_UNLIMITED;
         $options['maxfiles'] = 1;
-        $options['accepted_types'] = array('.jpg', '.png');
+        $options['accepted_types'] = ['.jpg', '.png'];
         $options['context'] = context_system::instance();
 
         return $options;

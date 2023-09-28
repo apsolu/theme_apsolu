@@ -29,15 +29,15 @@ $bodyattributes = $OUTPUT->body_attributes();
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
-    'bodyattributes' => $bodyattributes
+    'bodyattributes' => $bodyattributes,
 ];
 
 // Ajoute un appel javascript, pour personnaliser la boite d'authentification.
-$strings = array();
+$strings = [];
 $strings[] = get_string('authentication');
 $strings[] = get_string('i_have_not_an_institutional_account', 'theme_apsolu');
 $strings[] = get_string('i_have_an_institutional_account', 'theme_apsolu');
 
-$PAGE->requires->js_call_amd('theme_apsolu/login', 'initialise', array('strings' => $strings));
+$PAGE->requires->js_call_amd('theme_apsolu/login', 'initialise', ['strings' => $strings]);
 
 echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);

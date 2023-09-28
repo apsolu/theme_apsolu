@@ -52,7 +52,7 @@ $defaults->confidential_doc_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'confidential_doc_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_CONFIDENTIAL_DOC_TEXT);
 
-$customdata = array($defaults);
+$customdata = [$defaults];
 // On instancie le formulaire.
 $mform = new theme_apsolu_confidential_form(null, $customdata);
 
