@@ -201,7 +201,22 @@ if ($data = $mform->get_data()) {
         $draftfile->delete();
     }
 
-    set_config('homepage_enable', intval(isset($data->homepage_enable)), 'theme_apsolu');
+    $oldvalue = $defaults->homepage_enable;
+    $newvalue = intval(isset($data->homepage_enable));
+    if ($newvalue != $oldvalue) {
+        add_to_config_log('homepage_enable', $oldvalue, $newvalue, 'theme_apsolu');
+        set_config('homepage_enable', $newvalue, 'theme_apsolu');
+
+        $oldvalue = $CFG->customfrontpageinclude;
+        if (empty($newvalue) === true) {
+            $newvalue = '';
+        } else {
+            $newvalue = $CFG->dirroot.'/theme/apsolu/index.php';
+        }
+
+        add_to_config_log('customfrontpageinclude', $oldvalue, $newvalue, 'core');
+        set_config('customfrontpageinclude', $newvalue);
+    }
 
     set_config('homepage_section1_text', $data->homepage_section1_text, 'theme_apsolu');
     if (isset($data->homepage_section1_show_credit) === false) {
@@ -219,17 +234,12 @@ if ($data = $mform->get_data()) {
         set_config('homepage_section3_image_credits', '', 'theme_apsolu');
     }
 
-    $value = $data->homepage_section4_institutional_account_url;
-    set_config('homepage_section4_institutional_account_url', $value, 'theme_apsolu');
-
-    $value = $data->homepage_section4_non_institutional_account_url;
-    set_config('homepage_section4_non_institutional_account_url', $value, 'theme_apsolu');
-
-    if ($defaults->homepage_enable !== $data->homepage_enable) {
-        if (empty($data->homepage_enable) === true) {
-            set_config('customfrontpageinclude', '');
-        } else {
-            set_config('customfrontpageinclude', $CFG->dirroot.'/theme/apsolu/index.php');
+    foreach (['homepage_section4_institutional_account_url', 'homepage_section4_non_institutional_account_url'] as $key) {
+        $oldvalue = $defaults->{$key};
+        $newvalue = $data->{$key};
+        if ($newvalue != $oldvalue) {
+            add_to_config_log($key, $oldvalue, $newvalue, 'theme_apsolu');
+            set_config($key, $newvalue, 'theme_apsolu');
         }
     }
 
