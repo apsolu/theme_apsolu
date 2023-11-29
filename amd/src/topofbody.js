@@ -5,7 +5,7 @@
  * @copyright  2022 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-define([], function(Log) {
+define(['core/log'], function(Log) {
     let selectors = {
         page: document.getElementById('page'),
         topofbody: document.getElementById('apsolu-topofbody'),
@@ -13,7 +13,7 @@ define([], function(Log) {
     };
 
     let Topofbody = function() {
-        if (selectors.page) {
+        if (selectors.topofbody) {
             selectors.page.insertBefore(selectors.topofbody, selectors.pageHeader);
         } else {
             Log.debug('Le div id="apsolu-topofbody" n\'existe pas dans la page.');
