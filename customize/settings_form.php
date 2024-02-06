@@ -132,6 +132,10 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->setType('nav_link_3_text', PARAM_RAW_TRIMMED);
         $mform->addGroup($url3, 'nav_link_3', 'Lien n°3', '', false);
 
+        // 2d. Afficher le lien vers apsolu.fr.
+        $mform->addElement('advcheckbox', 'show_logo', get_string('link_4', 'theme_apsolu'),
+            get_string('show_apsolu_project_logo', 'theme_apsolu'), null, [0, 1]);
+
         // 3. Personnaliser le pied de page.
         $mform->addElement('header', 'theme_apsolu_customize_footer', get_string('customize_footer', $component));
         $mform->closeHeaderBefore('buttonar');

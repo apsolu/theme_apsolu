@@ -56,6 +56,8 @@ $defaults->nav_link_2_text = get_config($component, 'nav_link_2_text');
 $defaults->nav_link_3_url = get_config($component, 'nav_link_3_url');
 $defaults->nav_link_3_text = get_config($component, 'nav_link_3_text');
 
+$defaults->show_logo = get_config($component, 'show_logo');
+
 // TODO: Charger les logos.
 $defaults->homepage_footer_logo_1 = file_get_submitted_draft_itemid('homepage_footer_logo_1');
 if (empty($defaults->homepage_footer_logo_1) === true) {
@@ -134,6 +136,8 @@ if ($data = $mform->get_data()) {
 
     set_config('nav_link_3_url', $data->nav_link_3_url, $component);
     set_config('nav_link_3_text', $data->nav_link_3_text, $component);
+
+    set_config('show_logo', $data->show_logo, $component);
 
     // Vide le cache du thème à l'enregistrement.
     theme_reset_all_caches();

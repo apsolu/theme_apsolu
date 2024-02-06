@@ -190,6 +190,8 @@ $data->nav_link_2_text = get_config($component, 'nav_link_2_text');
 $data->nav_link_3_url = get_config($component, 'nav_link_3_url');
 $data->nav_link_3_text = get_config($component, 'nav_link_3_text');
 
+$data->show_logo = get_config($component, 'show_logo');
+
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {
     // Si l'utilisateur est déjà authentifié, on le renvoie vers son tableau de bord.

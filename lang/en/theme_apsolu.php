@@ -139,3 +139,7 @@ $string['customize_footer_desc'] = '<div class="alert alert-secondary d-flex ali
 $string['footer_active'] = 'Activer le pied de page personnalisé';
 $string['footer_block'] = 'Bloc de pied de page';
 $string['footer_text_section'] = '';
+$string['link_4'] = 'Lien n°4';
+$string['project_financed_under_the_plan_national_de_relance_et_resilience'] = 'Projet financé dans le cadre du Plan National de Relance et de Résilience (PNRR)';
+$string['service_powered_by_apsolu'] = 'Service propulsé par APSOLU';
+$string['show_apsolu_project_logo'] = 'Afficher le logo du projet APSOLU';
