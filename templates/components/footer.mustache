@@ -58,17 +58,17 @@
                 <div class="row row-cols-md-3 justify-content-center">
                     {{#homepage_footer_logo_1}}
                         <div class="col-4 col-md-auto">
-                            <img id="footer-logo-1" class="mw-100" src="{{{ get_homepage_footer_logo_1_url }}}">
+                            <img id="footer-logo-1" class="mw-100" src="{{ get_homepage_footer_logo_1_url }}">
                         </div>
                     {{/homepage_footer_logo_1}}
                     {{#homepage_footer_logo_2}}
                         <div class="col-4 col-md-auto">
-                            <img id="footer-logo-2" class="mw-100" src="{{{ get_homepage_footer_logo_2_url }}}">
+                            <img id="footer-logo-2" class="mw-100" src="{{ get_homepage_footer_logo_2_url }}">
                         </div>
                     {{/homepage_footer_logo_2}}
                     {{#homepage_footer_logo_3}}
                         <div class="col-4 col-md-auto">
-                            <img id="footer-logo-3" class="mw-100" src="{{{ get_homepage_footer_logo_3_url }}}">
+                            <img id="footer-logo-3" class="mw-100" src="{{ get_homepage_footer_logo_3_url }}">
                         </div>
                     {{/homepage_footer_logo_3}}
                 </div>
@@ -81,13 +81,13 @@
             <div class="col-12 col-md-3">
                 <ul class="nav flex-column">
                     {{#nav_link_1_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_1_url }}">{{ nav_link_1_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_1_text}}
                     {{#nav_link_2_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_2_url }}">{{ nav_link_2_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_2_text}}
                     {{#nav_link_3_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_3_url }}">{{ nav_link_3_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_3_text}}
                     {{#show_logo}}
                     <li class="nav-item"><a class="nav-link" href="https://apsolu.fr">{{#str}}service_powered_by_apsolu, theme_apsolu{{/str}} <i class="fa fa-external-link" aria-hidden="true"></i><img class="bg-light d-block" height="50px" src="{{ wwwroot }}/theme/apsolu/pix/logos-financement.png" title="{{#str}}project_financed_under_the_plan_national_de_relance_et_resilience, theme_apsolu{{/str}}" /></a></li>
