@@ -80,18 +80,15 @@
             {{! Liens hypertexte }}
             <div class="col-12 col-md-3">
                 <ul class="nav flex-column">
-{{#nav_link_1_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                    </li>
-    {{/nav_link_1_text}}
-    {{#nav_link_2_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                    </li>
-        {{/nav_link_2_text}}
-        {{#nav_link_3_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                    </li>
-            {{/nav_link_3_text}}
+                    {{#nav_link_1_text}}
+                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_1_url }}}">{{{ nav_link_1_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    {{/nav_link_1_text}}
+                    {{#nav_link_2_text}}
+                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_2_url }}}">{{{ nav_link_2_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    {{/nav_link_2_text}}
+                    {{#nav_link_3_text}}
+                    <li class="nav-item"><a class="nav-link" href="{{{ nav_link_3_url }}}">{{{ nav_link_3_text }}} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    {{/nav_link_3_text}}
                     {{#show_logo}}
                     <li class="nav-item"><a class="nav-link" href="https://apsolu.fr">{{#str}}service_powered_by_apsolu, theme_apsolu{{/str}} <i class="fa fa-external-link" aria-hidden="true"></i><img class="bg-light d-block" height="50px" src="{{ wwwroot }}/theme/apsolu/pix/logos-financement.png" title="{{#str}}project_financed_under_the_plan_national_de_relance_et_resilience, theme_apsolu{{/str}}" /></a></li>
                     {{/show_logo}}
