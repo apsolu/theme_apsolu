@@ -40,12 +40,9 @@ body {
         font-weight: lighter;
     }
 
+    height: auto;
 }
 
-
-html {
-    height: 100%;
-}
 
 @include media-breakpoint-up(sm) {
     html {
@@ -62,6 +59,10 @@ html {
 @include media-breakpoint-up(lg) {
     html {
         font-size: 1.1rem;
+    }
+
+    #page.drawers {
+        height: auto;
     }
 }
 
