@@ -40,9 +40,8 @@ body {
         font-weight: lighter;
     }
 
-    height: auto;
+    height: 100%;
 }
-
 
 @include media-breakpoint-up(sm) {
     html {
