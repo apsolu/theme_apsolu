@@ -40,7 +40,7 @@ require_once($CFG->dirroot.'/theme/apsolu/lib.php');
  * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_apsolu_test extends advanced_testcase {
+final class theme_apsolu_test extends advanced_testcase {
     /**
      * Initialise un environnement de test.
      *
@@ -62,7 +62,7 @@ class theme_apsolu_test extends advanced_testcase {
      *
      * @return void
      */
-    public function test_scss_compilation_with_sassc() {
+    public function test_scss_compilation_with_sassc(): void {
         if (!defined('PHPUNIT_PATH_TO_SASSC')) {
             $this->markTestSkipped('Path to SassC not provided');
         }
@@ -82,7 +82,7 @@ class theme_apsolu_test extends advanced_testcase {
      *
      * @return void
      */
-    public function test_theme_apsolu_get_main_scss_content() {
+    public function test_theme_apsolu_get_main_scss_content(): void {
         // Vérifie que les CSS sont bien générées.
         $this->assertNotEmpty(theme_apsolu_get_main_scss_content(null));
     }
@@ -94,7 +94,7 @@ class theme_apsolu_test extends advanced_testcase {
      *
      * @return void
      */
-    public function test_theme_apsolu_initialise_homepage_background_images() {
+    public function test_theme_apsolu_initialise_homepage_background_images(): void {
         // Vérifie que l'initialisation des images de fond ne pose aucun problème.
         $this->assertNull(theme_apsolu_initialise_homepage_background_images());
     }
@@ -106,7 +106,7 @@ class theme_apsolu_test extends advanced_testcase {
      *
      * @return void
      */
-    public function test_theme_apsolu_pluginfile() {
+    public function test_theme_apsolu_pluginfile(): void {
         $course = 1;
         $cm = null;
         $context = context_system::instance();
@@ -134,7 +134,7 @@ class theme_apsolu_test extends advanced_testcase {
      *
      * @return void
      */
-    public function test_theme_apsolu_process_css() {
+    public function test_theme_apsolu_process_css(): void {
         $css = '';
         $this->assertEmpty(theme_apsolu_process_css($css));
 

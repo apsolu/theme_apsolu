@@ -30,6 +30,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// phpcs:disable moodle.Commenting.TodoComment.MissingInfoInline
+
 require(__DIR__.'/../../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
