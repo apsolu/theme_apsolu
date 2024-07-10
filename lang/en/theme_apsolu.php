@@ -89,6 +89,7 @@ $string['customize_confidential'] = 'Éditer la politique de confidentialité';
 $string['customize_legal_notice'] = 'Éditer les mentions légales';
 $string['customize_contact'] = 'Éditer les informations de contact';
 $string['document_text'] = 'Contenu du document';
+$string['modal_content'] = 'Contenu du document';
 $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre modale, au clic sur le lien approprié dans le footer.';
 
 $string['settings_configuration_homepage_activities'] = 'Formats de pratique';
