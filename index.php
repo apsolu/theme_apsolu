@@ -26,8 +26,6 @@ use UniversiteRennes2\Apsolu as apsolu;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once(__DIR__.'/homepage/settings_form.php');
-
 // Cache stuff.
 $cachedir = $CFG->dataroot.'/apsolu/theme_apsolu/cache/homepage';
 $sitescachefile = $cachedir.'/sites.json';
@@ -81,7 +79,7 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
 $context = context_system::instance();
 $component = 'theme_apsolu';
 $filearea = 'homepage';
-$options = theme_apsolu_homepage_form::get_editor_options();
+$options = ['context' => context_system::instance(), 'clean' => false];
 
 $data = new stdClass();
 $data->sites = $sites;
