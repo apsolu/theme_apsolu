@@ -38,11 +38,11 @@ $string['pluginname'] = 'Apsolu';
 $string['activities'] = 'Les activités';
 $string['activities_list'] = 'Liste des activités';
 $string['background_image'] = 'Image de fond';
-$string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d’accueil. L’image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
+$string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d’accueil. L’image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
 $string['choosereadme'] = '<div class="alert alert-secondary" role="alert">
   <p class="lead">Apsolu est un thème basé sur le thème Moodle « Boost ».</p><p>Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.<br>Vous pouvez ici personnaliser l’apparence générale de votre instance APSOLU.</p>
   <hr>
-  <p>Contact : contact@apsolu.fr<br>Site officiel : <a class="alert-link" href="https://www.apsolu.fr/">www.apsolu.fr</a></p></div>
+  <p>Contact : contact@apsolu.fr<br>Site officiel : <a class="alert-link" href="https://www.apsolu.fr/">www.apsolu.fr</a></p></div>
 <div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Pour personnaliser la page d’accueil, rendez-vous dans le menu « APSOLU > Présentation > Page d’accueil ».</p></div>';
 $string['configtitle'] = 'Apsolu';
 $string['default_homepage_section1_text'] = '<p class="lead">Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
@@ -58,7 +58,7 @@ $string['privacy:metadata'] = 'Le thème Apsolu n’enregistre aucune donnée pe
 $string['section_text'] = 'Texte de la section';
 $string['section2_text'] = '<div class="alert alert-secondary">Le tableau des activités est généré automatiquement.</div>';
 $string['settings_configuration_homepage'] = 'Page d’accueil';
-$string['settings_root'] = 'APSOLU'; // TODO: chaîne temporaire ; à supprimer dans le fichier settings.php.
+$string['settings_root'] = 'APSOLU'; // TODO: chaîne temporaire ; à supprimer dans le fichier settings.php.
 $string['show_credit'] = 'Afficher les crédits photographiques';
 $string['show_credit_help'] = 'Affiche le nom de l’auteur et le type de licence de la photographie.';
 $string['signup'] = 'S’inscrire';
@@ -128,9 +128,9 @@ $string['category_must_be_parent_of_a_grouping_of_sports_activities_default'] = 
 $string['category_saved_default'] = 'Activité physique enregistrée.';
 $string['category_updated_default'] = 'Activité physique modifiée.';
 $string['course_has_been_moved_to_because_selected_category_did_not_match_to_grouping_of_sports_activities_default'] = 'Le cours « {$a->fullname} » a été déplacé dans la catégorie « {$a->category} », car la catégorie sélectionnée ne correspondait pas à une catégorie d’activité sportive.';
-$string['do_you_want_to_delete_category_default'] = 'Voulez-vous supprimer l’activité physique « {$a} » ?';
+$string['do_you_want_to_delete_category_default'] = 'Voulez-vous supprimer l’activité physique « {$a} » ?';
 $string['edit_category_default'] = 'Modifier une activité physique';
-$string['grouping_cannot_be_deleted_default'] = 'Le groupement d’activités « {$a} » ne peut pas être supprimé, car il est rattaché aux activités physiques suivantes :';
+$string['grouping_cannot_be_deleted_default'] = 'Le groupement d’activités « {$a} » ne peut pas être supprimé, car il est rattaché aux activités physiques suivantes :';
 $string['settings_activities_default'] = 'Activités physiques';
 $string['categories_default'] = 'Activités sportives';
 $string['categories_list_default'] = 'Liste des activités sportives';
