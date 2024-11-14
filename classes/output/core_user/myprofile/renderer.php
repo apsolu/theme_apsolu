@@ -73,22 +73,23 @@ class renderer extends \core_user\output\myprofile\renderer {
             return '';
         }
 
+        if (isset($courseid)) {
+            // Dans un cours, les personnes ayant la capacité de voir les inscriptions peuvent voir les profils.
+            $context = context_course::instance($courseid);
+            $canviewuserprofile = has_capability('moodle/course:enrolreview', $context);
+        } else {
+            // Dans tout autre contexte, seuls les utilisateurs pouvant voir les détails cachés peuvent consulter les profils (ex:
+            // les gestionnaires).
+            $context = context_user::instance($userid);
+            $canviewuserprofile = has_capability('moodle/user:viewhiddendetails', $context);
+        }
+
         if ($category->name === 'contact') {
             $othercustomfields = [];
             if (isset($userid)) {
                 $user = $DB->get_record('user', ['id' => $userid]);
                 if ($user) {
-                    if (isset($courseid)) {
-                        $context = context_course::instance($courseid);
-                        $canviewhiddenuserfields = has_capability('moodle/course:enrolreview', $context);
-
-                        $user->role = get_user_roles_in_course($userid, $courseid);
-                    } else {
-                        $context = context_user::instance($userid);
-                        $canviewhiddenuserfields = has_capability('moodle/user:viewhiddendetails', $context);
-                    }
-
-                    if ($canviewhiddenuserfields) {
+                    if ($canviewuserprofile) {
                         $parentcat = 'contact';
                         $place = null;
                         $url = null;
@@ -128,21 +129,23 @@ class renderer extends \core_user\output\myprofile\renderer {
                         // Classic fields.
                         $fields = ['auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role'];
                         foreach ($fields as $field) {
-                            if (!empty($user->{$field})) {
-                                $content = $user->{$field};
-
-                                if ($field === 'auth') {
-                                    $field = 'authentication';
-                                    $content = get_string('pluginname', 'auth_'.$user->auth);
-                                } else {
-                                    $content = $user->{$field};
-                                }
-
-                                $title = get_string($field);
-
-                                $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
-                                $category->add_node($node);
+                            if (empty($user->{$field})) {
+                                continue;
                             }
+
+                            $content = $user->{$field};
+
+                            if ($field === 'auth') {
+                                $field = 'authentication';
+                                $content = get_string('pluginname', 'auth_'.$user->auth);
+                            } else {
+                                $content = $user->{$field};
+                            }
+
+                            $title = get_string($field);
+
+                            $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                            $category->add_node($node);
                         }
 
                         // Custom fields.
@@ -151,28 +154,30 @@ class renderer extends \core_user\output\myprofile\renderer {
                             'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete', ];
                         $checkboxfields = ['apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete'];
                         foreach ($fields as $field) {
-                            if (isset($customfields->{$field})) {
-                                $value = $customfields->{$field};
-                                if (in_array($field, $checkboxfields, $strict = true)) {
-                                    $label = '';
-                                    $attributes = ['disabled' => 1, 'readonly' => 1];
-                                    if ($customfields->{$field}) {
-                                        $content = html_writer::checkbox($field, $value, $checked = true, $label, $attributes);
-                                    } else {
-                                        $content = html_writer::checkbox($field, $value, $checked = false, $label, $attributes);
-                                    }
-                                } else {
-                                    if (empty($value)) {
-                                        continue;
-                                    }
-                                    $content = $value;
-                                }
-
-                                $title = get_string('fields_'.$field, 'local_apsolu');
-
-                                $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
-                                $category->add_node($node);
+                            if (!isset($customfields->{$field})) {
+                                continue;
                             }
+
+                            $value = $customfields->{$field};
+                            if (in_array($field, $checkboxfields, $strict = true)) {
+                                $label = '';
+                                $attributes = ['disabled' => 1, 'readonly' => 1];
+                                if ($customfields->{$field}) {
+                                    $content = html_writer::checkbox($field, $value, $checked = true, $label, $attributes);
+                                } else {
+                                    $content = html_writer::checkbox($field, $value, $checked = false, $label, $attributes);
+                                }
+                            } else {
+                                if (empty($value)) {
+                                    continue;
+                                }
+                                $content = $value;
+                            }
+
+                            $title = get_string('fields_'.$field, 'local_apsolu');
+
+                            $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
+                            $category->add_node($node);
                         }
 
                         // Numéro FFSU.
@@ -245,15 +250,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
         } else if ($category->name === 'coursedetails') {
             if ($userid) {
-                if (isset($courseid)) {
-                    $context = context_course::instance($courseid);
-                    $canviewhiddenuserfields = has_capability('moodle/course:enrolreview', $context);
-                } else {
-                    $context = context_user::instance($userid);
-                    $canviewhiddenuserfields = has_capability('moodle/user:viewhiddendetails', $context);
-                }
-
-                if ($canviewhiddenuserfields) {
+                if ($canviewuserprofile) {
                     // Get enrolments.
                     require_once($CFG->dirroot.'/enrol/select/lib.php');
                     require_once($CFG->dirroot.'/enrol/select/locallib.php');
