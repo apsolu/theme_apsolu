@@ -84,6 +84,18 @@ class renderer extends \core_user\output\myprofile\renderer {
             $canviewuserprofile = has_capability('moodle/user:viewhiddendetails', $context);
         }
 
+        // Capacité dans APSOLU permettant de cacher certains champs aux enseignants.
+        $canviewhiddenuserfields = has_capability('local/apsolu:viewuserhiddendetails', $context);
+
+        // Liste des champs à masquer dans APSOLU.
+        $userhiddenfields = get_config('local_apsolu', 'userhiddenfields');
+
+        if (empty($userhiddenfields) === true) {
+            $userhiddenfields = [];
+        } else {
+            $userhiddenfields = explode(',', $userhiddenfields);
+        }
+
         if ($category->name === 'contact') {
             $othercustomfields = [];
             if (isset($userid)) {
@@ -100,6 +112,10 @@ class renderer extends \core_user\output\myprofile\renderer {
                         $usercustomfields = profile_get_user_fields_with_data($user->id);
                         foreach ($usercustomfields as $field) {
                             if (!$field->is_visible()) {
+                                continue;
+                            }
+
+                            if (in_array($field, $userhiddenfields, $strict = true) && !$canviewhiddenuserfields) {
                                 continue;
                             }
 
@@ -133,6 +149,10 @@ class renderer extends \core_user\output\myprofile\renderer {
                                 continue;
                             }
 
+                            if (in_array($field, $userhiddenfields, $strict = true) && !$canviewhiddenuserfields) {
+                                continue;
+                            }
+
                             $content = $user->{$field};
 
                             if ($field === 'auth') {
@@ -155,6 +175,10 @@ class renderer extends \core_user\output\myprofile\renderer {
                         $checkboxfields = ['apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete'];
                         foreach ($fields as $field) {
                             if (!isset($customfields->{$field})) {
+                                continue;
+                            }
+
+                            if (in_array($field, $userhiddenfields, $strict = true) && !$canviewhiddenuserfields) {
                                 continue;
                             }
 
