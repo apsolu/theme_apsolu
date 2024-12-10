@@ -69,102 +69,109 @@
         "contact_doc_text": ""
     }
 }}
-<div id="apsolu-page">
+<main id="apsolu-page" role="main">
     {{! Section 1 : accueil }}
-    <div id="accueil" class="apsolu-pages">
-        <span id="section-1" class="apsolu-images d-flex align-items-end flex-row-reverse">
+    <section id="accueil" class="apsolu-pages">
+        <div id="section-1" class="apsolu-images d-flex align-items-end flex-row-reverse p-3">
             {{#section1_image_credits}}
                 <div class="badge badge-photo-credits">
-                    <span><i class="fa fa-camera" aria-hidden="true"
-                             alt="Crédit image de fond :{{ section1_image_credits }}"></i></span>
+                    <span>
+                        <i class="fa fa-camera" aria-hidden="true"
+                           alt="Crédit image de fond :{{ section1_image_credits }}"></i>
+                    </span>
                     <span class="d-none d-sm-inline">{{ section1_image_credits }}</span>
                 </div>
             {{/section1_image_credits}}
             {{#section1_welcome_text}}
-                <div id="textbox" class="mr-auto my-auto ml-5 p-3 text-light">
+                <div id="textbox" class="mr-auto my-auto p-3 text-light">
                     {{{ section1_welcome_text }}}
                 </div>
             {{/section1_welcome_text}}
-        </span>
+        </div>
         <article class="apsolu-article mb-0">
-            <div class="apsolu-article-title">
-                <div class="container">
-                    <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
-                        about, theme_apsolu{{/str}}</h2>
-                </div>
-            </div>
-            <div class="container-md p-3">
+            <header class="apsolu-article-title">
+                <h2 class="container display-4">
+                    <i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>
+                    {{#str}}about, theme_apsolu{{/str}}
+                </h2>
+            </header>
+            <section class="container-md p-3">
                 {{{ section1_text }}}
-            </div>
+            </section>
         </article>
-    </div>
+    </section>
 
     {{! Section 2 : Formats de cours }}
-    <div id="activites" class="apsolu-pages">
-        <div id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse">
+    <section id="activites" class="apsolu-pages">
+        <div id="section-2" class="apsolu-images d-flex align-items-end flex-row-reverse p-3">
             {{#section2_image_credits}}
                 <div class="badge badge-photo-credits d-none d-sm-block">
-                    <span><i class="fa fa-camera" aria-hidden="true"
-                             alt="Crédit image de fond :{{ section2_image_credits }}"></i></span>
+                    <span>
+                        <i class="fa fa-camera" aria-hidden="true"
+                           alt="Crédit image de fond :{{ section2_image_credits }}"></i>
+                    </span>
                     <span class="d-none d-sm-inline">{{ section2_image_credits }}</span>
                 </div>
             {{/section2_image_credits}}
         </div>
 
         <article class="apsolu-article">
-            <div class="apsolu-article-title">
+            <header class="apsolu-article-title">
                 <div class="container">
-                    <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
-                        courses_catalogue, theme_apsolu{{/str}}</h2>
+                    <h2 class="display-4">
+                        <i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>
+                        {{#str}}courses_catalogue, theme_apsolu{{/str}}
+                    </h2>
                 </div>
-            </div>
+            </header>
             <div class="container-md p-3">
                 <div id="formats-cours">
                     {{! Onglets formats de cours. }}
                     <ul class="nav nav-tabs mb-2" role="tablist">
                         <li role="presentation" class="nav-item">
-                            <button id="liste-activites-tab" class="nav-link active" data-toggle="tab" data-target="#liste-activites"
+                            <button id="liste-activites-tab" class="nav-link active" data-toggle="tab"
+                                    data-target="#liste-activites"
                                     type="button" role="tab" aria-controls="liste-activites" aria-selected="false">
                                 {{#str}}activities_list, theme_apsolu{{/str}}
                             </button>
                         </li>
                         {{# homepage_section2_training_text }}
                             <li role="presentation" class="nav-item">
-                                <button id="stages-tab" class="nav-link" data-toggle="tab" data-target="#stages" type="button"
-                                        role="tab" aria-controls="stages" aria-selected="false">{{#str}}
-                                    sport_training_sessions, theme_apsolu{{/str}}
+                                <button id="stages-tab" class="nav-link" data-toggle="tab" data-target="#stages"
+                                        type="button" role="tab" aria-controls="stages" aria-selected="false">
+                                    {{#str}}sport_training_sessions, theme_apsolu{{/str}}
                                 </button>
                             </li>
                         {{/ homepage_section2_training_text }}
                         {{# homepage_section2_events_text }}
                             <li role="presentation" class="nav-item">
                                 <button id="evenements-tab" class="nav-link" data-toggle="tab" data-target="#evenements"
-                                        type="button" role="tab" aria-controls="evenements" aria-selected="false">{{#str}}
-                                    events, theme_apsolu{{/str}}
+                                        type="button" role="tab" aria-controls="evenements" aria-selected="false">
+                                    {{#str}}events, theme_apsolu{{/str}}
                                 </button>
                             </li>
                         {{/ homepage_section2_events_text }}
                         {{# homepage_section2_animations_text }}
                             <li role="presentation" class="nav-item">
                                 <button id="animations-tab" class="nav-link" data-toggle="tab" data-target="#animations"
-                                        type="button" role="tab" aria-controls="animations" aria-selected="false">{{#str}}
-                                    animations, theme_apsolu{{/str}}
+                                        type="button" role="tab" aria-controls="animations" aria-selected="false">
+                                    {{#str}}animations, theme_apsolu{{/str}}
                                 </button>
                             </li>
                         {{/ homepage_section2_animations_text }}
                         {{# homepage_section2_practice_text}}
                             <li role="presentation" class="nav-item">
-                                <button id="pratiques-tab" class="nav-link" data-toggle="tab" data-target="#pratiques" type="button"
-                                        role="tab" aria-controls="pratiques" aria-selected="false">{{#str}}
-                                    practice, theme_apsolu{{/str}}
+                                <button id="pratiques-tab" class="nav-link" data-toggle="tab" data-target="#pratiques"
+                                        type="button" role="tab" aria-controls="pratiques" aria-selected="false">
+                                    {{#str}}practice, theme_apsolu{{/str}}
                                 </button>
                             </li>
                         {{/homepage_section2_practice_text}}
                         {{# homepage_section2_association_text }}
                             <li role="presentation" class="nav-item">
-                                <button id="adhesion-tab" class="nav-link" data-toggle="tab" data-target="#adhesion" type="button"
-                                        role="tab" aria-controls="adhesion" aria-selected="false">{{#str}}
-                                    sport_association, theme_apsolu{{/str}}
+                                <button id="adhesion-tab" class="nav-link" data-toggle="tab" data-target="#adhesion"
+                                        type="button" role="tab" aria-controls="adhesion" aria-selected="false">
+                                    {{#str}}sport_association, theme_apsolu{{/str}}
                                 </button>
                             </li>
                         {{/ homepage_section2_association_text }}
@@ -188,64 +195,70 @@
                 </div>
             </div>
         </article>
-    </div>
+    </section>
 
     {{! Section 3 : S'inscrire. }}
-    <div id="inscription" class="apsolu-pages">
-        <div id="section-3" class="apsolu-images d-flex align-items-end flex-row-reverse">
+    <section id="inscription" class="apsolu-pages">
+        <div id="section-3" class="apsolu-images d-flex align-items-end flex-row-reverse p-3">
             {{#section3_image_credits}}
                 <div class="badge badge-photo-credits ">
-                    <span><i class="fa fa-camera" aria-hidden="true"
-                             alt="Crédit image de fond :{{ section3_image_credits }}"></i></span>
+                    <span>
+                        <i class="fa fa-camera" aria-hidden="true"
+                           alt="Crédit image de fond :{{ section3_image_credits }}"></i>
+                    </span>
                     <span class="d-none d-sm-inline">{{ section3_image_credits }}</span>
                 </div>
             {{/section3_image_credits}}
         </div>
         <article class="apsolu-article">
-            <div class="apsolu-article-title">
+            <header class="apsolu-article-title">
                 <div class="container">
-                    <h2 class="display-4"><i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>{{#str}}
-                        signup, theme_apsolu{{/str}}</h2>
+                    <h2 class="display-4">
+                        <i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>
+                        {{#str}}signup, theme_apsolu{{/str}}
+                    </h2>
                 </div>
-            </div>
+            </header>
             <div class="container-md p-3">
                 {{{ section3_text }}}
             </div>
         </article>
-    </div>
+    </section>
 
     {{! Section 4 : Connexion. }}
     {{#login_link}}
-        <div id="connexion" class="apsolu-pages">
-            <article class="apsolu-article">
+        <section id="connexion" class="apsolu-pages">
+            <article class="apsolu-article pb-2">
                 <div class="container">
-                    <div class="jumbotron">
-                        <h2 class="display-4 text-center">Connexion à l'espace sport</h2>
-                        <hr>
-                        <ul class="apsolu-inscription row justify-content-md-center">
-                            {{#institutional_account_url}}
-                                <li class="col-md-4 col-md-offset-2">
-                                    <a id="inscription" class="btn btn-success btn-lg" href="{{ institutional_account_url }}">
-                                        <i class="fa fa-university" aria-hidden="true"></i>
-                                        {{#str}}i_have_an_institutional_account, theme_apsolu{{/str}}
-                                    </a>
-                                </li>
-                            {{/institutional_account_url}}
-                            {{#non_institutional_account_url}}
-                                <li class="col-md-4">
-                                    <a id="connexion" class="btn btn-default btn-secondary btn-lg"
-                                       href="{{ non_institutional_account_url }}#internal">
-                                        {{#str}}i_have_not_an_institutional_account, theme_apsolu{{/str}}
-                                    </a>
-                                </li>
-                            {{/non_institutional_account_url}}
-                        </ul>
+                    <div class="jumbotron p-4">
+                        <div class="col">
+                            <div class="row">
+                                <p class="lead m-auto">Connexion à l'espace sport</p>
+                            </div>
+                            <hr class="my-4">
+                            <div class="row">
+                                <div class="btn-group mx-auto" role="group">
+                                    {{#institutional_account_url}}
+                                        <a class="btn btn-success" href="{{ institutional_account_url }}">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                            {{#str}}i_have_an_institutional_account, theme_apsolu{{/str}}
+                                        </a>
+                                    {{/institutional_account_url}}
+                                    {{#non_institutional_account_url}}
+                                        <a class="btn btn-secondary"
+                                           href="{{ non_institutional_account_url }}#internal">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                            {{#str}}i_have_not_an_institutional_account, theme_apsolu{{/str}}
+                                        </a>
+                                    {{/non_institutional_account_url}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
-        </div>
+        </section>
     {{/login_link}}
-    <!-- On charge le pied de page -->
     {{> theme_apsolu/components/footer }}
-</div>
+</main>
 

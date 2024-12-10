@@ -90,7 +90,8 @@
             {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
         {{/ theme_boost/drawer}}
     {{/hasblocks}}
-    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
+    <div id="page" data-region="mainpage" data-usertour="scroller"
+         class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
         {{{ output.full_header }}}
         <div id="topofscroll" class="main-inner">
             <div class="drawer-toggles d-flex">
@@ -128,14 +129,14 @@
                     </div>
                 {{/hasblocks}}
             </div>
-            <div id="page-content" class="pb-3 d-print-block">
+            <main id="page-content" class="pb-3 d-print-block">
                 <div id="region-main-box">
                     {{#secondarymoremenu}}
-                    <div class="container">
-                        <div class="secondary-navigation d-print-none">
-                            {{> core/moremenu}}
+                        <div class="container">
+                            <div class="secondary-navigation d-print-none">
+                                {{> core/moremenu}}
+                            </div>
                         </div>
-                    </div>
                     {{/secondarymoremenu}}
                     {{#hasregionmainsettingsmenu}}
                         <div id="region-main-settings-menu" class="d-print-none">
@@ -164,16 +165,18 @@
                     </section>
 
                 </div>
-            </div>
+            </main>
         </div>
         {{> theme_boost/footer }}
     </div>
+
     {{{ output.standard_after_main_region_html }}}
 </div>
 
 {{#js}}
     M.util.js_pending('theme_boost/loader');
-    require(['theme_boost/loader', 'theme_boost/drawer', 'theme_apsolu/topofbody'], function(Loader, Drawer, Topofbody) {
+    require(['theme_boost/loader', 'theme_boost/drawer', 'theme_apsolu/topofbody'], function(Loader, Drawer, Topofbody)
+    {
     Drawer.init();
     Topofbody.init();
     M.util.js_complete('theme_boost/loader');
