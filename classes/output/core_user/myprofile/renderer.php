@@ -143,7 +143,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                         }
 
                         // Classic fields.
-                        $fields = ['auth', 'idnumber', 'institution', 'department', 'phone1', 'phone2', 'role'];
+                        $fields = ['auth', 'idnumber', 'institution', 'department', 'address', 'phone1', 'phone2', 'role'];
                         foreach ($fields as $field) {
                             if (empty($user->{$field})) {
                                 continue;
@@ -170,7 +170,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                         // Custom fields.
                         $customfields = profile_user_record($user->id);
-                        $fields = ['apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle',
+                        $fields = ['apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle', 'apsolupostalcode',
                             'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete', ];
                         $checkboxfields = ['apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete'];
                         foreach ($fields as $field) {
@@ -246,6 +246,9 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'role' => '',
                 'idnumber' => '',
                 'email' => '',
+                'address' => '',
+                'apsolupostalcode' => '',
+                'city' => '',
                 'phone1' => '',
                 'phone2' => '',
                 'apsolucycle' => '',
