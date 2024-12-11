@@ -38,7 +38,7 @@ $string['pluginname'] = 'Apsolu';
 $string['activities'] = 'Les activités';
 $string['activities_list'] = 'Liste des activités';
 $string['background_image'] = 'Image de fond';
-$string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d’accueil. L’image sera redimentionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
+$string['background_image_help'] = 'Image de fond placée en arrière-plan sur la page d’accueil. L’image sera redimensionnée par le serveur aux formats suivants : 240x160, 480x320 et 960x640.';
 $string['choosereadme'] = '<div class="alert alert-secondary" role="alert">
   <p class="lead">Apsolu est un thème basé sur le thème Moodle « Boost ».</p><p>Ce thème ajoute un profil utilisateur amélioré en intégrant des informations spécifiques à APSOLU.<br>Vous pouvez ici personnaliser l’apparence générale de votre instance APSOLU.</p>
   <hr>
@@ -98,6 +98,18 @@ $string['homepage_activities_infobox'] = 'Information supplémentaire';
 $string['homepage_activities_infobox_help'] = '<p>Permet d’afficher une boîte d’information au-dessus du contenu de la section.</p><div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><div>Exemple de boîte.</div></div>';
 $string['settings_configuration_homepage_desc'] = '<p class="lead">Vous permet de configurer le contenu et l’affichage de la page d’accueil APSOLU.</p>';
 $string['settings_configuration_customize'] = 'Personnaliser le thème';
+$string['settings_configuration_customize_desc'] = '<p class="lead">Vous pouvez ici personnaliser les options d’affichage du thème APSOLU.</p>';
+$string['settings_configuration_customize_requirements_desc'] = '<blockquote><p>Lors de vos choix de personnalisation, veillez à respecter les recommandations du Référentiel Général d’Amélioration de l’Accessibilité (RGAA) en matière de couleurs et de contrastes pour garantir une expérience accessible à toutes et à tous.</p></blockquote>';
+
+// 2b. APSOLU > Documents > Accessibilité numérique.
+$string['accessibility'] = 'Accessibilité numérique';
+$string['accessibility_settings_desc'] = '<p class="lead">Vous permet de configurer le contenu de votre page "Accessibilité numérique" visible depuis le pied de page.</p>';
+$string['accessibility_requirement_desc'] = '<blockquote><p>En tant que service numérique public, il est de votre responsabilité de garantir l’accessibilité de votre instance APSOLU conformément au Référentiel Général d’Amélioration de l’Accessibilité (RGAA). Assurez-vous que votre déclaration est à jour et reflète fidèlement les engagements de votre établissement en matière d’accessibilité.</p><p><i class="fa fa-hand-point-right"></i> <a href="https://design.numerique.gouv.fr/accessibilite-numerique/" title="Page Accessibilité numérique du site DesignGouv">Consulter le référentiel</a> (lien externe)</p></blockquote>';
+$string['accessibility_status_text'] = 'État de la conformité';
+$string['accessibility_status_help'] = 'L’une des mentions suivantes doit être renseignée : « Accessibilité : totalement conforme », « Accessibilité : partiellement conforme » ou « Accessibilité : non conforme » (par défaut).';
+$string['accessibility_status_default'] = 'Accessibilité : non conforme';
+$string['customize_accessibility'] = 'Éditer la déclaration d’accessibilité';
+$string['accessibility_doc_text_default'] = '';
 
 // 3. Personnalisation des couleurs.
 $string['customizer_colors_label'] = 'Personnaliser les couleurs';
@@ -121,6 +133,7 @@ $string['nav_text_label'] = 'Libellé du lien';
 // 5. Personnalisation des libellés.
 $string['customize_labels'] = 'Personnaliser les libellés du site';
 $string['customize_labels_desc'] = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Si vous utilisez APSOLU autrement que pour la gestion d’activités sportives, vous pouvez personnaliser les libellés affichés dans l’administration ainsi que sur la page d’accueil. Par défaut, le contexte sportif est utilisé. Pour modifier d’autres libellés absents sur cette page, rendez-vous dans le menu « Langue > Personnalisation de la langue ».</p></div>';
+
 // 5a. Personnalisation des libellés > Libellés par défaut.
 $string['add_category_default'] = 'Ajouter une activité physique';
 $string['category_has_been_deleted_default'] = 'L’activité physique a été supprimée.';
@@ -139,7 +152,7 @@ $string['no_category_default'] = 'Aucune activité sportive';
 $string['federation_default'] = 'FFSU';
 $string['settings_activities_default'] = 'Activités physiques';
 
-// 5. Personnalisation du footer.
+// 5b. Personnalisation du footer.
 $string['customize_footer'] = 'Personnaliser le pied de page';
 $string['customize_footer_desc'] = '<div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i><p class="mb-0">Vous pouvez activer un pied de page supplémentaire personnalisé sur la page d’accueil.</p></div>';
 $string['footer_active'] = 'Activer le pied de page personnalisé';
@@ -149,3 +162,5 @@ $string['link_4'] = 'Lien n°4';
 $string['project_financed_under_the_plan_national_de_relance_et_resilience'] = 'Projet financé dans le cadre du Plan National de Relance et de Résilience (PNRR)';
 $string['service_powered_by_apsolu'] = 'Service propulsé par APSOLU';
 $string['show_apsolu_project_logo'] = 'Afficher le logo du projet APSOLU';
+
+

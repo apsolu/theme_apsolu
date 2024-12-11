@@ -98,6 +98,13 @@
         <hr class="my-0">
         {{! Navigation : fenêtes modales }}
         <div class="row row-cols-3 modal-container justify-content-center">
+            {{!accessibility_doc_text}}
+                <div class="col-12 col-sm-3">
+                    <a class="modal-inner" data-toggle="modal" data-target="#accessibilite" href="#">
+                    {{ accessibility_status }}
+                    </a>
+                </div>
+            {{!accessibility_doc_text}}
             {{#legal_notice_doc_text}}
                 <div class="col-12 col-sm-3">
                     <a class="modal-inner" data-toggle="modal" data-target="#mentionsLegales" href="#">{{#str}}
@@ -121,6 +128,7 @@
 </footer>
 
 <!-- On charge les fenêtres modales-->
+{{> theme_apsolu/modal/accessibility }}
 {{> theme_apsolu/modal/legal_notice }}
 {{> theme_apsolu/modal/confidential }}
 {{> theme_apsolu/modal/contact }}

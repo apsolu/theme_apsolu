@@ -163,6 +163,12 @@ $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
 $data->footer_text_section = format_text($content, FORMAT_HTML, $options);
 
 // Fenêtes modales.
+$data->accessibility_status = get_config($component, 'accessibility_status');
+$text = get_config($component, 'accessibility_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$data->accessibility_doc_text = format_text($content, FORMAT_HTML, $options);
+
 $text = get_config($component, 'legal_notice_doc_text');
 $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
