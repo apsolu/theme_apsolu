@@ -587,7 +587,7 @@ footer {
 
 .dropdown-menu {
     border-radius: unset;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 
     a {
         color: #004d40;
@@ -942,7 +942,8 @@ input[type="color"] {
 }
 
 :root {
-    --drawer-right-width: 400px; // Valeur pour définir la taille du tiroir des blocs et la marge du main content par rapport au tiroir.
+    // Valeur pour définir la taille du tiroir des blocs et la marge du main content par rapport au tiroir.
+    --drawer-right-width: 400px;
 }
 
 .drawer.drawer-right {
@@ -981,10 +982,10 @@ input[type="color"] {
     }
 }*/
 
-    .bg-dark {
-        background-color: $apsolu-dark !important;
-    }
+.bg-dark {
+    background-color: $apsolu-dark !important; /* stylelint-disable-line declaration-no-important */
+}
 
-    a {
-        color: #007f5b;
-    }
+a {
+    color: #007f5b;
+}

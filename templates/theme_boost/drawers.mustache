@@ -174,13 +174,12 @@
 </div>
 
 {{#js}}
-    M.util.js_pending('theme_boost/loader');
-    require(['theme_boost/loader', 'theme_boost/drawer', 'theme_apsolu/topofbody'], function(Loader, Drawer, Topofbody)
-    {
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader', 'theme_boost/drawer', 'theme_apsolu/topofbody'], function(Loader, Drawer, Topofbody) {
     Drawer.init();
     Topofbody.init();
     M.util.js_complete('theme_boost/loader');
-    });
+});
 {{/js}}
 
 </body>

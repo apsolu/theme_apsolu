@@ -59,7 +59,7 @@ function xmldb_theme_apsolu_install() {
     set_config('legal_notice_doc_text', '', 'theme_apsolu');
     set_config('custom_medical_active', 0, 'theme_apsolu');
     set_config('medical_doc_text', '', 'theme_apsolu');
-    set_config('accessibility_status', get_string('accessibility_status_default','theme_apsolu'), 'theme_apsolu');
+    set_config('accessibility_status', get_string('accessibility_status_default', 'theme_apsolu'), 'theme_apsolu');
     set_config('accessibility_doc_text', '', 'theme_apsolu');
 
     set_config('homepage_footer_logo_1', '', 'theme_apsolu');

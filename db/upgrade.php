@@ -39,26 +39,6 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
 
     $result = true;
 
-    //TODO:
-    $version = 2024121100;
-    if ($result && $oldversion < $version) {
-        $settings = [];
-        $settings['accessibility_status'] = get_string('accessibility_status_default', 'theme_apsolu');
-        $settings['accessibility_doc_text'] = get_string('accessibility_doc_text_default', 'theme_apsolu');
-
-        foreach ($settings as $settingname => $default) {
-            $value = get_config('local_apsolu', $settingname);
-            if (empty($value) === true) {
-                $value = $default;
-            }
-            set_config($settingname, $value, 'theme_apsolu');
-            unset_config($settingname, 'local_apsolu');
-        }
-
-        // Savepoint reached.
-        upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
-    }
-
     $version = 2020052600;
     if ($result && $oldversion < $version) {
         // Récupère la configuration du module local_apsolu.
@@ -164,6 +144,25 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
 
             // On supprime l'ancienne source png.
             $originalfile->delete();
+        }
+
+        // Savepoint reached.
+        upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
+    }
+
+    $version = 2024121100;
+    if ($result && $oldversion < $version) {
+        $settings = [];
+        $settings['accessibility_status'] = get_string('accessibility_status_default', 'theme_apsolu');
+        $settings['accessibility_doc_text'] = get_string('accessibility_doc_text_default', 'theme_apsolu');
+
+        foreach ($settings as $settingname => $default) {
+            $value = get_config('local_apsolu', $settingname);
+            if (empty($value) === true) {
+                $value = $default;
+            }
+            set_config($settingname, $value, 'theme_apsolu');
+            unset_config($settingname, 'local_apsolu');
         }
 
         // Savepoint reached.

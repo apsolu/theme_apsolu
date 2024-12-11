@@ -48,9 +48,11 @@ class theme_apsolu_accessibility_form extends moodleform {
         $mform->addElement('header', 'general', get_string('general'));
 
         // 2. Etat de la conformité (par défaut: non conforme).
-        $mform->addElement('text', $document.'_status', get_string($document.'_status_text', 'theme_apsolu'), 'wrap="virtual" rows="10" cols="60"');
+        $mform->addElement('text', $document.'_status', get_string($document.'_status_text', 'theme_apsolu'),
+            'wrap="virtual" rows="10" cols="60"');
         $mform->setDefault($document.'_status', get_string($document.'_status_default', 'theme_apsolu'));
-        $mform->addElement('html','<blockquote><small id="a11yHelp" class="form-text text-muted">' . get_string('accessibility_status_help', 'theme_apsolu') . '</small></blockquote>');
+        $mform->addElement('html', '<blockquote><small id="a11yHelp" class="form-text text-muted">'.
+            get_string('accessibility_status_help', 'theme_apsolu') . '</small></blockquote>');
         $mform->setType($document.'_status', PARAM_TEXT);
 
         // 3. Editer la déclaration d'accessibilité.
