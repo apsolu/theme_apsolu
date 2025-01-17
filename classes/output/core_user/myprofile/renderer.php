@@ -56,10 +56,14 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_category(category $category) {
-        global $CFG, $DB;
+        global $CFG, $DB, $USER;
 
         $userid = optional_param('id', null, PARAM_INT);
         $courseid = optional_param('course', null, PARAM_INT);
+
+        if ($userid === null) {
+            $userid = $USER->id;
+        }
 
         $classes = $category->classes;
         if (empty($classes)) {
