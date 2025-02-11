@@ -144,7 +144,6 @@ $string['course_has_been_moved_to_because_selected_category_did_not_match_to_gro
 $string['do_you_want_to_delete_category_default'] = 'Voulez-vous supprimer l’activité physique « {$a} » ?';
 $string['edit_category_default'] = 'Modifier une activité physique';
 $string['grouping_cannot_be_deleted_default'] = 'Le groupement d’activités « {$a} » ne peut pas être supprimé, car il est rattaché aux activités physiques suivantes :';
-$string['settings_activities_default'] = 'Activités physiques';
 $string['categories_default'] = 'Activités sportives';
 $string['categories_list_default'] = 'Liste des activités sportives';
 $string['category_add_default'] = 'Ajouter une activité sportive';
