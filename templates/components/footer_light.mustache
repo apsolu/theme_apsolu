@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_apsolu/components/footer
+    @template theme_apsolu/components/footer_light
 
     Template purpose and description.
 
@@ -23,7 +23,7 @@
     * none
 
     Data attributes required for JS:
-    * homepage_footer_logo_1
+    * none
 
     Context variables required for this template:
     * nav_link_1_url
@@ -32,66 +32,34 @@
     * nav_link_1_text
     * nav_link_2_text
     * nav_link_3_text
-    * homepage_footer_logo_1
-    * homepage_footer_logo_2
-    * homepage_footer_logo_3
-    * footer_text_section
     * output - The core renderer for the page
 
     Example context (json):
     {
-        "output": {
-                "nav_link_1_url": true,
-                "theme_apsolu/nav_link_1_text": "",
-                "nav_link_2_url": "",
-                "theme_apsolu/nav_link_2_text": "",
-                "nav_link_3_url": "",
-                "theme_apsolu/nav_link_3_text": ""
-        }
+        "nav_link_1_url": "https://perdu.com/",
+        "nav_link_1_text": "Vous êtes perdus ?",
+        "nav_link_2_url": "https://univ-rennes2.fr/",
+        "nav_link_2_text": "Université Rennes 2",
+        "nav_link_3_url": "",
+        "nav_link_3_text": ""
     }
 }}
-<footer id="apsolu-custom-footer-1" class="section text-light bg-dark">
+<footer id="apsolu-custom-footer-1" class="section text-light bg-dark mt-auto">
     <div class="container-fluid">
         {{! Pied de page personnalisé }}
-        <div class="row row-cols-3 mx-6 my-3 justify-content-md-center">
-            <div class="col-12 col-md-auto">
-                <div class="row row-cols-md-3 justify-content-center">
-                    {{#homepage_footer_logo_1}}
-                        <div class="col-4 col-md-auto">
-                            <img id="footer-logo-1" class="mw-100" src="{{ get_homepage_footer_logo_1_url }}">
-                        </div>
-                    {{/homepage_footer_logo_1}}
-                    {{#homepage_footer_logo_2}}
-                        <div class="col-4 col-md-auto">
-                            <img id="footer-logo-2" class="mw-100" src="{{ get_homepage_footer_logo_2_url }}">
-                        </div>
-                    {{/homepage_footer_logo_2}}
-                    {{#homepage_footer_logo_3}}
-                        <div class="col-4 col-md-auto">
-                            <img id="footer-logo-3" class="mw-100" src="{{ get_homepage_footer_logo_3_url }}">
-                        </div>
-                    {{/homepage_footer_logo_3}}
-                </div>
-            </div>
-            {{! Note de bas de page }}
-            <div class="col-12 col-md-3 text-center text-md-left pt-2 pt-md-0">
-                <p>{{ footer_text_section }}</p>
-            </div>
+        <div class="row mt-3 justify-content-md-center align-items-center">
             {{! Liens hypertexte }}
-            <div class="col-12 col-md-3">
-                <ul class="nav flex-column align-items-md-start align-items-center">
+            <div class="col-12">
+                <ul class="nav flex-column flex-md-row justify-content-md-center align-items-center">
                     {{#nav_link_1_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_1_url }}">{{ nav_link_1_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link py-1 py-md-0 px-0 px-md-3" href="{{ nav_link_1_url }}">{{ nav_link_1_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_1_text}}
                     {{#nav_link_2_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_2_url }}">{{ nav_link_2_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link py-1 py-md-0 px-0 px-md-3" href="{{ nav_link_2_url }}">{{ nav_link_2_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_2_text}}
                     {{#nav_link_3_text}}
-                    <li class="nav-item"><a class="nav-link" href="{{ nav_link_3_url }}">{{ nav_link_3_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link py-1 py-md-0 px-0 px-md-3" href="{{ nav_link_3_url }}">{{ nav_link_3_text }} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     {{/nav_link_3_text}}
-                    {{#show_logo}}
-                    <li class="nav-item"><a class="nav-link text-center text-md-left" href="https://apsolu.fr">{{#str}}service_powered_by_apsolu, theme_apsolu{{/str}} <i class="fa fa-external-link" aria-hidden="true"></i><img class="bg-light d-block mt-2" height="50px" src="{{ wwwroot }}/theme/apsolu/pix/logos-financement.png" title="{{#str}}project_financed_under_the_plan_national_de_relance_et_resilience, theme_apsolu{{/str}}" /></a></li>
-                    {{/show_logo}}
                 </ul>
             </div>
         </div>

@@ -52,22 +52,22 @@
         <hr class="mt-0 mb-3">
         <!--  Navigation : Fil d'ariane & barre de recherche  -->
         <div class="d-flex justify-content-between bd-highlight">
-            <div class="bd-highlight">
-                <div class="d-flex flex-wrap">
-                    {{#hasnavbar}}
+            {{#hasnavbar}}
+                <div class="bd-highlight">
+                    <div class="d-flex flex-wrap">
                         <div id="page-navbar">
                             {{{navbar}}}
                         </div>
-                    {{/hasnavbar}}
-                </div>
+                    </div>
             </div>
-            <div class="bd-highlight">
-                <div class="header-actions-container" data-region="header-actions-container">
-                    {{#headeractions}}
+            {{/hasnavbar}}
+            {{#headeractions}}
+                <div class="bd-highlight">
+                    <div class="header-actions-container" data-region="header-actions-container">
                         <div class="header-action">{{{.}}}</div>
-                    {{/headeractions}}
+                    </div>
                 </div>
-            </div>
+            {{/headeractions}}
         </div>
 
     </div>

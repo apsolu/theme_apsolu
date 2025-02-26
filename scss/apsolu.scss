@@ -27,6 +27,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     //position: relative; //Ne pas décommenter, sinon casse le rendue de la vue pour évaluer les devoirs.
+    * {
+        -webkit-transition: 0.1s;
+        -moz-transition: 0.1s;
+        -o-transition: 0.1s;
+        transition: 0.1s;
+    }
 
     p,
     li,
@@ -157,10 +163,6 @@ span a {
 
     a {
         color: lighten($custom-color-3, 10%);
-    }
-
-    a:hover {
-        //color:unset;
     }
 }
 
@@ -331,18 +333,6 @@ section .badge {
     padding-top: 5%;
 }
 
-//@media screen and (max-width: 1366px) {
-//}
-
-//@media screen and (max-width: 1920px) {
-//}
-
-//@media handheld, (orientation: portrait) and (max-width: 479px) {
-//}
-
-//@media handheld, (orientation: landscape) and (max-width: 479px) {
-//}
-
 /* Résolutions inférieures à 480px de large. */
 @media (max-width: 479px) {
     #page-site-index {
@@ -443,13 +433,30 @@ section .badge {
 // 3f. Affichage du pied de page.
 #apsolu-custom-footer-1 {
     border-top: 5px solid $custom-color-1;
-}
 
-#apsolu-custom-footer-1 .container {
-    padding: 2em;
+    a.nav-link {
+        color: $custom-color-1;
+    }
 
-    ::before {
+    a.nav-link:hover,
+    a.nav-link:focus {
+        color: lighten($custom-color-1, 10%);
+    }
+
+    .container {
+        padding: 2em;
+    }
+
+    .container::before {
         content: attr(class, "d-none");
+    }
+
+    .nav-item .nav-link {
+        padding: .25rem 0;
+    }
+
+    .nav-item:first-of-type .nav-link {
+        padding-top: 0;
     }
 }
 
@@ -488,20 +495,16 @@ footer {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding: 1em;
+        padding: 0.1em;
+        text-align: center;
         //font: 900 13px/1;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.5);
 
-        :hover {
+        &:hover {
             color: rgba(255, 255, 255, 1);
         }
     }
-
-    .modal-container .col {
-        //border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
 }
 
 /* Homepage: inscription. */
@@ -596,12 +599,9 @@ footer {
 
 }
 
-.dropdown-item:active {
-    background-color: green;
-}
-
+.dropdown-item:active,
 .dropdown-item:hover {
-    background-color: green;
+    background-color: $custom-color-2;
 }
 
 .apsolu-color-custom {
@@ -806,10 +806,19 @@ body.limitedwidth #page.drawers .main-inner {
     display: block; // Affiche le menu secondaire dans la partie administration.
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, .6);
+}
+
 // Style Hover
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
     color: darken($custom-color-1, 10%);
+}
+
+#apsolu-homepage-navbar.navbar-dark .navbar-nav .nav-link:hover,
+#apsolu-homepage-navbar.navbar-dark .navbar-nav .nav-link:focus {
+    color: lighten($custom-color-1, 5%);
 }
 
 .primary-navigation .navigation {
@@ -955,37 +964,19 @@ input[type="color"] {
     margin-right: var(--drawer-right-width);
 }
 
-/*
-    WIP : Tableaux responsive.
-*/
-/*
-@media (max-width: 700px){
-    .table thead {
-        //display: none;
-        display: block;
-    }
-
-    .table tr{
-        display: block;
-        margin-bottom: 40px;
-    }
-
-    .table td {
-        display: block;
-        text-align: right;
-    }
-
-    .table td:before {
-        content: attr(data-label);
-        float: left;
-        font-weight: bold;
-    }
-}*/
-
 .bg-dark {
     background-color: $apsolu-dark !important; /* stylelint-disable-line declaration-no-important */
 }
 
 a {
-    color: #007f5b;
+    color: $custom-color-3;
+}
+
+a:hover {
+    color: lighten($custom-color-3, 10%);
+}
+
+/* ne pas afficher le usertour */
+.usertour {
+    display: none;
 }

@@ -1,0 +1,53 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_apsolu/publicpage
+
+    Template Moodle pour afficher des pages publiques personnalisés.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * public_page_heading
+    * public_page_content
+
+    Example context (json):
+    {
+    }
+}}
+<main id="apsolu-page" role="main">
+    <section id="public-page" class="apsolu-pages">
+        <article class="apsolu-article mb-0">
+            {{#public_page_heading}}
+                <header class="apsolu-article-title">
+                    <h2 class="container display-4">
+                        <i aria-hidden="true" class="fa fa-chevron-circle-right mr-3"></i>
+                        {{{ public_page_heading }}}
+                    </h2>
+                </header>
+            {{/public_page_heading}}
+            <section class="container-md p-3">
+                {{{ public_page_content }}}
+            </section>
+        </article>
+    </section>
+</main>
+
