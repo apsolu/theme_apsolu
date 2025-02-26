@@ -89,6 +89,41 @@ $header = $PAGE->activityheader;
 $renderer = $PAGE->get_renderer('core');
 $headercontent = $header->export_for_template($renderer);
 
+// Données pour le footer.
+// Fenêtes modales.
+$component = 'theme_apsolu';
+$footer = new stdClass();
+$footer->accessibility_status = get_config($component, 'accessibility_status');
+$text = get_config($component, 'accessibility_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$footer->accessibility_doc_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config($component, 'legal_notice_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
+$footer->legal_notice_doc_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config($component, 'confidential_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_CONFIDENTIAL_DOC_TEXT);
+$footer->confidential_doc_text = format_text($content, FORMAT_HTML, $options);
+
+$text = get_config($component, 'contact_doc_text');
+$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
+    $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
+$footer->contact_doc_text = format_text($content, FORMAT_HTML, $options);
+
+// Liens personnalisés.
+$footer->nav_link_1_url = get_config($component, 'nav_link_1_url');
+$footer->nav_link_1_text = get_config($component, 'nav_link_1_text');
+
+$footer->nav_link_2_url = get_config($component, 'nav_link_2_url');
+$footer->nav_link_2_text = get_config($component, 'nav_link_2_text');
+
+$footer->nav_link_3_url = get_config($component, 'nav_link_3_url');
+$footer->nav_link_3_text = get_config($component, 'nav_link_3_text');
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -109,6 +144,7 @@ $templatecontext = [
     'overflow' => $overflow,
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
+    'apsolu_footer' => $footer,
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
