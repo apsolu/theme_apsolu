@@ -51,6 +51,7 @@ $defaults->contact_doc_text = get_config('theme_apsolu', 'contact_doc_text');
 $defaults->contact_doc_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'contact_doc_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
+$defaults->enable_rewrite_rules = get_config('theme_apsolu', 'enable_rewrite_rules');
 
 $customdata = [$defaults];
 // On instancie le formulaire.
@@ -65,6 +66,10 @@ if ($data = $mform->get_data()) {
     $data = file_postupdate_standard_editor($data, 'contact_doc_text', $editoroptions,
         $syscontext, $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
     set_config('custom_contact_active', intval(isset($data->custom_contact_active)), 'theme_apsolu');
+
+    if (has_capability('moodle/site:config', context_system::instance())) {
+        set_config('enable_rewrite_rules', $data->enable_rewrite_rules, 'theme_apsolu');
+    }
 
     set_config('contact_doc_text', $data->contact_doc_text, 'theme_apsolu');
 

@@ -35,6 +35,8 @@ class theme_apsolu_accessibility_form extends moodleform {
      * Définit les champs du formulaire.
      */
     protected function definition() {
+        global $CFG;
+
         $mform = $this->_form;
 
         [$defaults] = $this->_customdata;
@@ -54,6 +56,12 @@ class theme_apsolu_accessibility_form extends moodleform {
         $mform->addElement('html', '<blockquote><small id="a11yHelp" class="form-text text-muted">'.
             get_string('accessibility_status_help', 'theme_apsolu') . '</small></blockquote>');
         $mform->setType($document.'_status', PARAM_TEXT);
+
+        if (has_capability('moodle/site:config', context_system::instance())) {
+            $mform->addElement('selectyesno', 'enable_rewrite_rules', get_string('enable_rewrite_rules', 'theme_apsolu'));
+            $mform->addHelpButton('enable_rewrite_rules', 'enable_rewrite_rules', 'theme_apsolu', '', false, $CFG->wwwroot);
+            $mform->setType('enable_rewrite_rules', PARAM_INT);
+        }
 
         // 3. Editer la déclaration d'accessibilité.
         $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));

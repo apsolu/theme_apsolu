@@ -89,6 +89,24 @@ $string['customize_confidential'] = 'Éditer la politique de confidentialité';
 $string['customize_legal_notice'] = 'Éditer les mentions légales';
 $string['customize_contact'] = 'Éditer les informations de contact';
 $string['document_text'] = 'Contenu du document';
+$string['enable_rewrite_rules'] = 'Activer la réécriture d’URL';
+$string['enable_rewrite_rules_help'] = 'La réécriture d’URL permet d’obtenir des liens plus lisibles.
+
+Si cette option est activée, vos différents documents seront accessibles sur les URL suivantes :
+
+* {$a}/accessibilite
+* {$a}/mentions_legales
+* {$a}/confidentialite
+* {$a}/contact
+
+Vous devrez alors penser à configurer votre serveur HTTP pour rédiriger ces URL vers les bonnes pages.
+
+Exemples avec le mod_alias d’Apache 2 :
+
+* Alias /accessibilite /var/www/moodle/theme/apsolu/documents/public/accessibility.php
+* Alias /mentions_legales /var/www/moodle/theme/apsolu/documents/public/legal_notice.php
+* Alias /confidentialite /var/www/moodle/theme/apsolu/documents/public/confidential.php
+* Alias /contact /var/www/moodle/theme/apsolu/documents/public/contact.php';
 $string['modal_content'] = 'Contenu du document';
 $string['modal_content_help'] = 'Ce document sera affiché dans une fenêtre modale, au clic sur le lien approprié dans le footer.';
 

@@ -56,6 +56,7 @@ $defaults->accessibility_doc_text = get_config('theme_apsolu', 'accessibility_do
 $defaults->accessibility_doc_textformat = FORMAT_HTML;
 $defaults = file_prepare_standard_editor($defaults, 'accessibility_doc_text', $editoroptions,
     $syscontext, $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$defaults->enable_rewrite_rules = get_config('theme_apsolu', 'enable_rewrite_rules');
 
 $customdata = [$defaults];
 // On instancie le formulaire.
@@ -72,6 +73,10 @@ if ($data = $mform->get_data()) {
 
     set_config('accessibility_status', $data->accessibility_status, $component);
     set_config('accessibility_doc_text', $data->accessibility_doc_text, $component);
+
+    if (has_capability('moodle/site:config', context_system::instance())) {
+        set_config('enable_rewrite_rules', $data->enable_rewrite_rules, 'theme_apsolu');
+    }
 
     // Retourne une notification après enregistrement.
     $returnurl = new moodle_url('/theme/apsolu/documents/accessibility_settings.php');

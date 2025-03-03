@@ -35,6 +35,8 @@ class theme_apsolu_legal_notice_form extends moodleform {
      * Définit les champs du formulaire.
      */
     protected function definition() {
+        global $CFG;
+
         $mform = $this->_form;
 
         list($defaults) = $this->_customdata;
@@ -50,6 +52,12 @@ class theme_apsolu_legal_notice_form extends moodleform {
         // 1a. Active les mentions légales.
         $mform->addElement('checkbox', 'custom_'.$document.'_active', 'Activer l\'édition');
         $mform->setType('custom_'.$document.'_active', PARAM_INT);
+
+        if (has_capability('moodle/site:config', context_system::instance())) {
+            $mform->addElement('selectyesno', 'enable_rewrite_rules', get_string('enable_rewrite_rules', 'theme_apsolu'));
+            $mform->addHelpButton('enable_rewrite_rules', 'enable_rewrite_rules', 'theme_apsolu', '', false, $CFG->wwwroot);
+            $mform->setType('enable_rewrite_rules', PARAM_INT);
+        }
 
         // 2. Editer les mentions légales.
         $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));
