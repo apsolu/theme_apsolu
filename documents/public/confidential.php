@@ -22,24 +22,25 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// phpcs:disable moodle.Files.RequireLogin.Missing
 require_once(__DIR__ . '/../../../../config.php');
 require_once($CFG->libdir .'/filelib.php');
 require_once(__DIR__ .'/../../lib.php');
 
-defined('MOODLE_INTERNAL') || die();
-
 // Variable for template.
 $context = context_system::instance();
-$options = ['context' => context_system::instance(), 'clean' => false];
+$options = ['context' => $context, 'clean' => false];
 $component = 'theme_apsolu';
 $filearea = 'homepage';
-$url = new moodle_url($CFG->wwwroot.'/theme/apsolu/documents/public/confidential.php');
+$url = new moodle_url('/theme/apsolu/documents/public/confidential.php');
+$title = get_string('confidential', $component);
 
 $PAGE->set_url($url);
-$PAGE->set_title(get_string('confidential', $component));
-$PAGE->set_heading(get_string('confidential', $component));
-$PAGE->set_pagelayout('home');
-
+$PAGE->set_context($context);
+$PAGE->set_pagelayout('standard');
+$PAGE->set_title($title);
+$PAGE->set_heading($title);
+$PAGE->navbar->add($title);
 
 // Contenu de la déclaration d'accessibilité.
 $data = new stdClass();
