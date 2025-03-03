@@ -118,6 +118,20 @@ $content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
     $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
 $footer->contact_doc_text = format_text($content, FORMAT_HTML, $options);
 
+if (empty(get_config('theme_apsolu', 'enable_rewrite_rules')) === true) {
+    // Affiche les vraies URL.
+    $footer->accessibility_doc_url = new moodle_url('/theme/apsolu/documents/public/accessibility.php');
+    $footer->legal_notice_doc_url = new moodle_url('/theme/apsolu/documents/public/legal_notice.php');
+    $footer->confidential_doc_url = new moodle_url('/theme/apsolu/documents/public/confidential.php');
+    $footer->contact_doc_url = new moodle_url('/theme/apsolu/documents/public/contact.php');
+} else {
+    // Affiche les URL réécrites.
+    $footer->accessibility_doc_url = new moodle_url('/accessibilite');
+    $footer->legal_notice_doc_url = new moodle_url('/mentions_legales');
+    $footer->confidential_doc_url = new moodle_url('/confidentialite');
+    $footer->contact_doc_url = new moodle_url('/contact');
+}
+
 // Liens personnalisés.
 $footer->nav_link_1_url = get_config($component, 'nav_link_1_url');
 $footer->nav_link_1_text = get_config($component, 'nav_link_1_text');

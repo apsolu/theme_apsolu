@@ -101,7 +101,7 @@
             {{!accessibility_doc_text}}
                 <div class="col-12 col-md-3">
                     {{! Redirection au niveau du vhost => /theme/apsolu/documents/public/accessibility.php }}
-                    <a class="modal-inner" href="/accessibilite">
+                    <a class="modal-inner" href="{{ accessibility_doc_url }}">
                     {{ accessibility_status }}
                     </a>
                 </div>
@@ -109,21 +109,21 @@
             {{#legal_notice_doc_text}}
                 <div class="col-12 col-md-3">
                     {{! Redirection au niveau du vhost => /theme/apsolu/documents/public/legal_notice.php }}
-                    <a class="modal-inner" href="/mentions_legales">{{#str}}
+                    <a class="modal-inner" href="{{ legal_notice_doc_url }}">{{#str}}
                         legal_notice, theme_apsolu{{/str}}</a>
                 </div>
             {{/legal_notice_doc_text}}
             {{#confidential_doc_text}}
                 <div class="col-12 col-md-3">
                     {{! Redirection au niveau du vhost => /theme/apsolu/documents/public/confidential.php }}
-                    <a class="modal-inner" href="/confidentialite">{{#str}}
+                    <a class="modal-inner" href="{{ confidential_doc_url }}">{{#str}}
                         confidential, theme_apsolu{{/str}}</a>
                 </div>
             {{/confidential_doc_text}}
             {{#contact_doc_text}}
                 <div class="col-12 col-md-3">
                     {{! Redirection au niveau du vhost => /theme/apsolu/documents/public/contact.php }}
-                    <a class="modal-inner" href="/contact">{{#str}}
+                    <a class="modal-inner" href="{{ contact_doc_url }}">{{#str}}
                         contact_us, theme_apsolu{{/str}}</a>
                 </div>
             {{/contact_doc_text}}
