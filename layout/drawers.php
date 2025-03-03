@@ -90,8 +90,12 @@ $renderer = $PAGE->get_renderer('core');
 $headercontent = $header->export_for_template($renderer);
 
 // Données pour le footer.
-// Fenêtes modales.
+// Fenêtres modales.
+$context = context_system::instance();
 $component = 'theme_apsolu';
+$filearea = 'homepage';
+$options = ['context' => $context, 'clean' => false];
+
 $footer = new stdClass();
 $footer->accessibility_status = get_config($component, 'accessibility_status');
 $text = get_config($component, 'accessibility_doc_text');
