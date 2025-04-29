@@ -174,14 +174,31 @@ span a {
     border-bottom: $custom-border; // On surcharge la bordure de base de la navbar.
     color: $gray-400;
 
+    .nav-link {
+        height: 50px;
+    }
+
+    .nav-link.active {
+        background-color: darken($custom-color-1, 22%);
+        border-bottom: solid 4px $custom-color-1;
+    }
+
     .nav-link:hover,
-    .nav-link:focus {
-        border-bottom: 4px solid darken($custom-color-1, 10%);
+    .nav-link:focus,
+    .nav-link.active:hover,
+    .nav-link.active:focus {
+        border-bottom: 4px solid $custom-color-1;
+        background-color: darken($custom-color-1, 15%);
+        color: $gray-100;
+        a {
+            color: lighten($custom-color-3, 25%);
+        }
     }
 
     h1 {
         font-size: 1em;
     }
+
 }
 
 form.editmode-switch-form {
@@ -265,13 +282,17 @@ form.editmode-switch-form {
 
 .navbar-brand {
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 550;
     line-height: inherit;
     white-space: nowrap;
 
     .logo {
         max-height: calc(50px - (0.25rem * 2));
     }
+}
+
+.navbar-dark .navbar-brand {
+    color: #000;
 }
 
 // 3c. Affichage des titres de sections.
@@ -317,6 +338,7 @@ section .badge {
 
     .alert-light {
         background-color: $gray-200;
+        color: $gray-800;
         border-left: 15px solid $gray-300;
     }
 }
@@ -622,6 +644,8 @@ footer {
     }
 }
 
+
+
 // 6b. Tableaux.
 #table-courses-sortable.table-sortable thead tr .header {
     background-image: unset;
@@ -813,7 +837,7 @@ body.limitedwidth #page.drawers .main-inner {
 // Style Hover
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
-    color: darken($custom-color-1, 10%);
+    color: $custom-color-1;
 }
 
 #apsolu-homepage-navbar.navbar-dark .navbar-nav .nav-link:hover,
