@@ -75,7 +75,7 @@ define([], function() {
                 a.setAttribute('aria-controls', id);
                 a.setAttribute('aria-selected', 'false');
                 a.setAttribute('class', 'nav-link');
-                a.setAttribute('data-toggle', 'tab');
+                a.setAttribute('data-bs-toggle', 'tab');
                 a.setAttribute('href', '#'+id+"-pane");
                 a.setAttribute('role', 'tab');
 
