@@ -171,7 +171,7 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->addElement('html', '<h4>' . $title . '</h4>');
         $mform->addElement('static', 'Liens du pied de page');
         $description = '<div class="alert alert-secondary d-flex align-items-center">
-            <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
+            <i class="fa fa-info-circle me-3" aria-hidden="true"></i>
             <p class="mb-0">Affiche les liens hypertexte déjà définis dans la barre de liens.</p>
             </div>';
         $mform->addElement('html', $description);
