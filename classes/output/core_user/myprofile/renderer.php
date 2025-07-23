@@ -306,8 +306,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                 $items[] = '<li>'.
                     '<p class="my-0"><a href="'.$courseurl.'">'.$course->fullname.'</a></p>'.
                     '<dl>'.
-                        '<dt class="font-weight-normal ml-3">'.$course->enrolname.'</dt>'.
-                        '<dd class="ml-5">'.
+                        '<dt class="font-weight-normal ms-3">'.$course->enrolname.'</dt>'.
+                        '<dd class="ms-5">'.
                             '<ul class="list-inline">'.
                                 '<li class="list-inline-item">'.
                                     '<a class="text-danger" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a>'.

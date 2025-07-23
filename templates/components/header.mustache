@@ -68,7 +68,7 @@
 <nav id="apsolu-header-navbar" class="navbar navbar-apsolu navbar-dark bg-dark navbar-expand"
      aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <span class="d-inline-flex mb-0 apsolu-color-custom-1">
-            <a href="{{{ config.homeurl }}}" class="navbar-brand d-flex align-items-center my-1 mr-2 ml-2 p-0 aabtn">
+            <a href="{{{ config.homeurl }}}" class="navbar-brand d-flex align-items-center my-1 mr-2 ms-2 p-0 aabtn">
                 {{# output.should_display_navbar_logo }}
                     <img src="{{output.get_compact_logo_url}}" class="logo mr-2" alt="{{sitename}}">
                 {{/ output.should_display_navbar_logo }}
@@ -98,7 +98,7 @@
     </div>
     {{/isloggedin}}
 
-    <div id="usernavigation" class="navbar-nav ml-auto">
+    <div id="usernavigation" class="navbar-nav ms-auto">
         <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
             {{{ output.user_menu }}}
         </div>
