@@ -1,19 +1,15 @@
-/*
-    Les imports :
-    "fontawesome", "bootstrap" et "moodle" sont importés depuis le thème Boost. Ne pas modifier.
-    "variables" (_variables.scss) est spécifique à Apsolu, surcharge Bootstrap
-        et ajoute des variables personnalisées. Peut être modifié.
-*/
-// Import FontAwesome.
-@import "../../boost/scss/fontawesome";
+/**
+ * Les imports :
+ *   - "default" est importé depuis le thème Boost. Ne pas modifier.
+ *   - "variables" (_variables.scss) est spécifique à Apsolu, surcharge Bootstrap et ajoute des variables
+ *     personnalisées. Peut être modifié.
+ */
+
+// Importe les règles scss du thème Boost.
+@import "../../boost/scss/preset/default";
+
 // Variables custom Apsolu.
 @import "variables";
-// Import All of Bootstrap.
-@import "../../boost/scss/bootstrap";
-// Import Core moodle CSS.
-@import "../../boost/scss/moodle";
-// Import icônes Font Awesome.
-@import "../../boost/scss/fontawesome/fontawesome";
 
 /*
     Preset pour Apsolu :
