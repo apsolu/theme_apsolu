@@ -22,13 +22,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require(__DIR__.'/../../../config.php');
+require(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
 // Setup admin access requirement.
 admin_externalpage_setup('local_apsolu_appearance_homepage');
 
-require_once($CFG->dirroot.'/theme/apsolu/homepage/settings_form.php');
+require_once($CFG->dirroot . '/theme/apsolu/homepage/settings_form.php');
 
 $component = 'theme_apsolu';
 $filearea = 'homepage';
@@ -45,21 +45,41 @@ $defaults->homepage_enable = get_config('theme_apsolu', 'homepage_enable');
 // Charge le contenu de l'éditeur de texte de la section 1.
 $defaults->homepage_section1_text = get_config('theme_apsolu', 'homepage_section1_text');
 $defaults->homepage_section1_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section1_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section1_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT
+);
 
 // Charge l'encart de la section 1.
 $defaults->homepage_section1_welcome_text = get_config('theme_apsolu', 'homepage_section1_welcome_text');
 $defaults->homepage_section1_welcome_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section1_welcome_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section1_welcome_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT
+);
 
 // Charge l'image de fond de la section 1.
 $defaults->homepage_section1_background_image = file_get_submitted_draft_itemid('homepage_section1_background_image');
 if (empty($defaults->homepage_section1_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section1_background_image, $syscontext->id,
-        $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL, $filemanageroptions);
+    file_prepare_draft_area(
+        $defaults->homepage_section1_background_image,
+        $syscontext->id,
+        $component,
+        $filearea,
+        THEME_APSOLU_BACKGROUND_IMAGE_1_ORIGINAL,
+        $filemanageroptions
+    );
 }
 
 // Charge la préférence sur l'affichage des crédits de la section 1.
@@ -69,8 +89,14 @@ $defaults->homepage_section1_show_credit = (empty(get_config('theme_apsolu', 'ho
 $defaults->homepage_section2_background_image = file_get_submitted_draft_itemid('homepage_section2_background_image');
 if (empty($defaults->homepage_section2_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section2_background_image, $syscontext->id,
-        $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_2_ORIGINAL, $filemanageroptions);
+    file_prepare_draft_area(
+        $defaults->homepage_section2_background_image,
+        $syscontext->id,
+        $component,
+        $filearea,
+        THEME_APSOLU_BACKGROUND_IMAGE_2_ORIGINAL,
+        $filemanageroptions
+    );
 }
 
 // Charge la préférence sur l'affichage des crédits de la section 2.
@@ -79,15 +105,28 @@ $defaults->homepage_section2_show_credit = (empty(get_config('theme_apsolu', 'ho
 // Charge le contenu de l'éditeur de texte de la section 3.
 $defaults->homepage_section3_text = get_config('theme_apsolu', 'homepage_section3_text');
 $defaults->homepage_section3_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section3_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section3_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT
+);
 
 // Charge l'image de fond de la section 3.
 $defaults->homepage_section3_background_image = file_get_submitted_draft_itemid('homepage_section3_background_image');
 if (empty($defaults->homepage_section3_background_image) === true) {
     // Récupère l'image originale si le brouillon est vide.
-    file_prepare_draft_area($defaults->homepage_section3_background_image, $syscontext->id,
-        $component, $filearea, THEME_APSOLU_BACKGROUND_IMAGE_3_ORIGINAL, $filemanageroptions);
+    file_prepare_draft_area(
+        $defaults->homepage_section3_background_image,
+        $syscontext->id,
+        $component,
+        $filearea,
+        THEME_APSOLU_BACKGROUND_IMAGE_3_ORIGINAL,
+        $filemanageroptions
+    );
 }
 
 // Charge la préférence sur l'affichage des crédits de la section 3.
@@ -105,19 +144,40 @@ $mform = new theme_apsolu_homepage_form(null, $customdata);
 $notification = '';
 if ($data = $mform->get_data()) {
     // Gère les pièces attachées des éditeurs de texte.
-    $data = file_postupdate_standard_editor($data, 'homepage_section1_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
-    $data = file_postupdate_standard_editor($data, 'homepage_section3_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
-    $data = file_postupdate_standard_editor($data, 'homepage_section1_welcome_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section1_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT
+    );
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section3_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT
+    );
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section1_welcome_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT
+    );
 
     // Gère le dépot des images.
     $fs = get_file_storage();
     $usercontext = context_user::instance($USER->id);
 
     foreach (range(1, 3) as $sectionid) {
-        $fieldname = 'homepage_section'.$sectionid.'_background_image';
+        $fieldname = 'homepage_section' . $sectionid . '_background_image';
 
         $sort = 'itemid, filepath, filename';
         $files = $fs->get_area_files($usercontext->id, 'user', 'draft', $defaults->$fieldname, $sort, $includedirs = false);
@@ -129,44 +189,45 @@ if ($data = $mform->get_data()) {
         }
 
         // Toujours réenregistrer l'auteur et la licence de l'image.
-        $author = $draftfile->get_author().' ('.get_string($draftfile->get_license(), 'license').')';
-        set_config('homepage_section'.$sectionid.'_image_credits', $author, 'theme_apsolu');
+        $author = $draftfile->get_author() . ' (' . get_string($draftfile->get_license(), 'license') . ')';
+        set_config('homepage_section' . $sectionid . '_image_credits', $author, 'theme_apsolu');
 
         $contextid = $syscontext->id;
         $component = 'theme_apsolu';
         $filearea = 'homepage';
-        $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL');
+        $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_' . $sectionid . '_ORIGINAL');
 
-        $filename = 'background_'.$sectionid.'.jpg';
+        $filename = 'background_' . $sectionid . '.jpg';
         $originalfile = $fs->get_file($contextid, $component, $filearea, $itemid, '/', $filename);
 
         if ($originalfile->get_contenthash() === $draftfile->get_contenthash()) {
             // L'image de fond n'a pas été modifiée.
-            debugging('L\'image de fond de la section '.$sectionid.' n\'a pas été modifiée', DEBUG_DEVELOPER);
+            debugging('L\'image de fond de la section ' . $sectionid . ' n\'a pas été modifiée', DEBUG_DEVELOPER);
             continue;
         }
 
         // On génère les images en différents formats.
         $sizes = [];
         $sizes['ORIGINAL'] = $filename;
-        $sizes['240_160'] = 'background_'.$sectionid.'_240x160.jpg';
-        $sizes['480_320'] = 'background_'.$sectionid.'_480x320.jpg';
-        $sizes['960_640'] = 'background_'.$sectionid.'_960x640.jpg';
+        $sizes['240_160'] = 'background_' . $sectionid . '_240x160.jpg';
+        $sizes['480_320'] = 'background_' . $sectionid . '_480x320.jpg';
+        $sizes['960_640'] = 'background_' . $sectionid . '_960x640.jpg';
 
         foreach ($sizes as $size => $filename) {
             if ($size === 'ORIGINAL') {
                 $newwidth = null;
                 $newheight = null;
 
-                debugging('L\'image originale de la section '.$sectionid.' est convertie au format jpg.', DEBUG_DEVELOPER);
+                debugging('L\'image originale de la section ' . $sectionid . ' est convertie au format jpg.', DEBUG_DEVELOPER);
             } else {
-                list($newwidth, $newheight) = explode('_', $size);
+                [$newwidth, $newheight] = explode('_', $size);
 
-                $message = 'L\'image originale de la section '.$sectionid.' est convertie au format '.$newwidth.'x'.$newheight.'.';
+                $message = 'L\'image originale de la section ' . $sectionid . ' est convertie au format ' .
+                    $newwidth . 'x' . $newheight . '.';
                 debugging($message, DEBUG_DEVELOPER);
             }
 
-            $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_'.$size);
+            $itemid = constant('THEME_APSOLU_BACKGROUND_IMAGE_' . $sectionid . '_' . $size);
 
             $file = $fs->get_file($contextid, $component, $filearea, $itemid, '/', $filename);
             if ($file) {
@@ -211,7 +272,7 @@ if ($data = $mform->get_data()) {
         if (empty($newvalue) === true) {
             $newvalue = '';
         } else {
-            $newvalue = $CFG->dirroot.'/theme/apsolu/index.php';
+            $newvalue = $CFG->dirroot . '/theme/apsolu/index.php';
         }
 
         add_to_config_log('customfrontpageinclude', $oldvalue, $newvalue, 'core');

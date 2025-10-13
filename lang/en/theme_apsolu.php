@@ -45,7 +45,7 @@ $string['choosereadme'] = '<div class="alert alert-secondary" role="alert">
   <p>Contact : contact@apsolu.fr<br>Site officiel : <a class="alert-link" href="https://www.apsolu.fr/">www.apsolu.fr</a></p></div>
 <div class="alert alert-secondary d-flex align-items-center"><i class="fa fa-info-circle me-3" aria-hidden="true"></i><p class="mb-0">Pour personnaliser la page d’accueil, rendez-vous dans le menu « APSOLU > Présentation > Page d’accueil ».</p></div>';
 $string['configtitle'] = 'Apsolu';
-$string['default_homepage_section1_text'] = '<p class="lead">Bienvenue sur le site de gestion des inscriptions au service des sports.</p>'.
+$string['default_homepage_section1_text'] = '<p class="lead">Bienvenue sur le site de gestion des inscriptions au service des sports.</p>' .
     '<p>Ce service propose à l’ensemble des étudiants et des personnels une formation pour tous les niveaux à la pratique des activités physiques et sportives.</p>';
 $string['institutional_account_authentification_url'] = 'URL d’authentification des comptes institutionnels';
 $string['home'] = 'Accueil';
@@ -179,5 +179,3 @@ $string['link_4'] = 'Lien n°4';
 $string['project_financed_under_the_plan_national_de_relance_et_resilience'] = 'Projet financé dans le cadre du Plan National de Relance et de Résilience (PNRR)';
 $string['service_powered_by_apsolu'] = 'Service propulsé par APSOLU';
 $string['show_apsolu_project_logo'] = 'Afficher le logo du projet APSOLU';
-
-

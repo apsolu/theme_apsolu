@@ -34,7 +34,7 @@ $THEME->sheets = [];
 // Critique : on hérite de Boost les templates, les styles ainsi qu'une partie de ses settings.
 $THEME->parents = ['boost'];
 // This is the function that returns the SCSS source for the main file in our theme.
-$THEME->scss = function($theme) {
+$THEME->scss = function ($theme) {
     return theme_apsolu_get_main_scss_content($theme);
 };
 // The content returned by this function is added before the main SCSS.

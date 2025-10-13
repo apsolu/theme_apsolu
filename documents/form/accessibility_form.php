@@ -50,12 +50,16 @@ class theme_apsolu_accessibility_form extends moodleform {
         $mform->addElement('header', 'general', get_string('general'));
 
         // 2. Etat de la conformité (par défaut: non conforme).
-        $mform->addElement('text', $document.'_status', get_string($document.'_status_text', 'theme_apsolu'),
-            'wrap="virtual" rows="10" cols="60"');
-        $mform->setDefault($document.'_status', get_string($document.'_status_default', 'theme_apsolu'));
-        $mform->addElement('html', '<blockquote><small id="a11yHelp" class="form-text text-muted">'.
+        $mform->addElement(
+            'text',
+            $document . '_status',
+            get_string($document . '_status_text', 'theme_apsolu'),
+            'wrap="virtual" rows="10" cols="60"'
+        );
+        $mform->setDefault($document . '_status', get_string($document . '_status_default', 'theme_apsolu'));
+        $mform->addElement('html', '<blockquote><small id="a11yHelp" class="form-text text-muted">' .
             get_string('accessibility_status_help', 'theme_apsolu') . '</small></blockquote>');
-        $mform->setType($document.'_status', PARAM_TEXT);
+        $mform->setType($document . '_status', PARAM_TEXT);
 
         if (has_capability('moodle/site:config', context_system::instance())) {
             $mform->addElement('selectyesno', 'enable_rewrite_rules', get_string('enable_rewrite_rules', 'theme_apsolu'));
@@ -64,13 +68,13 @@ class theme_apsolu_accessibility_form extends moodleform {
         }
 
         // 3. Editer la déclaration d'accessibilité.
-        $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));
+        $mform->addElement('header', $document . '_edit', get_string('customize_' . $document, $component));
 
         // 3a. Editeur de texte.
-        $mform->addElement('editor', $document.'_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
-        $mform->addRule($document.'_doc_text_editor', get_string('required'), 'required', null, 'client');
-        $mform->setType($document.'_doc_text', PARAM_RAW);
-        $mform->addHelpButton($document.'_doc_text_editor', 'modal_content', 'theme_apsolu');
+        $mform->addElement('editor', $document . '_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
+        $mform->addRule($document . '_doc_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType($document . '_doc_text', PARAM_RAW);
+        $mform->addHelpButton($document . '_doc_text_editor', 'modal_content', 'theme_apsolu');
 
         // 4. Validation du formulaire.
         // Ajoute le bouton submit.

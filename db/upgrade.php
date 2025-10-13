@@ -124,15 +124,21 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
 
             // On convertit toutes les autres tailles au format jpg.
             foreach ($sizes as $size) {
-                list($newwidth, $newheight) = explode('x', $size);
+                [$newwidth, $newheight] = explode('x', $size);
 
                 $oldfilename = 'background_' . $sectionid . '_' . $size . '.png';
 
                 $file['itemid']++;
                 $file['filename'] = 'background_' . $sectionid . '_' . $size . '.jpg';
 
-                $existingfile = $fs->get_file($file['contextid'], $file['component'], $file['filearea'],
-                    $file['itemid'], $file['filepath'], $oldfilename);
+                $existingfile = $fs->get_file(
+                    $file['contextid'],
+                    $file['component'],
+                    $file['filearea'],
+                    $file['itemid'],
+                    $file['filepath'],
+                    $oldfilename
+                );
                 if ($existingfile) {
                     // Supprime le précédent fichier.
                     $existingfile->delete();

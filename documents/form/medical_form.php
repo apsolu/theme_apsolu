@@ -37,7 +37,7 @@ class theme_apsolu_medical_form extends moodleform {
     protected function definition() {
         $mform = $this->_form;
 
-        list($defaults) = $this->_customdata;
+        [$defaults] = $this->_customdata;
 
         $editoroptions = self::get_editor_options();
 
@@ -48,19 +48,19 @@ class theme_apsolu_medical_form extends moodleform {
         $mform->addElement('header', 'general', get_string('general'));
 
         // 1a. Active les recommandations médicales.
-        $mform->addElement('checkbox', 'custom_'.$document.'_active', 'Activer l\'édition');
-        $mform->setType('custom_'.$document.'_active', PARAM_INT);
+        $mform->addElement('checkbox', 'custom_' . $document . '_active', 'Activer l\'édition');
+        $mform->setType('custom_' . $document . '_active', PARAM_INT);
 
         // 2. Editer les recommandations médicales.
-        $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));
+        $mform->addElement('header', $document . '_edit', get_string('customize_' . $document, $component));
 
         // 2a. Editeur de texte.
-        $mform->addElement('editor', $document.'_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
-        $mform->addRule($document.'_doc_text_editor', get_string('required'), 'required', null, 'client');
-        $mform->setType($document.'_doc_text', PARAM_RAW);
+        $mform->addElement('editor', $document . '_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
+        $mform->addRule($document . '_doc_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType($document . '_doc_text', PARAM_RAW);
 
         // 2b. Désactive l'éditeur si les recommandations médicales ne sont pas activées.
-        $mform->disabledIf($document.'_doc_text_editor', 'custom_'.$document.'_active');
+        $mform->disabledIf($document . '_doc_text_editor', 'custom_' . $document . '_active');
 
         // 3. Validation du formulaire.
         // Ajoute le bouton submit.

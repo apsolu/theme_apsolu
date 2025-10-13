@@ -54,8 +54,15 @@ $defaults->accessibility_status = get_config('theme_apsolu', 'accessibility_stat
 // Charge le contenu de l'éditeur de texte.
 $defaults->accessibility_doc_text = get_config('theme_apsolu', 'accessibility_doc_text');
 $defaults->accessibility_doc_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'accessibility_doc_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'accessibility_doc_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_ACCESSIBILITY_DOC_TEXT
+);
 $defaults->enable_rewrite_rules = get_config('theme_apsolu', 'enable_rewrite_rules');
 
 $customdata = [$defaults];
@@ -67,9 +74,15 @@ $mform->set_data($customdata);
 
 $notification = '';
 if ($data = $mform->get_data()) {
-
-    $data = file_postupdate_standard_editor($data, 'accessibility_doc_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+    $data = file_postupdate_standard_editor(
+        $data,
+        'accessibility_doc_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_ACCESSIBILITY_DOC_TEXT
+    );
 
     set_config('accessibility_status', $data->accessibility_status, $component);
     set_config('accessibility_doc_text', $data->accessibility_doc_text, $component);
@@ -82,7 +95,6 @@ if ($data = $mform->get_data()) {
     $returnurl = new moodle_url('/theme/apsolu/documents/accessibility_settings.php');
     $message = get_string('changessaved');
     redirect($returnurl, $message, $delay = null, \core\output\notification::NOTIFY_SUCCESS);
-
 }
 
 // Affiche le formulaire.

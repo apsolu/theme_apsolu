@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
 
-require_once($CFG->dirroot.'/theme/apsolu/lib.php');
+require_once($CFG->dirroot . '/theme/apsolu/lib.php');
 
 /**
  * Classe PHPUnit permettant de tester les fichiers lib.php du module theme_apsolu.
@@ -138,7 +138,7 @@ final class theme_apsolu_test extends advanced_testcase {
         $css = '';
         $this->assertEmpty(theme_apsolu_process_css($css));
 
-        $css = file_get_contents(__DIR__.'/../scss/apsolu.scss');
+        $css = file_get_contents(__DIR__ . '/../scss/apsolu.scss');
         $this->assertNotEmpty(theme_apsolu_process_css($css));
 
         // Contrôle que les "constantes" sont bien remplacées dans le fichier CSS final.

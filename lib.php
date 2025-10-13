@@ -73,7 +73,7 @@ function theme_apsolu_get_main_scss_content($theme) {
     global $CFG;
 
     // Preset Apsolu.
-    return file_get_contents($CFG->dirroot.'/theme/apsolu/scss/apsolu.scss');
+    return file_get_contents($CFG->dirroot . '/theme/apsolu/scss/apsolu.scss');
 }
 
 /**
@@ -98,7 +98,7 @@ function theme_apsolu_get_pre_scss($theme) {
         if (empty($value)) {
             continue;
         }
-        array_map(function($target) use (&$scss, $value) {
+        array_map(function ($target) use (&$scss, $value) {
             $scss .= '$' . $target . ': ' . $value . ";\n";
         }, (array) $targets);
     }
@@ -168,7 +168,7 @@ function theme_apsolu_process_css($css, $theme = null) {
             continue;
         }
 
-        $url = $CFG->wwwroot.'/pluginfile.php/1/theme_apsolu/homepage/'.$file->get_itemid().'/'.$file->get_filename();
+        $url = $CFG->wwwroot . '/pluginfile.php/1/theme_apsolu/homepage/' . $file->get_itemid() . '/' . $file->get_filename();
 
         $css = str_replace($tag, $url, $css);
     }
@@ -222,12 +222,12 @@ function theme_apsolu_get_primary_menu() {
  */
 function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     if ($context->contextlevel != CONTEXT_SYSTEM) {
-        debugging('Wrong contextlevel: '.$context->contextlevel, DEBUG_DEVELOPER);
+        debugging('Wrong contextlevel: ' . $context->contextlevel, DEBUG_DEVELOPER);
         return false;
     }
 
     if ($filearea != 'homepage') {
-        debugging('Wrong filearea: '.$filearea, DEBUG_DEVELOPER);
+        debugging('Wrong filearea: ' . $filearea, DEBUG_DEVELOPER);
         return false;
     }
 
@@ -239,7 +239,7 @@ function theme_apsolu_pluginfile($course, $cm, $context, $filearea, $args, $forc
     if (empty($args) === true) {
         $filepath = '/';
     } else {
-        $filepath = '/'.implode('/', $args).'/';
+        $filepath = '/' . implode('/', $args) . '/';
     }
 
     $file = $fs->get_file($context->id, 'theme_apsolu', $filearea, $itemid, $filepath, $filename);
@@ -273,17 +273,17 @@ function theme_apsolu_initialise_homepage_background_images() {
 
     // Initialise les images du fond 1.
     foreach (range(1, 3) as $sectionid) {
-        list($author, $license) = $licenses[$sectionid];
+        [$author, $license] = $licenses[$sectionid];
 
-        $filepath = $CFG->dirroot.'/theme/apsolu/images/background_'.$sectionid.'.jpg';
+        $filepath = $CFG->dirroot . '/theme/apsolu/images/background_' . $sectionid . '.jpg';
 
         $file = [
             'contextid' => $syscontext->id,
             'component' => 'theme_apsolu',
             'filearea'  => 'homepage',
-            'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_'.$sectionid.'_ORIGINAL'),
+            'itemid'    => constant('THEME_APSOLU_BACKGROUND_IMAGE_' . $sectionid . '_ORIGINAL'),
             'filepath'  => '/',
-            'filename'  => 'background_'.$sectionid.'.jpg',
+            'filename'  => 'background_' . $sectionid . '.jpg',
             'userid'    => null,
             'mimetype'  => 'image/jpeg',
             'status' => 0,
@@ -309,14 +309,14 @@ function theme_apsolu_initialise_homepage_background_images() {
         }
         $originalfile = $fs->create_file_from_pathname($file, $filepath);
 
-        $credits = $author.' ('.get_string($license, 'license').')';
-        set_config('homepage_section'.$sectionid.'_image_credits', $credits, 'theme_apsolu');
+        $credits = $author . ' (' . get_string($license, 'license') . ')';
+        set_config('homepage_section' . $sectionid . '_image_credits', $credits, 'theme_apsolu');
 
         foreach ($sizes as $size) {
-            list($newwidth, $newheight) = explode('x', $size);
+            [$newwidth, $newheight] = explode('x', $size);
 
             $file['itemid']++;
-            $file['filename'] = 'background_'.$sectionid.'_'.$size.'.jpg';
+            $file['filename'] = 'background_' . $sectionid . '_' . $size . '.jpg';
 
             $existingfile = $fs->get_file(
                 $file['contextid'],

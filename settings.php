@@ -79,8 +79,12 @@ if ($hassiteconfig || has_any_capability($capabilities, context_system::instance
     // Documents > Accessibilité.
     $str = get_string('accessibility', 'theme_apsolu');
     $url = new moodle_url('/theme/apsolu/documents/accessibility_settings.php');
-    $ADMIN->add('theme_apsolu_documents', new admin_externalpage('theme_apsolu_documents_accessibility',
-        $str, $url, $capabilities));
+    $ADMIN->add('theme_apsolu_documents', new admin_externalpage(
+        'theme_apsolu_documents_accessibility',
+        $str,
+        $url,
+        $capabilities
+    ));
 
     // Documents > Politique de confidentialité.
     $str = get_string('confidential', 'theme_apsolu');
@@ -102,7 +106,6 @@ if ($hassiteconfig || has_any_capability($capabilities, context_system::instance
 
 // Ajoute les paramètres personnalisables du thème.
 if ($ADMIN->fulltree) {
-
     // 1. Description.
     // Ajoute une information sur la page du menu Administration du site > Présentation > Thèmes > Apsolu.
     $page = new admin_settingpage('themesettingapsolu', get_string('description'));

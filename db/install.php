@@ -25,7 +25,7 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/theme/apsolu/lib.php');
+require_once($CFG->dirroot . '/theme/apsolu/lib.php');
 
 /**
  * Initialise les variables après l'installation.

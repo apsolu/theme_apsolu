@@ -49,8 +49,15 @@ $defaults->custom_legal_notice_active = get_config('theme_apsolu', 'custom_legal
 // Charge le contenu de l'éditeur de texte.
 $defaults->legal_notice_doc_text = get_config('theme_apsolu', 'legal_notice_doc_text');
 $defaults->legal_notice_doc_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'legal_notice_doc_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'legal_notice_doc_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT
+);
 $defaults->enable_rewrite_rules = get_config('theme_apsolu', 'enable_rewrite_rules');
 
 $customdata = [$defaults];
@@ -62,9 +69,15 @@ $mform->set_data($customdata);
 
 $notification = '';
 if ($data = $mform->get_data()) {
-
-    $data = file_postupdate_standard_editor($data, 'legal_notice_doc_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
+    $data = file_postupdate_standard_editor(
+        $data,
+        'legal_notice_doc_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT
+    );
     set_config('custom_legal_notice_active', intval(isset($data->custom_legal_notice_active)), 'theme_apsolu');
 
     if (has_capability('moodle/site:config', context_system::instance())) {
@@ -77,7 +90,6 @@ if ($data = $mform->get_data()) {
     $returnurl = new moodle_url('/theme/apsolu/documents/legal_notice_settings.php');
     $message = get_string('changessaved');
     redirect($returnurl, $message, $delay = null, \core\output\notification::NOTIFY_SUCCESS);
-
 }
 
 // Affiche le formulaire.

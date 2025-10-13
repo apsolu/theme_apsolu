@@ -26,7 +26,6 @@ namespace theme_apsolu\output\core_user\myprofile;
 
 use core_user\output\myprofile\category;
 use core_user\output\myprofile\node;
-
 use stdClass;
 use context_course;
 use context_user;
@@ -34,11 +33,11 @@ use moodle_url;
 use html_writer;
 use enrol_select_plugin;
 use UniversiteRennes2\Apsolu\Payment;
-use local_apsolu\core\attendance as Attendance;
+use local_apsolu\core\attendance;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/local/apsolu/classes/apsolu/payment.php');
+require_once($CFG->dirroot . '/local/apsolu/classes/apsolu/payment.php');
 
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
@@ -160,7 +159,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                     if ($field === 'auth') {
                         $field = 'authentication';
-                        $content = get_string('pluginname', 'auth_'.$user->auth);
+                        $content = get_string('pluginname', 'auth_' . $user->auth);
                     } else {
                         $content = $user->{$field};
                     }
@@ -201,7 +200,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                         $content = $value;
                     }
 
-                    $title = get_string('fields_'.$field, 'local_apsolu');
+                    $title = get_string('fields_' . $field, 'local_apsolu');
 
                     $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                     $category->add_node($node);
@@ -225,7 +224,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                     foreach ($cards as $card) {
                         $card->status = Payment::get_user_card_status($card, $userid);
 
-                        $content .= '<li>'.$paymentsimages[$card->status]->image.' '.$card->name.'</li>';
+                        $content .= '<li>' . $paymentsimages[$card->status]->image . ' ' . $card->name . '</li>';
                     }
                     $content .= '</ul>';
 
@@ -278,8 +277,8 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
         } else if ($category->name === 'coursedetails' && $canviewuserprofile) {
             // Get enrolments.
-            require_once($CFG->dirroot.'/enrol/select/lib.php');
-            require_once($CFG->dirroot.'/enrol/select/locallib.php');
+            require_once($CFG->dirroot . '/enrol/select/lib.php');
+            require_once($CFG->dirroot . '/enrol/select/locallib.php');
 
             $roles = role_fix_names($DB->get_records('role'));
             $presences = Attendance::getUserPresences($userid);
@@ -291,33 +290,33 @@ class renderer extends \core_user\output\myprofile\renderer {
                 $courseurl = new moodle_url('/user/view.php', ['id' => $userid, 'course' => $course->id]);
 
                 $rolename = $roles[$course->roleid]->name;
-                $status = get_string(enrol_select_plugin::$states[$course->status].'_list_abbr', 'enrol_select');
+                $status = get_string(enrol_select_plugin::$states[$course->status] . '_list_abbr', 'enrol_select');
 
                 if (isset($presences[$course->enrolid]) === false) {
                     $presences[$course->enrolid] = new stdClass();
                     $presences[$course->enrolid]->total = 0;
                 }
 
-                $presence = $presences[$course->enrolid]->total.' présences';
+                $presence = $presences[$course->enrolid]->total . ' présences';
                 if ($presences[$course->enrolid]->total < 2) {
-                    $presence = $presences[$course->enrolid]->total.' présence';
+                    $presence = $presences[$course->enrolid]->total . ' présence';
                 }
 
-                $items[] = '<li>'.
-                    '<p class="my-0"><a href="'.$courseurl.'">'.$course->fullname.'</a></p>'.
-                    '<dl>'.
-                        '<dt class="font-weight-normal ms-3">'.$course->enrolname.'</dt>'.
-                        '<dd class="ms-5">'.
-                            '<ul class="list-inline">'.
-                                '<li class="list-inline-item">'.
-                                    '<a class="text-danger" href="'.$enrolurl.'">'.$rolename.' - '.$status.'</a>'.
-                                '</li>'.
-                                '<li class="list-inline-item">'.
-                                    '<span class="small">('.$presence.')</span>'.
-                                '</li>'.
-                            '</ul>'.
-                        '</dd>'.
-                    '</dl>'.
+                $items[] = '<li>' .
+                    '<p class="my-0"><a href="' . $courseurl . '">' . $course->fullname . '</a></p>' .
+                    '<dl>' .
+                        '<dt class="font-weight-normal ms-3">' . $course->enrolname . '</dt>' .
+                        '<dd class="ms-5">' .
+                            '<ul class="list-inline">' .
+                                '<li class="list-inline-item">' .
+                                    '<a class="text-danger" href="' . $enrolurl . '">' . $rolename . ' - ' . $status . '</a>' .
+                                '</li>' .
+                                '<li class="list-inline-item">' .
+                                    '<span class="small">(' . $presence . ')</span>' .
+                                '</li>' .
+                            '</ul>' .
+                        '</dd>' .
+                    '</dl>' .
                     '</li>';
             }
             $recordset->close();
@@ -330,16 +329,16 @@ class renderer extends \core_user\output\myprofile\renderer {
                 $picture = null;
                 $classes = '';
                 $title = get_string('courseprofiles');
-                $content = '<ul>'.implode('', $items).'</ul>';
+                $content = '<ul>' . implode('', $items) . '</ul>';
 
                 $node = new node($parentcat, $field, $title, $place, $url, $content, $picture, $classes);
                 $category->add_node($node);
             }
 
             // Get cohorts.
-            $sql = "SELECT c.*".
-                " FROM {cohort} c".
-                " JOIN {cohort_members} cm ON c.id = cm.cohortid AND cm.userid = :userid".
+            $sql = "SELECT c.*" .
+                " FROM {cohort} c" .
+                " JOIN {cohort_members} cm ON c.id = cm.cohortid AND cm.userid = :userid" .
                 " ORDER BY c.name";
             $cohorts = $DB->get_records_sql($sql, ['userid' => $userid]);
             if (count($cohorts) > 0) {
@@ -353,7 +352,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                 $content = '<ul>';
                 foreach ($cohorts as $cohort) {
-                    $content .= '<li>'.$cohort->name.'</li>';
+                    $content .= '<li>' . $cohort->name . '</li>';
                 }
                 $content .= '</ul>';
 

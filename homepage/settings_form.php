@@ -40,7 +40,7 @@ class theme_apsolu_homepage_form extends moodleform {
     protected function definition() {
         $mform = $this->_form;
 
-        list($defaults) = $this->_customdata;
+        [$defaults] = $this->_customdata;
 
         $attributes = null;
         $editoroptions = self::get_editor_options();

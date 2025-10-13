@@ -24,8 +24,8 @@
 
 // phpcs:disable moodle.Files.RequireLogin.Missing
 require_once(__DIR__ . '/../../../../config.php');
-require_once($CFG->libdir .'/filelib.php');
-require_once(__DIR__ .'/../../lib.php');
+require_once($CFG->libdir . '/filelib.php');
+require_once(__DIR__ . '/../../lib.php');
 
 // Variable for template.
 $context = context_system::instance();
@@ -46,8 +46,14 @@ $PAGE->navbar->add($title);
 $data = new stdClass();
 $data->public_page_heading = get_config($component, 'accessibility_status');
 $text = get_config($component, 'accessibility_doc_text');
-$content = file_rewrite_pluginfile_urls($text, '/../../pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    '/../../pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_ACCESSIBILITY_DOC_TEXT
+);
 $data->public_page_content = format_text($content, FORMAT_HTML, $options);
 
 echo $OUTPUT->header();

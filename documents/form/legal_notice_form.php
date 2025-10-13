@@ -39,7 +39,7 @@ class theme_apsolu_legal_notice_form extends moodleform {
 
         $mform = $this->_form;
 
-        list($defaults) = $this->_customdata;
+        [$defaults] = $this->_customdata;
 
         $editoroptions = self::get_editor_options();
 
@@ -50,8 +50,8 @@ class theme_apsolu_legal_notice_form extends moodleform {
         $mform->addElement('header', 'general', get_string('general'));
 
         // 1a. Active les mentions légales.
-        $mform->addElement('checkbox', 'custom_'.$document.'_active', 'Activer l\'édition');
-        $mform->setType('custom_'.$document.'_active', PARAM_INT);
+        $mform->addElement('checkbox', 'custom_' . $document . '_active', 'Activer l\'édition');
+        $mform->setType('custom_' . $document . '_active', PARAM_INT);
 
         if (has_capability('moodle/site:config', context_system::instance())) {
             $mform->addElement('selectyesno', 'enable_rewrite_rules', get_string('enable_rewrite_rules', 'theme_apsolu'));
@@ -60,16 +60,16 @@ class theme_apsolu_legal_notice_form extends moodleform {
         }
 
         // 2. Editer les mentions légales.
-        $mform->addElement('header', $document.'_edit', get_string('customize_'.$document, $component));
+        $mform->addElement('header', $document . '_edit', get_string('customize_' . $document, $component));
 
         // 2a. Editeur de texte.
-        $mform->addElement('editor', $document.'_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
-        $mform->addRule($document.'_doc_text_editor', get_string('required'), 'required', null, 'client');
-        $mform->setType($document.'_doc_text', PARAM_RAW);
-        $mform->addHelpButton($document.'_doc_text_editor', 'modal_content', 'theme_apsolu');
+        $mform->addElement('editor', $document . '_doc_text_editor', get_string('document_text', $component), null, $editoroptions);
+        $mform->addRule($document . '_doc_text_editor', get_string('required'), 'required', null, 'client');
+        $mform->setType($document . '_doc_text', PARAM_RAW);
+        $mform->addHelpButton($document . '_doc_text_editor', 'modal_content', 'theme_apsolu');
 
         // 2b. Désactive l'éditeur si les mentions légales ne sont pas activée.
-        $mform->disabledIf($document.'_doc_text_editor', 'custom_'.$document.'_active');
+        $mform->disabledIf($document . '_doc_text_editor', 'custom_' . $document . '_active');
 
         // 3. Validation du formulaire.
         // Ajoute le bouton submit.

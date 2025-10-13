@@ -32,12 +32,12 @@
 
 // phpcs:disable moodle.Commenting.TodoComment.MissingInfoInline
 
-require(__DIR__.'/../../../config.php');
+require(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
 admin_externalpage_setup('local_apsolu_appearance_activities');
 
-require_once($CFG->dirroot.'/theme/apsolu/activities/settings_form.php');
+require_once($CFG->dirroot . '/theme/apsolu/activities/settings_form.php');
 
 // Définition des variables.
 $component = 'theme_apsolu';
@@ -54,20 +54,41 @@ $defaults = new stdClass();
 // Charge le contenu de la liste des activité.
 $defaults->homepage_section2_activities_infobox_text = get_config('theme_apsolu', 'homepage_section2_activities_infobox_text');
 $defaults->homepage_section2_activities_infobox_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section2_activities_infobox_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section2_activities_infobox_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT
+);
 
 // Charge le contenu de l'éditeur de texte pour les pratiques autonomes.
 $defaults->homepage_section2_practice_text = get_config($plugin, 'homepage_section2_practice_text');
 $defaults->homepage_section2_practice_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section2_practice_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section2_practice_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT
+);
 
 // Charge le contenu de l'éditeur de texte pour l'Adhésion à l'Association sportive.
 $defaults->homepage_section2_association_text = get_config($plugin, 'homepage_section2_association_text');
 $defaults->homepage_section2_association_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'homepage_section2_association_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'homepage_section2_association_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT
+);
 
 // TODO : Charger les stages.
 // TODO : Charger les événements.
@@ -84,12 +105,33 @@ $mform->set_data($customdata);
 $notification = '';
 if ($data = $mform->get_data()) {
     // Gère les pièces attachées des éditeurs de texte.
-    $data = file_postupdate_standard_editor($data, 'homepage_section2_activities_infobox_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT);
-    $data = file_postupdate_standard_editor($data, 'homepage_section2_practice_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT);
-    $data = file_postupdate_standard_editor($data, 'homepage_section2_association_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT);
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section2_activities_infobox_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT
+    );
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section2_practice_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT
+    );
+    $data = file_postupdate_standard_editor(
+        $data,
+        'homepage_section2_association_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT
+    );
 
     set_config('homepage_section2_activities_infobox_text', $data->homepage_section2_activities_infobox_text, 'theme_apsolu');
     set_config('homepage_section2_practice_text', $data->homepage_section2_practice_text, 'theme_apsolu');

@@ -49,8 +49,15 @@ $defaults->custom_medical_active = get_config('theme_apsolu', 'custom_medical_ac
 // Charge le contenu de l'éditeur de texte.
 $defaults->medical_doc_text = get_config('theme_apsolu', 'medical_doc_text');
 $defaults->medical_doc_textformat = FORMAT_HTML;
-$defaults = file_prepare_standard_editor($defaults, 'medical_doc_text', $editoroptions,
-    $syscontext, $component, $filearea, THEME_APSOLU_MEDICAL_DOC_TEXT);
+$defaults = file_prepare_standard_editor(
+    $defaults,
+    'medical_doc_text',
+    $editoroptions,
+    $syscontext,
+    $component,
+    $filearea,
+    THEME_APSOLU_MEDICAL_DOC_TEXT
+);
 
 $customdata = [$defaults];
 // On instancie le formulaire.
@@ -61,9 +68,15 @@ $mform->set_data($customdata);
 
 $notification = '';
 if ($data = $mform->get_data()) {
-
-    $data = file_postupdate_standard_editor($data, 'medical_doc_text', $editoroptions,
-        $syscontext, $component, $filearea, THEME_APSOLU_MEDICAL_DOC_TEXT);
+    $data = file_postupdate_standard_editor(
+        $data,
+        'medical_doc_text',
+        $editoroptions,
+        $syscontext,
+        $component,
+        $filearea,
+        THEME_APSOLU_MEDICAL_DOC_TEXT
+    );
     set_config('custom_medical_active', intval(isset($data->custom_medical_active)), 'theme_apsolu');
 
     set_config('medical_doc_text', $data->medical_doc_text, 'theme_apsolu');
@@ -72,7 +85,6 @@ if ($data = $mform->get_data()) {
     $returnurl = new moodle_url('/theme/apsolu/documents/medical_settings.php');
     $message = get_string('changessaved');
     redirect($returnurl, $message, $delay = null, \core\output\notification::NOTIFY_SUCCESS);
-
 }
 
 // Affiche le formulaire.

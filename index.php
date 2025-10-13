@@ -22,14 +22,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use UniversiteRennes2\Apsolu as apsolu;
+use UniversiteRennes2\Apsolu;
 
 defined('MOODLE_INTERNAL') || die();
 
 // Cache stuff.
-$cachedir = $CFG->dataroot.'/apsolu/theme_apsolu/cache/homepage';
-$sitescachefile = $cachedir.'/sites.json';
-$activitiescachefile = $cachedir.'/activities.json';
+$cachedir = $CFG->dataroot . '/apsolu/theme_apsolu/cache/homepage';
+$sitescachefile = $cachedir . '/sites.json';
+$activitiescachefile = $cachedir . '/activities.json';
 
 $now = new DateTime();
 
@@ -47,12 +47,12 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
     $sites = $DB->get_records('apsolu_cities', $conditions = [], $sort = 'name');
 
     // Get activities.
-    $sql = "SELECT DISTINCT cc.id, cc.name, cc.description".
-        " FROM {course_categories} cc".
-        " JOIN {course} c ON cc.id = c.category".
-        " JOIN {apsolu_courses} ac ON ac.id = c.id".
-        " WHERE c.visible = 1".
-        " AND ac.on_homepage = 1".
+    $sql = "SELECT DISTINCT cc.id, cc.name, cc.description" .
+        " FROM {course_categories} cc" .
+        " JOIN {course} c ON cc.id = c.category" .
+        " JOIN {apsolu_courses} ac ON ac.id = c.id" .
+        " WHERE c.visible = 1" .
+        " AND ac.on_homepage = 1" .
         " ORDER BY cc.name";
     $activities = $DB->get_records_sql($sql);
 
@@ -92,35 +92,71 @@ $data->is_siuaps_rennes = isset($CFG->is_siuaps_rennes);
 // Sections personnalisées.
 // Section 1.
 $text = get_config('theme_apsolu', 'homepage_section1_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_1_TEXT
+);
 $data->section1_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config('theme_apsolu', 'homepage_section1_welcome_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_1_WELCOME_TEXT
+);
 $data->section1_welcome_text = format_text($content, FORMAT_HTML, $options);
 
 // Section 2.
 $text = get_config('theme_apsolu', 'homepage_section2_activities_infobox_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_ACTIVITIES_INFOBOX_TEXT
+);
 $data->homepage_section2_activities_infobox_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config('theme_apsolu', 'homepage_section2_practice_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_PRACTICE_TEXT
+);
 $data->homepage_section2_practice_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config('theme_apsolu', 'homepage_section2_association_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_2_ASSOCIATION_TEXT
+);
 $data->homepage_section2_association_text = format_text($content, FORMAT_HTML, $options);
 
 // Section 3.
 $text = get_config('theme_apsolu', 'homepage_section3_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_SECTION_3_TEXT
+);
 $data->section3_text = format_text($content, FORMAT_HTML, $options);
 
 // Images de section.
@@ -134,8 +170,14 @@ $data->homepage_footer_logo_1 = get_config($component, 'homepage_footer_logo_1')
 if (empty($data->homepage_footer_logo_1) === false) {
     $pathname = '/';
     $filename = substr($data->homepage_footer_logo_1, 1);
-    $data->get_homepage_footer_logo_1_url = moodle_url::make_pluginfile_url($context->id, $component,
-        $filearea, $itemid, $pathname, $filename);
+    $data->get_homepage_footer_logo_1_url = moodle_url::make_pluginfile_url(
+        $context->id,
+        $component,
+        $filearea,
+        $itemid,
+        $pathname,
+        $filename
+    );
 }
 
 $itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_2;
@@ -143,8 +185,14 @@ $data->homepage_footer_logo_2 = get_config($component, 'homepage_footer_logo_2')
 if (empty($data->homepage_footer_logo_2) === false) {
     $pathname = '/';
     $filename = substr($data->homepage_footer_logo_2, 1);
-    $data->get_homepage_footer_logo_2_url = moodle_url::make_pluginfile_url($context->id, $component,
-        $filearea, $itemid, $pathname, $filename);
+    $data->get_homepage_footer_logo_2_url = moodle_url::make_pluginfile_url(
+        $context->id,
+        $component,
+        $filearea,
+        $itemid,
+        $pathname,
+        $filename
+    );
 }
 
 $itemid = THEME_APSOLU_HOMEPAGE_FOOTER_LOGO_3;
@@ -152,36 +200,72 @@ $data->homepage_footer_logo_3 = get_config($component, 'homepage_footer_logo_3')
 if (empty($data->homepage_footer_logo_3) === false) {
     $pathname = '/';
     $filename = substr($data->homepage_footer_logo_3, 1);
-    $data->get_homepage_footer_logo_3_url = moodle_url::make_pluginfile_url($context->id, $component,
-        $filearea, $itemid, $pathname, $filename);
+    $data->get_homepage_footer_logo_3_url = moodle_url::make_pluginfile_url(
+        $context->id,
+        $component,
+        $filearea,
+        $itemid,
+        $pathname,
+        $filename
+    );
 }
 
 // Texte de pied de page.
 $text = get_config($component, 'footer_text_section');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_HOMEPAGE_FOOTER_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_HOMEPAGE_FOOTER_TEXT
+);
 $data->footer_text_section = format_text($content, FORMAT_HTML, $options);
 
 // Fenêtes modales.
 $data->accessibility_status = get_config($component, 'accessibility_status');
 $text = get_config($component, 'accessibility_doc_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_ACCESSIBILITY_DOC_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_ACCESSIBILITY_DOC_TEXT
+);
 $data->accessibility_doc_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config($component, 'legal_notice_doc_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_LEGAL_NOTICE_DOC_TEXT
+);
 $data->legal_notice_doc_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config($component, 'confidential_doc_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_CONFIDENTIAL_DOC_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_CONFIDENTIAL_DOC_TEXT
+);
 $data->confidential_doc_text = format_text($content, FORMAT_HTML, $options);
 
 $text = get_config($component, 'contact_doc_text');
-$content = file_rewrite_pluginfile_urls($text, 'pluginfile.php', $context->id,
-    $component, $filearea, THEME_APSOLU_CONTACT_DOC_TEXT);
+$content = file_rewrite_pluginfile_urls(
+    $text,
+    'pluginfile.php',
+    $context->id,
+    $component,
+    $filearea,
+    THEME_APSOLU_CONTACT_DOC_TEXT
+);
 $data->contact_doc_text = format_text($content, FORMAT_HTML, $options);
 
 if (empty(get_config('theme_apsolu', 'enable_rewrite_rules')) === true) {
@@ -213,7 +297,7 @@ $data->show_logo = get_config($component, 'show_logo');
 // Set last menu link.
 if (isloggedin() && !isguestuser()) {
     // Si l'utilisateur est déjà authentifié, on le renvoie vers son tableau de bord.
-    $data->dashboard_link = $CFG->wwwroot.'/my/';
+    $data->dashboard_link = $CFG->wwwroot . '/my/';
 } else {
     $noauth = true;
 
@@ -230,9 +314,9 @@ if (isloggedin() && !isguestuser()) {
     }
 
     if ($noauth === true) {
-        $data->login_link = $CFG->wwwroot.'/login/index.php';
+        $data->login_link = $CFG->wwwroot . '/login/index.php';
     } else {
-        $data->login_link = $CFG->wwwroot.'/#authentification';
+        $data->login_link = $CFG->wwwroot . '/#authentification';
     }
 }
 
