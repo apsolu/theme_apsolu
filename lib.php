@@ -170,7 +170,7 @@ function theme_apsolu_process_css($css, $theme = null) {
 
         $url = $CFG->wwwroot . '/pluginfile.php/1/theme_apsolu/homepage/' . $file->get_itemid() . '/' . $file->get_filename();
 
-        $css = str_replace($tag, $url, $css);
+        $css = str_replace($tag, $url . '?v=' . $file->get_id(), $css);
     }
 
     return $css;

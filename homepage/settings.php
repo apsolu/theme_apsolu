@@ -304,6 +304,9 @@ if ($data = $mform->get_data()) {
         }
     }
 
+    // Vide le cache du thème à l'enregistrement.
+    theme_reset_all_caches();
+
     $returnurl = new moodle_url('/theme/apsolu/homepage/settings.php');
     $message = get_string('changessaved');
     redirect($returnurl, $message, $delay = null, \core\output\notification::NOTIFY_SUCCESS);
