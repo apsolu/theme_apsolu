@@ -49,7 +49,7 @@ class theme_apsolu_customize_form extends moodleform {
 
         [$defaults] = $this->_customdata; // Assigne une liste de variables dans l'opération.
 
-        $PAGE->requires->js_call_amd('theme_apsolu/colorpicker', 'moveColorpickers'); // Initialise les colorpickers.
+        $PAGE->requires->js_call_amd('local_apsolu/colorpicker', 'initialise'); // Initialise les colorpickers.
 
         $attributes = null;
         $editoroptions = self::get_editor_options();
@@ -59,56 +59,33 @@ class theme_apsolu_customize_form extends moodleform {
         $component = 'theme_apsolu';
         $urllabel = get_string('nav_url_label', $component);
         $textlabel = get_string('nav_text_label', $component);
+        $classnames = 'd-block form-text mb-5 text-muted';
         $colorinfo = [
             get_string('brandcolor_1_help', 'theme_apsolu'),
             get_string('brandcolor_2_help', 'theme_apsolu'),
             get_string('brandcolor_links_help', 'theme_apsolu'),
         ];
 
-        $brandcolors = [
-            "brandcolor_1" => [THEME_APSOLU_CUSTOM_BRANDCOLOR, 'custom_brandcolor'],
-            "brandcolor_2" => [THEME_APSOLU_CUSTOM_BRANDCOLOR_2, 'custom_brandcolor_2'],
-            "brandcolor_links" => [THEME_APSOLU_CUSTOM_BRANDCOLOR_3, 'custom_brandcolor_links'],
-        ];
-
         // 1. Personnaliser les couleurs.
         $mform->addElement('header', 'theme_apsolu_customize_colors', get_string('customizer_colors_label', $component));
-        $mform->closeHeaderBefore('theme_apsolu_customize_links');
 
         // 1a. TODO: Couleur principale 1.
-        $colorpicker = '<div id="colorpicker_1" class="admin_colourpicker"></div>';
-        $mform->addElement('html', $colorpicker);
-        $mform->addElement(
-            'text',
-            'custom_brandcolor',
-            'Couleur principale',
-            ["id" => $brandcolors["brandcolor_1"][0], "aria-describedby" => "colorHelp"]
-        );
-        $mform->addElement('html', '<small id="colorHelp" class="form-text text-muted">' . $colorinfo[0] . '</small>');
+        $attributes = ['data-apsolu' => 'colorpicker', 'aria-describedby' => 'colorHelp1'];
+        $mform->addElement('text', 'custom_brandcolor', get_string('brandcolor_1_label', 'theme_apsolu'), $attributes);
+        $mform->addElement('html', '<small id="colorHelp1" class="' . $classnames . '">' . $colorinfo[0] . '</small>');
         $mform->setType('custom_brandcolor', PARAM_TEXT);
 
         // 1b. TODO: Couleur principale 2.
-        $colorpicker = '<div id="colorpicker_2" class="admin_colourpicker"></div>';
-        $mform->addElement('html', $colorpicker);
-        $mform->addElement(
-            'text',
-            'custom_brandcolor_2',
-            'Couleur secondaire',
-            ["id" => $brandcolors["brandcolor_2"][0], "aria-describedby" => "colorHelp2"]
-        );
-        $mform->addElement('html', '<small id="colorHelp2" class="form-text text-muted">' . $colorinfo[1] . '</small>');
+        $attributes = ['data-apsolu' => 'colorpicker', 'aria-describedby' => 'colorHelp2'];
+        $mform->addElement('text', 'custom_brandcolor_2', get_string('brandcolor_2_label', 'theme_apsolu'), $attributes);
+        $mform->addElement('html', '<small id="colorHelp2" class="' . $classnames . '">' . $colorinfo[1] . '</small>');
         $mform->setType('custom_brandcolor_2', PARAM_TEXT);
+        $mform->freeze('custom_brandcolor_2');
 
         // 1c. TODO: Couleur des liens.
-        $colorpicker = '<div id="colorpicker_3" class="admin_colourpicker"></div>';
-        $mform->addElement('html', $colorpicker);
-        $mform->addElement(
-            'text',
-            'custom_brandcolor_links',
-            'Couleur des liens et boutons',
-            ["id" => $brandcolors["brandcolor_links"][0], "aria-describedby" => "colorHelp3"]
-        );
-        $mform->addElement('html', '<small id="colorHelp3" class="form-text text-muted">' . $colorinfo[2] . '</small>');
+        $attributes = ['data-apsolu' => 'colorpicker', 'aria-describedby' => 'colorHelp3'];
+        $mform->addElement('text', 'custom_brandcolor_links', get_string('brandcolor_links_label', 'theme_apsolu'), $attributes);
+        $mform->addElement('html', '<small id="colorHelp3" class="' . $classnames . '">' . $colorinfo[2] . '</small>');
         $mform->setType('custom_brandcolor_links', PARAM_TEXT);
 
         // 2. Personnaliser la barre de liens.
