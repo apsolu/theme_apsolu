@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+use theme_apsolu\color;
+
 require_once($CFG->libdir . '/formslib.php');
 
 /**
@@ -227,5 +229,29 @@ class theme_apsolu_customize_form extends moodleform {
         $options['context'] = context_system::instance();
 
         return $options;
+    }
+
+    /**
+     * Valide les données envoyées dans le formulaire.
+     *
+     * @param array $data
+     * @param array $files
+     *
+     * @return array The errors that were found.
+     */
+    public function validation($data, $files) {
+        $errors = parent::validation($data, $files);
+
+        // Contrôle le contraste de la couleur principale.
+        if (color::has_sufficient_contrast('#000', $data['custom_brandcolor']) === false) {
+            $errors['custom_brandcolor'] = get_string('brandcolor_1_error', 'theme_apsolu');
+        }
+
+        // Contrôle le contraste de la couleur des liens.
+        if (color::has_sufficient_contrast($data['custom_brandcolor_links'], '#FFF') === false) {
+            $errors['custom_brandcolor_links'] = get_string('brandcolor_links_error', 'theme_apsolu');
+        }
+
+        return $errors;
     }
 }
