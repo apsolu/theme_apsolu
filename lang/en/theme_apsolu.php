@@ -138,9 +138,9 @@ $string['brandcolor_links_label'] = 'Couleur des liens';
 $string['brandcolor_1_default'] = '#00b395';
 $string['brandcolor_2_default'] = '#004d40';
 $string['brandcolor_links_default'] = '#004d40';
-$string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du site et en bordure.';
-$string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page.';
-$string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site.';
+$string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du site et en bordure. Valeur par défaut: #00b395';
+$string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page. Valeur par défaut: #004d40';
+$string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site. Valeur par défaut: #00705e';
 
 // 4. Personnalisation de la navbar.
 $string['customizer_links_label'] = 'Personnaliser la barre de liens';
