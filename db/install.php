@@ -68,9 +68,17 @@ function xmldb_theme_apsolu_install() {
 
     set_config('footer_text_section', '', 'theme_apsolu');
 
-    set_config('custom_brandcolor', '', 'theme_apsolu');
-    set_config('custom_brandcolor_2', '', 'theme_apsolu');
-    set_config('custom_brandcolor_links', '', 'theme_apsolu');
+    set_config('custom_brandcolor', '#00b395', 'theme_apsolu');
+    set_config('custom_brandcolor_2', '#004d40', 'theme_apsolu');
+    set_config('custom_brandcolor_links', '#00705e', 'theme_apsolu');
+
+    set_config('nav_link_1_url', '', 'theme_apsolu');
+    set_config('nav_link_1_text', '', 'theme_apsolu');
+    set_config('nav_link_2_url', '', 'theme_apsolu');
+    set_config('nav_link_2_text', '', 'theme_apsolu');
+    set_config('nav_link_3_url', '', 'theme_apsolu');
+    set_config('nav_link_3_text', '', 'theme_apsolu');
+    set_config('show_logo', '0', 'theme_apsolu');
 
     theme_apsolu_initialise_homepage_background_images();
 

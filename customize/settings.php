@@ -46,8 +46,22 @@ $defaults = new stdClass();
 
 // Charge les couleurs personnalisées.
 $defaults->custom_brandcolor = get_config($component, 'custom_brandcolor');
+if ($defaults->custom_brandcolor === '0') {
+    // TODO: à supprimer après la mise à jour de décembre 2025.
+    $defaults->custom_brandcolor = '#00b395';
+}
+
 $defaults->custom_brandcolor_2 = get_config($component, 'custom_brandcolor_2');
+if ($defaults->custom_brandcolor_2 === '0') {
+    // TODO: à supprimer après la mise à jour de décembre 2025.
+    $defaults->custom_brandcolor_2 = '#004d40';
+}
+
 $defaults->custom_brandcolor_links = get_config($component, 'custom_brandcolor_links');
+if ($defaults->custom_brandcolor_links === '0') {
+    // TODO: à supprimer après la mise à jour de décembre 2025.
+    $defaults->custom_brandcolor_links = '#00705e';
+}
 
 // Charge les urls de la barre de liens.
 $defaults->nav_link_1_url = get_config($component, 'nav_link_1_url');

@@ -175,5 +175,15 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
     }
 
+    // Modification à appliquer lors de la prochaine mise à jour.
+    if (false) {
+        set_config('custom_brandcolor', '#00b395', 'theme_apsolu');
+        set_config('custom_brandcolor_2', '#004d40', 'theme_apsolu');
+        set_config('custom_brandcolor_links', '#00705e', 'theme_apsolu');
+
+        // Savepoint reached.
+        upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
+    }
+
     return $result;
 }
