@@ -104,7 +104,7 @@
         </div>
     </div>
 </nav>
-<nav id="apsolu-homepage-navbar" class="navbar navbar-expand-md navbar-dark apsolu-color-custom-2">
+<nav id="apsolu-homepage-navbar" class="navbar navbar-expand-md navbar-dark apsolu-color-custom-1-darken">
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
             aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-chevron-down fa-fw " aria-hidden="true"></i>
@@ -112,11 +112,11 @@
 
     <div id="navbarMenu" class="navbar-collapse justify-content-md-center collapse">
         {{!#count_activities}}
-        <ul class="navbar-nav">
-            <li class="nav-item active">
+        <ul class="navbar-nav rounded">
+            <li class="mx-4 nav-item">
                 <a class="nav-link " href="#accueil">{{#str}}home, theme_apsolu{{/str}}</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="ms-4 nav-item dropdown">{{! Supprime la marge à droite à cause du caret qui donne une impression de contenu non centré. }}
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                    role="button"
                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -139,7 +139,7 @@
                         sport_association, theme_apsolu{{/str}}</a>{{/ homepage_section2_association_text }}
                 </div>
             </li>
-            <li class="nav-item">
+            <li class="mx-4 nav-item">
                 <a class="nav-link" href="#inscription">{{#str}}
                     signup, theme_apsolu{{/str}}{{^isloggedin}}/{{#str}}login, moodle{{/str}}{{/isloggedin}}</a>
             </li>
