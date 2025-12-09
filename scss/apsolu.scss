@@ -527,12 +527,12 @@ section .badge {
     border-top: 5px solid $custom-color-1;
 
     a.nav-link {
-        color: $custom-color-1;
+        color: #ddd;
     }
 
     a.nav-link:hover,
     a.nav-link:focus {
-        color: lighten($custom-color-1, 10%);
+        color: #8c8c8c;
     }
 
     .container {
