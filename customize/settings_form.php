@@ -82,7 +82,6 @@ class theme_apsolu_customize_form extends moodleform {
         $mform->addElement('text', 'custom_brandcolor_2', get_string('brandcolor_2_label', 'theme_apsolu'), $attributes);
         $mform->addElement('html', '<small id="colorHelp2" class="' . $classnames . '">' . $colorinfo[1] . '</small>');
         $mform->setType('custom_brandcolor_2', PARAM_TEXT);
-        $mform->freeze('custom_brandcolor_2');
 
         // 1c. TODO: Couleur des liens.
         $attributes = ['data-apsolu' => 'colorpicker', 'aria-describedby' => 'colorHelp3'];
@@ -245,6 +244,11 @@ class theme_apsolu_customize_form extends moodleform {
         // Contrôle le contraste de la couleur principale.
         if (color::has_sufficient_contrast('#000', $data['custom_brandcolor']) === false) {
             $errors['custom_brandcolor'] = get_string('brandcolor_1_error', 'theme_apsolu');
+        }
+
+        // Contrôle le contraste de la couleur secondaire.
+        if (color::has_sufficient_contrast('#FFF', $data['custom_brandcolor_2']) === false) {
+            $errors['custom_brandcolor_2'] = get_string('brandcolor_2_error', 'theme_apsolu');
         }
 
         // Contrôle le contraste de la couleur des liens.

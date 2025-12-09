@@ -139,9 +139,10 @@ $string['brandcolor_1_default'] = '#00b395';
 $string['brandcolor_2_default'] = '#004d40';
 $string['brandcolor_links_default'] = '#004d40';
 $string['brandcolor_1_help'] = 'La couleur affichée en arrière-plan du nom du site et en bordure. Valeur par défaut: #00b395';
-$string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan de la barre de navigation et du pied-de-page. Valeur par défaut: #004d40';
+$string['brandcolor_2_help'] = 'La couleur affichée en arrière-plan du menu contextuel de l’utilisateur et en bandeau sur la page d’accueil. Valeur par défaut: #004d40';
 $string['brandcolor_links_help'] = 'La couleur utilisée pour les liens hypertexte et les boutons du site. Valeur par défaut: #00705e';
 $string['brandcolor_1_error'] = 'La couleur de fond sélectionnée n’est pas suffisament contrastée sur un texte noir et pourrait empêcher la lecture des textes par des personnes avec une basse vision modérée. Vous devez choisir une couleur un peu plus claire.';
+$string['brandcolor_2_error'] = 'La couleur de fond sélectionnée n’est pas suffisament contrastée sur un texte blanc et pourrait empêcher la lecture des textes par des personnes avec une basse vision modérée. Vous devez choisir une couleur un peu plus foncée.';
 $string['brandcolor_links_error'] = 'La couleur de texte sélectionnée n’est pas suffisament contrastée sur un fond blanc et pourrait empêcher la lecture des textes par des personnes avec une basse vision modérée. Vous devez choisir une couleur un peu plus foncée.';
 
 // 4. Personnalisation de la navbar.

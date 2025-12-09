@@ -710,6 +710,10 @@ footer {
     &-2 {
         background-color: $custom-color-2;
     }
+
+    &-2-lighten {
+        background-color: lighten($custom-color-2, 15%);
+    }
 }
 
 // 6. Backoffice : Affichage des éléments côté administration.
