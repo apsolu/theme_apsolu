@@ -14,14 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * myprofile renderer.
- *
- * @package   theme_apsolu
- * @copyright 2019 Université Rennes 2 {@link https://www.univ-rennes2.fr}
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 namespace theme_apsolu\output\core_user\myprofile;
 
 use core_user\output\myprofile\category;
@@ -43,7 +35,7 @@ require_once($CFG->dirroot . '/local/apsolu/classes/apsolu/payment.php');
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package   theme_apsolu
- * @copyright 2019 Université Rennes 2 {@link https://www.univ-rennes2.fr}
+ * @copyright 2019 Université Rennes 2
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends \core_user\output\myprofile\renderer {

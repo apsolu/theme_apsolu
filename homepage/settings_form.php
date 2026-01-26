@@ -14,13 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Définition du formulaire pour configurer la page d'accueil du site.
- *
- * @package    theme_apsolu
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
@@ -28,7 +21,8 @@ require_once($CFG->libdir . '/formslib.php');
 /**
  * Classe définissant le formulaire pour configurer la page d'accueil du site.
  *
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
+ * @package    theme_apsolu
+ * @copyright  2020 Université Rennes 2
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class theme_apsolu_homepage_form extends moodleform {

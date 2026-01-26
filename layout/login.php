@@ -18,7 +18,7 @@
  * A login page layout for the apsolu theme.
  *
  * @package   theme_apsolu
- * @copyright 2019 Université Rennes 2 {@link https://www.univ-rennes2.fr}
+ * @copyright 2019 Université Rennes 2
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -18,7 +18,7 @@
  * Gère la configuration de la page d'accueil personnalisée.
  *
  * @package    theme_apsolu
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
+ * @copyright  2020 Université Rennes 2
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

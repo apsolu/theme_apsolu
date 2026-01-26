@@ -14,14 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Test theme_apsolu module.
- *
- * @package    theme_apsolu
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 namespace theme_apsolu;
 
 use advanced_testcase;
@@ -37,7 +29,8 @@ require_once($CFG->dirroot . '/theme/apsolu/lib.php');
 /**
  * Classe PHPUnit permettant de tester les fichiers lib.php du module theme_apsolu.
  *
- * @copyright  2020 Université Rennes 2 <dsi-contact@univ-rennes2.fr>
+ * @package    theme_apsolu
+ * @copyright  2020 Université Rennes 2
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class theme_apsolu_test extends advanced_testcase {
