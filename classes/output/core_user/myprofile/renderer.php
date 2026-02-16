@@ -162,10 +162,11 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $category->add_node($node);
                 }
 
-                // Custom fields.
-                $customfields = profile_user_record($user->id);
+                // Custom fields (note: passse $onlyinuserobject = false pour récupérer le champ textarea 'apsoluothertrainings'.
+                $customfields = profile_user_record($user->id, $onlyinuserobject = false);
                 $fields = ['apsoludoublecursus', 'apsolusesame', 'apsoluusertype', 'apsolucycle', 'apsolupostalcode',
-                    'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete', ];
+                    'apsoluufr', 'apsolusex', 'apsolubirthday', 'apsoluhighlevelathlete', 'apsolumaintraining',
+                    'apsoluothertrainings'];
                 $checkboxfields = ['apsoludoublecursus', 'apsolusesame', 'apsoluhighlevelathlete'];
                 foreach ($fields as $field) {
                     if (!isset($customfields->{$field})) {
@@ -247,6 +248,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'apsoluufr' => '',
                 'department' => '',
                 'institution' => '',
+                'apsolumaintraining' => '',
+                'apsoluothertrainings' => '',
                 'apsolusex' => '',
                 'apsolubirthday' => '',
                 'cards' => '',
