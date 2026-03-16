@@ -1071,3 +1071,10 @@ a:hover {
 .usertour {
     display: none;
 }
+
+/* Améliore les sauts de colonnes dans la page de profil des utilisateurs en empêchant de scinder
+les informations de manière abrupte. */
+.apsolu-category-node {
+    display: inline-block;
+    width: 90%;
+}

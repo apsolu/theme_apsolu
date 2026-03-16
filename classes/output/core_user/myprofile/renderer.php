@@ -58,9 +58,9 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $classes = $category->classes;
         if (empty($classes)) {
-            $return = html_writer::start_tag('section', ['class' => 'node_category']);
+            $return = html_writer::start_tag('section', ['class' => 'apsolu-category-node node_category']);
         } else {
-            $return = html_writer::start_tag('section', ['class' => 'node_category ' . $classes]);
+            $return = html_writer::start_tag('section', ['class' => 'apsolu-category-node node_category ' . $classes]);
         }
         $return .= html_writer::tag('h3', $category->title);
 
