@@ -192,7 +192,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
                         $content = '';
                         if (empty($values[0]) === false) {
-                            $content = html_writer::alist($values, $attributes = [], $tag = 'ul');
+                            $content = html_writer::alist($values, $attributes = ['id' => 'apsolu-othertrainings-ul'], $tag = 'ul');
                         }
                     } else {
                         if (empty($value)) {
