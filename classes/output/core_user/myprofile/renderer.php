@@ -186,6 +186,14 @@ class renderer extends \core_user\output\myprofile\renderer {
                         } else {
                             $content = html_writer::checkbox($field, $value, $checked = false, $label, $attributes);
                         }
+                    } else if ($field === 'apsoluothertrainings') {
+                        $values = explode(PHP_EOL, $value);
+                        array_map('s', $values);
+
+                        $content = '';
+                        if (empty($values[0]) === false) {
+                            $content = html_writer::alist($values, $attributes = [], $tag = 'ul');
+                        }
                     } else {
                         if (empty($value)) {
                             continue;
