@@ -30,7 +30,9 @@ use moodle_url;
  */
 class output {
     /**
-     * Setup error handler as soon as practical on every moodle bootstrap after config has been loaded.
+     * Fixture for adding a heading after the standard main region HTML generation.
+     *
+     * @param after_standard_main_region_html_generation $hook
      *
      * @return void
      */
