@@ -25,6 +25,15 @@ namespace theme_apsolu\output;
  */
 class core_renderer extends \theme_boost\output\core_renderer {
     /**
+     * Détermine si la page en cours correspond à la page d'accueil du site.
+     *
+     * @return bool
+     */
+    public function is_homepage(): bool {
+        return $this->page->course->id === SITEID && $this->page->pagetype === 'site-index';
+    }
+
+    /**
      * Renders the "breadcrumb" for all pages in boost.
      *
      * @return string the HTML for the navbar.

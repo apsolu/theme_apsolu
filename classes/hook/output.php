@@ -39,6 +39,11 @@ class output {
     public static function after_standard_main_region_html_generation(after_standard_main_region_html_generation $hook): void {
         global $OUTPUT;
 
+        if ($hook->renderer->is_homepage() === true) {
+            // Le footer est déjà appliqué sur la page d'accueil.
+            return;
+        }
+
         // Données pour le footer.
         // Fenêtres modales.
         $context = context_system::instance();
