@@ -191,9 +191,9 @@ class renderer extends \core_user\output\myprofile\renderer {
                             $values = explode(PHP_EOL, $value);
                             array_map('s', $values);
 
-                            $content = '';
+                            $value = '';
                             if (empty($values[0]) === false) {
-                                $content = html_writer::alist($values, ['id' => 'apsolu-othertrainings-ul'], $tag = 'ul');
+                                $value = html_writer::alist($values, ['id' => 'apsolu-othertrainings-ul'], $tag = 'ul');
                             }
                         }
 
