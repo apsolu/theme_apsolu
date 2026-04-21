@@ -193,7 +193,9 @@ function theme_apsolu_get_primary_menu() {
 
     // Remplace l'url du tableau de bord.
     if (isset($primarymenu['moremenu']['nodearray'][1]) === true) {
-        $primarymenu['moremenu']['nodearray'][1]['url'] = new moodle_url('/my/#courses');
+        // L'ancre correspond à une balise fictive servant à rediriger vers l'onglet
+        // "Mes enseignements" ou "Mes cours" selon l'utilisateur.
+        $primarymenu['moremenu']['nodearray'][1]['url'] = new moodle_url('/my/#main_courses');
     }
 
     // Remplace l'url de l'administration.
