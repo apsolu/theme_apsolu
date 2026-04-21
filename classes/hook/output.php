@@ -37,7 +37,13 @@ class output {
      * @return void
      */
     public static function after_standard_main_region_html_generation(after_standard_main_region_html_generation $hook): void {
-        global $OUTPUT;
+        global $CFG, $OUTPUT;
+
+        if ($CFG->theme !== 'apsolu') {
+            // Applique le hook uniquement lorsque le thème APSOLU est utilisé. Cela évite d'obtenir une erreur fatale lorsque
+            // le thème courant n'est pas le thème APSOLU.
+            return;
+        }
 
         if ($hook->renderer->is_homepage() === true) {
             // Le footer est déjà appliqué sur la page d'accueil.
