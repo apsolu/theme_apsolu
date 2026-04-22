@@ -175,8 +175,8 @@ function xmldb_theme_apsolu_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, $version, 'theme', 'apsolu');
     }
 
-    // Modification à appliquer lors de la prochaine mise à jour.
-    if (false) {
+    $version = 2026042200;
+    if ($oldversion < $version) {
         // Initialise les couleurs personnalisées qui n'auraient pas encore de valeur.
         $settings = [];
         $settings['custom_brandcolor'] = '#00b395';
