@@ -1087,3 +1087,8 @@ les informations de manière abrupte. */
 #page-user-profile .node_category #apsolu-othertrainings-ul li {
     margin-top: 0;
 }
+
+/* Réduit la taille de la popup pour filtrer les utilisateurs dans la partie administration. */
+#page-admin-user .reportbuilder-filters-sidebar {
+    max-height: 25rem;
+}
