@@ -184,7 +184,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                         if ($customfields->{$field}) {
                             $content = html_writer::checkbox($field, $value, $checked = true, $label, $attributes);
                         } else {
-                            $content = html_writer::checkbox($field, $value, $checked = false, $label, $attributes);
+                            // On ignore les checkboxes "vides".
+                            continue;
                         }
                     } else {
                         if ($field === 'apsoluothertrainings') {
