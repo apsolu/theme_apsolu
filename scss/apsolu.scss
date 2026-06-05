@@ -1100,3 +1100,10 @@ les informations de manière abrupte. */
     font-size: 1.1em;
     font-weight: 600;
 }
+
+/* Améliore le rendu du bouton d'authentification locale. */
+#page-login-index #emailLogin {
+    border: none;
+    padding: 0;
+    text-align: center;
+}
