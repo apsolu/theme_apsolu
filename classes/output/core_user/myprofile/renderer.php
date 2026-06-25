@@ -299,7 +299,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 $courseurl = new moodle_url('/user/view.php', ['id' => $userid, 'course' => $course->id]);
 
                 $rolename = $roles[$course->roleid]->name;
-                $status = get_string(enrol_select_plugin::$states[$course->status] . '_list_abbr', 'enrol_select');
+                $status = get_enrol_list_fieldvalue($course->status, 'statusabbr');
 
                 if (isset($presences[$course->enrolid]) === false) {
                     $presences[$course->enrolid] = new stdClass();
