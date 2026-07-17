@@ -93,9 +93,11 @@
     }
 }}
 
-<div class="loginform">
+<div class="loginform container">
+  <div class="row justify-content-md-center">
+    <div id="apsolu-loginform-main-div" class="col col-4">
     {{#logourl}}
-        <div id="loginlogo" class="login-logo">
+        <div id="loginlogo" class="login-logo text-center">
             <img id="logoimage" src="{{logourl}}" class="img-fluid" alt="{{sitename}}"/>
             <h1 class="login-heading visually-hidden">{{#str}} loginto, core, {{sitename}} {{/str}}</h1>
         </div>
@@ -118,7 +120,7 @@
 
     {{#hasidentityproviders}}
         <div class="login-identityproviders">
-            <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
+            <h2 class="fs-5 login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
             {{#identityproviders}}
                 <a class="btn login-identityprovider-btn btn-block" href="{{url}}">
                     {{#iconurl}}
@@ -187,7 +189,7 @@
         </div>
     {{/hasinstructions}}
     {{#cansignup}}
-        <div class="login-signup">
+        <div class="login-signup mt-4">
             <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
         </div>
     {{/cansignup}}
@@ -214,6 +216,8 @@
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!
         }}>{{#str}}cookiesnotice{{/str}}</button>
     </div>
+    </div>
+  </div>
 </div>
 
 {{#js}}
