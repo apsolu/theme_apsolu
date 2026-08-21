@@ -36,10 +36,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     //position: relative; //Ne pas décommenter, sinon casse le rendue de la vue pour évaluer les devoirs.
     * {
-        -webkit-transition: 0.1s;
-        -moz-transition: 0.1s;
-        -o-transition: 0.1s;
-        transition: 0.1s;
+        transition-property: color, background-color, border-color, box-shadow, opacity, height, max-height, visibility;
+        transition-duration: 0.1s;
     }
 
     p,
@@ -848,21 +846,14 @@ body.limitedwidth #page.drawers .main-inner {
 @keyframes FadeIn {
     0% {
         opacity: 0;
-        -webkit-transition-duration: 0.8s;
         transition-duration: 0.8s;
-        -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
         transform: translateY(-10px);
     }
 
-
     100% {
         opacity: 1;
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
         transform: translateY(0);
         pointer-events: auto;
-        transition: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
