@@ -26,12 +26,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2026061000;
+$plugin->version = 2026083100;
 
-$plugin->release = '5.0.8';
+$plugin->release = '5.2.2';
 
-// Requires Moodle 5.0.0.
-$plugin->requires = 2025041400;
+// Requires Moodle 5.2.0.
+$plugin->requires = 2026042000;
 
 // This is the component name of the plugin - it always starts with 'theme_'
 // for themes and should be the same as the name of the folder.
@@ -40,10 +40,10 @@ $plugin->component = 'theme_apsolu';
 // This is a stable release.
 $plugin->maturity = MATURITY_STABLE;
 
-// Support Moodle from 5.0.0 to 5.0.x.
-$plugin->supported = [500, 500];
+// Support Moodle from 5.2.0 to 5.2.x.
+$plugin->supported = [502, 502];
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'local_apsolu' => '2026061000',
+    'local_apsolu' => '2026083100',
 ];
