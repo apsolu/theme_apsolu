@@ -23,6 +23,8 @@
  */
 
 use UniversiteRennes2\Apsolu;
+use local_apsolu\core\category;
+use local_apsolu\core\course;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -47,14 +49,34 @@ if ($cache <= $now->sub(new DateInterval('PT5M'))) {
     $sites = $DB->get_records('apsolu_cities', $conditions = [], $sort = 'name');
 
     // Get activities.
-    $sql = "SELECT DISTINCT cc.id, cc.name, cc.description" .
-        " FROM {course_categories} cc" .
-        " JOIN {course} c ON cc.id = c.category" .
-        " JOIN {apsolu_courses} ac ON ac.id = c.id" .
-        " WHERE c.visible = 1" .
-        " AND ac.on_homepage = 1" .
-        " ORDER BY cc.name";
-    $activities = $DB->get_records_sql($sql);
+    $categories = $DB->get_records('course_categories', ['visible' => 1], $sort = 'name', $fields = 'id, name, description');
+    $activities = [];
+    foreach (Course::get_records(['visible' => 1]) as $course) {
+        if (isset($activities[$course->category]) === true) {
+            continue;
+        }
+
+        if (isset($categories[$course->category]) === false) {
+            continue;
+        }
+
+        if (isset($course->customfields['on_homepage']) === false) {
+            continue;
+        }
+
+        if ($course->customfields['on_homepage']->get_value() != 1) {
+            continue;
+        }
+
+        $activities[$course->category] = $categories[$course->category];
+    }
+
+    // Trie les catégories par nom.
+    uasort($activities, function ($a, $b) {
+        // Comparaison en gérant les accents. Ex: la lettre É est classé avec les E, plutôt qu'après le Z.
+        return strcoll($a->name, $b->name);
+    });
+    $activities = array_values($activities);
 
     // Mise en cache.
     $sites = array_values($sites);
