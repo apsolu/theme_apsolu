@@ -764,6 +764,11 @@ footer {
     }
 }
 
+.table-striped > tbody > tr:nth-of-type(2n) > .table-bg-color {
+	--bs-table-color-type: var(--bs-table-striped-color);
+	--bs-table-bg-type: var(--bs-table-striped-bg);
+}
+
 div.inf {
     background: #f2f2f2;
 }
